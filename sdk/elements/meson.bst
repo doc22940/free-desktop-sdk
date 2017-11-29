@@ -1,6 +1,7 @@
 kind: autotools
 description: json2bst conversion of meson
 depends:
+- base.bst
 - autoconf-archive.bst
 sources:
 - kind: tar

@@ -1,6 +1,7 @@
 kind: cmake
 description: json2bst conversion of openal
-depends: []
+depends:
+- base.bst
 sources:
 - kind: tar
   url: http://kcat.strangesoft.net/openal-releases/openal-soft-1.17.2.tar.bz2

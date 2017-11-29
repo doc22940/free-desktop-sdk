@@ -1,6 +1,7 @@
 kind: autotools
 description: json2bst conversion of lib32-arm-symlink
 depends:
+- base.bst
 - autoconf-archive.bst
 - meson.bst
 - xorg-x11-util-macros.bst

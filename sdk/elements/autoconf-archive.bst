@@ -1,5 +1,7 @@
 kind: autotools
 description: json2bst conversion of autoconf-archive
+depends:
+- base.bst
 sources:
 - kind: tar
   url: http://ftp.acc.umu.se/mirror/gnu.org/gnu/autoconf-archive/autoconf-archive-2016.09.16.tar.xz
