@@ -1,0 +1,112 @@
+kind: autotools
+description: json2bst conversion of dejavu-fonts
+depends:
+- autoconf-archive.bst
+- meson.bst
+- xorg-x11-util-macros.bst
+- xorg-x11-proto-bigreqs.bst
+- xorg-x11-proto-composite.bst
+- xorg-x11-proto-damage.bst
+- xorg-x11-proto-dmx.bst
+- xorg-x11-proto-evieext.bst
+- xorg-x11-proto-fixes.bst
+- xorg-x11-proto-fonts.bst
+- xorg-x11-proto-gl.bst
+- xorg-x11-proto-input.bst
+- xorg-x11-proto-kb.bst
+- xorg-x11-proto-randr.bst
+- xorg-x11-proto-record.bst
+- xorg-x11-proto-render.bst
+- xorg-x11-proto-resource.bst
+- xorg-x11-proto-scrnsaver.bst
+- xorg-x11-proto-video.bst
+- xorg-x11-proto-xcmisc.bst
+- xorg-x11-proto-xext.bst
+- xorg-x11-proto-xf86bigfont.bst
+- xorg-x11-proto-xf86dga.bst
+- xorg-x11-proto-xf86dri.bst
+- xorg-x11-proto-xf86misc.bst
+- xorg-x11-proto-xf86vidmode.bst
+- xorg-x11-proto-xinerama.bst
+- xorg-x11-proto-x.bst
+- xorg-x11-proto-xproxymanagement.bst
+- xorg-x11-proto-dri2.bst
+- xorg-x11-proto-present.bst
+- xorg-x11-proto-dri3.bst
+- xorg-x11-xtrans-devel.bst
+- libXau.bst
+- xcb-proto.bst
+- libxcb.bst
+- libXdmcp.bst
+- libX11.bst
+- libXext.bst
+- libXv.bst
+- libXfixes.bst
+- libXdamage.bst
+- libXi.bst
+- libXtst.bst
+- libICE.bst
+- libSM.bst
+- libXt.bst
+- libvdpau.bst
+- libpciaccess.bst
+- libdrm.bst
+- libXxf86vm.bst
+- libxshmfence.bst
+- libXpm.bst
+- libXrender.bst
+- libXScrnSaver.bst
+- libXcursor.bst
+- libXinerama.bst
+- libXrandr.bst
+- libXcomposite.bst
+- xcb-util.bst
+- xcb-util-image.bst
+- xcb-util-renderutil.bst
+- xcb-util-cursor.bst
+- xcb-util-keysyms.bst
+- xcb-util-wm.bst
+- freetype-bootstrap.bst
+- fontconfig.bst
+- libXft.bst
+- glib2.bst
+- xkeyboard-config.bst
+- libxkbcommon.bst
+- llvm.bst
+- clang.bst
+- wayland.bst
+- wayland-protocols.bst
+- vulkan.bst
+- libglvnd.bst
+- mesa.bst
+- libva.bst
+- libva-vdpau-driver.bst
+- dbus.bst
+- pulseaudio.bst
+- alsa-lib.bst
+- alsa-plugins.bst
+- libepoxy.bst
+- itstool.bst
+- desktop-file-utils.bst
+- shared-mime-info.bst
+- hicolor-icon-theme.bst
+- pixman.bst
+- cairo.bst
+- graphite2.bst
+- harfbuzz.bst
+- freetype.bst
+- libproxy.bst
+- gtk-doc.bst
+- gobject-introspection.bst
+- glib-networking.bst
+- libsoup.bst
+- gnu-free-fonts.bst
+sources:
+- kind: tar
+  url: http://sourceforge.net/projects/dejavu/files/dejavu/2.37/dejavu-fonts-ttf-2.37.tar.bz2
+  ref: fa9ca4d13871dd122f61258a80d01751d603b4d3ee14095d65453b4e846e17d7
+- kind: local
+  path: Makefile-fonts
+config:
+  configure-commands:
+  - '%{configure}  \ --disable-static \ --disable-vala'

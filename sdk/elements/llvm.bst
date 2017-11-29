@@ -1,0 +1,90 @@
+kind: autotools
+description: json2bst conversion of llvm
+depends:
+- autoconf-archive.bst
+- meson.bst
+- xorg-x11-util-macros.bst
+- xorg-x11-proto-bigreqs.bst
+- xorg-x11-proto-composite.bst
+- xorg-x11-proto-damage.bst
+- xorg-x11-proto-dmx.bst
+- xorg-x11-proto-evieext.bst
+- xorg-x11-proto-fixes.bst
+- xorg-x11-proto-fonts.bst
+- xorg-x11-proto-gl.bst
+- xorg-x11-proto-input.bst
+- xorg-x11-proto-kb.bst
+- xorg-x11-proto-randr.bst
+- xorg-x11-proto-record.bst
+- xorg-x11-proto-render.bst
+- xorg-x11-proto-resource.bst
+- xorg-x11-proto-scrnsaver.bst
+- xorg-x11-proto-video.bst
+- xorg-x11-proto-xcmisc.bst
+- xorg-x11-proto-xext.bst
+- xorg-x11-proto-xf86bigfont.bst
+- xorg-x11-proto-xf86dga.bst
+- xorg-x11-proto-xf86dri.bst
+- xorg-x11-proto-xf86misc.bst
+- xorg-x11-proto-xf86vidmode.bst
+- xorg-x11-proto-xinerama.bst
+- xorg-x11-proto-x.bst
+- xorg-x11-proto-xproxymanagement.bst
+- xorg-x11-proto-dri2.bst
+- xorg-x11-proto-present.bst
+- xorg-x11-proto-dri3.bst
+- xorg-x11-xtrans-devel.bst
+- libXau.bst
+- xcb-proto.bst
+- libxcb.bst
+- libXdmcp.bst
+- libX11.bst
+- libXext.bst
+- libXv.bst
+- libXfixes.bst
+- libXdamage.bst
+- libXi.bst
+- libXtst.bst
+- libICE.bst
+- libSM.bst
+- libXt.bst
+- libvdpau.bst
+- libpciaccess.bst
+- libdrm.bst
+- libXxf86vm.bst
+- libxshmfence.bst
+- libXpm.bst
+- libXrender.bst
+- libXScrnSaver.bst
+- libXcursor.bst
+- libXinerama.bst
+- libXrandr.bst
+- libXcomposite.bst
+- xcb-util.bst
+- xcb-util-image.bst
+- xcb-util-renderutil.bst
+- xcb-util-cursor.bst
+- xcb-util-keysyms.bst
+- xcb-util-wm.bst
+- freetype-bootstrap.bst
+- fontconfig.bst
+- libXft.bst
+- glib2.bst
+- xkeyboard-config.bst
+- libxkbcommon.bst
+sources:
+- kind: tar
+  url: http://llvm.org/releases/4.0.1/llvm-4.0.1.src.tar.xz
+  ref: da783db1f82d516791179fe103c71706046561f7972b18f0049242dee6712b51
+config:
+  configure-commands:
+  - '%{configure}  \ -DCMAKE_C_FLAGS_RELEASE:STRING=-DNDEBUG \ -DCMAKE_CXX_FLAGS_RELEASE:STRING=-DNDEBUG
+    \ -DBUILD_SHARED_LIBS:BOOL=ON \ -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \ -DCMAKE_BUILD_TYPE=RelWithDebInfo
+    \ -DLLVM_LIBDIR_SUFFIX= \ -DLLVM_ENABLE_LIBCXX:BOOL=OFF \ -DLLVM_ENABLE_ZLIB:BOOL=ON
+    \ -DLLVM_ENABLE_FFI:BOOL=ON \ -DLLVM_ENABLE_RTTI:BOOL=ON \ -DLLVM_BUILD_RUNTIME:BOOL=ON
+    \ -DLLVM_INCLUDE_TOOLS:BOOL=ON \ -DLLVM_BUILD_TOOLS:BOOL=ON \ -DLLVM_INCLUDE_TESTS:BOOL=OFF
+    \ -DLLVM_BUILD_TESTS:BOOL=OFF \ -DLLVM_INCLUDE_EXAMPLES:BOOL=OFF \ -DLLVM_BUILD_EXAMPLES:BOOL=OFF
+    \ -DLLVM_INCLUDE_UTILS:BOOL=ON \ -DLLVM_INSTALL_UTILS:BOOL=OFF \ -DLLVM_INCLUDE_DOCS:BOOL=OFF
+    \ -DLLVM_BUILD_DOCS:BOOL=OFF \ -DLLVM_ENABLE_SPHINX:BOOL=OFF \ -DLLVM_ENABLE_DOXYGEN:BOOL=OFF
+    \ -DLLVM_BUILD_LLVM_DYLIB:BOOL=OFF \ -DLLVM_BUILD_EXTERNAL_COMPILER_RT:BOOL=ON
+    \ -DFFI_INCLUDE_DIR=/usr/lib/libffi-3.2.1/include \ -DLLVM_INSTALL_TOOLCHAIN_ONLY:BOOL=OFF'
