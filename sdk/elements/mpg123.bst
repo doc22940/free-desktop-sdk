@@ -1,7 +1,6 @@
 kind: autotools
 description: json2bst conversion of mpg123
 depends:
-- base.bst
 - autoconf-archive.bst
 - meson.bst
 - xorg-x11-util-macros.bst

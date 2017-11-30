@@ -163,11 +163,3 @@ sources:
   path: org.freedesktop.Sdk.appdata.xml
 - kind: local
   path: org.freedesktop.Platform.appdata.xml
-- kind: local
-  path: os-release-configure
-config:
-  configure-commands:
-  - '%{configure}  \ -DENABLE_QT=Off \ -DENABLE_PINYIN=Off \ -DENABLE_TABLE=Off \
-    -DENABLE_GIR=Off \ -DENABLE_GTK3_IM_MODULE=On \ -DENABLE_OPENCC=Off \ -DENABLE_CAIRO=Off
-    \ -DENABLE_SPELL=Off \ -DENABLE_GTK2_IM_MODULE=Off \ -DENABLE_LIBXML2=Off \ -DENABLE_X11=Off
-    \ -DENABLE_ENCHANT=Off \ -DENABLE_PRESAGE=Off'

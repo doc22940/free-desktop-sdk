@@ -90,8 +90,3 @@ sources:
 - kind: tar
   url: https://github.com/anholt/libepoxy/archive/1.4.1.tar.gz
   ref: da8f42c355b62c2c3ff6bc534c2a24099707b249c2af6eaf8db54b94c364a504
-config:
-  configure-commands:
-  - autoreconf -i
-  - '%{configure}  \ --disable-jack \ --enable-pulseaudio \ --disable-samplerate \
-    --disable-avcodec \ --with-speex=no'

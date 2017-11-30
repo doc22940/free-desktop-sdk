@@ -101,10 +101,3 @@ sources:
 - kind: tar
   url: https://download.gnome.org/sources/gtk-doc/1.25/gtk-doc-1.25.tar.xz
   ref: 1ea46ed400e6501f975acaafea31479cea8f32f911dca4dff036f59e6464fd42
-config:
-  configure-commands:
-  - '%{configure}  \ -DCMAKE_C_FLAGS_RELEASE:STRING=-DNDEBUG \ -DCMAKE_CXX_FLAGS_RELEASE:STRING=-DNDEBUG
-    \ -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \ -DCMAKE_INSTALL_PREFIX:PATH=/usr \ -DINCLUDE_INSTALL_DIR:PATH=/usr/include
-    \ -DLIB_INSTALL_DIR:PATH=/usr/lib \ -DSYSCONF_INSTALL_DIR:PATH=/etc \ -DSHARE_INSTALL_PREFIX:PATH=/usr/share
-    \ -DBUILD_SHARED_LIBS:BOOL=ON \ -DMODULE_INSTALL_DIR=/usr/lib/libproxy/0.4.11/modules
-    \ -DWITH_PERL=OFF \ -DWITH_GNOME3=OFF'

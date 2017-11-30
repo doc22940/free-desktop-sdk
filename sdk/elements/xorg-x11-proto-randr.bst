@@ -19,6 +19,3 @@ sources:
 - kind: tar
   url: http://xorg.freedesktop.org/archive/individual/proto/randrproto-1.5.0.tar.bz2
   ref: 4c675533e79cd730997d232c8894b6692174dce58d3e207021b8f860be498468
-config:
-  configure-commands:
-  - '%{configure} '

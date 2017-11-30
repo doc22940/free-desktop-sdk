@@ -21,6 +21,3 @@ sources:
 - kind: tar
   url: http://xorg.freedesktop.org/archive/individual/proto/renderproto-0.11.1.tar.bz2
   ref: 06735a5b92b20759204e4751ecd6064a2ad8a6246bb65b3078b862a00def2537
-config:
-  configure-commands:
-  - '%{configure} '

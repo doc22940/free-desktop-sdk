@@ -115,6 +115,3 @@ sources:
 - kind: tar
   url: https://download.gnome.org/sources/pango/1.40/pango-1.40.12.tar.xz
   ref: 75f1a9a8e4e2b28cbc078b50c1fa927ee4ded994d1ade97c5603e2d1f3161cfc
-config:
-  configure-commands:
-  - '%{configure}  \ --disable-static'

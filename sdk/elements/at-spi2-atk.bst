@@ -118,6 +118,3 @@ sources:
 - kind: tar
   url: https://download.gnome.org/sources/at-spi2-atk/2.24/at-spi2-atk-2.24.1.tar.xz
   ref: 60dc90ac4f74b8ffe96a9363c25208a443b381bacecfefea6de549f20ed6957d
-config:
-  configure-commands:
-  - '%{configure}  \ --disable-static'

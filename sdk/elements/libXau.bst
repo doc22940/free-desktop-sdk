@@ -39,6 +39,3 @@ sources:
 - kind: tar
   url: http://xorg.freedesktop.org/archive/individual/lib/libXau-1.0.8.tar.bz2
   ref: fdd477320aeb5cdd67272838722d6b7d544887dfe7de46e1e7cc0c27c2bea4f2
-config:
-  configure-commands:
-  - '%{configure} '

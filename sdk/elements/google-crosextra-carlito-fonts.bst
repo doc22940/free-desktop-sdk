@@ -113,8 +113,3 @@ sources:
   path: 30-0-google-crosextra-carlito.conf
 - kind: local
   path: google-crosextra-carlito.conf
-- kind: local
-  path: Makefile-fonts
-config:
-  configure-commands:
-  - '%{configure}  \ --disable-static \ --disable-vala'

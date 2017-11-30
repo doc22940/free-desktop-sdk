@@ -31,6 +31,3 @@ sources:
 - kind: tar
   url: http://xorg.freedesktop.org/archive/individual/proto/xf86vidmodeproto-2.3.1.tar.bz2
   ref: 45d9499aa7b73203fd6b3505b0259624afed5c16b941bd04fcf123e5de698770
-config:
-  configure-commands:
-  - '%{configure} '

@@ -16,6 +16,3 @@ sources:
 - kind: tar
   url: http://xorg.freedesktop.org/archive/individual/proto/glproto-1.4.17.tar.bz2
   ref: adaa94bded310a2bfcbb9deb4d751d965fcfe6fb3a2f6d242e2df2d6589dbe40
-config:
-  configure-commands:
-  - '%{configure} '

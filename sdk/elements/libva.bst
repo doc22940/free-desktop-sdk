@@ -84,10 +84,3 @@ sources:
 - kind: tar
   url: http://www.freedesktop.org/software/vaapi/releases/libva/libva-1.7.3.tar.bz2
   ref: 22bc139498065a7950d966dbdb000cad04905cbd3dc8f3541f80d36c4670b9d9
-config:
-  configure-commands:
-  - '%{configure}  \ --enable-libglvnd \ --disable-selinux \ --disable-osmesa \ --with-dri-driverdir=/usr/lib/dri
-    \ --enable-egl \ --disable-gles1 \ --enable-gles2 \ --disable-xvmc \ --with-egl-platforms=x11,drm,surfaceless,wayland
-    \ --enable-shared-glapi \ --enable-gbm \ --disable-opencl \ --enable-glx-tls \
-    --enable-texture-float=yes \ --enable-gallium-llvm \ --enable-llvm-shared-libs
-    \ --enable-dri \ --enable-sysfs'

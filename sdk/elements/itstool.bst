@@ -91,8 +91,3 @@ sources:
 - kind: tar
   url: http://files.itstool.org/itstool/itstool-2.0.2.tar.bz2
   ref: bf909fb59b11a646681a8534d5700fec99be83bb2c57badf8c1844512227033a
-config:
-  configure-commands:
-  - autoreconf -i
-  - '%{configure}  \ --disable-jack \ --enable-pulseaudio \ --disable-samplerate \
-    --disable-avcodec \ --with-speex=no'

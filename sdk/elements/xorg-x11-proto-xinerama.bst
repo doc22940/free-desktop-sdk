@@ -32,6 +32,3 @@ sources:
 - kind: tar
   url: http://xorg.freedesktop.org/archive/individual/proto/xineramaproto-1.2.1.tar.bz2
   ref: 977574bb3dc192ecd9c55f59f991ec1dff340be3e31392c95deff423da52485b
-config:
-  configure-commands:
-  - '%{configure} '

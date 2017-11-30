@@ -35,6 +35,3 @@ sources:
 - kind: tar
   url: http://xorg.freedesktop.org/archive/individual/proto/dri2proto-2.8.tar.bz2
   ref: f9b55476def44fc7c459b2537d17dbc731e36ed5d416af7ca0b1e2e676f8aa04
-config:
-  configure-commands:
-  - '%{configure} '

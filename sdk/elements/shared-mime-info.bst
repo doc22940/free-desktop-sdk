@@ -93,8 +93,3 @@ sources:
 - kind: tar
   url: http://people.freedesktop.org/~hadess/shared-mime-info-1.8.tar.xz
   ref: 2af55ef1a0319805b74ab40d331a3962c905477d76c086f49e34dc96363589e9
-config:
-  configure-commands:
-  - autoreconf -i
-  - '%{configure}  \ --disable-jack \ --enable-pulseaudio \ --disable-samplerate \
-    --disable-avcodec \ --with-speex=no'

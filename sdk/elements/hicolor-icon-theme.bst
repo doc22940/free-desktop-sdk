@@ -94,8 +94,3 @@ sources:
 - kind: tar
   url: http://icon-theme.freedesktop.org/releases/hicolor-icon-theme-0.15.tar.xz
   ref: 9cc45ac3318c31212ea2d8cb99e64020732393ee7630fa6c1810af5f987033cc
-config:
-  configure-commands:
-  - autoreconf -i
-  - '%{configure}  \ --disable-jack \ --enable-pulseaudio \ --disable-samplerate \
-    --disable-avcodec \ --with-speex=no'

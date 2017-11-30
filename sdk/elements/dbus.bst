@@ -86,6 +86,3 @@ sources:
 - kind: tar
   url: http://dbus.freedesktop.org/releases/dbus/dbus-1.10.16.tar.gz
   ref: a7b0ba6ea3e8d0e08afec5e3030d0245614268276620c536726f8fa6e5c43388
-config:
-  configure-commands:
-  - '%{configure}  \ --enable-glx'

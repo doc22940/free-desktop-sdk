@@ -115,8 +115,3 @@ sources:
   path: liberation-fonts-serif.conf
 - kind: local
   path: liberation-fonts-narrow.conf
-- kind: local
-  path: Makefile-fonts
-config:
-  configure-commands:
-  - '%{configure}  \ --disable-static \ --disable-vala'

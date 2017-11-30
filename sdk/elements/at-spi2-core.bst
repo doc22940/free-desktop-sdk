@@ -119,6 +119,3 @@ sources:
   ref: 1e90d064b937aacfe79a96232ac7e63d28d716e85bd9ff4333f865305a959b5b
 - kind: patch
   path: at-spi2-core-address-env-var.patch
-config:
-  configure-commands:
-  - '%{configure}  \ --disable-static'

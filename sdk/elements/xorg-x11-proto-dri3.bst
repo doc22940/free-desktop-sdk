@@ -37,6 +37,3 @@ sources:
 - kind: tar
   url: http://xorg.freedesktop.org/archive/individual/proto/dri3proto-1.0.tar.bz2
   ref: 01be49d70200518b9a6b297131f6cc71f4ea2de17436896af153226a774fc074
-config:
-  configure-commands:
-  - '%{configure} '

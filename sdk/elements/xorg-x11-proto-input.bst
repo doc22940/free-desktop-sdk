@@ -17,6 +17,3 @@ sources:
 - kind: tar
   url: http://xorg.freedesktop.org/archive/individual/proto/inputproto-2.3.2.tar.bz2
   ref: 893a6af55733262058a27b38eeb1edc733669f01d404e8581b167f03c03ef31d
-config:
-  configure-commands:
-  - '%{configure} '

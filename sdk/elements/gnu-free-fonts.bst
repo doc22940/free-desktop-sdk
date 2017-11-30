@@ -111,8 +111,3 @@ sources:
   path: gnu-free-sans.conf
 - kind: local
   path: gnu-free-serif.conf
-- kind: local
-  path: Makefile-fonts
-config:
-  configure-commands:
-  - '%{configure}  \ --disable-static \ --disable-vala'
