@@ -2,6 +2,8 @@ kind: meson
 description: json2bst conversion of libappstream-glib
 depends:
 - base.bst
+- filename: meson.bst
+  type: build
 sources:
 - kind: tar
   url: https://people.freedesktop.org/~hughsient/appstream-glib/releases/appstream-glib-0.7.2.tar.xz
