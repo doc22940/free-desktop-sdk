@@ -4,6 +4,14 @@ depends:
 - base.bst
 - filename: meson.bst
   type: build
+- filename: gcab.bst
+- filename: gdk-pixbuf2.bst
+- filename: gobject-introspection.bst
+- filename: gtk3.bst
+- filename: json-glib.bst
+- filename: libsoup.bst
+- filename: wayland-protocols.bst
+  type: build
 variables:
   conf-extra: |
    -Denable-fonts=false \
