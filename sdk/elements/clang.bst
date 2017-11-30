@@ -82,6 +82,7 @@ sources:
   path: clang-detect-arches.patch
 config:
   configure-commands:
+  - '%{autogen}'
   - '%{configure}  \ -DCMAKE_C_FLAGS_RELEASE:STRING=-DNDEBUG \ -DCMAKE_CXX_FLAGS_RELEASE:STRING=-DNDEBUG
     \ -DBUILD_SHARED_LIBS:BOOL=ON \ -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \ -DCMAKE_BUILD_TYPE=RelWithDebInfo
     \ -DLLVM_CONFIG:FILEPATH=/usr/bin/llvm-config \ -DCLANG_ENABLE_ARCMT:BOOL=ON \

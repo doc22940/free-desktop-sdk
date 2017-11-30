@@ -141,4 +141,5 @@ sources:
   ref: 15ce8a7e5a23dafe8177c8df6e6c79b6749a03fff1e8196742d3571657609d21
 config:
   configure-commands:
+  - '%{autogen}'
   - '%{configure}  \ --disable-static \ --disable-gui'

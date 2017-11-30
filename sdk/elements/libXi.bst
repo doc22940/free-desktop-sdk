@@ -50,4 +50,5 @@ sources:
   ref: c2e6b8ff84f9448386c1b5510a5cf5a16d788f76db018194dacdc200180faf45
 config:
   configure-commands:
+  - '%{autogen}'
   - '%{configure}  \ --disable-static \ --disable-specs'

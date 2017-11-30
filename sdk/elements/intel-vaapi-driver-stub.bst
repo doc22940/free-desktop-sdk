@@ -150,4 +150,5 @@ depends:
 sources: []
 config:
   configure-commands:
+  - '%{autogen}'
   - '%{configure} '

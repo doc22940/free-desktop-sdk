@@ -57,4 +57,5 @@ sources:
   ref: 2ff5f626a14ec5bd680f7769cac9a8eb1e40c36cf5ca554d2c4e5d91bab3d81d
 config:
   configure-commands:
+  - '%{autogen}'
   - '%{configure}  \ --disable-static \ --disable-udev'

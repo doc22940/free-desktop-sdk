@@ -145,5 +145,6 @@ sources:
   ref: 78162d33a2d42477ec241db7fc082439b0e0f9a791eb3a41e5a2aa1eae9145a1
 config:
   configure-commands:
+  - '%{autogen}'
   - '%{configure}  \ --disable-3g-source \ --disable-cdma-source \ --disable-modem-gps-source
     \ --disable-nmea-source'

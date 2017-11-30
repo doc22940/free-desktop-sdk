@@ -106,4 +106,5 @@ sources:
   ref: 442300ca1b1bf8a3bbf2f788203287ff862542d4fc048f19a92a068a27d17b72
 config:
   configure-commands:
+  - '%{autogen}'
   - '%{configure}  \ --disable-static \ --disable-vala'

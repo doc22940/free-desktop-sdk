@@ -63,4 +63,5 @@ sources:
   ref: 9bc6acb21ca14da51bda5bc912c8955bc6e5e433f0ab00c5e8bef842596c33df
 config:
   configure-commands:
+  - '%{autogen}'
   - '%{configure}  \ --disable-static \ --with-cursorpath=~/.icons:/app/share/icons:${datadir}/icons:${datadir}/pixmaps:/usr/share/runtime/share/icons:/run/host/share/icons'

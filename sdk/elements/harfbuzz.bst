@@ -100,4 +100,5 @@ sources:
   ref: 35d2f8ca476cbbec64ee824eca6b0209ff8db0334990b9f5af893b94f119d255
 config:
   configure-commands:
+  - '%{autogen}'
   - '%{configure}  \ --disable-static \ --with-gobject \ --with-graphite2'

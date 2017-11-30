@@ -76,4 +76,5 @@ sources:
   path: fontconfig-flatpak.conf
 config:
   configure-commands:
+  - '%{autogen}'
   - '%{configure}  \ --disable-static'

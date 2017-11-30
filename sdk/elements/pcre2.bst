@@ -147,6 +147,7 @@ sources:
   ref: bd62f955146a41815d6e2ce011bb75740825c32906b06e377f478599f54ee0dd
 config:
   configure-commands:
+  - '%{autogen}'
   - '%{configure}  \ --enable-jit \ --enable-pcre2grep-jit \ --disable-bsr-anycrlf
     \ --disable-coverage \ --disable-ebcdic \ --disable-never-backslash-C \ --enable-newline-is-lf
     \ --enable-pcre2-8 \ --enable-pcre2-16 \ --enable-pcre2-32 \ --disable-pcre2test-libedit

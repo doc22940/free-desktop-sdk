@@ -76,4 +76,5 @@ sources:
   ref: 25ee7635a7c0fcd4ec91cbc3ae07c7f8f5ce621d8183511f414ded09e7e4e128
 config:
   configure-commands:
+  - '%{autogen}'
   - '%{configure}  \ --with-pcre=system'

@@ -100,5 +100,6 @@ sources:
   path: cairo-color-glyph-source-op.patch
 config:
   configure-commands:
+  - '%{autogen}'
   - '%{configure}  \ --disable-static \ --enable-xlib \ --enable-ft \ --enable-svg
     \ --enable-ps \ --enable-pdf \ --enable-tee \ --enable-gobject'

@@ -75,4 +75,5 @@ sources:
   ref: f5a3c824761df351ca91827ac221090943ef28b248573486050de89f4bfcdc4c
 config:
   configure-commands:
+  - '%{autogen}'
   - '%{configure}  \ --disable-static'

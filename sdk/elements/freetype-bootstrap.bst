@@ -73,5 +73,6 @@ sources:
   ref: a3c603ed84c3c2495f9c9331fe6bba3bb0ee65e06ec331e0a0fb52158291b40b
 config:
   configure-commands:
+  - '%{autogen}'
   - '%{configure}  \ --disable-static \ --with-zlib=yes \ --with-bzip2=yes \ --with-png=yes
     \ --with-harfbuzz=no'

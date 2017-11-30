@@ -133,4 +133,5 @@ sources:
   ref: a7b2c0de0e2ce17426821dc1ac8eb115029959b3ada9d80a81739fa19373246c
 config:
   configure-commands:
+  - '%{autogen}'
   - '%{configure}  \ --disable-static \ --with-readline \ --with-ui'

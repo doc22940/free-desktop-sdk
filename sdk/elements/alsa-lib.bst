@@ -93,5 +93,6 @@ sources:
 config:
   configure-commands:
   - autoreconf -i
+  - '%{autogen}'
   - '%{configure}  \ --disable-aload \ --disable-alisp \ --disable-old-symbols \ --with-pcm-plugins=hw
     ioplug extplug'

@@ -128,4 +128,5 @@ sources:
   ref: c5806040bb83b43be86ce592e6a19c5d83d7776f7d9f434eb4b911c4efff3573
 config:
   configure-commands:
+  - '%{autogen}'
   - '%{configure}  \ --enable-experimental \ --enable-orc'

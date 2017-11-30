@@ -125,4 +125,5 @@ sources:
   ref: bc06243600817f637029da29d089d5908d1d266542f68bf6626a10c5f05f1f1d
 config:
   configure-commands:
+  - '%{autogen}'
   - '%{configure}  \ --enable-debug \ --disable-examples'

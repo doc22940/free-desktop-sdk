@@ -95,6 +95,7 @@ sources:
   path: mesa-dri-path.patch
 config:
   configure-commands:
+  - '%{autogen}'
   - '%{configure}  \ --enable-libglvnd \ --disable-selinux \ --disable-osmesa \ --with-dri-driverdir=/usr/lib/dri
     \ --enable-egl \ --disable-gles1 \ --enable-gles2 \ --disable-xvmc \ --with-egl-platforms=x11,drm,surfaceless,wayland
     \ --enable-shared-glapi \ --enable-gbm \ --disable-opencl \ --enable-glx-tls \

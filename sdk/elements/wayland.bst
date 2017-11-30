@@ -81,4 +81,5 @@ sources:
   ref: ed80cabc0961a759a42092e2c39aabfc1ec9a13c86c98bbe2b812f008da27ab8
 config:
   configure-commands:
+  - '%{autogen}'
   - '%{configure}  \ --disable-static \ --disable-documentation'

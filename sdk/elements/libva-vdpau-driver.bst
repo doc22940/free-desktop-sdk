@@ -93,4 +93,5 @@ sources:
   path: libva-vdpau-driver-0.7.4-fix_type.patch
 config:
   configure-commands:
+  - '%{autogen}'
   - '%{configure}  \ --enable-glx'

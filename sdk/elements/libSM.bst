@@ -53,4 +53,5 @@ sources:
   ref: 0baca8c9f5d934450a70896c4ad38d06475521255ca63b717a6510fdb6e287bd
 config:
   configure-commands:
+  - '%{autogen}'
   - '%{configure}  \ --disable-static \ --with-libuuid'

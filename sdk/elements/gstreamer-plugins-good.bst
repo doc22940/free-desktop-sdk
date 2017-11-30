@@ -127,5 +127,6 @@ sources:
   ref: be053f6ed716eeb517cec148cec637cdce571c6e04d5c21409e2876fb76c7639
 config:
   configure-commands:
+  - '%{autogen}'
   - '%{configure}  \ --enable-experimental \ --enable-orc \ --disable-monoscope \
     --disable-aalib \ --enable-cairo \ --disable-libcaca \ --disable-jack \ --with-default-visualizer=autoaudiosink'

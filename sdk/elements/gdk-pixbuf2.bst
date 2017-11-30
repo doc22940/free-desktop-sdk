@@ -113,4 +113,5 @@ sources:
   ref: 8013b271ff1a691514b5bbc9b99f6ed456422d4da4a721a9db0b783abe8e740a
 config:
   configure-commands:
+  - '%{autogen}'
   - '%{configure}  \ --disable-static \ --without-x11 \ --without-libjasper \ --with-included-loaders=png,jpeg'

@@ -123,4 +123,5 @@ sources:
   ref: 51e53e58fc8158e5986a1f1a49a6d970c5b16493841cf7b9de2c2bde7ce36b93
 config:
   configure-commands:
+  - '%{autogen}'
   - '%{configure}  \ --disable-static'

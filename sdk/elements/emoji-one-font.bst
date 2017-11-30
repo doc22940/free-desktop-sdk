@@ -111,4 +111,5 @@ sources:
   path: emojione-android.ttf
 config:
   configure-commands:
+  - '%{autogen}'
   - '%{configure} '

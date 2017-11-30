@@ -157,6 +157,7 @@ sources:
   path: ibus-portal.patch
 config:
   configure-commands:
+  - '%{autogen}'
   - '%{configure}  \ --disable-xim \ --disable-static \ --disable-dconf \ --disable-schemas-compile
     \ --disable-gtk2 \ --disable-setup \ --disable-ui \ --disable-engine \ --disable-libnotify
     \ --disable-emoji-dict \ --disable-appindicator \ --disable-tests'
