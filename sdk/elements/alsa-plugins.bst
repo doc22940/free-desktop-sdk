@@ -91,7 +91,6 @@ sources:
   ref: 530d1c3bdaeb058f2a03607a33b9e16ee5369bfd30a96bc09bd2c69b4ddd1a8a
 config:
   configure-commands:
-  - autoreconf -i
   - '%{autogen}'
   - '%{configure}  \ --disable-jack \ --enable-pulseaudio \ --disable-samplerate \
     --disable-avcodec \ --with-speex=no'
