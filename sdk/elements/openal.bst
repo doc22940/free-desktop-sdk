@@ -10,4 +10,4 @@ sources:
   path: openal-fpu-neon.patch
 config:
   configure-commands:
-  - '%{make}  \ -DCMAKE_INSTALL_LIBDIR=lib \ -DCMAKE_BUILD_TYPE=Release'
+  - '%{cmake}  \ -DCMAKE_INSTALL_LIBDIR=lib \ -DCMAKE_BUILD_TYPE=Release'
