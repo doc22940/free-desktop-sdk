@@ -95,7 +95,5 @@ sources:
 - kind: tar
   url: http://xorg.freedesktop.org/archive/individual/lib/pixman-0.34.0.tar.bz2
   ref: 39ba3438f3d17c464b0cb8be006dacbca0ab5aee97ebde69fec7ecdbf85794a0
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure}  \ --disable-static'
+variables:
+  conf-local: ' --disable-static'

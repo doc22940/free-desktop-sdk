@@ -52,7 +52,5 @@ sources:
 - kind: tar
   url: http://xorg.freedesktop.org/archive/individual/lib/libXt-1.1.5.tar.bz2
   ref: 46eeb6be780211fdd98c5109286618f6707712235fdd19df4ce1e6954f349f1a
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure}  \ --disable-static'
+variables:
+  conf-local: ' --disable-static'

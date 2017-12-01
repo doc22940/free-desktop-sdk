@@ -152,7 +152,5 @@ sources:
 - kind: git
   url: https://github.com/divVerent/s2tc.git
   ref: f6ec862d7594e29ae80a6e49f66ad4c76cf09abc
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure}  \ --disable-tools \ --disable-static'
+variables:
+  conf-local: ' --disable-tools --disable-static'

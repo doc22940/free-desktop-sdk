@@ -64,7 +64,5 @@ sources:
 - kind: tar
   url: http://xorg.freedesktop.org/archive/individual/lib/libXcomposite-0.4.4.tar.bz2
   ref: ede250cd207d8bee4a338265c3007d7a68d5aca791b6ac41af18e9a2aeb34178
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure}  \ --disable-static'
+variables:
+  conf-local: ' --disable-static'

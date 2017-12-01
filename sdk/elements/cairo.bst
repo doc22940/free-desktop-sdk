@@ -98,8 +98,6 @@ sources:
   ref: 3224260a4f8e22e7ea95faf706ae111b974833dd74185be1db5ebc7618a98464
 - kind: patch
   path: cairo-color-glyph-source-op.patch
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure}  \ --disable-static \ --enable-xlib \ --enable-ft \ --enable-svg
-    \ --enable-ps \ --enable-pdf \ --enable-tee \ --enable-gobject'
+variables:
+  conf-local: ' --disable-static --enable-xlib --enable-ft --enable-svg --enable-ps
+    --enable-pdf --enable-tee --enable-gobject'

@@ -119,7 +119,5 @@ sources:
 - kind: tar
   url: https://download.gnome.org/sources/librsvg/2.40/librsvg-2.40.18.tar.xz
   ref: bfc8c488c89c1e7212c478beb95c41b44701636125a3e6dab41187f1485b564c
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure}  \ --disable-static'
+variables:
+  conf-local: ' --disable-static'

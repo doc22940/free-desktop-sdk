@@ -91,7 +91,5 @@ sources:
   path: libva-vdpau-driver-0.7.4-drop-h264-api.patch
 - kind: patch
   path: libva-vdpau-driver-0.7.4-fix_type.patch
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure}  \ --enable-glx'
+variables:
+  conf-local: ' --enable-glx'

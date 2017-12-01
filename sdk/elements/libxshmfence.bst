@@ -57,7 +57,5 @@ sources:
 - kind: tar
   url: http://xorg.freedesktop.org/archive/individual/lib/libxshmfence-1.2.tar.bz2
   ref: d21b2d1fd78c1efbe1f2c16dae1cb23f8fd231dcf891465b8debe636a9054b0c
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure}  \ --disable-static'
+variables:
+  conf-local: ' --disable-static'

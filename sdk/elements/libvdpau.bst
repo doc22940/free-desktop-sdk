@@ -53,7 +53,5 @@ sources:
 - kind: tar
   url: http://cgit.freedesktop.org/~aplattner/libvdpau/snapshot/libvdpau-1.1.1.tar.bz2
   ref: e0d3840e2d2bda66f8fa953e9cb3d0d1925d42616cad90d73a64cf8ec6227bfa
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure}  \ --disable-static'
+variables:
+  conf-local: ' --disable-static'

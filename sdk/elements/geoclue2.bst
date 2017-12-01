@@ -143,8 +143,6 @@ sources:
 - kind: tar
   url: http://www.freedesktop.org/software/geoclue/releases/2.4/geoclue-2.4.5.tar.xz
   ref: 78162d33a2d42477ec241db7fc082439b0e0f9a791eb3a41e5a2aa1eae9145a1
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure}  \ --disable-3g-source \ --disable-cdma-source \ --disable-modem-gps-source
-    \ --disable-nmea-source'
+variables:
+  conf-local: ' --disable-3g-source --disable-cdma-source --disable-modem-gps-source
+    --disable-nmea-source'

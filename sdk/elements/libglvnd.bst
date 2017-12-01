@@ -85,7 +85,5 @@ sources:
   ref: 4ba5345742d6c98b528ac28fb7127006d2cc3f75
 - kind: patch
   path: libglvnd-OpenGL-Statically-export-a-few-more-things.patch
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure}  \ --disable-static \ --enable-asm \ --enable-tls'
+variables:
+  conf-local: ' --disable-static --enable-asm --enable-tls'

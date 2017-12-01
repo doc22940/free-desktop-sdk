@@ -89,8 +89,6 @@ sources:
 - kind: tar
   url: http://pkgs.fedoraproject.org/repo/pkgs/alsa-plugins/alsa-plugins-1.1.4.tar.bz2/de51130a7444b79b2dd3c25e28420754/alsa-plugins-1.1.4.tar.bz2
   ref: 530d1c3bdaeb058f2a03607a33b9e16ee5369bfd30a96bc09bd2c69b4ddd1a8a
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure}  \ --disable-jack \ --enable-pulseaudio \ --disable-samplerate \
-    --disable-avcodec \ --with-speex=no'
+variables:
+  conf-local: ' --disable-jack --enable-pulseaudio --disable-samplerate --disable-avcodec
+    --with-speex=no'

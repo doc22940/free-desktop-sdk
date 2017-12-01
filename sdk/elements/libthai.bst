@@ -114,7 +114,5 @@ sources:
 - kind: tar
   url: http://linux.thai.net/pub/thailinux/software/libthai/libthai-0.1.22.tar.xz
   ref: bdb291dcc3a6784e86b1b342ec75005e9ab487f8c1decc7c3e7d18d1bbc9b7b7
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure}  \ --disable-static'
+variables:
+  conf-local: ' --disable-static'

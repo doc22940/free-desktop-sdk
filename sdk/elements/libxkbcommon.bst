@@ -76,7 +76,5 @@ sources:
 - kind: tar
   url: http://xkbcommon.org/download/libxkbcommon-0.7.1.tar.xz
   ref: ba59305d2e19e47c27ea065c2e0df96ebac6a3c6e97e28ae5620073b6084e68b
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure}  \ --disable-static \ --enable-x11'
+variables:
+  conf-local: ' --disable-static --enable-x11'

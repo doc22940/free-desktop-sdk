@@ -127,8 +127,6 @@ sources:
 - kind: tar
   url: http://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-1.10.5.tar.xz
   ref: d6edc046350809c967f5b058c5c2e534d99d1d69fe1b26acd849e87781a7d7fc
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure}  \ --disable-asfdemux \ --disable-dvdlpcmdec \ --disable-dvdsub
-    \ --disable-xingmux \ --disable-realmedia'
+variables:
+  conf-local: ' --disable-asfdemux --disable-dvdlpcmdec --disable-dvdsub --disable-xingmux
+    --disable-realmedia'

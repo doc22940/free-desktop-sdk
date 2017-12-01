@@ -51,7 +51,5 @@ sources:
 - kind: tar
   url: http://xorg.freedesktop.org/archive/individual/lib/libSM-1.2.2.tar.bz2
   ref: 0baca8c9f5d934450a70896c4ad38d06475521255ca63b717a6510fdb6e287bd
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure}  \ --disable-static \ --with-libuuid'
+variables:
+  conf-local: ' --disable-static --with-libuuid'

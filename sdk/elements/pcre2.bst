@@ -145,12 +145,10 @@ sources:
 - kind: tar
   url: http://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre2-10.23.tar.gz
   ref: bd62f955146a41815d6e2ce011bb75740825c32906b06e377f478599f54ee0dd
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure}  \ --enable-jit \ --enable-pcre2grep-jit \ --disable-bsr-anycrlf
-    \ --disable-coverage \ --disable-ebcdic \ --disable-never-backslash-C \ --enable-newline-is-lf
-    \ --enable-pcre2-8 \ --enable-pcre2-16 \ --enable-pcre2-32 \ --disable-pcre2test-libedit
-    \ --enable-pcre2test-libreadline \ --enable-pcre2grep-callout \ --disable-pcre2grep-libbz2
-    \ --disable-pcre2grep-libz \ --disable-rebuild-chartables \ --enable-shared \
-    --enable-stack-for-recursion \ --disable-static \ --enable-unicode \ --disable-valgrind'
+variables:
+  conf-local: ' --enable-jit --enable-pcre2grep-jit --disable-bsr-anycrlf --disable-coverage
+    --disable-ebcdic --disable-never-backslash-C --enable-newline-is-lf --enable-pcre2-8
+    --enable-pcre2-16 --enable-pcre2-32 --disable-pcre2test-libedit --enable-pcre2test-libreadline
+    --enable-pcre2grep-callout --disable-pcre2grep-libbz2 --disable-pcre2grep-libz
+    --disable-rebuild-chartables --enable-shared --enable-stack-for-recursion --disable-static
+    --enable-unicode --disable-valgrind'

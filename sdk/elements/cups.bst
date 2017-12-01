@@ -136,9 +136,7 @@ sources:
 - kind: tar
   url: http://www.cups.org/software/2.1.0/cups-2.1.0-source.tar.bz2
   ref: ba0238418442b8d84e09a865d0df6a728a20399826c5b466b14b1e9ab8c6d2c9
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure}  \ --disable-static \ --enable-debug \ --with-components=core \
-    --with-dbusdir=/etc/dbus-1 \ --enable-avahi \ --disable-systemd \ --enable-threads
-    \ --enable-gnutls \ --libdir=/usr/lib \ localedir=/usr/share/locale'
+variables:
+  conf-local: ' --disable-static --enable-debug --with-components=core --with-dbusdir=/etc/dbus-1
+    --enable-avahi --disable-systemd --enable-threads --enable-gnutls --libdir=/usr/lib
+    localedir=/usr/share/locale'

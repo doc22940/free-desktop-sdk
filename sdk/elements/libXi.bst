@@ -48,7 +48,5 @@ sources:
 - kind: tar
   url: http://xorg.freedesktop.org/archive/individual/lib/libXi-1.7.9.tar.bz2
   ref: c2e6b8ff84f9448386c1b5510a5cf5a16d788f76db018194dacdc200180faf45
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure}  \ --disable-static \ --disable-specs'
+variables:
+  conf-local: ' --disable-static --disable-specs'

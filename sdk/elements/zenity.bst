@@ -148,7 +148,5 @@ sources:
   ref: 6ff0a026ec94e5bc1b30f78df91e54f4f82fd982f4c29b52fe5dacc886a9f7f7
 - kind: patch
   path: zenity-Use-GtkFileChooserNative.patch
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure}  \ --disable-webkitgtk'
+variables:
+  conf-local: ' --disable-webkitgtk'

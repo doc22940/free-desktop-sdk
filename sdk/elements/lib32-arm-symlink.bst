@@ -147,7 +147,4 @@ depends:
 - flatpak-xdg-utils.bst
 - lib32-i386-symlink.bst
 sources: []
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure} '
+config: {}

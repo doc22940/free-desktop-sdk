@@ -120,8 +120,6 @@ sources:
 - kind: tar
   url: https://download.gnome.org/sources/gtk+/3.22/gtk+-3.22.26.tar.xz
   ref: 61eef0d320e541976e2dfe445729f12b5ade53050ee9de6184235cb60cd4b967
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure}  \ --enable-xkb \ --enable-xinerama \ --enable-xrandr \ --enable-xfixes
-    \ --enable-xcomposite \ --enable-xdamage \ --enable-x11-backend \ --enable-wayland-backend'
+variables:
+  conf-local: ' --enable-xkb --enable-xinerama --enable-xrandr --enable-xfixes --enable-xcomposite
+    --enable-xdamage --enable-x11-backend --enable-wayland-backend'

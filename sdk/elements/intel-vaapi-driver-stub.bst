@@ -148,7 +148,4 @@ depends:
 - lib32-i386-symlink.bst
 - lib32-arm-symlink.bst
 sources: []
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure} '
+config: {}

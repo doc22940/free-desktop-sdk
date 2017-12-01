@@ -93,11 +93,8 @@ sources:
   path: mesa-Fix-linkage-against-shared-glapi.patch
 - kind: patch
   path: mesa-dri-path.patch
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure}  \ --enable-libglvnd \ --disable-selinux \ --disable-osmesa \ --with-dri-driverdir=/usr/lib/dri
-    \ --enable-egl \ --disable-gles1 \ --enable-gles2 \ --disable-xvmc \ --with-egl-platforms=x11,drm,surfaceless,wayland
-    \ --enable-shared-glapi \ --enable-gbm \ --disable-opencl \ --enable-glx-tls \
-    --enable-texture-float=yes \ --enable-gallium-llvm \ --enable-llvm-shared-libs
-    \ --enable-dri \ --enable-sysfs'
+variables:
+  conf-local: ' --enable-libglvnd --disable-selinux --disable-osmesa --with-dri-driverdir=/usr/lib/dri
+    --enable-egl --disable-gles1 --enable-gles2 --disable-xvmc --with-egl-platforms=x11,drm,surfaceless,wayland
+    --enable-shared-glapi --enable-gbm --disable-opencl --enable-glx-tls --enable-texture-float=yes
+    --enable-gallium-llvm --enable-llvm-shared-libs --enable-dri --enable-sysfs'

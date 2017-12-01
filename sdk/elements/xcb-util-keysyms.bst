@@ -69,7 +69,5 @@ sources:
 - kind: tar
   url: http://xcb.freedesktop.org/dist/xcb-util-keysyms-0.4.0.tar.bz2
   ref: 0ef8490ff1dede52b7de533158547f8b454b241aa3e4dcca369507f66f216dd9
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure}  \ --disable-static'
+variables:
+  conf-local: ' --disable-static'

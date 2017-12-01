@@ -75,8 +75,5 @@ sources:
 - kind: tar
   url: http://xorg.freedesktop.org/archive/individual/data/xkeyboard-config/xkeyboard-config-2.20.tar.bz2
   ref: d1bfc72553c4e3ef1cd6f13eec0488cf940498b612ab8a0b362e7090c94bc134
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure}  \ --enable-compat-rules \ --with-xkb-base=/usr/share/X11/xkb \
-    --with-xkb-rules-symlink=xorg'
+variables:
+  conf-local: ' --enable-compat-rules --with-xkb-base=/usr/share/X11/xkb --with-xkb-rules-symlink=xorg'

@@ -43,7 +43,5 @@ sources:
 - kind: tar
   url: http://xorg.freedesktop.org/archive/individual/lib/libX11-1.6.5.tar.bz2
   ref: 4d3890db2ba225ba8c55ca63c6409c1ebb078a2806de59fb16342768ae63435d
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure}  \ --disable-static'
+variables:
+  conf-local: ' --disable-static'

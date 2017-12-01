@@ -73,7 +73,5 @@ sources:
 - kind: tar
   url: http://xorg.freedesktop.org/archive/individual/lib/libXft-2.3.2.tar.bz2
   ref: f5a3c824761df351ca91827ac221090943ef28b248573486050de89f4bfcdc4c
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure}  \ --disable-static'
+variables:
+  conf-local: ' --disable-static'

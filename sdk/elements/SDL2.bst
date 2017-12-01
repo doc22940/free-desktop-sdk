@@ -137,9 +137,7 @@ sources:
 - kind: tar
   url: http://www.libsdl.org/release/SDL2-2.0.6.tar.gz
   ref: 03658b5660d16d7b31263a691e058ed37acdab155d68dabbad79998fb552c5df
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure}  \ --enable-sdl-dlopen \ --disable-arts \ --disable-esd \ --disable-nas
-    \ --enable-pulseaudio \ --disable-alsa \ --disable-oss \ --disable-sndio \ --disable-libudev
-    \ --enable-video-wayland \ --enable-wayland-shared=no'
+variables:
+  conf-local: ' --enable-sdl-dlopen --disable-arts --disable-esd --disable-nas --enable-pulseaudio
+    --disable-alsa --disable-oss --disable-sndio --disable-libudev --enable-video-wayland
+    --enable-wayland-shared=no'

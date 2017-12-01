@@ -45,7 +45,5 @@ sources:
   path: pthread-stubs.pc.in
 - kind: patch
   path: libxcb-pthread-stub.patch
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure}  \ --disable-static \ --enable-xkb \ --disable-xprint'
+variables:
+  conf-local: ' --disable-static --enable-xkb --disable-xprint'

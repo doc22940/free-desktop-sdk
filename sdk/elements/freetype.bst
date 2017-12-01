@@ -99,8 +99,5 @@ sources:
 - kind: tar
   url: http://download.savannah.gnu.org/releases/freetype/freetype-2.8.tar.bz2
   ref: a3c603ed84c3c2495f9c9331fe6bba3bb0ee65e06ec331e0a0fb52158291b40b
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure}  \ --disable-static \ --with-zlib=yes \ --with-bzip2=yes \ --with-png=yes
-    \ --with-harfbuzz=yes'
+variables:
+  conf-local: ' --disable-static --with-zlib=yes --with-bzip2=yes --with-png=yes --with-harfbuzz=yes'

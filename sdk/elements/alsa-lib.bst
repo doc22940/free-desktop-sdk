@@ -90,8 +90,6 @@ sources:
   ref: 91bb870c14d1c7c269213285eeed874fa3d28112077db061a3af8010d0885b76
 - kind: patch
   path: alsa-lib-plugin-path.patch
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure}  \ --disable-aload \ --disable-alisp \ --disable-old-symbols \ --with-pcm-plugins=hw
+variables:
+  conf-local: ' --disable-aload --disable-alisp --disable-old-symbols --with-pcm-plugins=hw
     ioplug extplug'

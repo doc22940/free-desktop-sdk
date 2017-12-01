@@ -103,7 +103,5 @@ sources:
 - kind: tar
   url: https://download.gnome.org/sources/glib-networking/2.50/glib-networking-2.50.0.tar.xz
   ref: 3f1a442f3c2a734946983532ce59ed49120319fdb10c938447c373d5e5286bee
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure}  \ --disable-static \ --with-libproxy'
+variables:
+  conf-local: ' --disable-static --with-libproxy'

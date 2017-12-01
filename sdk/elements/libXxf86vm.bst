@@ -56,7 +56,5 @@ sources:
 - kind: tar
   url: http://xorg.freedesktop.org/archive/individual/lib/libXxf86vm-1.1.4.tar.bz2
   ref: afee27f93c5f31c0ad582852c0fb36d50e4de7cd585fcf655e278a633d85cd57
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure}  \ --disable-static'
+variables:
+  conf-local: ' --disable-static'

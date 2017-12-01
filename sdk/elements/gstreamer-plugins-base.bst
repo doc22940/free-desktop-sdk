@@ -124,7 +124,5 @@ sources:
 - kind: tar
   url: https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.10.5.tar.xz
   ref: 1c401a79bd1e4521c6ef1b66579bddedd9136e164e54792aab4bfcf3485bf9a7
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure}  \ --enable-experimental \ --enable-orc'
+variables:
+  conf-local: ' --enable-experimental --enable-orc'

@@ -55,7 +55,5 @@ sources:
 - kind: tar
   url: https://dri.freedesktop.org/libdrm/libdrm-2.4.83.tar.gz
   ref: 2ff5f626a14ec5bd680f7769cac9a8eb1e40c36cf5ca554d2c4e5d91bab3d81d
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure}  \ --disable-static \ --disable-udev'
+variables:
+  conf-local: ' --disable-static --disable-udev'

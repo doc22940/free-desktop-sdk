@@ -121,7 +121,5 @@ sources:
 - kind: tar
   url: http://mpg123.org/download/mpg123-1.25.6.tar.bz2
   ref: 0f0458c9b87799bc2c9bf9455279cc4d305e245db43b51a39ef27afe025c5a8e
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure}  \ -with-default-audio=pulse \ --with-audio=pulse'
+variables:
+  conf-local: ' -with-default-audio=pulse --with-audio=pulse'

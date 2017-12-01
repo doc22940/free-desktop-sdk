@@ -138,8 +138,6 @@ sources:
 - kind: tar
   url: http://www.libsdl.org/projects/SDL_image/release/SDL2_image-2.0.1.tar.gz
   ref: 3a3eafbceea5125c04be585373bfd8b3a18f259bd7eae3efc4e6d8e60e0d7f64
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure}  \ --disable-static \ --disable-jpg-shared \ --disable-png-shared
-    \ --disable-tif-shared \ --disable-webp-shared'
+variables:
+  conf-local: ' --disable-static --disable-jpg-shared --disable-png-shared --disable-tif-shared
+    --disable-webp-shared'

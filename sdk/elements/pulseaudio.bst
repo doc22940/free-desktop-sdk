@@ -87,9 +87,7 @@ sources:
 - kind: tar
   url: http://www.freedesktop.org/software/pulseaudio/releases/pulseaudio-10.0.tar.xz
   ref: a3186824de9f0d2095ded5d0d0db0405dc73133983c2fbb37291547e37462f57
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure}  \ --disable-static \ --disable-rpath \ --with-system-user=pulse
-    \ --with-system-group=pulse \ --with-access-group=pulse-access \ --disable-oss-output
-    \ --disable-jack \ --disable-lirc \ --disable-bluez4 \ --disable-bluez5 \ --disable-systemd'
+variables:
+  conf-local: ' --disable-static --disable-rpath --with-system-user=pulse --with-system-group=pulse
+    --with-access-group=pulse-access --disable-oss-output --disable-jack --disable-lirc
+    --disable-bluez4 --disable-bluez5 --disable-systemd'

@@ -102,7 +102,5 @@ sources:
 - kind: tar
   url: https://download.gnome.org/sources/gobject-introspection/1.52/gobject-introspection-1.52.1.tar.xz
   ref: 2ed0c38d52fe1aa6fc4def0c868fe481cb87b532fc694756b26d6cfab29faff4
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure}  \ --disable-static'
+variables:
+  conf-local: ' --disable-static'

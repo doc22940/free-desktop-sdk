@@ -162,7 +162,3 @@ sources:
   path: install-dicts.py
 - kind: local
   path: th_gen_idx.pl
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure} '

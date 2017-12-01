@@ -135,7 +135,5 @@ sources:
 - kind: tar
   url: http://user-dirs.freedesktop.org/releases/xdg-user-dirs-0.15.tar.gz
   ref: 20b4a751f41d0554bce3e0ce5e8d934be98cc62d48f0b90a894c3e1916552786
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure}  \ --disable-documentation'
+variables:
+  conf-local: ' --disable-documentation'

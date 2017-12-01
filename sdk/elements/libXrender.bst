@@ -59,7 +59,5 @@ sources:
 - kind: tar
   url: http://xorg.freedesktop.org/archive/individual/lib/libXrender-0.9.10.tar.bz2
   ref: c06d5979f86e64cabbde57c223938db0b939dff49fdb5a793a1d3d0396650949
-config:
-  configure-commands:
-  - '%{autogen}'
-  - '%{configure}  \ --disable-static'
+variables:
+  conf-local: ' --disable-static'
