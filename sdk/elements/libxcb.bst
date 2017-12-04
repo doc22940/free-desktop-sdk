@@ -47,3 +47,8 @@ sources:
   path: libxcb-pthread-stub.patch
 variables:
   conf-local: ' --disable-static --enable-xkb --disable-xprint'
+
+config:
+  install-commands:
+    (>):
+      - sed 's,@libdir@,/usr/lib,;s,@prefix@,/usr,;s,@exec_prefix@,/usr,' pthread-stubs.pc.in > %{install-root}%{libdir}/pkgconfig/pthread-stubs.pc
