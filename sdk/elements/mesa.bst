@@ -94,7 +94,19 @@ sources:
 - kind: patch
   path: mesa-dri-path.patch
 variables:
+  (?):
+    - target_arch == "i586" or target_arch == "x86_64":
+        gallium_drivers: "svga,swrast,nouveau,r600,r300,radeonsi"
+        dri_drivers: "swrast,nouveau,radeon,r200,i915,i965"
+        vulkan_drivers: "intel"
+    - target_arch == "arm" or target_arch == "aarch64":
+        gallium_drivers: "swrast,nouveau,freedreno,vc4"
+        dri_drivers: "swrast,nouveau,radeon,r200"
+
   conf-local: ' --enable-libglvnd --disable-selinux --disable-osmesa --with-dri-driverdir=/usr/lib/dri
     --enable-egl --disable-gles1 --enable-gles2 --disable-xvmc --with-egl-platforms=x11,drm,surfaceless,wayland
     --enable-shared-glapi --enable-gbm --disable-opencl --enable-glx-tls --enable-texture-float=yes
-    --enable-gallium-llvm --enable-llvm-shared-libs --enable-dri --enable-sysfs'
+    --enable-gallium-llvm --enable-llvm-shared-libs --enable-dri --enable-sysfs
+    --with-gallium-drivers=%{gallium_drivers}
+    --with-dri-drivers=%{dri_drivers}
+    --with-vulkan-drivers=%{vulkan_drivers}'
