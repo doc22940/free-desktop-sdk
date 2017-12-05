@@ -91,5 +91,4 @@ sources:
 - kind: patch
   path: alsa-lib-plugin-path.patch
 variables:
-  conf-local: ' --disable-aload --disable-alisp --disable-old-symbols --with-pcm-plugins=hw
-    ioplug extplug'
+  conf-local: ' --disable-aload --disable-alisp --disable-old-symbols --with-pcm-plugins="hw ioplug extplug"'
