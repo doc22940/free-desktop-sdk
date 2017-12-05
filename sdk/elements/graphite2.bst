@@ -1,4 +1,4 @@
-kind: autotools
+kind: cmake
 description: json2bst conversion of graphite2
 depends:
 - base.bst
@@ -98,7 +98,7 @@ sources:
   url: https://downloads.sourceforge.net/project/silgraphite/graphite2/graphite2-1.3.10.tgz
   ref: 90fde3b2f9ea95d68ffb19278d07d9b8a7efa5ba0e413bebcea802ce05cda1ae
 variables:
-  conf-local: ' -DCMAKE_C_FLAGS_RELEASE:STRING=-DNDEBUG -DCMAKE_CXX_FLAGS_RELEASE:STRING=-DNDEBUG
+  cmake-local: ' -DCMAKE_C_FLAGS_RELEASE:STRING=-DNDEBUG -DCMAKE_CXX_FLAGS_RELEASE:STRING=-DNDEBUG
     -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON -DCMAKE_INSTALL_PREFIX:PATH=/usr -DINCLUDE_INSTALL_DIR:PATH=/usr/include
     -DLIB_INSTALL_DIR:PATH=/usr/lib -DSYSCONF_INSTALL_DIR:PATH=/etc -DSHARE_INSTALL_PREFIX:PATH=/usr/share
     -DBUILD_SHARED_LIBS:BOOL=ON -DGRAPHITE2_COMPARE_RENDERER=OFF'

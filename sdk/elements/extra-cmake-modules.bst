@@ -1,4 +1,4 @@
-kind: autotools
+kind: cmake
 description: json2bst conversion of extra-cmake-modules
 depends:
 - base.bst
@@ -155,4 +155,4 @@ sources:
   url: https://download.kde.org/stable/frameworks/5.39/extra-cmake-modules-5.39.0.tar.xz
   ref: b80536d7bed8c12fc492857d3d433b3859462402fe231e463efcd3bf44ffbcd1
 variables:
-  conf-local: ' -DENABLE_TESTING=OFF -DCMAKE_INSTALL_LIBDIR=lib'
+  cmake-local: ' -DENABLE_TESTING=OFF -DCMAKE_INSTALL_LIBDIR=lib'
