@@ -146,4 +146,3 @@ depends:
 - sound-theme-freedesktop.bst
 - flatpak-xdg-utils.bst
 sources: []
-config: {}
