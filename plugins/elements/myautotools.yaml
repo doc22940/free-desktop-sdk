@@ -4,12 +4,8 @@ variables:
   conf-global: ''
   conf-extra: ''
   conf-local: ''
-  conf-link-args: |
-    --enable-shared \
-    --disable-static
 
   conf-args: |
-    %{conf-link-args} \
     --host=%{triplet} \
     --build=%{triplet} \
     --prefix=%{prefix} \
