@@ -15,7 +15,7 @@ stages:
     - export PATH=~/.local/bin:${PATH}
     - export BST_SHA='8c0aaa1c68017357c73055120568d24f672c4bac'
     - git clone https://gitlab.com/BuildStream/buildstream.git
-    - git -C buildstream checkout $BST_SHA
+    - git -C buildstream checkout sam/multiple-caches
     - pip3 install --user buildstream/
 
     # Create ~/.ssh for storing keys
