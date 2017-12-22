@@ -1,15 +1,22 @@
+# Autotools default configurations
+
 variables:
-  builddir: bst_build_dir
-  conf-cmd: configure
-  conf-global: ''
+
+  autogen: |
+    export NOCONFIGURE=1;
+    if [ -e autogen ]; then ./autogen;
+    elif [ -e autogen.sh ]; then ./autogen.sh;
+    elif [ -e bootstrap ]; then ./bootstrap;
+    elif [ -e bootstrap.sh ]; then ./bootstrap.sh;
+    else autoreconf -ivf;
+    fi
+
+  conf-cmd: ./configure
   conf-extra: ''
+  conf-global: ''
   conf-local: ''
-  conf-link-args: |
-    --enable-shared \
-    --disable-static
 
   conf-args: |
-    %{conf-link-args} \
     --host=%{triplet} \
     --build=%{triplet} \
     --prefix=%{prefix} \
@@ -24,50 +31,56 @@ variables:
     --localstatedir=%{localstatedir} \
     --sharedstatedir=%{sharedstatedir} \
     --mandir=%{mandir} \
-    --infodir=%{infodir} \
-    %{conf-global} %{conf-extra} %{conf-local}
+    --infodir=%{infodir} %{conf-extra} %{conf-global} %{conf-local}
 
   configure: |
+
     %{conf-cmd} %{conf-args}
 
   make: make
   make-install: make -j1 DESTDIR="%{install-root}" install
 
+  # Set this if the sources cannot handle parallelization.
+  #
+  # notparallel: True
+
 config:
 
+  # Commands for configuring the software
+  #
   configure-commands:
   - |
-    if [ -n "%{builddir}" ]; then
-      mkdir %{builddir}
-      cd %{builddir}
-      reldir=..
-    else
-      reldir=.
-    fi
-    ${reldir}/%{configure}
+    %{autogen}
+  - |
+    %{configure}
 
+  # Commands for building the software
+  #
   build-commands:
   - |
-    if [ -n "%{builddir}" ]; then
-      cd %{builddir}
-    fi
     %{make}
 
+  # Commands for installing the software into a
+  # destination folder
+  #
   install-commands:
   - |
-    if [ -n "%{builddir}" ]; then
-      cd %{builddir}
-    fi
     %{make-install}
 
+  # Commands for stripping debugging information out of
+  # installed binaries
+  #
   strip-commands:
   - |
     %{strip-binaries}
 
+# Use max-jobs CPUs for building and enable verbosity
 environment:
   MAKEFLAGS: -j%{max-jobs}
   V: 1
 
+# And dont consider MAKEFLAGS or V as something which may
+# effect build output.
 environment-nocache:
 - MAKEFLAGS
 - V
