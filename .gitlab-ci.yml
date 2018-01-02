@@ -99,6 +99,11 @@ bootstrap_i586:
     - mv checkout-platform "${CI_PROJECT_DIR}/sdk/bootstrap-image-platform-${ARCH}"
     - cd "${CI_PROJECT_DIR}"/sdk
     - bst -o target_arch "${ARCH}" build all.bst
+    - mkdir runtimes/
+    - |
+      for runtime in sdk{,-debug,-docs,-locale} platform{,-locale,-arch-libs{,-debug}} glxinfo{,-debug} basesdk{,-debug} baseplatform; do
+        bst -o target_arch "${ARCH}" checkout "${runtime}.bst" "runtimes/${runtime}";
+      done
 
 build_x86_64:
   dependencies:
