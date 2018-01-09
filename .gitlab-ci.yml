@@ -112,6 +112,14 @@ build_aarch64:
   variables:
     ARCH: aarch64
 
+build_arm:
+  image: arm64v8/fedora:27
+  <<: *build_definition
+  tags:
+    - armhf
+  variables:
+    ARCH: arm
+
 
 
 .flatpak_template: &flatpak_definition
