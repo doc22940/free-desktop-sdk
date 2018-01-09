@@ -9,8 +9,6 @@ depends:
   - filename: desktop/wayland.bst
 
 variables:
-  # Building llvm5 takes a lot of memory
-  max-jobs: 2
   lib: "lib/%{gcc_triplet}"
   libdir: "%{prefix}/lib/%{gcc_triplet}"
   (?):
@@ -20,8 +18,10 @@ variables:
         targets: "X86;AMDGPU;NVPTX"
     - target_arch == "arm":
         targets: "ARM"
+        max-jobs: 6
     - target_arch == "aarch64":
         targets: "AArch64"
+        max-jobs: 6
 
   cmake-local: |
     -DLLVM_ENABLE_ASSERTIONS:BOOL=OFF \
