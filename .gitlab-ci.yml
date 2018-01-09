@@ -18,6 +18,7 @@ stages:
   - vm
   - publish_x86_64
   - publish_i586
+  - publish_aarch64
   - publish_arm
 
 before_script:
@@ -129,6 +130,14 @@ build_aarch64:
   variables:
     ARCH: aarch64
 
+build_arm:
+  image: fedora:27
+  <<: *build_definition
+  tags:
+    - armhf
+  variables:
+    ARCH: arm
+
 
 
 .flatpak_template: &flatpak_definition
@@ -188,6 +197,16 @@ app_aarch64:
     - aarch64
   variables:
     ARCH: aarch64
+
+app_arm:
+  image: fedora:27
+  dependencies:
+    - build_arm
+  <<: *flatpak_definition
+  tags:
+    - armhf
+  variables:
+    ARCH: arm
 
 
 .vm_image_template: &vm_image
@@ -307,10 +326,19 @@ publish_i586:
     ARCH: i586
 
 publish_aarch64:
-  stage: publish_arm
+  stage: publish_aarch64
   image: fedora:27
   <<: *flatpak_runtimes_publish
   tags:
     - aarch64
   variables:
     ARCH: aarch64
+
+publish_arm:
+  stage: publish_arm
+  image: fedora:27
+  <<: *flatpak_runtimes_publish
+  tags:
+    - armhf
+  variables:
+    ARCH: arm
