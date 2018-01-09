@@ -249,3 +249,13 @@ publish_aarch64:
     - aarch64
   variables:
     ARCH: aarch64
+
+build_arm:
+  image: arm64v8/fedora:27
+  dependencies:
+    - bootstrap_arm
+  <<: *build_definition
+  tags:
+    - aarch64
+  variables:
+    ARCH: arm
