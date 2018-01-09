@@ -18,6 +18,7 @@ stages:
   - vm
   - publish_x86_64
   - publish_i586
+  - publish_aarch64
   - publish_arm
 
 before_script:
@@ -90,7 +91,7 @@ before_script:
   stage: build
   script:
     - cd "${CI_PROJECT_DIR}"/sdk
-    - ${BST} -o target_arch "${ARCH}" build all.bst
+    - ${BST} -o bootstrap_build_arch "${ARCH}" -o target_arch "${ARCH}" build all.bst
   artifacts:
     when: always
     paths:
@@ -121,13 +122,21 @@ build_aarch64:
   variables:
     ARCH: aarch64
 
+build_arm:
+  image: arm32v7/fedora:27
+  <<: *build_definition
+  tags:
+    - armhf
+  variables:
+    ARCH: arm
+
 
 
 .flatpak_template: &flatpak_definition
   stage: flatpak
   script:
     - cd "${CI_PROJECT_DIR}"/sdk
-    - ${BST} -o target_arch "${ARCH}" build all.bst
+    - ${BST} -o bootstrap_build_arch "${ARCH}" -o target_arch "${ARCH}" build all.bst
 
     - echo "Export runtimes to a ostree repo"
     - mkdir runtimes
@@ -181,6 +190,16 @@ app_aarch64:
   variables:
     ARCH: aarch64
 
+app_arm:
+  image: arm32v7/fedora:27
+  dependencies:
+    - build_arm
+  <<: *flatpak_definition
+  tags:
+    - armhf
+  variables:
+    ARCH: arm
+
 
 .vm_image_template: &vm_image
   stage: vm
@@ -190,8 +209,8 @@ app_aarch64:
     - git -C bst-external checkout $BST_EXTERNAL_SHA
     - pip3 install --user ./bst-external
     - cd sdk
-    - ${BST} -o target_arch "${ARCH}" build vm/"${TYPE}"-vm-image-"${ARCH}".bst
-    - ${BST} -o target_arch "${ARCH}" checkout vm/"${TYPE}"-vm-image-"${ARCH}".bst ./vm
+    - ${BST} -o bootstrap_build_arch "${ARCH}" -o target_arch "${ARCH}" build vm/"${TYPE}"-vm-image-"${ARCH}".bst
+    - ${BST} -o bootstrap_build_arch "${ARCH}" -o target_arch "${ARCH}" checkout vm/"${TYPE}"-vm-image-"${ARCH}".bst ./vm
     - dnf install -y qemu-system-x86
     - ../utils/test-minimal-system vm/sda.img
   artifacts:
@@ -221,7 +240,7 @@ minimal_systemd_vm_image_x86_64:
 .flatpak_runtimes_publish_template: &flatpak_runtimes_publish
   script:
     - cd "${CI_PROJECT_DIR}"/sdk
-    - ${BST} -o target_arch "${ARCH}" build all.bst
+    - ${BST} -o bootstrap_build_arch "${ARCH}" -o target_arch "${ARCH}" build all.bst
     - flatpakarch="${ARCH/i586/i386}"
     - mkdir runtimes
     - |
@@ -299,10 +318,19 @@ publish_i586:
     ARCH: i586
 
 publish_aarch64:
-  stage: publish_arm
+  stage: publish_aarch64
   image: fedora:27
   <<: *flatpak_runtimes_publish
   tags:
     - aarch64
   variables:
     ARCH: aarch64
+
+publish_arm:
+  stage: publish_arm
+  image: arm32v7/fedora:27
+  <<: *flatpak_runtimes_publish
+  tags:
+    - armhf
+  variables:
+    ARCH: arm
