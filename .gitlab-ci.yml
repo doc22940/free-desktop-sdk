@@ -36,6 +36,7 @@ before_script:
     fi
 
   # Trust the host key of the cache server.
+  - echo ${GITLAB_BST_CACHE_IP}
   - ssh-keyscan ${GITLAB_BST_CACHE_IP} >> ~/.ssh/known_hosts
 
   # If we can push, then enable push and pull for freedesktop-sdk artifact cache
