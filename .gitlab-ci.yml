@@ -16,7 +16,7 @@ stages:
 
 before_script:
   - export PATH=~/.local/bin:${PATH}
-  - export BST_SHA='b340f995455b997995fc55277a993d5f5a1656e5' # 1.0.1
+  - export BST_SHA='master' # 1.0.1
   - git clone https://gitlab.com/BuildStream/buildstream.git
   - git -C buildstream checkout $BST_SHA
   - pip3 install --user buildstream/
@@ -73,50 +73,3 @@ bootstrap_aarch64:
   <<: *bootstrap_definition
   variables:
     ARCH: aarch64
-
-bootstrap_arm:
-  <<: *bootstrap_definition
-  variables:
-    ARCH: arm
-
-bootstrap_x86_64:
-  <<: *bootstrap_definition
-  variables:
-    ARCH: x86_64
-
-bootstrap_i586:
-  <<: *bootstrap_definition
-  variables:
-    ARCH: i586
-
-
-.build_template: &build_definition
-  stage: build
-  script:
-    - cd bootstrap
-    - ${BST} -o target_arch "${ARCH}" build bootstrap-with-links.bst
-    - ${BST} -o target_arch "${ARCH}" build bootstrap-platform-with-links.bst
-    - ${BST} -o target_arch "${ARCH}" checkout bootstrap-with-links.bst checkout-sdk
-    - ${BST} -o target_arch "${ARCH}" checkout bootstrap-platform-with-links.bst checkout-platform
-    - mv checkout-sdk "${CI_PROJECT_DIR}/sdk/bootstrap-image-${ARCH}"
-    - mv checkout-platform "${CI_PROJECT_DIR}/sdk/bootstrap-image-platform-${ARCH}"
-    - cd "${CI_PROJECT_DIR}"/sdk
-    - ${BST} -o target_arch "${ARCH}" build all.bst
-
-build_x86_64:
-  dependencies:
-    - bootstrap_x86_64
-  <<: *build_definition
-  tags:
-    - x86_64
-  variables:
-    ARCH: x86_64
-
-build_i586:
-  dependencies:
-    - bootstrap_i586
-  <<: *build_definition
-  tags:
-    - x86_64
-  variables:
-    ARCH: i586
