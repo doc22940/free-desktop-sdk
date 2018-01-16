@@ -21,7 +21,7 @@ before_script:
   - export BST_SHA='b340f995455b997995fc55277a993d5f5a1656e5' # 1.0.1
   # Only install packages for ARM runners until #39 is solved
   - |
-    if [ "${CI_RUNNER_DESCRIPTION}" = "runner-arm64"** ]; then
+    if [ "${CI_RUNNER_DESCRIPTION}" == "manager**" ]; then
         dnf install -y bubblewrap fuse fuse-libs git python3-gobject python3-psutil ostree python3-ruamel-yaml patch lzip
     fi
   - git clone https://gitlab.com/BuildStream/buildstream.git
