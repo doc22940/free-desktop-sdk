@@ -166,7 +166,7 @@ build_aarch64:
     - echo "Build flatpak runtimes"
     - dnf install -y flatpak flatpak-builder
     - export FLATPAK_USER_DIR="${PWD}/tmp-flatpak"
-    - flatpakarch="${ARCH/i586/i386}"
+    - flatpakarch="${ARCH}"
     - flatpak build-export --arch=${ARCH} --files=files repo/ sdk/runtimes/sdk unstable;
     - flatpak build-export --arch=${ARCH} --files=files repo/ sdk/runtimes/platform unstable;
 
