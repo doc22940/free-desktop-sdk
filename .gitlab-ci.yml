@@ -131,3 +131,12 @@ build_i586:
     - x86_64
   variables:
     ARCH: i586
+
+build_aarch64:
+  dependencies:
+    - bootstrap_aarch64
+  <<: *build_definition
+  tags:
+    - aarch64
+  variables:
+    ARCH: aarch64
