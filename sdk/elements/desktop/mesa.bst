@@ -64,7 +64,7 @@ sources:
   - kind: git
     url: freedesktop:mesa/mesa.git
     track: 17.3
-    ref: 0f27052e325c3617e437912d0a3acaf3e3afd786  # mesa-17.3.2
+    ref: 80f5f279b3f9fc752ba35b1cb2878a936f8ace90 #  mesa-17.3.3
   - kind: patch
     path: elements/desktop/mesa-glvnd-fix-gl-dot-pc.patch
   - kind: patch
