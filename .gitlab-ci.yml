@@ -133,6 +133,7 @@ build_i586:
     ARCH: i586
 
 build_aarch64:
+  image: arm64v8/fedora:27
   dependencies:
     - bootstrap_aarch64
   <<: *build_definition
