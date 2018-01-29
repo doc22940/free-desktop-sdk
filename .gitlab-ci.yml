@@ -105,8 +105,8 @@ bootstrap_i586:
   stage: build
   script:
     - cd bootstrap
-    - ${BST} -o target_arch "${ARCH}" build bootstrap-with-links.bst
-    - ${BST} -o target_arch "${ARCH}" build bootstrap-platform-with-links.bst
+    - ${BST} -o build_arch "${ARCH}" -o target_arch "${ARCH}" build bootstrap-with-links.bst
+    - ${BST} -o build_arch "${ARCH}" -o target_arch "${ARCH}" build bootstrap-platform-with-links.bst
     - ${BST} -o target_arch "${ARCH}" checkout bootstrap-with-links.bst checkout-sdk
     - ${BST} -o target_arch "${ARCH}" checkout bootstrap-platform-with-links.bst checkout-platform
     - mv checkout-sdk "${CI_PROJECT_DIR}/sdk/bootstrap-image-${ARCH}"
