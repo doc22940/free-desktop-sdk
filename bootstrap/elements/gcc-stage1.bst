@@ -46,8 +46,8 @@ variables:
 
 sources:
 - kind: tar
-  url: ftp://ftp.fu-berlin.de/unix/languages/gcc/releases/gcc-7.3.0/gcc-7.3.0.tar.xz
-  ref: 832ca6ae04636adbb430e865a1451adf6979ab44ca1c8374f61fba65645ce15c
+  url: ftp://ftp.mirrorservice.org/sites/sourceware.org/pub/gcc/snapshots/8-20180204/gcc-8-20180204.tar.xz
+  ref: e289b8cd0f7b35948fc6170391ecc92ae8b36bd22f87df4d18662bc6f9ba3930
 - kind: tar
   url: http://ftp.gnu.org/gnu/gmp/gmp-6.1.2.tar.xz
   directory: gmp
