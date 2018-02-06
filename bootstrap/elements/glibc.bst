@@ -27,6 +27,7 @@ config:
       --host=%{triplet} \
       --build=$(sh /config/config.guess) \
       --prefix=%{prefix} \
+      --disable-werror \
       --with-headers=%{sysroot}%{includedir}
 
   install-commands:
