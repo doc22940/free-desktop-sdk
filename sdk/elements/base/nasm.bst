@@ -2,23 +2,13 @@ kind: autotools
 
 depends:
   - filename: bootstrap-import.bst
+  - filename: base/autoconf.bst
+    type: build
   - filename: base/automake.bst
     type: build
 
-config:
-  configure-commands:
-    (<):
-      - |
-        autoreconf -ivf
-
-  install-commands:
-    - |
-      cd "%{builddir}"
-      make -j1 INSTALLROOT="%{install-root}" install
-
 sources:
-  - kind: tar
-    url: http://www.nasm.us/pub/nasm/releasebuilds/2.13.03/nasm-2.13.03.tar.xz
-    ref: 812ecfb0dcbc5bd409aaa8f61c7de94c5b8752a7b00c632883d15b2ed6452573
-  - kind: patch
-    path: patches/nasm-disable-werror-attributes.patch
+  - kind: git
+    url: git://repo.or.cz/nasm.git
+    track: nasm-2.13.xx
+    ref: ef7d18bfbb899fe8e44f4fae8d6a12e2742f69f5 #  nasm-2.13.03
