@@ -24,7 +24,7 @@ variables:
         dri_drivers: "swrast,nouveau,radeon,r200,i915,i965"
         vulkan_drivers: "intel,radeon"
     - target_arch == "arm" or target_arch == "aarch64":
-        gallium_drivers: "swrast,nouveau,freedreno,vc4"
+        gallium_drivers: "swrast,nouveau,freedreno"
         dri_drivers: "swrast,nouveau,r200"
         vulkan_drivers: ""
 
