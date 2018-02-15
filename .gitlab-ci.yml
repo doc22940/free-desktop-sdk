@@ -198,22 +198,11 @@ minimal_vm_image_x86_64:
     - cd "${CI_PROJECT_DIR}"/sdk
     - ${BST} -o bootstrap_target_arch "${ARCH}" -o target_arch "${ARCH}" build all.bst
 
-    - echo "Export runtimes to a ostree repo"
     - mkdir runtimes
     - |
-      for runtime in sdk platform; do
+      for runtime in sdk{,-debug,-docs,-locale} platform{,-locale,-arch-libs{,-debug}} glxinfo{,-debug} basesdk{,-debug} baseplatform; do
         bst -o target_arch "${ARCH}" checkout "${runtime}.bst" "runtimes/${runtime}";
       done
-    - cd ${CI_PROJECT_DIR}
-
-    - echo "Use flatpak builder to export the runtimes to a ostree repo"
-    - dnf install -y flatpak flatpak-builder
-    - export FLATPAK_USER_DIR="${PWD}/tmp-flatpak"
-    - flatpakarch="${ARCH/i586/i386}"
-    - flatpak build-export --arch=${ARCH} --files=files repo/ sdk/runtimes/sdk unstable;
-    - flatpak build-export --arch=${ARCH} --files=files repo/ sdk/runtimes/platform unstable;
-
-    - echo "All good, push runtimes to the remote ostree server"
 
     - echo "Clone the releases OSTree repo locally"
     - ostree init --repo=releases --mode=archive-z2
@@ -221,16 +210,22 @@ minimal_vm_image_x86_64:
     - ostree pull --repo=releases origin
 
     - echo "Commit the binaries to the correct branch"
-    - ostree commit --repo=releases --branch=runtime/org.freedesktop.Sdk/x86_64/unstable sdk/runtimes/sdk
-    - ostree commit --repo=releases --branch=runtime/org.freedesktop.Platform/x86_64/unstable sdk/runtimes/platform
+    # FIXME: Find a way to do this for a little more robust
+    - |
+      for runtime_name
+        ostree commit --repo=releases --branch=runtime/${runtime_name}/${ARCH}/unstable "runtimes/${runtime}"
+      done
 
     - echo "Push to the releases ostree repo"
     - export OSTREE_PUSH_SHA='9aa82b67325786a810653155b952a17b7ccc436a'
     - git clone https://github.com/ssssam/ostree-push.git ostree-push_folder
     - git checkout -C ostree-push_folder checkout $OSTREE_PUSH_SHA
     - cp ostree-push/ostree-push ~/.local/bin/
-    - ostree-push --repo=releases ssh://releases@${BST_CACHE_SERVER_ADDRESS} runtime/org.freedesktop.Sdk/x86_64/unstable
-    - ostree-push --repo=releases ssh://releases@${BST_CACHE_SERVER_ADDRESS} runtime/org.freedesktop.Platform/x86_64/unstable
+    # FIXME
+    - |
+      for
+        ostree-push --repo=releases ssh://releases@${BST_CACHE_SERVER_ADDRESS} runtime/${runtime_name}/${ARCH}/unstable
+      done
   artifacts:
     when: always
     paths:
