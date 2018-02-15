@@ -86,7 +86,7 @@ before_script:
     when: always
     paths:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
-  except:
+  only:
     - master
 
 build_x86_64:
@@ -148,7 +148,7 @@ build_aarch64:
     when: always
     paths:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
-  except:
+  only:
     - master
 
 app_x86_64:
@@ -187,6 +187,8 @@ minimal_vm_image_x86_64:
     - x86_64
   variables:
     ARCH: x86_64
+  only:
+    - master
 
 
 
@@ -233,8 +235,6 @@ minimal_vm_image_x86_64:
     when: always
     paths:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
-  only:
-    - master
 
 publish_x86_64:
   <<: *flatpak_runtimes_publish
