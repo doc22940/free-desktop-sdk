@@ -5,6 +5,8 @@ depends:
   type: build
 - filename: vm/deploy-tools.bst
   type: build
+- filename vm/linux-vm-boot/systemd.bst
+  type: build
 
 variables:
   # Size of the disk to create
