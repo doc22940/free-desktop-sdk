@@ -13,9 +13,9 @@ variables:
   BST: bst --colors
 
 stages:
+  - vm
   - build
   - flatpak
-  - vm
 
 before_script:
   - export PATH=~/.local/bin:${PATH}
