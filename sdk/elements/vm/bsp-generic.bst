@@ -3,10 +3,10 @@ description: |
   Linux kernel and any platform specific components required for booting.
 
 depends:
-- vm/bsp-generic/linux.bst
+- vm/linux-vm-boot/linux.bst
 
 (?):
   - target_arch in ["i586", "x86_64"]:
       depends:
         (>):
-          - vm/bsp-generic/syslinux.bst
+          - vm/linux-vm-boot/syslinux.bst
