@@ -1,12 +1,7 @@
-kind: autotools
+ind: meson
 
 depends:
 - filename: base.bst
-
-config:
- configure-commands: []
-
- install-commands: []
 
 sources:
 - kind:git
