@@ -5,7 +5,7 @@ depends:
   type: build
 - filename: vm/deploy-tools.bst
   type: build
-- filename vm/linux-vm-boot/systemd.bst
+- filename: vm/linux-vm-boot/systemd.bst
   type: build
 
 variables:
