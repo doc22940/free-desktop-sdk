@@ -23,3 +23,5 @@ sources:
   track: v237
   ref: 46659f7deb962f55c728e70597e37c2a3ab6326d
 
+variables:
+  meson-local: -Dacl=false -Daudit=false -Dseccomp=false
