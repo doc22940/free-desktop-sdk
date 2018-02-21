@@ -1,7 +1,21 @@
 kind: meson
 
 depends:
-- filename: base.bst
+- filename: bootstrap-import.bst
+- filename: base/gperf.bst
+  type: build
+- filename: base/libcap.bst
+- filename: base/libgcrypt.bst
+- filename: base/libgpg-error.bst
+- filename: base/locales.bst
+  type: build
+- filename: base/m4.bst
+  type: build
+- filename: base/meson.bst
+  type: build
+- filename: base/ninja.bst
+  type: build
+- filename: base/util-linux.bst
 
 sources:
 - kind: git
