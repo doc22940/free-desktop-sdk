@@ -28,7 +28,7 @@ import time
 QEMU = 'qemu-system-x86_64'
 QEMU_EXTRA_ARGS = ['-m', '256']
 
-FAILURE_TIMEOUT = 60   # seconds
+FAILURE_TIMEOUT = 120   # seconds
 
 INIT_BANNER = "Started '/init' script from initramfs."
 
