@@ -13,11 +13,11 @@ variables:
   BST: bst --colors
 
 stages:
+  - publish_x86
+  - publish_arm
   - build
   - flatpak
   - vm
-  - publish_x86
-  - publish_arm
 
 before_script:
   - export PATH=~/.local/bin:${PATH}
@@ -223,8 +223,6 @@ minimal_vm_image_x86_64:
     when: always
     paths:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
-  only:
-    - master
 
 publish_x86_64:
   stage: publish_x86
