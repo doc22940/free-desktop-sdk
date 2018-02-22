@@ -2,6 +2,8 @@ kind: meson
 
 depends:
 - filename: bootstrap-import.bst
+- filename: base/gettext.bst
+  type: build
 - filename: base/gperf.bst
   type: build
 - filename: base/libcap.bst
@@ -14,6 +16,8 @@ depends:
 - filename: base/meson.bst
   type: build
 - filename: base/ninja.bst
+  type: build
+- filename: base/pkg-config.bst
   type: build
 - filename: base/util-linux.bst
 
