@@ -10,4 +10,5 @@ sources:
 
 variables:
   meson-local: |
-       -Dsystemd_sys_uid_max=999
+       -Dsystem-uid-max=999 \
+       -Dsystem-gid-max=999
