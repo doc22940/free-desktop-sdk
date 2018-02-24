@@ -5,10 +5,6 @@ depends:
     type: build
   - filename: desktop/itstools.bst
 
-variables:
-  conf-local: |
-    PYTHON="/usr/bin/python2"
-
 sources:
   - kind: tar
     url: https://download.gnome.org/sources/gtk-doc/1.26/gtk-doc-1.26.tar.xz
