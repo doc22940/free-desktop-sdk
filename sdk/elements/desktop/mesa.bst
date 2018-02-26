@@ -54,8 +54,8 @@ config:
 sources:
   - kind: git
     url: https://anongit.freedesktop.org/git/mesa/mesa.git
-    track: 18.0
-    ref: 1e1734634bf2e5f6d16953dbf416cd9afdf4a145 #  mesa-18.0.0-rc4
+    track: master
+    ref: b9636fe38aea6af1d3a30528da89069fc390b6a0
   - kind: patch
     path: elements/desktop/mesa-glvnd-fix-gl-dot-pc.patch
   - kind: patch
