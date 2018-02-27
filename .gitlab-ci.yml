@@ -179,6 +179,16 @@ app_aarch64:
   variables:
     ARCH: aarch64
 
+app_arm:
+  image: arm64v8/fedora:27
+  dependencies:
+    - build_arm
+  <<: *flatpak_definition
+  tags:
+    - armhf
+  variables:
+    ARCH: arm
+
 
 .vm_image_template: &vm_image
   stage: vm
