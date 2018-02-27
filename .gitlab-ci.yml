@@ -18,6 +18,7 @@ stages:
   - vm
   - publish_x86_64
   - publish_i586
+  - publish_aarch64
   - publish_arm
 
 before_script:
@@ -325,10 +326,19 @@ publish_i586:
     ARCH: i586
 
 publish_aarch64:
-  stage: publish_arm
-  image: fedora:27
+  stage: publish_aarch64
+  image: arm64v8/fedora:27
   <<: *flatpak_runtimes_publish
   tags:
     - aarch64
   variables:
     ARCH: aarch64
+
+publish_arm:
+  stage: publish_arm
+  image: arm64v8/fedora:27
+  <<: *flatpak_runtimes_publish
+  tags:
+    - armhf
+  variables:
+    ARCH: arm
