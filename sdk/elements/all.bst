@@ -1,7 +1,9 @@
 kind: stack
+
 depends:
   - filename: basesdk.bst
   - filename: basesdk-debug.bst
+  - filename: platform-vaapi-intel.bst
   - filename: basesdk-locale.bst
   - filename: basesdk-docs.bst
   - filename: baseplatform.bst
