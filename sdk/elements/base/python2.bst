@@ -38,6 +38,10 @@ config:
     - |
       rm -f "%{install-root}%{bindir}/2to3"
 
+    - |
+      - ln -sf python2.7 "%{install-root}"/"%{prefix}"/bin/python
+      - ln -sf python2.7-config "%{install-root}"/"%{prefix}"/bin/python-config
+
 public:
   bst:
     split-rules:

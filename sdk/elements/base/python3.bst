@@ -33,6 +33,8 @@ config:
       cd %{builddir}
       fi
       %{make-install} DESTSHARED=/usr/lib/python3.6/lib-dynload
+    - test -x "%{install-root}"/"%{prefix}"/bin/python || ln -s python3.6 "%{install-root}"/"%{prefix}"/bin/python
+    - test -x "%{install-root}"/"%{prefix}"/bin/python-config || ln -s python3.6-config "%{install-root}"/"%{prefix}"/bin/python-config
 
 public:
   bst:
