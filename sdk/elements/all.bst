@@ -12,6 +12,7 @@ depends:
   - filename: sdk-locale.bst
   - filename: platform.bst
   - filename: platform-locale.bst
+  - filename: platform-mesa-stable.bst
   - filename: platform-arch-libs.bst
   - filename: platform-arch-libs-debug.bst
   - filename: glxinfo.bst
