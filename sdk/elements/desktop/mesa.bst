@@ -66,3 +66,5 @@ sources:
     path: elements/desktop/mesa-glvnd-fix-gl-dot-pc.patch
   - kind: patch
     path: elements/desktop/mesa-Fix-linkage-against-shared-glapi.patch
+  - kind: patch
+    path: elements/desktop/mesa-17.2.2-dri-patch.patch
