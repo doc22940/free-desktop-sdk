@@ -59,9 +59,10 @@ config:
         rm -f "%{install-root}%{libdir}/libEGL_mesa.so"
 
 sources:
-  - kind: tar
-    url: https://mesa.freedesktop.org/archive/mesa-17.3.6.tar.xz
-    ref: e5915680d44ac9d05defdec529db7459ac9edd441c9845266eff2e2d3e57fbf8
+  - kind: git
+    url: https://anongit.freedesktop.org/git/mesa/mesa.git
+    track: 17.3
+    ref: b3e5a3f35bfe5b69758ceb90f93fffbee01a5682 #  mesa-17.3.6
   - kind: patch
     path: elements/desktop/mesa-glvnd-fix-gl-dot-pc.patch
   - kind: patch
