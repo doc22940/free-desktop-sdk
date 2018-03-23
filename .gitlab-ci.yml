@@ -107,7 +107,7 @@ build_aarch64:
   image: arm64v8/fedora:27
   <<: *build_definition
   tags:
-    - aarch64
+    - packet
   variables:
     ARCH: aarch64
 
