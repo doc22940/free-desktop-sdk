@@ -80,6 +80,12 @@ cache:
 .build_template: &build_definition
   stage: build
   script:
+    - ls -l
+    - ls -l cache/
+    - ls -l cache/buildstream/
+    - ls -l cache/buildstream/sources/
+    - ls -l cache/buildstream/sources/git/
+    - ls -l cache/buildstream/sources/tar/
     - cd "${CI_PROJECT_DIR}"/sdk
     - ${BST} -o target_arch "${ARCH}" build all.bst
   artifacts:
