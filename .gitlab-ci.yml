@@ -105,7 +105,7 @@ build_i586:
     ARCH: i586
 
 build_aarch64:
-  image: arm64v8/fedora:27
+  image: arm64v8/fedora:28
   <<: *build_definition
   tags:
     - aarch64
@@ -162,7 +162,7 @@ app_x86_64:
     ARCH: x86_64
 
 app_aarch64:
-  image: arm64v8/fedora:27
+  image: arm64v8/fedora:28
   dependencies:
     - build_aarch64
   <<: *flatpak_definition
