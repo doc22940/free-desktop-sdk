@@ -14,10 +14,10 @@ variables:
 
 stages:
   - build
-  - flatpak
-  - vm
-  - publish_x86_64
-  - publish_i586
+    #- flatpak
+    #- vm
+    #  - publish_x86_64
+    #- publish_i586
   - publish_arm
 
 before_script:
