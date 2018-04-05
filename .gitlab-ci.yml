@@ -86,20 +86,6 @@ cache:
   except:
     - master
 
-build_x86_64:
-  <<: *build_definition
-  tags:
-    - x86_64
-  variables:
-    ARCH: x86_64
-
-build_i586:
-  <<: *build_definition
-  tags:
-    - x86_64
-  variables:
-    ARCH: i586
-
 build_aarch64:
   image: arm64v8/fedora:27
   <<: *build_definition
@@ -160,22 +146,6 @@ build_aarch64:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
   only:
     - master
-
-publish_x86_64:
-  stage: publish_x86_64
-  <<: *flatpak_runtimes_publish
-  tags:
-    - x86_64
-  variables:
-    ARCH: x86_64
-
-publish_i586:
-  stage: publish_i586
-  <<: *flatpak_runtimes_publish
-  tags:
-    - x86_64
-  variables:
-    ARCH: i586
 
 publish_aarch64:
   stage: publish_arm
