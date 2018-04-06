@@ -131,7 +131,7 @@ build_aarch64:
     ARCH: aarch64
 
 build_arm:
-  image: arm64v8/fedora:27
+  image: arm32v7/fedora:27
   <<: *build_definition
   tags:
     - armhf
@@ -199,7 +199,7 @@ app_aarch64:
     ARCH: aarch64
 
 app_arm:
-  image: arm64v8/fedora:27
+  image: arm32v7/fedora:27
   dependencies:
     - build_arm
   <<: *flatpak_definition
@@ -336,7 +336,7 @@ publish_aarch64:
 
 publish_arm:
   stage: publish_arm
-  image: arm64v8/fedora:27
+  image: arm32v7/fedora:27
   <<: *flatpak_runtimes_publish
   tags:
     - armhf
