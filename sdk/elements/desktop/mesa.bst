@@ -3,8 +3,7 @@ kind: autotools
 depends:
   - filename: base.bst
     type: build
-  - filename: desktop/llvm6.bst
-    type: build
+  - filename: base/llvm6.bst
   - filename: desktop/libdrm.bst
   - filename: desktop/xorg-proto-xorgproto.bst
   - filename: desktop/xorg-lib-xdamage.bst

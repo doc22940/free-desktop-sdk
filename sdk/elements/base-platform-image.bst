@@ -19,3 +19,5 @@ depends:
   type: build
 - filename: split-locales.bst
   type: build
+- filename: base/llvm6.bst
+  type: build
