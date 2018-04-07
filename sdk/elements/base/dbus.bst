@@ -5,6 +5,12 @@ depends:
   - filename: base/expat.bst
   - filename: base/pkg-config.bst
     type: build
+  - filename: base/systemd.bst
+
+variables:
+  conf-local: |
+    --enable-systemd \
+    --with-system-socket=/run/dbus/system_bus_socket
 
 public:
   bst:
