@@ -25,3 +25,5 @@ depends:
   type: build
 - filename: multiarch-debugdir.bst
   type: build
+- filename: base/rust.bst
+  type: build

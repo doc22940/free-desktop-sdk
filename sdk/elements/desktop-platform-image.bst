@@ -23,3 +23,5 @@ depends:
   type: build
 - filename: split-docs.bst
   type: build
+- filename: base/rust.bst
+  type: build
