@@ -19,5 +19,5 @@ depends:
   type: build
 - filename: split-locales.bst
   type: build
-- filename: base/rust.bst
+- filename: stacks/rust.bst
   type: build
