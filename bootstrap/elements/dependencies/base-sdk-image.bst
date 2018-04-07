@@ -14,6 +14,9 @@ sources:
   - build_arch == "aarch64":
       track: runtime/org.freedesktop.BaseSdk/aarch64/1.6
       ref: 3333fee02b034e5cd1884ab55433c6b236a4d8648303a7d87be57de510a8f76a
+  - build_arch == "arm":
+      track: runtime/org.freedesktop.BaseSdk/arm/1.6
+      ref: f54bf4db821c0518d020a95a812266913ca0ad76f6f616b1b2cf9897213978a4
 
 config:
   source: files
