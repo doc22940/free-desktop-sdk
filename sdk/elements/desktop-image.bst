@@ -27,3 +27,5 @@ depends:
   type: build
 - filename: base/rust.bst
   type: build
+- filename: base/cargo.bst
+  type: build
