@@ -3,7 +3,6 @@ kind: autotools
 depends:
   - filename: bootstrap-import.bst
   - filename: desktop/ibus.bst
-  - filename: desktop/dbus.bst
   - filename: desktop/mesa.bst
   - filename: desktop/xorg-lib-x11.bst
   - filename: desktop/wayland.bst

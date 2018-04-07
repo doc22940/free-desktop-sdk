@@ -11,7 +11,6 @@ depends:
 - filename: desktop/atk.bst
 - filename: desktop/cairo.bst
 - filename: desktop/cups.bst
-- filename: desktop/dbus.bst
 - filename: desktop/dconf.bst
 - filename: desktop/dejavu-fonts.bst
 - filename: desktop/dictionaries.bst

@@ -6,6 +6,7 @@ depends:
 - filename: base/cracklib.bst
 - filename: base/curl.bst
 - filename: base/cyrus-sasl.bst
+- filename: base/dbus.bst
 - filename: base/expat.bst
 - filename: base/flex.bst
 - filename: base/gettext.bst
