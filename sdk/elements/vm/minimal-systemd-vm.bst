@@ -13,7 +13,11 @@ depends:
   type: build
 - filename: bootstrap-import.bst
   type: build
+- filename: base/dbus.bst
+  type: build
 - filename: base/util-linux.bst
+  type: build
+- filename: base/os-release.bst
   type: build
 - filename: vm/bsp-generic.bst
   type: build
@@ -21,6 +25,9 @@ depends:
   type: build
 - filename: base/systemd.bst
   type: build
+- filename: vm/linux-vm-boot/shadow.bst
+  type: build
+
 
 config:
   include:
