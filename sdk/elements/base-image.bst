@@ -23,3 +23,5 @@ depends:
   type: build
 - filename: multiarch-debugdir.bst
   type: build
+- filename: base/llvm6.bst
+  type: build
