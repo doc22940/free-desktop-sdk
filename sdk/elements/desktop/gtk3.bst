@@ -3,6 +3,7 @@ kind: autotools
 depends:
   - filename: base.bst
     type: build
+  - filename: base/bzip2.bst
   - filename: desktop/wayland-protocols.bst
     type: build
   - filename: desktop/atk.bst

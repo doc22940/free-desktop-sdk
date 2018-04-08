@@ -8,9 +8,7 @@ depends:
 - filename: base/gperf.bst
   type: build
 - filename: base/libcap.bst
-  type: build
 - filename: base/libgcrypt.bst
-  type: build
 - filename: base/libgpg-error.bst
   type: build
 - filename: base/m4.bst

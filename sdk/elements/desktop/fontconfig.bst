@@ -3,6 +3,9 @@ kind: autotools
 depends:
   - filename: base.bst
     type: build
+  - filename: base/libpng.bst
+  - filename: base/util-linux.bst
+  - filename: base/expat.bst
   - filename: desktop/freetype.bst
 
 config:

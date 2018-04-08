@@ -25,4 +25,5 @@ depends:
   type: build
 - filename: vm/initramfs/initramfs-gz.bst
   type: build
-
+- filename: vm/linux-vm-boot/weston.bst
+  type: build

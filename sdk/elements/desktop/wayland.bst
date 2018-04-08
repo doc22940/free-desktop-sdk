@@ -3,6 +3,7 @@ kind: autotools
 depends:
   - filename: base.bst
     type: build
+  - filename: base/libxml2.bst
 
 variables:
   conf-local: |
