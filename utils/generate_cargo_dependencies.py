@@ -21,6 +21,5 @@ with open('sources.yml', 'wb') as sources:
         hash = metadata['checksum {} {} ({})'.format(name, version, source)]
         lines = ['  - kind: crate',
                  '    url: https://static.crates.io/crates/{name}/{name}-{version}.crate'.format(name = name, version = version),
-                 '    ref: {}'.format(hash),
-                 '    directory: crates']
+                 '    ref: {}'.format(hash)]
         sources.write(('\n'.join(lines) + '\n').encode('ascii'))

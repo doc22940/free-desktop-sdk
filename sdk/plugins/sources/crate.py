@@ -15,16 +15,20 @@ class CrateSource(DownloadableFileSource):
     def configure(self, node):
         super().configure(node)
 
-        self.node_validate(node, DownloadableFileSource.COMMON_CONFIG_KEYS)
+        self.subdir = self.node_get_member(node, str, 'subdir', 'crates') or None
+
+        self.node_validate(node, DownloadableFileSource.COMMON_CONFIG_KEYS + ['subdir'])
 
     def stage(self, directory):
+        crates = os.path.join(directory, self.subdir)
+        os.makedirs(crates, exist_ok=True)
         try:
             with tarfile.open(self._get_mirror_file()) as tar:
-                tar.extractall(path=directory)
+                tar.extractall(path=crates)
                 members = tar.getmembers()
             if len(members) != 0:
                 dirname = members[0].name.split('/')[0]
-                package_dir = os.path.join(directory, dirname)
+                package_dir = os.path.join(crates, dirname)
                 checksum_file = os.path.join(package_dir,
                                              ".cargo-checksum.json")
                 with open(checksum_file, 'w') as f:
