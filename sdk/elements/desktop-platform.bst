@@ -4,6 +4,7 @@ depends:
 - filename: base-platform.bst
 - filename: desktop/alsa-lib.bst
 - filename: desktop/alsa-plugins.bst
+- filename: desktop/appdata.bst
 - filename: desktop/appstream-glib.bst
 - filename: desktop/aspell.bst
 - filename: desktop/at-spi2-atk.bst
@@ -59,7 +60,6 @@ depends:
 - filename: desktop/mythes.bst
 - filename: desktop/openal.bst
 - filename: desktop/orc.bst
-- filename: desktop/os-release.bst
 - filename: desktop/pango.bst
 - filename: desktop/pixman.bst
 - filename: desktop/libpulse.bst

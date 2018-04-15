@@ -56,6 +56,7 @@ depends:
 - filename: base/nspr.bst
 - filename: base/nss.bst
 - filename: base/openssl.bst
+- filename: base/os-release.bst
 - filename: base/p11-kit.bst
 - filename: base/pcre2.bst
 - filename: base/pcre.bst
