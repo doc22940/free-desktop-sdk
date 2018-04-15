@@ -22,6 +22,14 @@ depends:
   type: build
 - filename: base/xz.bst
 
+public:
+  bst:
+    split-rules:
+      devel:
+        (>):
+          - "%{libdir}/libsystemd.so"
+          - "%{libdir}/libudev.so"
+
 variables:
   meson-local: |
     -Drootlibdir=%{libdir} \
