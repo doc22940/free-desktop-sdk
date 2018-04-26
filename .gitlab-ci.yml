@@ -131,7 +131,7 @@ build_aarch64:
     ARCH: aarch64
 
 build_arm:
-  image: arm32v7/fedora:27
+  image: arm32v7/fedora:28
   <<: *build_definition
   tags:
     - armhf
