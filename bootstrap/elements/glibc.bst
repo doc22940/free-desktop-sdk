@@ -13,16 +13,21 @@ depends:
 - filename: binutils-stage1.bst
   type: build
 
+
 config:
   configure-commands:
     - |
       mkdir "%{builddir}"
       cd "%{builddir}"
-      echo slibdir=%{multiarch_libdir} >configparms
-      echo gconvdir=%{multiarch_libdir}/gconv >>configparms
+      echo slibdir=%{libdir} >configparms
+      echo gconvdir=%{libdir}/gconv >>configparms
       echo rootsbindir=%{sbindir} >>configparms
       echo sbindir=%{sbindir} >>configparms
-      ../%{configure}
+      ../configure \
+      --host=%{triplet} \
+      --build=$(sh /config/config.guess) \
+      --prefix=%{prefix} \
+      --with-headers=%{sysroot}%{includedir}
 
   install-commands:
     - |
@@ -39,39 +44,35 @@ environment:
   LDFLAGS: ""
 
 variables:
-  multiarch_libdir: "%{prefix}/lib/%{gcc_triplet}"
-  lib: "lib"
-  debugdir: "%{multiarch_libdir}/debug"
-
-  host-triplet: "%{triplet}"
-  build-triplet: "$(sh /config/config.guess)"
-  conf-local: |
-    --with-headers=%{sysroot}%{includedir}
+  stdlib: "%{prefix}/lib"
+  (?):
+    - target_arch == "x86_64" or target_arch == "aarch64":
+        stdlib: "%{prefix}/lib64"
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{sysroot}%{libdir}/*.o"
-          - "%{sysroot}%{libdir}/lib*.a"
-          - "%{sysroot}%{libdir}/libdl.so"
-          - "%{sysroot}%{libdir}/libnsl.so"
-          - "%{sysroot}%{libdir}/libBrokenLocale.so"
-          - "%{sysroot}%{libdir}/libthread_db.so"
-          - "%{sysroot}%{libdir}/librt.so"
-          - "%{sysroot}%{libdir}/libcrypt.so"
-          - "%{sysroot}%{libdir}/libnss_dns.so"
-          - "%{sysroot}%{libdir}/libanl.so"
-          - "%{sysroot}%{libdir}/libnss_files.so"
-          - "%{sysroot}%{libdir}/libresolv.so"
-          - "%{sysroot}%{libdir}/libmvec.so"
-          - "%{sysroot}%{libdir}/libcidn.so"
-          - "%{sysroot}%{libdir}/libnss_hesiod.so"
-          - "%{sysroot}%{libdir}/libnss_db.so"
-          - "%{sysroot}%{libdir}/libutil.so"
-          - "%{sysroot}%{libdir}/libnss_compat.so"
-          - "%{sysroot}%{libdir}/libm.so"
+          - "%{sysroot}%{stdlib}/*.o"
+          - "%{sysroot}%{stdlib}/lib*.a"
+          - "%{sysroot}%{stdlib}/libdl.so"
+          - "%{sysroot}%{stdlib}/libnsl.so"
+          - "%{sysroot}%{stdlib}/libBrokenLocale.so"
+          - "%{sysroot}%{stdlib}/libthread_db.so"
+          - "%{sysroot}%{stdlib}/librt.so"
+          - "%{sysroot}%{stdlib}/libcrypt.so"
+          - "%{sysroot}%{stdlib}/libnss_dns.so"
+          - "%{sysroot}%{stdlib}/libanl.so"
+          - "%{sysroot}%{stdlib}/libnss_files.so"
+          - "%{sysroot}%{stdlib}/libresolv.so"
+          - "%{sysroot}%{stdlib}/libmvec.so"
+          - "%{sysroot}%{stdlib}/libcidn.so"
+          - "%{sysroot}%{stdlib}/libnss_hesiod.so"
+          - "%{sysroot}%{stdlib}/libnss_db.so"
+          - "%{sysroot}%{stdlib}/libutil.so"
+          - "%{sysroot}%{stdlib}/libnss_compat.so"
+          - "%{sysroot}%{stdlib}/libm.so"
 
 sources:
 - kind: tar

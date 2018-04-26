@@ -17,8 +17,10 @@ depends:
   type: build
 
 variables:
-  build-triplet: "$(sh /config/config.guess)"
-  host-triplet: "$(sh /config/config.guess)"
+  conf-args: |
+    --build=$(sh /config/config.guess) \
+    --host=$(sh /config/config.guess) \
+    --prefix="%{tools}" \
 
 sources:
   - kind: tar

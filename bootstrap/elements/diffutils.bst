@@ -17,9 +17,10 @@ depends:
   type: build
 
 variables:
-  build-triplet: "$(sh /config/config.guess)"
-  host-triplet: "%{triplet}"
-  conf-local: |
+  conf-args: |
+    --build=$(sh /config/config.guess) \
+    --host=%{triplet} \
+    --prefix="%{prefix}" \
     gl_cv_func_getopt_gnu=yes
 
 config:

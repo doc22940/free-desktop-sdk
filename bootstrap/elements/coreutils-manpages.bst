@@ -6,7 +6,7 @@ depends:
   type: build
 
 variables:
-  conf-local: |
+  conf-args: |
     --enable-install-program=hostname \
     --mandir=/coreutils-manpages
 

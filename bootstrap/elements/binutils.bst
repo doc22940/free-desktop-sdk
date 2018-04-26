@@ -18,11 +18,13 @@ depends:
   type: build
 
 variables:
-  build-triplet: "$(sh /config/config.guess)"
-  host-triplet: "%{triplet}"
-  conf-local: |
+  conf-args: |
+    --host=%{triplet} \
+    --build=$(sh /config/config.guess) \
+    --prefix=%{prefix} \
     --disable-werror \
     --with-lib-path="%{libdir}:%{indep-libdir}" \
+    --libdir="%{libdir}" \
     --enable-shared
 
 config:

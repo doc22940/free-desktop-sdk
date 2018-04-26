@@ -10,13 +10,14 @@ depends:
 variables:
   prefix: "%{tools}"
   libdir: "%{tools}/lib"
-  build-triplet: "$(sh /config/config.guess)"
-  host-triplet: "$(sh /config/config.guess)"
-  conf-link-args: "--without-shared"
-  conf-local: |
+  conf-args: |
+    --build=$(sh /config/config.guess) \
+    --host=$(sh /config/config.guess) \
+    --without-shared \
     --without-ada \
     --with-normal \
-    --enable-widec
+    --enable-widec \
+    --prefix=%{prefix}
 
 sources:
 - kind: tar

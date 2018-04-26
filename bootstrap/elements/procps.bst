@@ -19,11 +19,14 @@ depends:
     type: build
 
 variables:
-  build-triplet: "$(sh /config/config.guess)"
-  host-triplet: "%{triplet}"
   # Behavior of malloc cannot be tested when cross-compiling so
   # ac_cv_func_malloc_0_nonull is set manually.
-  conf-local: |
+  conf-args: |
+    --build=$(sh /config/config.guess) \
+    --host=%{triplet} \
+    --prefix=%{prefix} \
+    --sbindir=%{sbindir} \
+    --libdir=%{libdir} \
     --with-ncurses \
     ac_cv_func_malloc_0_nonnull=yes \
     ac_cv_func_realloc_0_nonnull=yes

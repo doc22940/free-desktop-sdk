@@ -20,10 +20,12 @@ depends:
   type: build
 
 variables:
-  build-triplet: "$(sh /config/config.guess)"
-  host-triplet: "%{triplet}"
-
-  conf-local: |
+  conf-args: |
+    --build=$(sh /config/config.guess) \
+    --host=%{triplet} \
+    --libdir=%{libdir} \
+    --disable-static \
+    --prefix=%{prefix} \
     --with-curses \
     CPPFLAGS="${CPPFLAGS} -I%{sysroot}%{includedir}"
 

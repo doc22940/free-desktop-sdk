@@ -18,8 +18,10 @@ depends:
   type: build
 
 variables:
-  build-triplet: "$(sh /config/config.guess)"
-  host-triplet: "%{triplet}"
+  conf-args: |
+    --build=$(sh /config/config.guess) \
+    --host=%{triplet} \
+    --prefix=%{prefix}
 
 config:
   install-commands:

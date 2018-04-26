@@ -18,6 +18,12 @@ config:
       destination: /
 
   commands:
+    - |
+      for f in /etc/rpc /var/db/Makefile; do
+        target="%{install-root}/usr$(dirname "$f")"
+        [ -d "${target}" ] || mkdir -p "${target}"
+        mv "%{install-root}$f" "${target}"
+      done
 
     - |
       for f in /bin /sbin /etc /var; do

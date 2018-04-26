@@ -25,8 +25,11 @@ public:
 
 variables:
   builddir: ''
-  build-triplet: "$(sh /config/config.guess)"
-  host-triplet: "%{triplet}"
+  conf-args: |
+    --build=$(sh /config/config.guess) \
+    --host=%{triplet} \
+    --prefix=%{prefix} \
+    --libdir=%{libdir}
 
 config:
   install-commands:

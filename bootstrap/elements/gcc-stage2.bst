@@ -19,7 +19,7 @@ depends:
 
 variables:
   prefix: "%{tools}"
-  lib: "lib"
+  libdir: "%{tools}/lib"
   (?):
     - target_arch == "arm":
         conf-extra: |
@@ -27,11 +27,10 @@ variables:
           --with-fpu=vfpv3-d16 \
           --with-arch=armv7-a \
           --with-float=hard
-
-  build-triplet: "$(sh /config/config.guess)"
-  host-triplet: "$(sh /config/config.guess)"
-
-  conf-local: |
+  conf-args: |
+    --prefix=%{prefix} \
+    --build=$(sh /config/config.guess) \
+    --host=$(sh /config/config.guess) \
     --target=%{triplet} \
     --enable-multiarch \
     --disable-multilib \

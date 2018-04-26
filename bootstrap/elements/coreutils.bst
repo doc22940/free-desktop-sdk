@@ -21,9 +21,10 @@ depends:
 - filename: acl.bst
 
 variables:
-  build-triplet: "$(sh /config/config.guess)"
-  host-triplet: "%{triplet}"
-  conf-local: |
+  conf-args: |
+    --build=$(sh /config/config.guess) \
+    --host=%{triplet} \
+    --prefix=%{prefix} \
     --enable-install-program=hostname \
     --enable-no-install-program=kill,uptime \
     --enable-acl \
