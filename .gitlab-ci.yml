@@ -339,6 +339,6 @@ publish_arm:
   image: arm64v8/fedora:27
   <<: *flatpak_runtimes_publish
   tags:
-    - armhf
+    - gnome8
   variables:
     ARCH: arm
