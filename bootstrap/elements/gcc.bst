@@ -93,10 +93,12 @@ public:
           - "%{sysroot}%{multiarch_libdir}/libcc1.so"
           - "%{sysroot}%{multiarch_libdir}/libgcc_s.so"
 
+# We use a gcc-7 SVN branch snapshot, hosted by Arch, to avoid
+# https://bugs.webkit.org/show_bug.cgi?id=185194.
 sources:
 - kind: tar
-  url: ftp://ftp.fu-berlin.de/unix/languages/gcc/releases/gcc-7.3.0/gcc-7.3.0.tar.xz
-  ref: 832ca6ae04636adbb430e865a1451adf6979ab44ca1c8374f61fba65645ce15c
+  url: https://sources.archlinux.org/other/gcc/gcc-7.3.1-20180406.tar.xz
+  ref: 41675861b7fdb4ebfb5cbbe1bce456d4e4061ce4df95096075756eaae3263e00
 - kind: tar
   url: http://ftp.gnu.org/gnu/gmp/gmp-6.1.2.tar.xz
   directory: gmp
