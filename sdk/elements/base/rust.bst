@@ -18,7 +18,7 @@ variables:
   # ThinLTO takes a lot of memory. We disable it for some architectures.
   thinlto: "true"
   (?):
-    - target_arch == "i586":
+    - target_arch == "i586" or target_arch == "arm":
         thinlto: "false"
 
 config:
