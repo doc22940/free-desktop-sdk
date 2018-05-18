@@ -17,9 +17,15 @@ depends:
 variables:
   # ThinLTO takes a lot of memory. We disable it for some architectures.
   thinlto: "true"
+  debuginfo-only-std: "false"
   (?):
-    - target_arch == "i586" or target_arch == "arm":
+    - target_arch == "i586":
         thinlto: "false"
+    - target_arch == "arm":
+        thinlto: "false"
+        # armv7 exhausts memory on stage0 librustc w/ debuginfo
+        # https://github.com/rust-lang/rust/issues/45854
+        debuginfo-only-std: "true"
 
 config:
   configure-commands:
@@ -50,6 +56,7 @@ config:
       docdir = "%{datadir}/doc/rust"
       [rust]
       debuginfo = true
+      debuginfo-only-std = %{debuginfo-only-std}
       use-jemalloc = true
       rpath = false
       thinlto = %{thinlto}
