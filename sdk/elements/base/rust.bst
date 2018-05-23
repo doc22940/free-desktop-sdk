@@ -18,11 +18,13 @@ variables:
   # ThinLTO takes a lot of memory. We disable it for some architectures.
   thinlto: "true"
   debuginfo-only-std: "false"
+  rust-target: "%{host-triplet}"
   (?):
     - target_arch == "i586":
         thinlto: "false"
     - target_arch == "arm":
         thinlto: "false"
+        rust-target: "armv7-unknown-linux-gnueabihf"
         # armv7 exhausts memory on stage0 librustc w/ debuginfo
         # https://github.com/rust-lang/rust/issues/45854
         debuginfo-only-std: "true"
@@ -34,9 +36,9 @@ config:
       [llvm]
       link-shared = true
       [build]
-      build = "%{build-triplet}"
-      host = ["%{host-triplet}"]
-      target = ["%{host-triplet}"]
+      build = "%{rust-target}"
+      host = ["%{rust-target}"]
+      target = ["%{rust-target}"]
       cargo = "%{bindir}/cargo"
       rustc = "%{bindir}/rustc"
       submodules = false
@@ -61,7 +63,7 @@ config:
       rpath = false
       thinlto = %{thinlto}
       default-linker = "%{bindir}/gcc"
-      [target.%{host-triplet}]
+      [target.%{rust-target}]
       cc = "%{bindir}/%{host-triplet}-gcc"
       cxx = "%{bindir}/%{host-triplet}-g++"
       linker = "%{bindir}/%{host-triplet}-gcc"

@@ -25,5 +25,5 @@ sources:
           url: https://static.rust-lang.org/dist/rust-1.25.0-aarch64-unknown-linux-gnu.tar.gz
           ref: 19a43451439e515a216d0a885d14203f9a92502ee958abf86bf7000a7d73d73d
       - target_arch == "arm":
-          url: https://static.rust-lang.org/dist/rust-1.25.0-arm-unknown-linux-gnueabihf.tar.gz
-          ref: eb54299b460877b3f0e8d501e753c996f94bd6569b73920b7f20c65975c0ec3f
+          url: https://static.rust-lang.org/dist/rust-1.25.0-armv7-unknown-linux-gnueabihf.tar.gz
+          ref: 3fc17d77c6d7d2053d0b376974b5d3d07994f71f419fd4eb03bfcb890186d7a5
