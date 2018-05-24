@@ -16,7 +16,6 @@ public:
           - "%{libdir}/librsvg-2.so"
 
 sources:
-  # FIXME: 2.41 requires rust
   - kind: tar
-    url: https://download.gnome.org/sources/librsvg/2.40/librsvg-2.40.19.tar.xz
-    ref: 612b4d8b8609036f5d899be3fe70d9866b5f6ac5c971154c1c0ef7242216c1f7
+    url: https://download.gnome.org/sources/librsvg/2.42/librsvg-2.42.4.tar.xz
+    ref: 225280a2a69ee4cce6452a1a92d9297cc1b34a8faface2bf2b4b9da48f044de3
