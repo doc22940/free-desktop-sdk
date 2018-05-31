@@ -1,12 +1,24 @@
-kind: autotools
+kind: meson
 
 depends:
   - filename: bootstrap-import.bst
-  - filename: base/intltool.bst
+  - filename: base/gettext.bst
+    type: build
+  - filename: base/git.bst
+    type: build
+  - filename: base/glib.bst
+  - filename: desktop/gtk-doc.bst
+    type: build
+  - filename: base/meson.bst
+    type: build
+  - filename: base/ninja.bst
     type: build
   - filename: base/pkg-config.bst
     type: build
-  - filename: base/glib.bst
+
+variables:
+  meson-local: |
+    -Dintrospection=false
 
 public:
   bst:
@@ -16,6 +28,6 @@ public:
           - "%{libdir}/libgcab-1.0.so"
 
 sources:
-  - kind: tar
-    url: https://download.gnome.org/sources/gcab/0.7/gcab-0.7.tar.xz
-    ref: a16e5ef88f1c547c6c8c05962f684ec127e078d302549f3dfd2291e167d4adef
+  - kind: git
+    url: https://gitlab.gnome.org/GNOME/gcab
+    ref: e00b3959de71394bae726f834af1be8255cece3b #  v1.1
