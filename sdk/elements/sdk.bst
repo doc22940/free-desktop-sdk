@@ -72,8 +72,15 @@ config:
 
     'Extension org.freedesktop.Sdk.Extension':
       subdirectories: "true"
-      directory: "%{lib}/sdk"
+      directory: "lib/sdk"
       no-autodownload: "true"
+      add-ld-path: "lib"
+
+    'Extension org.freedesktop.BaseSdk.Extension':
+      subdirectories: "true"
+      directory: "lib/sdk"
+      no-autodownload: "true"
+      add-ld-path: "lib"
 
     'Extension org.freedesktop.Platform.VAAPI.Intel':
       directory: "%{lib}/dri/intel-vaapi-driver"
@@ -85,4 +92,6 @@ depends:
   - filename: desktop-image.bst
     type: build
   - filename: basesdk-integration.bst
+    type: build
+  - filename: flatpak-sdk-dirs.bst
     type: build

@@ -28,8 +28,16 @@ config:
       autodelete: "true"
       locale-subset: "true"
 
+    'Extension org.freedesktop.BaseSdk.Extension':
+      subdirectories: "true"
+      directory: "lib/sdk"
+      no-autodownload: "true"
+      add-ld-path: "lib"
+
 depends:
   - filename: base-image.bst
     type: build
   - filename: basesdk-integration.bst
+    type: build
+  - filename: flatpak-sdk-dirs.bst
     type: build
