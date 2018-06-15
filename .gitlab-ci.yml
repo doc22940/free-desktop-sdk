@@ -59,6 +59,9 @@ before_script:
        echo "$GITLAB_CAS_PUSH_KEY" > /etc/ssl/CAS/server.key
     fi
 
+  # Allows SSL authentication for private CAS IP
+  - echo "${GITLAB_CAS_IP} ${BST_CACHE_SERVER_ADDRESS}" > /etc/hosts 
+
   # Use internal network only if we are using x86_64 runners from DigitalOcean
   - |
     if [ "${CI_RUNNER_DESCRIPTION}" == 'manager-runner-freedesktop' ]; then
@@ -77,13 +80,13 @@ before_script:
         echo "projects:" > ~/.config/buildstream.conf
         echo "  base-sdk-bootstrap:" >> ~/.config/buildstream.conf
         echo "    artifacts:" >> ~/.config/buildstream.conf
-        echo "      url: https://${BST_CACHE_SERVER_ADDRESS}/artifacts/" >> ~/.config/buildstream.conf
+        echo "      url: https://${BST_CACHE_SERVER_ADDRESS}:11002" >> ~/.config/buildstream.conf
         echo "      client-key: /etc/ssl/CAS/server.key" >> ~/.config/buildstream.conf
         echo "      client-cert: /etc/ssl/CAS/server.crt" >> ~/.config/buildstream.conf
         echo "      push: true" >> ~/.config/buildstream.conf
         echo "  base-sdk:" >> ~/.config/buildstream.conf
         echo "    artifacts:" >> ~/.config/buildstream.conf
-        echo "      url: https://${BST_CACHE_SERVER_ADDRESS}/artifacts/" >> ~/.config/buildstream.conf
+        echo "      url: https://${BST_CACHE_SERVER_ADDRESS}:11002" >> ~/.config/buildstream.conf
         echo "      client-key: /etc/ssl/CAS/server.key" >> ~/.config/buildstream.conf
         echo "      client-cert: /etc/ssl/CAS/server.crt" >> ~/.config/buildstream.conf
         echo "      push: true" >> ~/.config/buildstream.conf
