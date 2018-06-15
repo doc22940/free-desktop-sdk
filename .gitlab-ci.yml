@@ -60,7 +60,7 @@ before_script:
     fi
 
   # Allows SSL authentication for private CAS IP
-  - echo "${GITLAB_CAS_IP} ${BST_CACHE_SERVER_ADDRESS}" > /etc/hosts 
+  - echo "${GITLAB_CAS_IP} ${BST_CACHE_SERVER_ADDRESS}" >> /etc/hosts 
 
   # Use internal network only if we are using x86_64 runners from DigitalOcean
   - |
