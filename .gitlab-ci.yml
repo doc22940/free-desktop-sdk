@@ -59,14 +59,13 @@ before_script:
        echo "$GITLAB_CAS_PUSH_KEY" > /etc/ssl/CAS/server.key
     fi
 
-  # Allows SSL authentication for private CAS IP
-  - echo "${GITLAB_CAS_IP} ${BST_CACHE_SERVER_ADDRESS}" >> /etc/hosts 
-
   # Use internal network only if we are using x86_64 runners from DigitalOcean
   - |
     if [ "${CI_RUNNER_DESCRIPTION}" == 'manager-runner-freedesktop' ]; then
-        export BST_CACHE_SERVER_ADDRESS="${GITLAB_CAS_IP}"
+        #export BST_CACHE_SERVER_ADDRESS="${GITLAB_CAS_IP}"
         export BST_CACHE_SSH_USER='artifacts-internal'
+        # Allows SSL authentication for private CAS IP
+        echo "${GITLAB_CAS_IP} ${BST_CACHE_SERVER_ADDRESS}" >> /etc/hosts 
     fi
 
   # Trust the host key of the cache server.
