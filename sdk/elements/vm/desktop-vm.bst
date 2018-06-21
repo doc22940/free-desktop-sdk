@@ -23,3 +23,5 @@ depends:
   type: build
 - filename: vm/initramfs/initramfs-gz.bst
   type: build
+- filename: vm/pulseaudio.bst
+  type: build
