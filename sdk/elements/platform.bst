@@ -59,6 +59,10 @@ config:
       directory: "%{lib}/dri/intel-vaapi-driver"
       autodelete: "false"
 
+    'Extension org.freedesktop.Platform.ffmpeg':
+      directory: "%{lib}/ffmpeg"
+      autodelete: "false"
+
 depends:
   - filename: desktop-platform-image.bst
     type: build
