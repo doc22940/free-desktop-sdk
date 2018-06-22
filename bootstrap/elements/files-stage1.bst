@@ -22,5 +22,5 @@ variables:
 
 sources:
   - kind: tar
-    url: ftp://ftp.astron.com/pub/file/file-5.32.tar.gz
+    url: https://sources.voidlinux.eu/file-5.32/
     ref: 8639dc4d1b21e232285cd483604afc4a6ee810710e00e579dbe9591681722b50
