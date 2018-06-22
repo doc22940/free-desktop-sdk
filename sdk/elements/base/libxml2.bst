@@ -24,9 +24,9 @@ public:
           - "%{libdir}/libxml2.so"
 
 sources:
-  - kind: tar
-    url: ftp://xmlsoft.org/libxml2/libxml2-2.9.8.tar.gz
-    ref: 0b74e51595654f958148759cfef0993114ddccccbb6f31aee018f3558e8e2732
+  - kind: git
+    url: https://gitlab.gnome.org/GNOME/libxml2
+    ref: 35e83488505d501864826125cfe6a7950d6cba78
   - kind: patch
     path: patches/libxml2-python-in-nodeWrap-deal-with-name-is-None-case.patch
   - kind: patch
