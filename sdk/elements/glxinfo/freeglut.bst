@@ -22,6 +22,6 @@ environment:
   CFLAGS: "-O2 -g -fstack-protector-strong -I/app/include"
 
 sources:
-  - kind: tar
-    url: http://prdownloads.sourceforge.net/freeglut/freeglut-3.0.0.tar.gz
-    ref: 2a43be8515b01ea82bcfa17d29ae0d40bd128342f0930cd1f375f1ff999f76a2
+  - kind: git
+    url: https://github.com/dcnieho/FreeGLUT/
+    ref: 44cf4b5b85cf6037349c1c8740b2531d7278207d
