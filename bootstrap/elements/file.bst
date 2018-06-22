@@ -40,5 +40,5 @@ public:
 
 sources:
   - kind: tar
-    url: https://sources.voidlinux.eu/file-5.32/
+    url: https://sources.voidlinux.eu/file-5.32/file-5.32.tar.gz
     ref: 8639dc4d1b21e232285cd483604afc4a6ee810710e00e579dbe9591681722b50
