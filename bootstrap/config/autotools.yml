@@ -1,0 +1,67 @@
+variables:
+  builddir: "bst_build_dir"
+  remove_libtool_modules: "true"
+  remove_libtool_libraries: "true"
+  delete_libtool_files: |
+    find "%{install-root}" -name "*.la" -print0 | while read -d '' -r file; do
+      if grep '^shouldnotlink=yes$' "${file}" &>/dev/null; then
+        if %{remove_libtool_modules}; then
+          echo "Removing ${file}."
+          rm "${file}"
+        else
+          echo "Not removing ${file}."
+        fi
+      else
+        if %{remove_libtool_libraries}; then
+          echo "Removing ${file}."
+          rm "${file}"
+        else
+          echo "Not removing ${file}."
+        fi
+      fi
+    done
+  autogen: |
+    export NOCONFIGURE=1;
+    if [ ! -e configure ]; then
+      if [ -e autogen ]; then ./autogen;
+      elif [ -e autogen.sh ]; then ./autogen.sh;
+      elif [ -e bootstrap ]; then ./bootstrap;
+      elif [ -e bootstrap.sh ]; then ./bootstrap.sh;
+      else autoreconf -ivf;
+      fi
+    fi
+  conf-global: |
+    %{conf-deterministic} \
+    %{conf-link-args} \
+    %{conf-build} \
+    %{conf-host}
+
+config:
+  configure-commands:
+    - |
+      %{autogen}
+      if [ -n "%{builddir}" ]; then
+        mkdir %{builddir}
+        cd %{builddir}
+        reldir=..
+      else
+        reldir=.
+      fi
+      ${reldir}/%{configure}
+
+  build-commands:
+    - |
+      if [ -n "%{builddir}" ]; then
+        cd %{builddir}
+      fi
+      %{make}
+
+  install-commands:
+    - |
+      if [ -n "%{builddir}" ]; then
+        cd %{builddir}
+      fi
+      %{make-install}
+
+    - |
+      %{delete_libtool_files}

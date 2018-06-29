@@ -7,4 +7,7 @@ public:
   bst:
     integration-commands:
       - |
+        [ -f /etc/ld.so.conf ] || touch /etc/ld.so.conf
+
+      - |
         ldconfig

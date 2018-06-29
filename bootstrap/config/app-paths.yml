@@ -1,0 +1,3 @@
+prefix: "/app"
+debugdir: "/usr/lib/debug"
+sysroot: ""

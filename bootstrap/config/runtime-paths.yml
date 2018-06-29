@@ -1,0 +1,6 @@
+lib: "lib/%{gcc_triplet}"
+indep-libdir: "%{prefix}/lib"
+sbindir: "%{bindir}"
+debugdir: "%{indep-libdir}/debug"
+sourcedir: "%{debugdir}/source"
+sysroot: ""

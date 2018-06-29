@@ -1,0 +1,34 @@
+variables:
+  (@):
+    - paths.yml
+    - app-paths.yml
+    - triplet.yml
+
+shell:
+  (@):
+    - shell.yml
+
+  # Extend with flatpak specific path
+  environment:
+    PATH: "/app/bin:/usr/bin"
+    LD_LIBRARY_PATH: "/app/lib"
+
+environment:
+  (@):
+    - environment.yml
+
+(@):
+  - strip-binaries.yml
+
+elements:
+  cmake:
+    (@):
+      - cmake.yml
+
+  autotools:
+    (@):
+      - autotools.yml
+
+split-rules:
+  (@):
+    - split-rules.yml

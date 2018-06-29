@@ -12,7 +12,7 @@ variables:
     - target_arch == "i586":
         kernel_arch: i386
     - target_arch != "aarch64" and target_arch != "i586":
-        kernel_arch: "%{target_arch}"
+        kernel_arch: "%{arch}"
 
 config:
   install-commands:
