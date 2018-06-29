@@ -1,0 +1,13 @@
+conf-deterministic: |
+    --enable-deterministic-archives
+conf-link-args: |
+  --enable-shared \
+  --disable-static
+conf-host: |
+  --host=%{host-triplet}
+conf-build: |
+  --build=%{build-triplet}
+host-triplet: "%{triplet}"
+build-triplet: "%{triplet}"
+sysconfdir: "%{prefix}/etc"
+localstatedir: "%{prefix}/var"

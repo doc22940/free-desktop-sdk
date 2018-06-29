@@ -1,0 +1,9 @@
+gcc_triplet: "%{gcc_arch}-linux-%{abi}"
+triplet: "%{arch}-unknown-linux-%{abi}"
+gcc_arch: "%{arch}"
+abi: "gnu"
+(?):
+  - target_arch == "i586":
+      gcc_arch: "i386"
+  - target_arch == "arm":
+      abi: "gnueabihf"
