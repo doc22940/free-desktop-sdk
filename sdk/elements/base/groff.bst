@@ -1,24 +1,25 @@
 kind: autotools
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: base/perl.bst
-  - filename: base/texinfo.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: base/perl.bst
+- filename: base/texinfo.bst
+  type: build
 
 config:
   build-commands:
     (<):
       # This is a workaround for a bug with parallel builds.
-      - |
-        cd "%{builddir}"
-        make -j1 arch/misc
+    - |
+      cd "%{builddir}"
+      make -j1 arch/misc
 
 sources:
-  - kind: tar
-    url: https://ftp.gnu.org/gnu/groff/groff-1.22.3.tar.gz
-    ref: 3a48a9d6c97750bfbd535feeb5be0111db6406ddb7bb79fc680809cda6d828a5
-  - kind: patch
-    path: patches/groff-reproducible-build.patch
-  - kind: patch
-    path: patches/groff-reproducible-build-2.patch
+- kind: tar
+  url: https://ftp.gnu.org/gnu/groff/groff-1.22.3.tar.gz
+  ref: 3a48a9d6c97750bfbd535feeb5be0111db6406ddb7bb79fc680809cda6d828a5
+  etag: '"3fea64-50704a5b9cc9b"'
+- kind: patch
+  path: patches/groff-reproducible-build.patch
+- kind: patch
+  path: patches/groff-reproducible-build-2.patch

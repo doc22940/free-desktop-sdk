@@ -1,22 +1,22 @@
 kind: cmake
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: base/cmake.bst
-    type: build
-  - filename: base/ninja.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: base/cmake.bst
+  type: build
+- filename: base/ninja.bst
+  type: build
 
 variables:
   (?):
-    - target_arch == "i586":
-        targets: "X86;AMDGPU;NVPTX"
-    - target_arch == "x86_64":
-        targets: "X86;AMDGPU;NVPTX"
-    - target_arch == "arm":
-        targets: "ARM"
-    - target_arch == "aarch64":
-        targets: "AArch64"
+  - target_arch == "i586":
+      targets: "X86;AMDGPU;NVPTX"
+  - target_arch == "x86_64":
+      targets: "X86;AMDGPU;NVPTX"
+  - target_arch == "arm":
+      targets: "ARM"
+  - target_arch == "aarch64":
+      targets: "AArch64"
 
   cmake-local: |
     -DLLVM_ENABLE_ASSERTIONS:BOOL=OFF \
@@ -44,8 +44,8 @@ variables:
 config:
   install-commands:
     (>):
-      - |
-        rm -f "%{install-root}%{libdir}"/lib*.a
+    - |
+      rm -f "%{install-root}%{libdir}"/lib*.a
 
 public:
   bst:
@@ -58,6 +58,7 @@ public:
         - '%{libdir}/libLTO.so'
 
 sources:
-  - kind: tar
-    url: https://releases.llvm.org/6.0.0/llvm-6.0.0.src.tar.xz
-    ref: 1ff53c915b4e761ef400b803f07261ade637b0c269d99569f18040f3dcee4408
+- kind: tar
+  url: https://releases.llvm.org/6.0.0/llvm-6.0.0.src.tar.xz
+  ref: 1ff53c915b4e761ef400b803f07261ade637b0c269d99569f18040f3dcee4408
+  etag: '"5aa110b2-181fcb0"'

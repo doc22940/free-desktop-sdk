@@ -1,10 +1,10 @@
 kind: autotools
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: base/libtiff.bst
-  - filename: base/jpeg.bst
-  - filename: base/openssl.bst
+- filename: bootstrap-import.bst
+- filename: base/libtiff.bst
+- filename: base/jpeg.bst
+- filename: base/openssl.bst
 
 variables:
   conf-local: |
@@ -17,9 +17,10 @@ public:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/liblcms2.so"
+        - "%{libdir}/liblcms2.so"
 
 sources:
-  - kind: tar
-    url: https://download.sourceforge.net/lcms/lcms2-2.9.tar.gz
-    ref: 48c6fdf98396fa245ed86e622028caf49b96fa22f3e5734f853f806fbc8e7d20
+- kind: tar
+  url: https://download.sourceforge.net/lcms/lcms2-2.9.tar.gz
+  ref: 48c6fdf98396fa245ed86e622028caf49b96fa22f3e5734f853f806fbc8e7d20
+  etag: '"a775b9-55ed34f0e4940"'

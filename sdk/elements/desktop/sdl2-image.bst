@@ -1,8 +1,8 @@
 kind: autotools
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: desktop/sdl2.bst
+- filename: bootstrap-import.bst
+- filename: desktop/sdl2.bst
 
 variables:
   conf-local: |
@@ -16,9 +16,10 @@ public:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libSDL2_image.so"
+        - "%{libdir}/libSDL2_image.so"
 
 sources:
-  - kind: tar
-    url: https://www.libsdl.org/projects/SDL_image/release/SDL2_image-2.0.2.tar.gz
-    ref: 72df075aef91fc4585098ea7e0b072d416ec7599aa10473719fbe51e9b8f6ce8
+- kind: tar
+  url: https://www.libsdl.org/projects/SDL_image/release/SDL2_image-2.0.2.tar.gz
+  ref: 72df075aef91fc4585098ea7e0b072d416ec7599aa10473719fbe51e9b8f6ce8
+  etag: '"847614-55c388c2dbd61"'

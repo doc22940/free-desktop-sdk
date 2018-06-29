@@ -1,11 +1,11 @@
 kind: autotools
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: base/libtasn1.bst
-  - filename: base/libffi.bst
-  - filename: base/pkg-config.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: base/libtasn1.bst
+- filename: base/libffi.bst
+- filename: base/pkg-config.bst
+  type: build
 
 variables:
   conf-local: |
@@ -16,10 +16,11 @@ public:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libp11-kit.so"
+        - "%{libdir}/libp11-kit.so"
 
 sources:
-  - kind: tar
-    url: https://github.com/p11-glue/p11-kit/releases/download/0.23.9/p11-kit-0.23.9.tar.gz
-    ref: e1c1649c335107a8d33cf3762eb7f57b2d0681f0c7d8353627293a58d6b4db63
+- kind: tar
+  url: https://github.com/p11-glue/p11-kit/releases/download/0.23.9/p11-kit-0.23.9.tar.gz
+  ref: e1c1649c335107a8d33cf3762eb7f57b2d0681f0c7d8353627293a58d6b4db63
 
+  etag: '"5fcc836b0b7f7b834ff0998aed2aa9e6"'

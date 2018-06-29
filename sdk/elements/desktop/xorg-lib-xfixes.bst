@@ -2,19 +2,20 @@ kind: autotools
 description: X.org lib xfixes
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: desktop/xorg-lib-x11.bst
-  - filename: base/pkg-config.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: desktop/xorg-lib-x11.bst
+- filename: base/pkg-config.bst
+  type: build
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libXfixes.so"
+        - "%{libdir}/libXfixes.so"
 
 sources:
-  - kind: tar
-    url: https://www.x.org/archive/individual/lib/libXfixes-5.0.3.tar.bz2
-    ref: de1cd33aff226e08cefd0e6759341c2c8e8c9faf8ce9ac6ec38d43e287b22ad6
+- kind: tar
+  url: https://www.x.org/archive/individual/lib/libXfixes-5.0.3.tar.bz2
+  ref: de1cd33aff226e08cefd0e6759341c2c8e8c9faf8ce9ac6ec38d43e287b22ad6
+  etag: '"47e00-53e0fd13e7350"'

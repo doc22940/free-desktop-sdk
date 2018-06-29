@@ -1,10 +1,16 @@
 kind: autotools
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: base/xz.bst
-  - filename: base/python3.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: base/xz.bst
+- filename: base/python3.bst
+  type: build
+- filename: base/autoconf.bst
+  type: build
+- filename: base/automake.bst
+  type: build
+- filename: base/libtool.bst
+  type: build
 
 variables:
   conf-local: |
@@ -21,13 +27,13 @@ public:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libxml2.so"
+        - "%{libdir}/libxml2.so"
 
 sources:
-  - kind: git
-    url: https://gitlab.gnome.org/GNOME/libxml2
-    ref: 35e83488505d501864826125cfe6a7950d6cba78
-  - kind: patch
-    path: patches/libxml2-python-in-nodeWrap-deal-with-name-is-None-case.patch
-  - kind: patch
-    path: patches/libxml2-python3-unicode-errors.patch
+- kind: git
+  url: https://gitlab.gnome.org/GNOME/libxml2
+  ref: 35e83488505d501864826125cfe6a7950d6cba78
+- kind: patch
+  path: patches/libxml2-python-in-nodeWrap-deal-with-name-is-None-case.patch
+- kind: patch
+  path: patches/libxml2-python3-unicode-errors.patch

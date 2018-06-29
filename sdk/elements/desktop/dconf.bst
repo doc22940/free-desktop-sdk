@@ -1,27 +1,27 @@
 kind: autotools
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: base/pkg-config.bst
-    type: build
-  - filename: base/python3.bst
-  - filename: base/glib.bst
+- filename: bootstrap-import.bst
+- filename: base/pkg-config.bst
+  type: build
+- filename: base/python3.bst
+- filename: base/glib.bst
 
 variables:
   conf-local: |
-      --disable-static \
-      --disable-man
+    --disable-static \
+    --disable-man
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libdconf.so"
+        - "%{libdir}/libdconf.so"
 
 sources:
-  - kind: tar
-    url: https://download.gnome.org/sources/dconf/0.26/dconf-0.26.1.tar.xz
-    ref: d583b1f7fc93b879e2956acc6a26ea05a445a0002158aeef80c8e378e1414535
-  - kind: patch
-    path: patches/dconf-override.patch
+- kind: tar
+  url: https://download.gnome.org/sources/dconf/0.26/dconf-0.26.1.tar.xz
+  ref: d583b1f7fc93b879e2956acc6a26ea05a445a0002158aeef80c8e378e1414535
+- kind: patch
+  path: patches/dconf-override.patch

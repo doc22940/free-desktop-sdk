@@ -1,28 +1,28 @@
 kind: manual
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: desktop/fontconfig.bst
-  - filename: desktop/freetype.bst
-  - filename: desktop/mesa.bst
-  - filename: desktop/mpg123.bst
-  - filename: desktop/openal.bst
-  - filename: desktop/pulseaudio.bst
-  - filename: desktop/sdl2.bst
-  - filename: base/gnutls.bst
-  - filename: base/speex.bst
-  - filename: base/libtheora.bst
-  - filename: base/libvorbis.bst
-  - filename: base/pkg-config.bst
-    type: build
-  - filename: base/nasm.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: desktop/fontconfig.bst
+- filename: desktop/freetype.bst
+- filename: desktop/mesa.bst
+- filename: desktop/mpg123.bst
+- filename: desktop/openal.bst
+- filename: desktop/pulseaudio.bst
+- filename: desktop/sdl2.bst
+- filename: base/gnutls.bst
+- filename: base/speex.bst
+- filename: base/libtheora.bst
+- filename: base/libvorbis.bst
+- filename: base/pkg-config.bst
+  type: build
+- filename: base/nasm.bst
+  type: build
 
 variables:
   ffmpeg-arch: "%{arch}"
   (?):
-    - target_arch == "i586":
-        ffmpeg-arch: x86
+  - target_arch == "i586":
+      ffmpeg-arch: x86
   conf-local: |
     --prefix=%{prefix} \
     --libdir=%{libdir} \
@@ -65,28 +65,28 @@ public:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libavdevice.so"
-          - "%{libdir}/libavcodec.so"
-          - "%{libdir}/libswscale.so"
-          - "%{libdir}/libpostproc.so"
-          - "%{libdir}/libavutil.so"
-          - "%{libdir}/libavfilter.so"
-          - "%{libdir}/libavformat.so"
-          - "%{libdir}/libswresample.so"
+        - "%{libdir}/libavdevice.so"
+        - "%{libdir}/libavcodec.so"
+        - "%{libdir}/libswscale.so"
+        - "%{libdir}/libpostproc.so"
+        - "%{libdir}/libavutil.so"
+        - "%{libdir}/libavfilter.so"
+        - "%{libdir}/libavformat.so"
+        - "%{libdir}/libswresample.so"
 
 sources:
 - kind: git
   url: https://github.com/FFmpeg/FFmpeg.git
   track: release/3.4
-  ref: bc839fb39dc376d462856863de2933f0b6b0351a # n3.4.1
+  ref: 41315d5c7d48d939e218e4f62fe7acb36d33a958 # n3.4.1
 
 # ffmpeg is not using autotools, but a configure and Makefile files
 config:
   configure-commands:
-    - ./configure %{conf-local}
+  - ./configure %{conf-local}
 
   build-commands:
-    - make
+  - make
 
   install-commands:
-    - make -j1 DESTDIR="%{install-root}" install
+  - make -j1 DESTDIR="%{install-root}" install

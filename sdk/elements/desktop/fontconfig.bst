@@ -1,18 +1,18 @@
 kind: autotools
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: desktop/freetype.bst
-  - filename: base/gperf.bst
-    type: build
-  - filename: base/libtool.bst
-    type: build
-  - filename: base/automake.bst
-    type: build
-  - filename: base/gettext.bst
-    type: build
-  - filename: base/pkg-config.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: desktop/freetype.bst
+- filename: base/gperf.bst
+  type: build
+- filename: base/libtool.bst
+  type: build
+- filename: base/automake.bst
+  type: build
+- filename: base/gettext.bst
+  type: build
+- filename: base/pkg-config.bst
+  type: build
 
 variables:
   conf-local: |
@@ -29,19 +29,19 @@ public:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libfontconfig.so"
+        - "%{libdir}/libfontconfig.so"
 
     integration-commands:
-      - |
-        if [ -d "%{datadir}/fonts" ]; then
-          touch -d @0 "%{datadir}/fonts" /usr/share/fonts/*
-          fc-cache -rs
-        fi
+    - |
+      if [ -d "%{datadir}/fonts" ]; then
+        touch -d @0 "%{datadir}/fonts" /usr/share/fonts/*
+        fc-cache -rs
+      fi
 
 sources:
-  - kind: git
-    url: freedesktop:fontconfig
-    track: master
-    ref: f075ca1aeaedbc288d42a70df5cf2fd069ea0d10 #  2.13
-  - kind: local
-    path: files/fontconfig-flatpak.conf
+- kind: git
+  url: freedesktop:fontconfig
+  track: master
+  ref: 6cc99d6a82ad67d2f5eac887b28bca13c0dfddde   #  2.13
+- kind: local
+  path: files/fontconfig-flatpak.conf

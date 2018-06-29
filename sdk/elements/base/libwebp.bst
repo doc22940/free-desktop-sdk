@@ -1,11 +1,11 @@
 kind: autotools
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: base/libpng.bst
-  - filename: base/jpeg.bst
-  - filename: base/giflib.bst
-  - filename: base/libtiff.bst
+- filename: bootstrap-import.bst
+- filename: base/libpng.bst
+- filename: base/jpeg.bst
+- filename: base/giflib.bst
+- filename: base/libtiff.bst
 
 variables:
   conf-local: |
@@ -25,12 +25,13 @@ public:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libwebpdecoder.so"
-          - "%{libdir}/libwebpdemux.so"
-          - "%{libdir}/libwebpmux.so"
-          - "%{libdir}/libwebp.so"
+        - "%{libdir}/libwebpdecoder.so"
+        - "%{libdir}/libwebpdemux.so"
+        - "%{libdir}/libwebpmux.so"
+        - "%{libdir}/libwebp.so"
 
 sources:
-  - kind: tar
-    url: https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-0.6.1.tar.gz
-    ref: 06503c782d9f151baa325591c3579c68ed700ffc62d4f5a32feead0ff017d8ab
+- kind: tar
+  url: https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-0.6.1.tar.gz
+  ref: 06503c782d9f151baa325591c3579c68ed700ffc62d4f5a32feead0ff017d8ab
+  etag: '"b49ce9c3e3e9acae4d91bca44bb85a72"'

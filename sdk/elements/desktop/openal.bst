@@ -1,13 +1,13 @@
 kind: cmake
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: desktop/pulseaudio.bst
-  - filename: desktop/sdl2.bst
-  - filename: base/cmake.bst
-    type: build
-  - filename: base/ninja.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: desktop/pulseaudio.bst
+- filename: desktop/sdl2.bst
+- filename: base/cmake.bst
+  type: build
+- filename: base/ninja.bst
+  type: build
 
 variables:
   cmake-local: |
@@ -19,14 +19,14 @@ public:
     split-rules:
       devel:
         (>):
-          - "%{bindir}/alrecord"
-          - "%{bindir}/altonegen"
-          - "%{bindir}/bsincgen"
-          - "%{bindir}/makehrtf"
-          - "%{bindir}/openal-info"
-          - "%{libdir}/libopenal.so"
+        - "%{bindir}/alrecord"
+        - "%{bindir}/altonegen"
+        - "%{bindir}/bsincgen"
+        - "%{bindir}/makehrtf"
+        - "%{bindir}/openal-info"
+        - "%{libdir}/libopenal.so"
 
 sources:
-  - kind: git
-    url: https://github.com/kcat/openal-soft
-    ref: ce6076091bac3c00cd10803916e8911495580bd0
+- kind: git
+  url: https://github.com/kcat/openal-soft
+  ref: ce6076091bac3c00cd10803916e8911495580bd0

@@ -1,14 +1,14 @@
 kind: cmake
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: desktop/xorg-lib-x11.bst
-  - filename: desktop/xorg-lib-xrandr.bst
-  - filename: desktop/wayland.bst
-  - filename: base/cmake.bst
-    type: build
-  - filename: base/ninja.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: desktop/xorg-lib-x11.bst
+- filename: desktop/xorg-lib-xrandr.bst
+- filename: desktop/wayland.bst
+- filename: base/cmake.bst
+  type: build
+- filename: base/ninja.bst
+  type: build
 
 variables:
   lib: "lib/%{gcc_triplet}"
@@ -27,21 +27,22 @@ variables:
 config:
   install-commands:
     (>):
-      - |
-        mkdir -p "%{install-root}%{libdir}/GL/vulkan/icd.d"
-        mkdir -p "%{install-root}%{sysconfdir}/vulkan"
-        ln -s "%{libdir}/GL/vulkan" "%{install-root}%{sysconfdir}/vulkan"
-        mkdir -p "%{install-root}%{datadir}/vulkan/icd.d"
+    - |
+      mkdir -p "%{install-root}%{libdir}/GL/vulkan/icd.d"
+      mkdir -p "%{install-root}%{sysconfdir}/vulkan"
+      ln -s "%{libdir}/GL/vulkan" "%{install-root}%{sysconfdir}/vulkan"
+      mkdir -p "%{install-root}%{datadir}/vulkan/icd.d"
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libvulkan.so"
+        - "%{libdir}/libvulkan.so"
 
 sources:
-  - kind: tar
-    url: https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers/archive/sdk-1.1.73.0.tar.gz
-    ref: ab6bd8162b246bc5d73dcfb3b69ed7a35b12b739735493f47304b0fc852463e1
+- kind: tar
+  url: https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers/archive/sdk-1.1.73.0.tar.gz
+  ref: ab6bd8162b246bc5d73dcfb3b69ed7a35b12b739735493f47304b0fc852463e1
 
+  etag: '"5998d6f444a85e6381b7a089ebf3f9e86482a31d"'

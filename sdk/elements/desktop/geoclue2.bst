@@ -1,13 +1,13 @@
 kind: autotools
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: desktop/json-glib.bst
-  - filename: desktop/libsoup.bst
-  - filename: base/pkg-config.bst
-    type: build
-  - filename: base/intltool.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: desktop/json-glib.bst
+- filename: desktop/libsoup.bst
+- filename: base/pkg-config.bst
+  type: build
+- filename: base/intltool.bst
+  type: build
 
 variables:
   conf-local: |
@@ -19,21 +19,22 @@ variables:
 config:
   install-commands:
     (>):
-      - |
-        rm -r "%{install-root}%{datadir}/applications"
-        rm -r "%{install-root}%{sysconfdir}/dbus-1/system.d"
-        rm -r "%{install-root}%{libexecdir}"
-        rm -r "%{install-root}%{datadir}/dbus-1/system-services"
+    - |
+      rm -r "%{install-root}%{datadir}/applications"
+      rm -r "%{install-root}%{sysconfdir}/dbus-1/system.d"
+      rm -r "%{install-root}%{libexecdir}"
+      rm -r "%{install-root}%{datadir}/dbus-1/system-services"
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{datadir}/dbus-1/interfaces/org.freedesktop.GeoClue2*"
-          - "%{libdir}/libgeoclue-2.so"
+        - "%{datadir}/dbus-1/interfaces/org.freedesktop.GeoClue2*"
+        - "%{libdir}/libgeoclue-2.so"
 
 sources:
-  - kind: tar
-    url: https://www.freedesktop.org/software/geoclue/releases/2.4/geoclue-2.4.7.tar.xz
-    ref: d17b96bb5799a84723385ea5704235565e9c3dedd2b7afac475a06e550ae0ea6
+- kind: tar
+  url: https://www.freedesktop.org/software/geoclue/releases/2.4/geoclue-2.4.7.tar.xz
+  ref: d17b96bb5799a84723385ea5704235565e9c3dedd2b7afac475a06e550ae0ea6
+  etag: '"59f58-550aa75d14cc3"'

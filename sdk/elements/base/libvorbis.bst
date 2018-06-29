@@ -1,19 +1,20 @@
 kind: autotools
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: base/libogg.bst
+- filename: bootstrap-import.bst
+- filename: base/libogg.bst
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libvorbis.so"
-          - "%{libdir}/libvorbisfile.so"
-          - "%{libdir}/libvorbisenc.so"
+        - "%{libdir}/libvorbis.so"
+        - "%{libdir}/libvorbisfile.so"
+        - "%{libdir}/libvorbisenc.so"
 
 sources:
-  - kind: tar
-    url: https://downloads.xiph.org/releases/vorbis/libvorbis-1.3.5.tar.xz
-    ref: 54f94a9527ff0a88477be0a71c0bab09a4c3febe0ed878b24824906cd4b0e1d1
+- kind: tar
+  url: https://downloads.xiph.org/releases/vorbis/libvorbis-1.3.5.tar.xz
+  ref: 54f94a9527ff0a88477be0a71c0bab09a4c3febe0ed878b24824906cd4b0e1d1
+  etag: '"1234b8-510576852b481"'

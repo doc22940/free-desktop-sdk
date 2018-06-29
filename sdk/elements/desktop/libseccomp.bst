@@ -1,16 +1,17 @@
 kind: autotools
 
 depends:
-  - filename: bootstrap-import.bst
+- filename: bootstrap-import.bst
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libseccomp.so"
+        - "%{libdir}/libseccomp.so"
 
 sources:
-  - kind: tar
-    url: https://github.com/seccomp/libseccomp/releases/download/v2.3.2/libseccomp-2.3.2.tar.gz
-    ref: 3ddc8c037956c0a5ac19664ece4194743f59e1ccd4adde848f4f0dae7f77bca1
+- kind: tar
+  url: https://github.com/seccomp/libseccomp/releases/download/v2.3.2/libseccomp-2.3.2.tar.gz
+  ref: 3ddc8c037956c0a5ac19664ece4194743f59e1ccd4adde848f4f0dae7f77bca1
+  etag: '"e74a626bea0cd607c23229b10b5f93da"'

@@ -1,7 +1,7 @@
 kind: autotools
 
 depends:
-  - filename: bootstrap-import.bst
+- filename: bootstrap-import.bst
 
 variables:
   conf-local: |
@@ -12,11 +12,12 @@ public:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libsqlite3.so"
+        - "%{libdir}/libsqlite3.so"
 
 sources:
-  - kind: tar
-    url: https://sqlite.org/2017/sqlite-autoconf-3210000.tar.gz
-    ref: d7dd516775005ad87a57f428b6f86afd206cb341722927f104d3f0cf65fbbbe3
+- kind: tar
+  url: https://sqlite.org/2017/sqlite-autoconf-3210000.tar.gz
+  ref: d7dd516775005ad87a57f428b6f86afd206cb341722927f104d3f0cf65fbbbe3
 
 
+  etag: '"m5a6100cds2732ee"'

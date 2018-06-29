@@ -1,19 +1,19 @@
 kind: autotools
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: base/perl.bst
-  - filename: base/python3.bst
-  - filename: base/gnupg.bst
-  - filename: base/curl.bst
-  - filename: base/openssl.bst
-  - filename: base/pcre2.bst
-  - filename: base/expat.bst
-  - filename: base/libffi.bst
-  - filename: base/gettext.bst
-    type: build
-  - filename: base/tar.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: base/perl.bst
+- filename: base/python3.bst
+- filename: base/gnupg.bst
+- filename: base/curl.bst
+- filename: base/openssl.bst
+- filename: base/pcre2.bst
+- filename: base/expat.bst
+- filename: base/libffi.bst
+- filename: base/gettext.bst
+  type: build
+- filename: base/tar.bst
+  type: build
 
 variables:
   builddir: ''
@@ -28,10 +28,11 @@ config:
 
   install-commands:
     (>):
-      - |
-        find "%{install-root}" -type f -name perllocal.pod -delete
+    - |
+      find "%{install-root}" -type f -name perllocal.pod -delete
 
 sources:
-  - kind: tar
-    url: https://github.com/git/git/archive/v2.15.0.tar.gz
-    ref: 6b33b2b0e962338ac759a5102dfb777f280279b40ba0bde5dde0591b35520f2b
+- kind: tar
+  url: https://github.com/git/git/archive/v2.15.0.tar.gz
+  ref: 6b33b2b0e962338ac759a5102dfb777f280279b40ba0bde5dde0591b35520f2b
+  etag: '"cb5918aa0d50f50e83787f65c2ddc3dcb10159fe"'

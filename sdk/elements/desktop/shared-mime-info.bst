@@ -1,18 +1,19 @@
 kind: autotools
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: base/intltool.bst
-    type: build
-  - filename: base/pkg-config.bst
-    type: build
-  - filename: base/libxml2.bst
-  - filename: base/glib.bst
+- filename: bootstrap-import.bst
+- filename: base/intltool.bst
+  type: build
+- filename: base/pkg-config.bst
+  type: build
+- filename: base/libxml2.bst
+- filename: base/glib.bst
 
 variables:
-  max-jobs: 1
+  max-jobs: '1'
 
 sources:
-  - kind: tar
-    url: https://freedesktop.org/~hadess/shared-mime-info-1.9.tar.xz
-    ref: 5c0133ec4e228e41bdf52f726d271a2d821499c2ab97afd3aa3d6cf43efcdc83
+- kind: tar
+  url: https://freedesktop.org/~hadess/shared-mime-info-1.9.tar.xz
+  ref: 5c0133ec4e228e41bdf52f726d271a2d821499c2ab97afd3aa3d6cf43efcdc83
+  etag: '"945a0-5597528d48247"'

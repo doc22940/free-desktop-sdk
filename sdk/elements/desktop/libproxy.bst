@@ -1,11 +1,11 @@
 kind: cmake
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: base/cmake.bst
-    type: build
-  - filename: base/ninja.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: base/cmake.bst
+  type: build
+- filename: base/ninja.bst
+  type: build
 
 variables:
   cmake-local: |
@@ -27,9 +27,10 @@ public:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libproxy.so"
+        - "%{libdir}/libproxy.so"
 
 sources:
-  - kind: tar
-    url: https://github.com/libproxy/libproxy/releases/download/0.4.15/libproxy-0.4.15.tar.xz
-    ref: 654db464120c9534654590b6683c7fa3887b3dad0ca1c4cd412af24fbfca6d4f
+- kind: tar
+  url: https://github.com/libproxy/libproxy/releases/download/0.4.15/libproxy-0.4.15.tar.xz
+  ref: 654db464120c9534654590b6683c7fa3887b3dad0ca1c4cd412af24fbfca6d4f
+  etag: '"f6b1d2a1e17a99cd3debaae6d04ab152"'

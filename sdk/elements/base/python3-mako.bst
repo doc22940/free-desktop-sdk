@@ -1,10 +1,10 @@
 kind: distutils
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: base/python3.bst
-  - filename: base/python3-setuptools.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: base/python3.bst
+- filename: base/python3-setuptools.bst
+  type: build
 
 variables:
   python: python3
@@ -12,10 +12,11 @@ variables:
 config:
   install-commands:
     (>):
-      - |
-        mv %{install-root}%{bindir}/mako-render %{install-root}%{bindir}/mako-render-3
+    - |
+      mv %{install-root}%{bindir}/mako-render %{install-root}%{bindir}/mako-render-3
 
 sources:
-  - kind: tar
-    url: https://pypi.python.org/packages/eb/f3/67579bb486517c0d49547f9697e36582cd19dafb5df9e687ed8e22de57fa/Mako-1.0.7.tar.gz
-    ref: 4e02fde57bd4abb5ec400181e4c314f56ac3e49ba4fb8b0d50bba18cb27d25ae
+- kind: tar
+  url: https://pypi.python.org/packages/eb/f3/67579bb486517c0d49547f9697e36582cd19dafb5df9e687ed8e22de57fa/Mako-1.0.7.tar.gz
+  ref: 4e02fde57bd4abb5ec400181e4c314f56ac3e49ba4fb8b0d50bba18cb27d25ae
+  etag: '"5836cc997b1b773ef389bf6629c30e65"'

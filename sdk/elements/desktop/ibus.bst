@@ -1,16 +1,16 @@
 kind: autotools
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: desktop/gtk3.bst
-  - filename: desktop/wayland-protocols.bst
-    type: build
-  - filename: base/intltool.bst
-    type: build
-  - filename: base/pkg-config.bst
-    type: build
-  - filename: base/iso-codes.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: desktop/gtk3.bst
+- filename: desktop/wayland-protocols.bst
+  type: build
+- filename: base/intltool.bst
+  type: build
+- filename: base/pkg-config.bst
+  type: build
+- filename: base/iso-codes.bst
+  type: build
 
 variables:
   conf-local: |
@@ -29,22 +29,23 @@ variables:
 config:
   install-commands:
     (>):
-      - |
-        rm -r "%{install-root}%{bindir}"
-        rm -r "%{install-root}%{datadir}/bash-completion"
-        rm -r "%{install-root}%{datadir}/dbus-1"
-        rm -r "%{install-root}%{datadir}/icons"
-        rm -r "%{install-root}%{datadir}/man"
-        rm -r "%{install-root}%{datadir}/ibus"
+    - |
+      rm -r "%{install-root}%{bindir}"
+      rm -r "%{install-root}%{datadir}/bash-completion"
+      rm -r "%{install-root}%{datadir}/dbus-1"
+      rm -r "%{install-root}%{datadir}/icons"
+      rm -r "%{install-root}%{datadir}/man"
+      rm -r "%{install-root}%{datadir}/ibus"
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libibus-1.0.so"
+        - "%{libdir}/libibus-1.0.so"
 
 sources:
-  - kind: tar
-    url: https://github.com/ibus/ibus/releases/download/1.5.17/ibus-1.5.17.tar.gz
-    ref: 0347a8055977ca458e8add750af5f9b76e1a524844cc3b0e2fad70ce153dd219
+- kind: tar
+  url: https://github.com/ibus/ibus/releases/download/1.5.17/ibus-1.5.17.tar.gz
+  ref: 0347a8055977ca458e8add750af5f9b76e1a524844cc3b0e2fad70ce153dd219
+  etag: '"8bb26453d0d1fa58e56c22668aaa8786"'

@@ -2,9 +2,10 @@ kind: autotools
 description: GNU m4
 
 depends:
-  - filename: bootstrap-import.bst
+- filename: bootstrap-import.bst
 
 sources:
-  - kind: tar
-    url: https://ftp.gnu.org/gnu/m4/m4-1.4.18.tar.xz
-    ref: f2c1e86ca0a404ff281631bdc8377638992744b175afb806e25871a24a934e07
+- kind: tar
+  url: https://ftp.gnu.org/gnu/m4/m4-1.4.18.tar.xz
+  ref: f2c1e86ca0a404ff281631bdc8377638992744b175afb806e25871a24a934e07
+  etag: '"126d88-544fbfe21f0ca"'

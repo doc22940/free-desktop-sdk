@@ -1,9 +1,15 @@
 kind: autotools
 
 depends:
-  - filename: bootstrap-import.bst
-  - filename: base/python3.bst
-    type: build
+- filename: bootstrap-import.bst
+- filename: base/python3.bst
+  type: build
+- filename: base/autoconf.bst
+  type: build
+- filename: base/automake.bst
+  type: build
+- filename: base/libtool.bst
+  type: build
 
 variables:
   conf-local: |
@@ -19,9 +25,9 @@ public:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libasound.so"
+        - "%{libdir}/libasound.so"
 
 sources:
-  - kind: git 
-    url: https://github.com/gittup/alsa-lib
-    ref: 0f93d7bb0ff4559147e3e38683b55a9ebbdfea77
+- kind: git
+  url: https://github.com/gittup/alsa-lib
+  ref: 0f93d7bb0ff4559147e3e38683b55a9ebbdfea77
