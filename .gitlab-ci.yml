@@ -286,7 +286,7 @@ minimal_systemd_vm_image_x86_64:
         fi
         flatpak build-export --arch="${flatpakarch}" --files=files releases "runtimes/${runtime}" unstable
       done
-   artifacts:
+  artifacts:
     when: always
     paths:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
@@ -316,10 +316,10 @@ minimal_systemd_vm_image_x86_64:
    when: always
    paths:
      - ${CI_PROJECT_DIR}/cache/buildstream/logs  
- only:
+  only:
    - master
- <<: *gitlab_cache_pull_push
- <<: *flatpak_runtimes_build
+  <<: *gitlab_cache_pull_push
+  <<: *flatpak_runtimes_build
 
 publish_x86_64:
   stage: publish_x86_64
