@@ -293,6 +293,7 @@ minimal_systemd_vm_image_x86_64:
   <<: *gitlab_cache_pull
 
 .flatpak_runtimes_push_template: &flatpak_runtimes_push
+  <<: *flatpak_runtimes_build
   script:
   - |
       case "${ARCH}" in
@@ -319,7 +320,6 @@ minimal_systemd_vm_image_x86_64:
   only:
    - master
   <<: *gitlab_cache_pull_push
-  <<: *flatpak_runtimes_build
 
 publish_x86_64:
   stage: publish_x86_64
