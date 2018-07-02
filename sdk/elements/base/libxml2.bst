@@ -11,6 +11,8 @@ depends:
   type: build
 - filename: base/libtool.bst
   type: build
+- filename: base/pkg-config.bst
+  type: build
 
 variables:
   conf-local: |
