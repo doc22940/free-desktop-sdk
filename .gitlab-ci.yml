@@ -292,7 +292,7 @@ minimal_systemd_vm_image_x86_64:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
   <<: *gitlab_cache_pull
 
-.flatpak_runtimes_push_template: &flatpak_runtimes_push
+.flatpak_runtimes_publish_template: &flatpak_runtimes_publish
   <<: *flatpak_runtimes_build
   script:
   - |
@@ -323,6 +323,7 @@ minimal_systemd_vm_image_x86_64:
 
 publish_x86_64:
   stage: publish_x86_64
+  <<: *flatpak_runtimes_build
   <<: *flatpak_runtimes_publish
   tags:
     - x86_64
@@ -331,6 +332,7 @@ publish_x86_64:
 
 publish_i586:
   stage: publish_i586
+  <<: *flatpak_runtimes_build
   <<: *flatpak_runtimes_publish
   tags:
     - x86_64
@@ -340,6 +342,7 @@ publish_i586:
 publish_aarch64:
   stage: publish_aarch64
   image: buildstream/buildstream-fedora:aarch64-master-81-06ae434
+  <<: *flatpak_runtimes_build
   <<: *flatpak_runtimes_publish
   tags:
     - aarch64
@@ -349,6 +352,7 @@ publish_aarch64:
 publish_arm:
   stage: publish_arm
   image: buildstream/buildstream-fedora:aarch64-master-81-06ae434
+  <<: *flatpak_runtimes_build
   <<: *flatpak_runtimes_publish
   tags:
     - armhf
