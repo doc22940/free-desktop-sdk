@@ -8,6 +8,10 @@ shell:
   (@):
     - shell.yml
 
+  # Extend with flatpak specific path
+  environment:
+    PATH: "/app/bin:/usr/bin"
+
 environment:
   (@):
     - environment.yml
