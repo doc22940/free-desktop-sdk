@@ -36,8 +36,6 @@ variables:
     %{conf-build} \
     %{conf-host}
 
-  conf-cmd: configure
-
 config:
   configure-commands:
     - |
