@@ -11,6 +11,7 @@ shell:
   # Extend with flatpak specific path
   environment:
     PATH: "/app/bin:/usr/bin"
+    LD_LIBRARY_PATH: "/app/lib"
 
 environment:
   (@):
