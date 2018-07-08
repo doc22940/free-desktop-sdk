@@ -196,6 +196,13 @@ app_x86_64:
   variables:
     ARCH: x86_64
 
+app_i586:
+  <<: *flatpak_definition
+  tags:
+    - x86_64
+  variables:
+    ARCH: i586
+
 app_aarch64:
   image: buildstream/buildstream-fedora:aarch64-master-81-06ae434
   dependencies:
