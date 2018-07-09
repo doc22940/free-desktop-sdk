@@ -58,6 +58,6 @@ public:
 
 sources:
   # Too many things depends on 1.0.
-  - kind: tar
-    url: https://www.openssl.org/source/openssl-1.0.2m.tar.gz
-    ref: 8c6ff15ec6b319b50788f42c7abc2890c08ba5a1cdcd3810eb9092deada37b0f
+  - kind: git
+    url: https://github.com/openssl/openssl
+    ref: 3098c3bd12530b11d2944e0bc8115f6471e4d41c
