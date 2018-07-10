@@ -11,7 +11,7 @@ variables:
        sysroot="%{sysroot}"
        if [ -z "${sysroot}" ]; then
          sysroot="/nonexistant"
-       end
+       fi
        case "${1}" in
          "%{install-root}%{debugdir}/"*|"%{install-root}%{sysroot}%{debugdir}/"*)
            exit 0
