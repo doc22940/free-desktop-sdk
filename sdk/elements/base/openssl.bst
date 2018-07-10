@@ -3,7 +3,6 @@ kind: autotools
 depends:
   - filename: bootstrap-import.bst
   - filename: base/perl.bst
-  - filename: base/krb5.bst
 
 variables:
   builddir: ''
@@ -20,14 +19,12 @@ config:
       ./Configure %{openssl-target} \
         --prefix=%{prefix} \
         --libdir=%{lib} \
-        enable-krb5 \
-        --with-krb5-flavor=MIT \
-        --with-krb5-dir=/usr \
         shared \
         threads
 
   install-commands:
     - |
+      ls /usr/include
       make -j1 INSTALL_PREFIX="%{install-root}" install
 
     - |
@@ -57,7 +54,6 @@ public:
           - "%{prefix}/ssl/misc/*"
 
 sources:
-  # Too many things depends on 1.0.
   - kind: git
     url: https://github.com/openssl/openssl
     ref: 3098c3bd12530b11d2944e0bc8115f6471e4d41c
