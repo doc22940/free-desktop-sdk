@@ -6,13 +6,15 @@ depends:
     type: build
   - filename: base/bison.bst
     type: build
+  - filename: base/pkg-config.bst
+    type: build
+  - filename: base/e2fsprogs.bst
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libcom_err.so"
           - "%{libdir}/libgssapi_krb5.so"
           - "%{libdir}/libgssrpc.so"
           - "%{libdir}/libk5crypto.so"
@@ -25,6 +27,10 @@ public:
           - "%{libdir}/libkrb5.so"
           - "%{libdir}/libkrb5support.so"
           - "%{libdir}/libverto.so"
+
+variables:
+  conf-local: |
+    --with-system-et
 
 config:
   configure-commands:
