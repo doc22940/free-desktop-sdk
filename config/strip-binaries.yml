@@ -16,9 +16,9 @@ variables:
          "%{install-root}%{debugdir}/"*|"%{install-root}%{sysroot}%{debugdir}/"*)
            exit 0
            ;;
-         "%{install-root}%{sysroot}/"*)
-           realpath="$(realpath -s --relative-to="%{install-root}%{sysroot}" "$1")"
-           debugfile="%{install-root}%{sysroot}%{debugdir}/${realpath}.debug"
+         "%{install-root}${sysroot}/"*)
+           realpath="$(realpath -s --relative-to="%{install-root}${sysroot}" "$1")"
+           debugfile="%{install-root}${sysroot}%{debugdir}/${realpath}.debug"
            toolchain=%{triplet}-
            ;;
          *)
