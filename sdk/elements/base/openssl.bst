@@ -54,4 +54,4 @@ public:
 sources:
   - kind: git
     url: https://github.com/openssl/openssl
-    ref: 3098c3bd12530b11d2944e0bc8115f6471e4d41c
+    ref: 3098c3bd12530b11d2944e0bc8115f6471e4d41c    #1.1.0_pre8
