@@ -24,14 +24,12 @@ config:
 
   install-commands:
     - |
-      ls /usr/include
-      make -j1 INSTALL_PREFIX="%{install-root}" install
+      %{make-install}
 
     - |
       rm %{install-root}%{libdir}/lib*.a
 
     - mkdir -p %{install-root}%{datadir}
-    - mv %{install-root}%{prefix}/ssl/man %{install-root}%{datadir}
 
     - |
       for man3 in "%{install-root}%{datadir}/man/man3"/*.3; do
