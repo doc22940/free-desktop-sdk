@@ -286,15 +286,6 @@ minimal_systemd_vm_image_x86_64:
         fi
         flatpak build-export --arch="${flatpakarch}" --files=files releases "runtimes/${runtime}" unstable
       done
-  artifacts:
-    when: always
-    paths:
-      - ${CI_PROJECT_DIR}/cache/buildstream/logs
-  <<: *gitlab_cache_pull
-
-.flatpak_runtimes_publish_template: &flatpak_runtimes_publish
-  <<: *flatpak_runtimes_build
-  script:
     - |
       case "${ARCH}" in
         "i586")
@@ -306,6 +297,16 @@ minimal_systemd_vm_image_x86_64:
           flatpak build-commit-from --src-ref=runtime/org.freedesktop.Platform.Compat."${flatpakarch}".Debug/"${flatpakarch}"/unstable releases runtime/org.freedesktop.Platform.Compat."${flatpakarch}".Debug/aarch64/master
           ;;
       esac
+
+  artifacts:
+    when: always
+    paths:
+      - ${CI_PROJECT_DIR}/cache/buildstream/logs
+  <<: *gitlab_cache_pull
+
+.flatpak_runtimes_publish_template: &flatpak_runtimes_publish
+  <<: *flatpak_runtimes_build
+  script:
     - echo "Push to the releases ostree repo"
     - export OSTREE_PUSH_SHA='9aa82b67325786a810653155b952a17b7ccc436a'
     - git clone https://github.com/ssssam/ostree-push.git
