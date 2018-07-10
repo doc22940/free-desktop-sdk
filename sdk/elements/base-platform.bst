@@ -25,7 +25,6 @@ depends:
 - filename: base/libarchive.bst
 - filename: base/libassuan.bst
 - filename: base/libcap.bst
-- filename: base/libelf.bst
 - filename: base/libexif.bst
 - filename: base/libffi.bst
 - filename: base/libflac.bst
