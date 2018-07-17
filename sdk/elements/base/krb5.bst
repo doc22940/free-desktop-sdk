@@ -9,12 +9,14 @@ depends:
   - filename: base/pkg-config.bst
     type: build
   - filename: base/e2fsprogs.bst
+    type: build
 
 public:
   bst:
     split-rules:
       devel:
         (>):
+          - "%{libdir}/libcom_err.so"
           - "%{libdir}/libgssapi_krb5.so"
           - "%{libdir}/libgssrpc.so"
           - "%{libdir}/libk5crypto.so"
@@ -30,7 +32,8 @@ public:
 
 variables:
   conf-local: |
-    --with-system-et
+    --with-system-et \
+    --with-system-ss
 
 config:
   configure-commands:
