@@ -37,6 +37,6 @@ sources:
   - kind: git
     url: https://salsa.debian.org/debian/ca-certificates.git
     track: master
-    ref: 238e0aa38b26bcbd6d0b0130868bec9efa6566be
+    ref: dbbd11e56af93bb79f21d0ee6059a901f83f70a5 #  debian/20180409
   - kind: patch
     path: patches/ca-certificates-Make-it-possible-to-overwrite-python-version.patch
