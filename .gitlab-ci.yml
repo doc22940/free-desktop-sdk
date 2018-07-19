@@ -50,13 +50,22 @@ before_script:
   # create .gnupg for storing keys
   - mkdir -p ~/.gnupg
 
-  # GPG key stored as a protected variable, this is needed by flatpak to sign releases.
+  # GPG private key stored as a protected variable, this is needed by flatpak to sign releases.
   - |
-    if [ -z "$FREEDESKTOP_GPG"]; the
-        echo >&2 "GPG key not found!"
+    if [ -z "$FREEDESKTOP_GPG_PRIV"]; the
+        echo >&2 "GPG private key not found!"
     else
-        echo "$FREEDESKTOP_GPG" > ~/.gnupg/client.key
+        echo "$FREEDESKTOP_GPG_PRIV" > ~/.gnupg/client.key
         chmod 600 ~/.gnupg/client.key
+    fi
+  
+  # GPG public key stored as a protected variable, this is needed by flatpak to sign releases.
+  - |
+    if [ -z "$FREEDESKTOP_GPG_PUB"]; the
+        echo >&2 "GPG public key not found!"
+    else
+        echo "$FREEDESKTOP_GPG_PUB" > ~/.gnupg/client.crt
+        chmod 600 ~/.gnupg/client.crt
     fi
 
   # Use internal network only if we are using x86_64 runners from DigitalOcean
@@ -302,7 +311,7 @@ minimal_systemd_vm_image_x86_64:
              continue
            fi
         fi
-        flatpak build-export --gpg-sign=~/.gnupg/client.key --arch="${flatpakarch}" --files=files releases "runtimes/${runtime}" unstable
+        flatpak build-export --gpg-sign="B3BB B1A0 A8A0 F110" --arch="${flatpakarch}" --files=files releases "runtimes/${runtime}" unstable
       done
     - |
       case "${ARCH}" in
