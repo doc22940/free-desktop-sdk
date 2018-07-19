@@ -46,6 +46,18 @@ before_script:
         chmod 600 ~/.ssh/id_rsa
         ssh-keygen -y -f ~/.ssh/id_rsa > ~/.ssh/id_rsa.pub
     fi
+  
+  # create .gnupg for storing keys
+  - mkdir -p ~/.gnupg
+
+  # GPG key stored as a protected variable, this is needed by flatpak to sign releases.
+  - |
+    if [ -z "$FREEDESKTOP_GPG"]; the
+        echo >&2 "GPG key not found!"
+    else
+        echo "$FREEDESKTOP_GPG" > ~/.gnupg/client.key
+        chmod 600 ~/.gnupg/client.key
+    fi
 
   # Use internal network only if we are using x86_64 runners from DigitalOcean
   - |
@@ -290,7 +302,7 @@ minimal_systemd_vm_image_x86_64:
              continue
            fi
         fi
-        flatpak build-export --arch="${flatpakarch}" --files=files releases "runtimes/${runtime}" unstable
+        flatpak build-export --gpg-sign=~/.gnupg/client.key --arch="${flatpakarch}" --files=files releases "runtimes/${runtime}" unstable
       done
     - |
       case "${ARCH}" in
