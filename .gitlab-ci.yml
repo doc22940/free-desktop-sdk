@@ -52,7 +52,7 @@ before_script:
 
   # GPG private key stored as a protected variable, this is needed by flatpak to sign releases.
   - |
-    if [ -z "$FREEDESKTOP_GPG_PRIV"]; the
+    if [ -z "$FREEDESKTOP_GPG_PRIV"]; then
         echo >&2 "GPG private key not found!"
     else
         echo "$FREEDESKTOP_GPG_PRIV" > ~/.gnupg/client.key
@@ -61,7 +61,7 @@ before_script:
   
   # GPG public key stored as a protected variable, this is needed by flatpak to sign releases.
   - |
-    if [ -z "$FREEDESKTOP_GPG_PUB"]; the
+          if [ -z "$FREEDESKTOP_GPG_PUB"]; then
         echo >&2 "GPG public key not found!"
     else
         echo "$FREEDESKTOP_GPG_PUB" > ~/.gnupg/client.crt
