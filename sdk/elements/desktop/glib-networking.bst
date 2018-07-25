@@ -15,5 +15,5 @@ variables:
 
 sources:
   - kind: tar
-    url: https://download.gnome.org/sources/glib-networking/2.54/glib-networking-2.54.1.tar.xz
-    ref: eaa787b653015a0de31c928e9a17eb57b4ce23c8cf6f277afaec0d685335012f
+    url: https://download.gnome.org/sources/glib-networking/2.56/glib-networking-2.56.1.tar.xz
+    ref: df47b0e0a037d2dcf6b1846cbdf68dd4b3cc055e026bb40c4a55f19f29f635c8
