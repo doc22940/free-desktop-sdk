@@ -35,5 +35,5 @@ public:
 
 sources:
   - kind: tar
-    url: https://www.freedesktop.org/software/geoclue/releases/2.4/geoclue-2.4.7.tar.xz
-    ref: d17b96bb5799a84723385ea5704235565e9c3dedd2b7afac475a06e550ae0ea6
+    url: https://www.freedesktop.org/software/geoclue/releases/2.4/geoclue-2.4.11.tar.xz
+    ref: 01397ff7e4acaf0503eacd51aae3d70df0ddc7553bb822f172e4f1409713f31d
