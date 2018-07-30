@@ -10,6 +10,10 @@ depends:
     type: build
   - filename: base/glib.bst
 
+variables:
+  meson-local: |
+    -Dinstrospection=false
+
 public:
   bst:
     split-rules:
