@@ -67,9 +67,6 @@ before_script:
         echo "${GITLAB_CAS_PRIVATE_IP} ${BST_CACHE_SERVER_ADDRESS}" >> /etc/hosts 
     fi
 
-  # Trust the host key of the cache server.
-  - ssh-keyscan "${BST_CACHE_SERVER_ADDRESS}" >> ~/.ssh/known_hosts
-
   # If we can push, then enable push and pull for freedesktop-sdk artifact cache
   # (default config is pull only)
   - |
@@ -89,16 +86,6 @@ before_script:
         echo "      client-cert: /etc/ssl/CAS/server.crt" >> ~/.config/buildstream.conf
         echo "      push: true" >> ~/.config/buildstream.conf
     fi
-
-  # Go easy on the artifact server. The fixed unchangeable connection
-  # timeout for ostree is 30 seconds. And it cannot be changed.
-  - |
-    [ -d "${HOME}/.config" ] || mkdir -p "${HOME}/.config"
-    cat >>"${HOME}/.config/buildstream.conf" <<EOF
-    scheduler:
-      fetchers: 5
-      network-retries: 4
-    EOF
 
 # Store all the downloaded git and ostree repos in the distributed cache.
 # This saves us fetching them on every build
