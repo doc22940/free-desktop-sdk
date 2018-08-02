@@ -97,50 +97,12 @@ before_script:
 .flatpak_template: &flatpak_definition
   stage: flatpak
   script:
-    - cd "${CI_PROJECT_DIR}"/sdk
-    - ${BST} -o target_arch "${ARCH}" build all.bst desktop-platform-image.bst
-    - ${BST}  -o target_arch "${ARCH}" checkout desktop-platform-image.bst ./desktop-platform-image
-    - bash ../utils/scan-for-dev-files.sh ./desktop-platform-image | sort -u >found_so_files.txt
-    - |
-      if [ -s found_so_files.txt ]; then
-        echo "Found development .so files:" 1>&2
-        cat found_so_files.txt 1>&2
-        false
-      fi
-
     # Do not run basic flatpak app on i586, see https://gitlab.com/freedesktop-sdk/freedesktop-sdk/issues/279
     - if [ "${ARCH}" = "i586" ]; then
         exit 0;
       fi
 
     - echo "Export runtimes to a ostree repo"
-    - mkdir runtimes
-    - |
-      for runtime in sdk platform; do
-        bst -o target_arch "${ARCH}" checkout "${runtime}.bst" "runtimes/${runtime}";
-      done
-    - cd ${CI_PROJECT_DIR}
-
-    - echo "Use flatpak builder to export the runtimes to a ostree repo"
-    - dnf install -y flatpak flatpak-builder --enablerepo=updates-testing
-    - export FLATPAK_USER_DIR="${PWD}/tmp-flatpak"
-    - flatpak build-export --arch=${ARCH} --files=files repo/ sdk/runtimes/sdk unstable;
-    - flatpak build-export --arch=${ARCH} --files=files repo/ sdk/runtimes/platform unstable;
-
-    - echo "Locally install generated flatpak runtimes"
-    - flatpak remote-add --if-not-exists --user --no-gpg-verify test-repo repo/
-    - flatpak install -y --arch="${ARCH}" --user test-repo runtime/org.freedesktop.Sdk//unstable
-    - flatpak install -y --arch="${ARCH}" --user test-repo runtime/org.freedesktop.Platform//unstable
-
-    - echo "Build basic flatpak application  (script)"
-    - flatpak-builder --arch="${ARCH}" build_folder_hello tests/org.flatpak.Hello.json
-    - echo "Build basic flatpak application (C binary)"
-    - flatpak-builder --arch="${ARCH}" build_folder_gnu_hello tests/org.gnu.hello.json
-
-    - echo "Run basic flatpak application (script)"
-    - flatpak-builder --arch="${ARCH}" --run build_folder_hello tests/org.flatpak.Hello.json hello.sh
-    - echo "Run basic flatpak application (C binary)"
-    - flatpak-builder --arch="${ARCH}" --run build_folder_gnu_hello tests/org.gnu.hello.json hello
   artifacts:
     when: always
     paths:
