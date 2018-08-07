@@ -70,36 +70,8 @@ Build and run your flatpak app as normal:
 
 If you wish to build locally, you must have BuildStream installed and a local instance of [libostree](https://ostree.readthedocs.io/) on your machine.
 
-```
-- cd "${CI_PROJECT_DIR}"/sdk
-    - ${BST} -o target_arch "${ARCH}" build all.bst
-
-    - echo "Export runtimes to a ostree repo"
-    - mkdir runtimes
-    - |
-      for runtime in sdk platform; do
-        bst -o target_arch "${ARCH}" checkout "${runtime}.bst" "runtimes/${runtime}";
-      done
-    - cd ${CI_PROJECT_DIR}
-
-    - echo "Use flatpak builder to export the runtimes to a ostree repo"
-    - dnf install -y flatpak flatpak-builder
-    - export FLATPAK_USER_DIR="${PWD}/tmp-flatpak"
-    - flatpakarch="${ARCH/i586/i386}"
-    - flatpak build-export --arch=${ARCH} --files=files repo/ sdk/runtimes/sdk unstable;
-    - flatpak build-export --arch=${ARCH} --files=files repo/ sdk/runtimes/platform unstable;
-
-    - echo "Locally install generated flatpak runtimes"
-    - flatpak remote-add --if-not-exists --user --no-gpg-verify test-repo repo/
-    - flatpak install --arch="${flatpakarch}" --user test-repo runtime/org.freedesktop.Sdk//unstable
-    - flatpak install --arch="${flatpakarch}" --user test-repo runtime/org.freedesktop.Platform//unstable
-
-    - echo "Build basic flatpak app"
-    - flatpak-builder --arch="${flatpakarch}" build_folder tests/org.flatpak.Hello.json
-
-    - echo "Run basic application"
-    - flatpak-builder --arch="${flatpakarch}" --run build_folder tests/org.flatpak.Hello.json hello.sh
-```
+For the sequence of commands you need to run, simply check the `.flatpak_template`
+section in our `gitlab-ci.yml` file: https://gitlab.com/freedesktop-sdk/freedesktop-sdk/blob/18.08/.gitlab-ci.yml#L98
 
 The build is configured to pull from our remote artifact cache, meaning you should not have to build
 anything locally, only if buildstream detects any custom changes/additions locally will you have to
