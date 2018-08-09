@@ -1,11 +1,5 @@
 kind: stack
 depends:
-  - filename: basesdk.bst
-  - filename: basesdk-debug.bst
-  - filename: basesdk-locale.bst
-  - filename: basesdk-docs.bst
-  - filename: baseplatform.bst
-  - filename: baseplatform-locale.bst
   - filename: sdk.bst
   - filename: sdk-debug.bst
   - filename: sdk-docs.bst
