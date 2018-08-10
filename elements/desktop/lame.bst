@@ -15,13 +15,7 @@ config:
   configure-commands:
     (<):
       - |
-        autoconf
-
-  build-commands:
-    - make
-
-  install-commands:
-    - make -j1 DESTDIR="%{install-root}" install
+        autoreconf -vfi
 
 public:
   bst:
