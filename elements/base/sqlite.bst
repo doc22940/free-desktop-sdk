@@ -7,6 +7,7 @@ environment:
   CPPFLAGS: "-O2 -D_FORTIFY_SOURCE=2 -DSQLITE_ENABLE_COLUMN_METADATA=1"
 
 variables:
+  CPPFLAGS: "-O2 -D_FORTIFY_SOURCE=2 -DSQLITE_ENABLE_COLUMN_METADATA=1"
   conf-local: |
     --enable-fts5
 
