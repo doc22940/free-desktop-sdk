@@ -7,6 +7,8 @@ depends:
     type: build
 
 variables:
+  manifest-version: "1.0.2o"
+  builddir: ''
   openssl-target: linux-%{arch}
   (?):
     - target_arch == "i586":

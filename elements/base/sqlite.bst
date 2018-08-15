@@ -7,6 +7,7 @@ variables:
   conf-local: |
     --enable-fts5 \
     CPPFLAGS="${CPPFLAGS} -DSQLITE_ENABLE_COLUMN_METADATA=1"
+  manifest-version: "3240000"
 
 public:
   bst:

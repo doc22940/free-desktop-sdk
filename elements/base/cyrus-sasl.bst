@@ -21,6 +21,8 @@ variables:
     --without-opie \
     --without-des
 
+  manifest-version: "2.1.27-rc7"
+
 config:
   build-commands:
     - |

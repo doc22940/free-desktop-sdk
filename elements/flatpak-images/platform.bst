@@ -71,3 +71,5 @@ depends:
     type: build
   - filename: platform-integration.bst
     type: build
+  - filename: platform-manifest.bst
+    type: build
