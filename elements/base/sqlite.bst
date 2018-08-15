@@ -9,6 +9,7 @@ environment:
 variables:
   conf-local: |
     --enable-fts5
+  manifest-version: "3240000"
 
 public:
   bst:

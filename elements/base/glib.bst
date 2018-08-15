@@ -25,6 +25,8 @@ variables:
   conf-local: |
     --with-pcre=system
 
+  manifest-version: "2.56.1"
+
 public:
   bst:
     split-rules:

@@ -30,3 +30,6 @@ sources:
     url: https://github.com/libffi/libffi
     track: v3.2.1
     ref: 20562ac0427c3578250d04c6e34fb0127d4551cf # 3.2.1
+
+variables:
+  manifest-version: "3.2.1"

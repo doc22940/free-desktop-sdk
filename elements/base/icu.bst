@@ -29,3 +29,6 @@ sources:
     ref: 3dd9868d666350dda66a6e305eecde9d479fb70b30d5b55d78a1deffb97d5aa3
   - kind: patch
     path: patches/icu-fix-shared-linking.patch
+
+variables:
+  manifest-version: 62.1

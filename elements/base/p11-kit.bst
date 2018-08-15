@@ -22,6 +22,8 @@ variables:
     --with-module-config=/etc/pkcs11/modules/ \
     --with-trust-paths=%{ca_path}
 
+  manifest-version: "0.23.12"
+
 public:
   bst:
     split-rules:
