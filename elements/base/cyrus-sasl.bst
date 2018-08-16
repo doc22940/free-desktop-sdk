@@ -23,8 +23,6 @@ variables:
     --without-opie \
     --without-des
 
-  manifest-version: "2.1.27-rc7"
-
 config:
   build-commands:
     - |
@@ -47,6 +45,9 @@ public:
           - "%{libdir}/sasl2/lib*.la"
           - "%{libdir}/sasl2/lib*.so"
           - "%{libdir}/libsasl2.so"
+
+  cpe:
+    version: "2.1.27-rc7"
 
 sources:
   - kind: git

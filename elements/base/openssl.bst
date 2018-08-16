@@ -12,7 +12,6 @@ depends:
     type: build
 
 variables:
-  manifest-version: "1.0.2o"
   builddir: ''
   openssl-target: linux-%{arch}
   (?):
@@ -63,6 +62,9 @@ public:
           - "%{libdir}/libssl.so"
           - "%{libdir}/libcrypto.so"
           - "%{prefix}/ssl/misc/*"
+
+  cpe:
+    version: "1.0.2o"
 
 sources:
   # Too many things depends on 1.0.

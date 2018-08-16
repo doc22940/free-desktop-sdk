@@ -22,14 +22,16 @@ variables:
     --with-module-config=/etc/pkcs11/modules/ \
     --with-trust-paths=%{ca_path}
 
-  manifest-version: "0.23.12"
-
 public:
   bst:
     split-rules:
       devel:
         (>):
           - "%{libdir}/libp11-kit.so"
+
+  cpe:
+    version: "0.23.12"
+
 
 sources:
   - kind: git

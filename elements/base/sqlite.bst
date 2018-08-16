@@ -9,7 +9,6 @@ environment:
 variables:
   conf-local: |
     --enable-fts5
-  manifest-version: "3240000"
 
 public:
   bst:
@@ -17,6 +16,9 @@ public:
       devel:
         (>):
           - "%{libdir}/libsqlite3.so"
+
+  cpe:
+    version: "3240000"
 
 sources:
   - kind: tar
