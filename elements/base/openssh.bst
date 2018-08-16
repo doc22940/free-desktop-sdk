@@ -20,6 +20,10 @@ config:
       - rm -f %{install-root}%{mandir}/man8/sftp-server.8
       - rm -f %{install-root}%{mandir}/man8/sshd.8
 
+public:
+  cpe:
+    version: '7.7p1'
+
 sources:
   - kind: git
     url: https://github.com/openssh/openssh-portable

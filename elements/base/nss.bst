@@ -30,7 +30,7 @@ public:
         (>):
           - "%{bindir}/*"
   cpe:
-    vendor: mozilla
+    product: network_security_services
 
 config:
   build-commands:

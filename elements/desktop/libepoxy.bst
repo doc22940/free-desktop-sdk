@@ -16,6 +16,8 @@ public:
       devel:
         (>):
           - "%{libdir}/libepoxy.so"
+  cpe:
+    version: '1.5.2'
 
 sources:
   - kind: git

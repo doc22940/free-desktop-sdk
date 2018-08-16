@@ -41,6 +41,8 @@ public:
           - "%{libdir}/libcairo-gobject.so"
           - "%{libdir}/libcairo.so"
           - "%{libdir}/cairo/libcairo-trace.so"
+  cpe:
+    version: '1.15.12'
 
 sources:
   - kind: git

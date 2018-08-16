@@ -18,6 +18,8 @@ public:
       devel:
         (>):
           - "%{libdir}/libdconf.so"
+  cpe:
+    version: '0.28.0'
 
 sources:
   - kind: git
