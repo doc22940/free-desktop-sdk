@@ -5,9 +5,7 @@ depends:
 
 variables:
   conf-local: |
-    --enable-fts5 \
-    CPPFLAGS="${CPPFLAGS} -DSQLITE_ENABLE_COLUMN_METADATA=1"
-  manifest-version: "3240000"
+    --enable-fts5
 
 public:
   bst:
@@ -15,6 +13,9 @@ public:
       devel:
         (>):
           - "%{libdir}/libsqlite3.so"
+
+  cpe:
+    version: "3240000"
 
 sources:
   - kind: tar

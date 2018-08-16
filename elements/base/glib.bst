@@ -18,8 +18,6 @@ variables:
   conf-local: |
     --with-pcre=system
 
-  manifest-version: "2.56.1"
-
 public:
   bst:
     split-rules:
@@ -44,6 +42,11 @@ public:
     integration-commands:
       - |
         glib-compile-schemas %{datadir}/glib-2.0/schemas
+
+  cpe:
+    version: "2.56.1"
+
+
 
 sources:
   - kind: git

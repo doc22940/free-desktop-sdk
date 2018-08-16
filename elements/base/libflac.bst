@@ -13,8 +13,6 @@ variables:
     --enable-cpplibs \
     --enable-ogg
 
-  manifest-version: 1.3.2
-
 public:
   bst:
     split-rules:
@@ -22,6 +20,9 @@ public:
         (>):
           - "%{libdir}/libFLAC.so"
           - "%{libdir}/libFLAC++.so"
+
+  cpe:
+    version: 1.3.2
 
 sources:
   - kind: git

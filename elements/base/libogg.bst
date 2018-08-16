@@ -12,11 +12,11 @@ public:
         (>):
           - "%{libdir}/libogg.so"
 
+  cpe:
+    version: 1.3.3
+
 sources:
   - kind: git
     url: https://github.com/xiph/ogg
     track: master
     ref: 4380566a44b8d5e85ad511c9c17eb04197863ec5 # 1.3.3
-
-variables:
-  manifest-version: 1.3.3
