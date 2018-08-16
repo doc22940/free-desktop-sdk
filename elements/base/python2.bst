@@ -29,6 +29,8 @@ public:
       devel:
         (>):
           - "**"
+  cpe:
+    product: python
 
 config:
   install-commands:

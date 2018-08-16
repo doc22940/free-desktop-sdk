@@ -29,6 +29,8 @@ public:
       devel:
         (>):
           - "%{bindir}/*"
+  cpe:
+    vendor: mozilla
 
 config:
   build-commands:

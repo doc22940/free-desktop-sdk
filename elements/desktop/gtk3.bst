@@ -53,6 +53,8 @@ public:
 
       - |
         gtk-update-icon-cache
+  cpe:
+    product: gtk+
 
 sources:
   - kind: tar

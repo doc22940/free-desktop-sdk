@@ -52,6 +52,8 @@ public:
           - "%{libdir}/libxcb-present.so"
           - "%{libdir}/libxcb-xkb.so"
           - "%{libdir}/libxcb-xinput.so"
+  cpe:
+    product: libxcb
 
 config:
   configure-commands:

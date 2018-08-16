@@ -9,6 +9,8 @@ public:
       devel:
         (>):
           - "%{libdir}/libsndfile.so"
+  cpe:
+    product: libsndfile
 
 sources:
   - kind: tar
