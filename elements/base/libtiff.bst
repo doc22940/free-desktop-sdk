@@ -12,7 +12,7 @@ public:
           - "%{libdir}/libtiffxx.so"
 
   cpe:
-    version: 62.1
+    version: '4.0.9'
 
 sources:
   - kind: git

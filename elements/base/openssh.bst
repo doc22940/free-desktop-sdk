@@ -14,6 +14,10 @@ variables:
   conf-local: |
     --with-mantype=man
 
+public:
+  cpe:
+    version: '7.7p1'
+
 sources:
   - kind: git
     url: https://github.com/openssh/openssh-portable

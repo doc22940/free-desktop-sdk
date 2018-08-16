@@ -20,6 +20,8 @@ public:
       devel:
         (>):
           - "%{libdir}/libcroco-0.6.so"
+  cpe:
+    version: '0.6.12'
 
 sources:
   - kind: git

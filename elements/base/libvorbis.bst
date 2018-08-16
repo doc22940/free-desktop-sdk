@@ -18,6 +18,8 @@ public:
           - "%{libdir}/libvorbis.so"
           - "%{libdir}/libvorbisfile.so"
           - "%{libdir}/libvorbisenc.so"
+  cpe:
+    version: '1.3.6'
 
 sources:
   - kind: git

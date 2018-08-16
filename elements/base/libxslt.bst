@@ -19,6 +19,8 @@ public:
         (>):
           - "%{libdir}/libxslt.so"
           - "%{libdir}/libexslt.so"
+  cpe:
+    version: '1.1.32'
 
 sources:
   - kind: git

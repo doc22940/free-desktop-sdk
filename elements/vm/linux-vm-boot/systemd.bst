@@ -36,6 +36,11 @@ config:
         mv %{install-root}/etc %{install-root}/usr/etc
         mv %{install-root}/var %{install-root}/usr/var
 
+public:
+  cpe:
+    vendor: freedesktop
+    version: '239'
+
 sources:
 - kind: git
   url: https://github.com/systemd/systemd.git

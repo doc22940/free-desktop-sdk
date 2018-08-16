@@ -75,6 +75,8 @@ public:
           - "%{libdir}/libavfilter.so"
           - "%{libdir}/libavformat.so"
           - "%{libdir}/libswresample.so"
+  cpe:
+    version: '4.0.2'
 
 # ffmpeg is not using autotools, but a configure and Makefile files
 config:

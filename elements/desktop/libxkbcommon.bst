@@ -25,6 +25,8 @@ public:
         (>):
           - "%{libdir}/libxkbcommon.so"
           - "%{libdir}/libxkbcommon-x11.so"
+  cpe:
+    version: '0.8.0'
 
 sources:
   - kind: git

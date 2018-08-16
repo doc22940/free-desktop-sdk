@@ -17,6 +17,8 @@ public:
           - "%{bindir}/orc"
           - "%{libdir}/liborc-0.4.so"
           - "%{libdir}/liborc-test-0.4.so"
+  cpe:
+    version: '0.4.28'
 
 sources:
   - kind: git

@@ -30,6 +30,8 @@ public:
       devel:
         (>):
           - "%{libdir}/libxml2.so"
+  cpe:
+    version: '2.9.8'
 
 sources:
   - kind: git
