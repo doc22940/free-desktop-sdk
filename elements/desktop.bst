@@ -4,6 +4,7 @@ description: Stack of components in freedesktop SDK
 depends:
 - filename: base.bst                        # Note we include all elements in the base sdk
 - filename: desktop-platform.bst            # and the platform
+- filename: desktop/chrpath.bst
 - filename: desktop/desktop-file-utils.bst
 - filename: desktop/gtk-doc.bst
 - filename: desktop/itstools.bst
