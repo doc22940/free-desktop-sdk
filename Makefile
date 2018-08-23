@@ -70,6 +70,23 @@ export: clean-runtime
 
 	rm -rf $(CHECKOUT_ROOT)
 
+track-mesa-git:
+	$(BST) track extensions/mesa-git/libdrm-git.bst \
+                     extensions/mesa-git/llvm-git.bst \
+                     extensions/mesa-git/mesa-git.bst
+
+export-mesa-git: clean-runtime
+	$(BST) build flatpak-images/mesa-git-repo.bst
+
+	mkdir -p $(CHECKOUT_ROOT)
+	$(BST) checkout --hardlinks flatpak-images/mesa-git-repo.bst $(CHECKOUT_ROOT)
+
+	test -e $(REPO) || ostree init --repo=$(REPO) --mode=archive
+
+	flatpak build-commit-from --src-repo=$(CHECKOUT_ROOT) $(REPO)
+
+	rm -rf $(CHECKOUT_ROOT)
+
 $(REPO): export
 
 export-tar:
@@ -221,4 +238,5 @@ export-docker:
 	build check-dev-files clean clean-test clean-repo clean-runtime \
 	export test-apps manifest markdown-manifest check-rpath \
 	build-tar export-tar clean-vm build-vm run-vm export-snap \
-	export-oci export-docker bootstrap
+	export-oci export-docker bootstrap \
+        track-mesa-git export-mesa-git
