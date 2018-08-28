@@ -24,9 +24,46 @@ variables:
   - target_arch != "aarch64" and target_arch != "i586":
       kernel_arch: '%{arch}'
 
+  systemd-config: |
+    CONFIG_DEVTMPFS=y \
+    CONFIG_CGROUPS=y \
+    CONFIG_INOTIFY_USER=y \
+    CONFIG_SIGNALFD=y \
+    CONFIG_TIMERFD=y \
+    CONFIG_EPOLL=y \
+    CONFIG_NET=y \
+    CONFIG_SYSFS=y \
+    CONFIG_PROC_FS=y \
+    CONFIG_FHANDLE=y \
+    CONFIG_CRYPTO_USER_API_HASH=y \
+    CONFIG_CRYPTO_HMAC=y \
+    CONFIG_CRYPTO_SHA256=y \
+    CONFIG_SYSFS_DEPRECATED=n \
+    CONFIG_UEVENT_HELPER_PATH="" \
+    CONFIG_FW_LOADER_USER_HELPER=n \
+    CONFIG_DMIID=y \
+    CONFIG_BLK_DEV_BSG=y \
+    CONFIG_NET_NS=y \
+    CONFIG_USER_NS=y \
+    CONFIG_IPV6=y \
+    CONFIG_AUTOFS4_FS=y \
+    CONFIG_TMPFS_XATTR=y \
+    CONFIG_TMPFS_POSIX_ACL=y \
+    CONFIG_EXT4_FS_POSIX_ACL=y \
+    CONFIG_XFS_POSIX_ACL=y \
+    CONFIG_BTRFS_FS_POSIX_ACL=y \
+    CONFIG_SECCOMP=y \
+    CONFIG_SECCOMP_FILTER=y \
+    CONFIG_CHECKPOINT_RESTORE=y \
+    CONFIG_CGROUP_SCHED=y \
+    CONFIG_FAIR_GROUP_SCHED=y \
+    CONFIG_CFS_BANDWIDTH=y \
+    CONFIG_CGROUP_BPF=y \
+    CONFIG_RT_GROUP_SCHED=n
+
 config:
   configure-commands:
-    - make defconfig
+    - make defconfig %{systemd-config}
 
   build-commands:
     - make ARCH="%{kernel_arch}" $MAKEFLAGS
