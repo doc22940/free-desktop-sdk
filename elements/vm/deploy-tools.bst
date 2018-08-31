@@ -8,4 +8,5 @@ depends:
 - vm/deploy-tools/mtools.bst
 - vm/deploy-tools/parted.bst
 - vm/linux-vm-boot/systemd.bst
+- vm/linux-vm-boot/dracut.bst
 - vm/bsp-generic/syslinux.bst

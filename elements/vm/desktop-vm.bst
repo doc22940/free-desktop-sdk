@@ -21,5 +21,5 @@ depends:
   type: build
 - filename: vm/bsp-generic.bst
   type: build
-- filename: vm/initramfs/initramfs-gz.bst
+- filename: vm/linux-vm-boot/dracut.bst
   type: build
