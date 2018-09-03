@@ -28,9 +28,49 @@ config:
   input: vm/minimal-vm.bst
 
   filesystem-tree-setup-commands:
-    (<):
-    - mkdir -p %{build-root}/dev
-    - mkdir -p %{build-root}/proc
+    - |
+      mkdir -p %{build-root}/dev
+      mkdir -p %{build-root}/proc
+
+    - |
+      cd /buildstream
+      mkdir -p /buildstream/boot
+
+    - |
+      # Generate an fstab
+      cat > %{build-root}/etc/fstab << EOF
+      /dev/sda2   /       ext4   defaults,rw,noatime   0 1
+      /dev/sda1   /boot   vfat   defaults              0 2
+      /dev/sda3   none    swap   defaults              0 0
+      EOF
+
+    - |
+      # Generate initramfs with dracut
+      mkdir -p %{build-root}/var/tmp
+      depmod -a -b %{build-root} "4.16.8";
+      dracut /buildstream/boot/initramfs.gz 4.16.8 --kmoddir "%{build-root}/lib/modules/4.16.8" --gzip 
+
+    - |
+      mv %{build-root}/boot/* buildstream/boot
+
+    - |
+      # Create syslinux config
+      mkdir -p /buildstream/boot/syslinux
+      cat > /buildstream/boot/syslinux/syslinux.cfg << EOF
+      PROMPT 0
+      TIMEOUT 5
+
+      ALLOWOPTIONS 1
+      SERIAL 0 115200
+
+      DEFAULT boot
+      LABEL boot
+
+      KERNEL /vmlinuz
+      INITRD /initramfs.gz
+
+      APPEND %{kernel-args}
+      EOF
 
   final-commands:
     (>):

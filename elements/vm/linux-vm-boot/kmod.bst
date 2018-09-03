@@ -15,6 +15,15 @@ depends:
 - filename: desktop/gtk-doc.bst
   type: build
 
+config:
+  install-commands:
+    (>):
+    - |
+      cd %{install-root}%{bindir}
+      for target in depmod insmod lsmod modinfo modprobe rmmod; do
+        ln -sfv kmod $target
+      done
+
 sources:
 - kind: git
   url: https://github.com/lucasdemarchi/kmod

@@ -4,9 +4,12 @@ description: Deployment tooling
 depends:
 - base/e2fsprogs.bst
 - base/tzdata.bst
+- base/cpio.bst
+- base/gzip.bst
 - vm/deploy-tools/dosfstools.bst
 - vm/deploy-tools/mtools.bst
 - vm/deploy-tools/parted.bst
 - vm/linux-vm-boot/systemd.bst
+- vm/linux-vm-boot/kmod.bst
 - vm/linux-vm-boot/dracut.bst
 - vm/bsp-generic/syslinux.bst
