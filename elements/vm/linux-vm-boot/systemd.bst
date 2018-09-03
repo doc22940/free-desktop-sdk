@@ -20,6 +20,7 @@ depends:
   type: build
 - filename: base/util-linux.bst
 - filename: base/xz.bst
+- filename: vm/linux-vm-boot/dracut.bst
 
 variables:
   meson-local: |

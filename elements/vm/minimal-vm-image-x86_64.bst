@@ -17,11 +17,11 @@ variables:
   # This is the smallest boot partition I managed to make.
   boot-size: 38912K
 
-  rootfs-size: 100M
+  rootfs-size: 500M
   sector-size: 512
   swap-size: 40K
 
-  kernel-args: root=/dev/sda2 rootfstype=ext4 init=/bin/sh console=ttyS0
+  kernel-args: root=/dev/sda2 rootfstype=ext4 console=ttyS0 rd.shell rd.debug
 
 config:
   base: vm/deploy-tools.bst
@@ -35,23 +35,21 @@ config:
     - |
       cd /buildstream
       mkdir -p /buildstream/boot
+      mv %{build-root}/boot/* /buildstream/boot
 
     - |
       # Generate an fstab
       cat > %{build-root}/etc/fstab << EOF
-      /dev/sda2   /       ext4   defaults,rw,noatime   0 1
-      /dev/sda1   /boot   vfat   defaults              0 2
-      /dev/sda3   none    swap   defaults              0 0
+      /dev/sda2   /       ext4   defaults,rw,noatime,acl   0 1
+      /dev/sda1   /boot   ntfs   defaults,acl              0 2
+      /dev/sda3   none    swap   defaults                  0 0
       EOF
 
     - |
       # Generate initramfs with dracut
       mkdir -p %{build-root}/var/tmp
       depmod -a -b %{build-root} "4.16.8";
-      dracut /buildstream/boot/initramfs.gz 4.16.8 --kmoddir "%{build-root}/lib/modules/4.16.8" --gzip 
-
-    - |
-      mv %{build-root}/boot/* buildstream/boot
+      dracut /buildstream/boot/initramfs.gz 4.16.8 --kmoddir "%{build-root}/lib/modules/4.16.8" --gzip  --prefix /boot --add-fstab %{build-root}/etc/fstab --tmpdir %{build-root}/var/tmp --include %{build-root}/sbin/swapon /sbin/swapon
 
     - |
       # Create syslinux config
@@ -71,6 +69,63 @@ config:
 
       APPEND %{kernel-args}
       EOF
+
+    - |
+      systemd-firstboot --root %{build-root} --root-password root --locale en_US.UTF-8 --timezone UTC
+      chmod 400 %{build-root}/etc/shadow
+
+  filesystem-image-creation-commands:
+    - |
+      # Create /boot image
+      truncate -s %{boot-size} /buildstream/sda1.img
+      mkntfs -L boot /buildstream/boot /buildstream/sda1.img
+      syslinux --directory /syslinux/ /buildstream/sda1.img
+
+    - |
+      truncate -s %{rootfs-size} /buildstream/sda2.img
+      mkfs.ext4 -F -i 8192 -L root -d %{build-root} /buildstream/sda2.img
+
+    - |
+      truncate -s %{swap-size} /buildstream/sda3.img
+      mkswap -L swap /buildstream/sda3.img
+
+  partition-commands:
+    - |
+      sda1size=$(stat -c "%s" /buildstream/sda1.img | head -c -1)
+      sda2size=$(stat -c "%s" /buildstream/sda2.img | head -c -1)
+      sda3size=$(stat -c "%s" /buildstream/sda3.img | head -c -1)
+
+      sda1sec=$(( ${sda1size} / %{sector-size} ))
+      sda2sec=$(( ${sda2size} / %{sector-size} ))
+      sda3sec=$(( ${sda3size} / %{sector-size} ))
+
+      sda1offset=1
+      sda2offset=$(( ${sda1offset} + ${sda1sec} ))
+      sda3offset=$(( ${sda2offset} + ${sda2sec} ))
+
+      sdasectors=$(( ${sda3offset} + ${sda3sec} ))
+      sdabytes=$(( ${sdasectors} * %{sector-size} ))
+
+      truncate -s ${sdabytes} /buildstream/sda.img
+      parted -s /buildstrea/sda.img mklabel ext4
+      parted -s /buildstream/sda.img unit s mkpart primary ntfs ${sda1offset} $(( ${sda1offset} + ${sda1sec} - 1 ))
+      parted -s /buildstream/sda.img unit s mkpart primary ext2 ${sda2offset} $(( ${sda2offset} + ${sda2sec} - 1 ))
+      parted -s /buildstream/sda.img unit s mkpart primary linux-swap ${sda3offset} $(( ${sda3offset} + ${sda3sec} - 1 ))
+
+      parted -s /buildstream/sda.img set 1 boot on
+
+      dd if=/buildstream/sda1.img of=/buildstream/sda.img \
+          ibs=%{sector-size} obs=%{sector-size} conv=notrunc \
+          count=${sda1sec} seek=${sda1offset}
+
+      dd if=/buildstream/sda2.img of=/buildstream/sda.img \
+          ibs=%{sector-size} obs=%{sector-size} conv=notrunc \
+          count=${sda2sec} seek=${sda2offset}
+
+      dd if=/buildstream/sda3.img of=/buildstream/sda.img \
+          ibs=%{sector-size} obs=%{sector-size} conv=notrunc \
+          count=${sda3sec} seek=${sda3offset}
+
 
   final-commands:
     (>):

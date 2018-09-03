@@ -26,6 +26,6 @@ config:
 
 sources:
 - kind: git
-  url: https://github.com/lucasdemarchi/kmod
+  url: https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git
   track: master
-  ref: ef4257b59c4307b8c627d89f3c7f1feedb32582f # v24
+  ref: 47a43bd84e51559b3c6d0345dda59913a08f6bbb # v25

@@ -17,6 +17,14 @@ depends:
   type: build
 - filename: vm/bsp-generic.bst
   type: build
+- filename: vm/linux-vm-boot/dracut.bst
+  type: build
+- filename: vm/linux-vm-boot/kmod.bst
+  type: build
+- filename: vm/linux-vm-boot/systemd.bst
+  type: build
+- filename: vm/linux-vm-boot/shadow.bst
+  type: build
 
 config:
   include:

@@ -14,8 +14,8 @@ config:
   install-commands:
     (>):
       - |
-        mkdir -p %{install-root}%{libdir}/dracut/dracut.conf.d
-        cp dracut.conf %{install-root}%{libdir}/dracut/dracut.conf.d/freedesktop.conf
+        mkdir -p %{install-root}%{sysconfdir}/dracut.conf.d
+        cp dracut.conf %{install-root}%{sysconfdir}/dracut.conf.d/freedesktop.conf
 
 sources:
 - kind: tar
