@@ -1,0 +1,134 @@
+diff -ur glibc.old/elf/dl-load.c glibc/elf/dl-load.c
+--- glibc.old/elf/dl-load.c	2018-02-01 17:17:18.000000000 +0100
++++ glibc/elf/dl-load.c	2018-09-13 23:40:11.168383476 +0200
+@@ -380,6 +380,7 @@
+ 
+ /* Standard search directories.  */
+ static struct r_search_path_struct rtld_search_dirs attribute_relro;
++static char** blockedlist_patterns;
+ 
+ static size_t max_dirnamelen;
+ 
+@@ -617,6 +618,91 @@
+ 			  l, what);
+ }
+ 
++static
++int match_path(char* pattern, char* filename) {
++  if (pattern[0] == '/') {
++    return 0 == strcmp(pattern, filename);
++  } else {
++    for (char* path = filename; path != NULL; path = strchr(path, '/')) {
++      if (0 == strcmp(pattern, path))
++	return true;
++    }
++    return false;
++  }
++}
++
++static
++size_t
++read_pattern(char* file, size_t pos, size_t last_pos, char pattern[PATH_MAX]) {
++  size_t pattern_pos = 0;
++  for (; pos < last_pos; ++pos) {
++    switch (file[pos]) {
++    case '\\':
++      ++pos;
++      if (pos >= last_pos) {
++	goto ret;
++      }
++    default:
++      if (pattern_pos < PATH_MAX) {
++	pattern[pattern_pos] = file[pos];
++      }
++      ++pattern_pos;
++      break ;
++    case ' ':
++    case '\n':
++      goto ret;
++    }
++  }
++
++ ret:
++  if (pattern_pos >= PATH_MAX)
++    pattern[PATH_MAX-1] = 0;
++  else
++    pattern[pattern_pos] = 0;
++  return pos;
++}
++
++static
++void
++load_blocked_list(void) {
++  static const char blockedlist_file_name[] = "/etc/freedesktop-sdk.ld.so.blockedlist";
++  blockedlist_patterns = NULL;
++  size_t found_patterns = 0;
++  if (__access (blockedlist_file_name, R_OK) == 0) {
++    char current_path[PATH_MAX];
++    ssize_t res = readlink("/proc/self/exe", current_path, PATH_MAX-1);
++    if ((res < 0) || (res >= PATH_MAX)) {
++    } else {
++      size_t file_size = 0;
++      void *file = _dl_sysdep_read_whole_file (blockedlist_file_name, &file_size, PROT_READ);
++      if (file != MAP_FAILED) {
++	char* file_data = (char*)file;
++	size_t pos = 0;
++	while (pos < file_size) {
++	  char pattern[PATH_MAX];
++	  pos = read_pattern(file_data, pos, file_size, pattern);
++	  if (pos >= file_size)
++	    break ;
++	  if (match_path(pattern, current_path) == 0) {
++	    pos = read_pattern(file_data, pos, file_size, pattern);
++	    char *new_pattern = (char*)malloc(strlen(pattern));
++	    if (blockedlist_patterns == NULL) {
++	      blockedlist_patterns = (char**)malloc(2*sizeof(char*));
++	    } else {
++	      blockedlist_patterns = realloc(blockedlist_patterns, (found_patterns+2)*sizeof(char*));
++	    }
++	    blockedlist_patterns[found_patterns] = new_pattern;
++	    ++found_patterns;
++	    blockedlist_patterns[found_patterns] = NULL;
++	  } else {
++	    pos = read_pattern(file_data, pos, file_size, pattern);
++	  }
++	}
++      }
++    }
++  }
++}
++
+ 
+ void
+ _dl_init_paths (const char *llp)
+@@ -629,6 +715,8 @@
+   /* Initialize to please the compiler.  */
+   const char *errstring = NULL;
+ 
++  load_blocked_list();
++
+   /* Fill in the information about the application's RPATH and the
+      directories addressed by the LD_LIBRARY_PATH environment variable.  */
+ 
+@@ -1743,6 +1831,21 @@
+ 	  if (__glibc_unlikely (GLRO(dl_debug_mask) & DL_DEBUG_LIBS))
+ 	    _dl_debug_printf ("  trying file=%s\n", buf);
+ 
++	  if ((sps == &env_path_list) && (blockedlist_patterns != NULL))
++	    {
++	      int found_blockedlist = 0;
++	      for (size_t i = 0; blockedlist_patterns[i] != NULL; ++i)
++		{
++		  if (match_path(blockedlist_patterns[i], buf) == 0)
++		    {
++		      found_blockedlist = 1;
++		      break ;
++		    }
++		}
++	      if (found_blockedlist)
++		break ;
++	    }
++
+ 	  fd = open_verify (buf, -1, fbp, loader, whatcode, mode,
+ 			    found_other_class, false);
+ 	  if (this_dir->status[cnt] == unknown)
