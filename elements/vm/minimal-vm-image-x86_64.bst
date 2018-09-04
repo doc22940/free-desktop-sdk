@@ -41,15 +41,27 @@ config:
       # Generate an fstab
       cat > %{build-root}/etc/fstab << EOF
       /dev/sda2   /       ext4   defaults,rw,noatime,acl   0 1
-      /dev/sda1   /boot   ntfs   defaults,acl              0 2
+      /dev/sda1   /boot   ext4   defaults,acl              0 2
       /dev/sda3   none    swap   defaults                  0 0
+      EOF
+
+    - |
+      # Generate user group information
+      # systemd-journal requires a user group to run
+      cat > %{build-root}/usr/etc/group << EOF
+      cdrom:x:11
+      tape:x:33
+      dialout:x:18
+      floppy:x:19
+      systemd-journal:x:101
       EOF
 
     - |
       # Generate initramfs with dracut
       mkdir -p %{build-root}/var/tmp
-      depmod -a -b %{build-root} "4.16.8";
-      dracut /buildstream/boot/initramfs.gz 4.16.8 --kmoddir "%{build-root}/lib/modules/4.16.8" --gzip  --prefix /boot --add-fstab %{build-root}/etc/fstab --tmpdir %{build-root}/var/tmp --include %{build-root}/sbin/swapon /sbin/swapon
+      depmod -a -b %{build-root} "4.16.8"
+      cd %{build-root}
+      dracut /buildstream/boot/initramfs.gz 4.16.8 --kmoddir "%{build-root}/lib/modules/4.16.8" --local --gzip  --prefix /boot --add-fstab %{build-root}/etc/fstab --tmpdir %{build-root}/var/tmp  --include %{build-root}/sbin/swapon /sbin/swapon  --include %{build-root}/usr/etc/group /usr/etc/group
 
     - |
       # Create syslinux config
@@ -78,7 +90,9 @@ config:
     - |
       # Create /boot image
       truncate -s %{boot-size} /buildstream/sda1.img
-      mkntfs -L boot /buildstream/boot /buildstream/sda1.img
+      mkfs.ext4 -F -i 8192 -L boot -d /buildstream/boot /buildstream/sda1.img
+
+    - |
       syslinux --directory /syslinux/ /buildstream/sda1.img
 
     - |
@@ -107,8 +121,8 @@ config:
       sdabytes=$(( ${sdasectors} * %{sector-size} ))
 
       truncate -s ${sdabytes} /buildstream/sda.img
-      parted -s /buildstrea/sda.img mklabel ext4
-      parted -s /buildstream/sda.img unit s mkpart primary ntfs ${sda1offset} $(( ${sda1offset} + ${sda1sec} - 1 ))
+      parted -s /buildstream/sda.img mklabel gpt
+      parted -s /buildstream/sda.img unit s mkpart primary ext2 ${sda1offset} $(( ${sda1offset} + ${sda1sec} - 1 ))
       parted -s /buildstream/sda.img unit s mkpart primary ext2 ${sda2offset} $(( ${sda2offset} + ${sda2sec} - 1 ))
       parted -s /buildstream/sda.img unit s mkpart primary linux-swap ${sda3offset} $(( ${sda3offset} + ${sda3sec} - 1 ))
 

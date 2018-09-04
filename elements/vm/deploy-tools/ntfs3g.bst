@@ -1,0 +1,9 @@
+kind: autotools
+
+depends:
+- filename: bootstrap-import.bst
+
+sources:
+- kind: tar
+  url: https://tuxera.com/opensource/ntfs-3g_ntfsprogs-2017.3.23.tgz
+  ref: 3e5a021d7b761261836dcb305370af299793eedbded731df3d6943802e1262d5  
