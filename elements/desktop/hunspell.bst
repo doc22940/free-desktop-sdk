@@ -2,6 +2,12 @@ kind: autotools
 
 depends:
   - filename: bootstrap-import.bst
+  - filename: base/autoconf.bst
+    type: build
+  - filename: base/automake.bst
+    type: build
+  - filename: base/libtool.bst
+    type: build
 
 variables:
   conf-local: |
@@ -13,9 +19,10 @@ public:
     split-rules:
       devel:
         (>):
-          - "%{libdir}/libhunspell-1.3.so"
+          - "%{libdir}/libhunspell-1.6.so"
 
 sources:
-  - kind: tar
-    url: https://downloads.sourceforge.net/hunspell/hunspell-1.3.3.tar.gz
-    ref: a7b2c0de0e2ce17426821dc1ac8eb115029959b3ada9d80a81739fa19373246c
+  - kind: git
+    url: https://github.com/hunspell/hunspell
+    track: master
+    ref: 2730ad3d32d839f439ba7f286e3600cd9294a978 # v1.6.2
