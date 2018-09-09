@@ -8,6 +8,8 @@ variables:
   prefix: /app
   lib: lib
 
+  use-build-id-path: "false"
+
   make-args: |
     GLEW_DEST="%{install-root}%{prefix}" \
     GLEW_PREFIX="%{prefix}" \

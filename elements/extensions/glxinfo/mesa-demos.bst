@@ -17,6 +17,8 @@ variables:
   prefix: /app
   lib: lib
 
+  use-build-id-path: "false"
+
 environment:
   PKG_CONFIG_PATH: "/app/lib/pkgconfig:"
 

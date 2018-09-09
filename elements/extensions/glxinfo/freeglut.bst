@@ -15,6 +15,8 @@ variables:
   lib: lib
   prefix: /app
 
+  use-build-id-path: "false"
+
   cmake-local: |
     -DFREEGLUT_BUILD_DEMOS:BOOL=OFF \
     -DCMAKE_C_FLAGS="${CFLAGS} -I/app/include"

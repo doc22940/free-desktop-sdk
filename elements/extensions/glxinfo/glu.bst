@@ -8,6 +8,8 @@ variables:
   prefix: /app
   lib: lib
 
+  use-build-id-path: "false"
+
 sources:
   - kind: tar
     url: https://mesa.freedesktop.org/archive/glu/glu-9.0.0.tar.bz2
