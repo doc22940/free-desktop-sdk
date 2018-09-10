@@ -21,6 +21,14 @@ public:
         (>):
           - "%{libdir}/libhunspell-1.6.so"
 
+config:
+  install-commands:
+    (>):
+      - |
+        ln -s %{libdir}/libhunspell-1.6.so %{install-root}%{libdir}/libhunspell-1.3.so.0.0.0
+        ln -s %{libdir}/libhunspell-1.3.so.0.0.0 %{install-root}%{libdir}/libhunspell-1.3.so.0
+        ln -s %{libdir}/libhunspell-1.3.so.0 %{install-root}%{libdir}/libhunspell-1.3.so
+
 sources:
   - kind: git
     url: https://github.com/hunspell/hunspell
