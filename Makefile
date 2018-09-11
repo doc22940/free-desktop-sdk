@@ -1,5 +1,6 @@
 BRANCH=18.08
 ARCH=$(shell uname -m | sed "s/^i.86$$/i586/")
+BOOTSTRAP_ARCH=$(shell uname -m | sed "s/^i.86$$/i586/")
 ifeq ($(ARCH),i586)
 FLATPAK_ARCH=i386
 else
@@ -7,7 +8,7 @@ FLATPAK_ARCH=$(ARCH)
 endif
 REPO=repo
 
-ARCH_OPTS=-o target_arch $(ARCH)
+ARCH_OPTS=-o target_arch $(ARCH) -o bootstrap_build_arch $(BOOTSTRAP_ARCH)
 
 RUNTIMES=					\
 	sdk					\
