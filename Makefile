@@ -1,6 +1,6 @@
 BRANCH=18.08
-ARCH=$(shell uname -m | sed "s/^i.86$$/i586/")
-BOOTSTRAP_ARCH=$(shell uname -m | sed "s/^i.86$$/i586/")
+ARCH=$(shell uname -m | sed "s/^i.86$$/i586/" | sed "s/^armv.l$$/arm/")
+BOOTSTRAP_ARCH=$(shell uname -m | sed "s/^i.86$$/i586/" | sed "s/^armv.l$$/arm/")
 ifeq ($(ARCH),i586)
 FLATPAK_ARCH=i386
 else
