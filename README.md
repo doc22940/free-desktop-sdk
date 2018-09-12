@@ -153,6 +153,9 @@ The `plugins/` directory contains our custom Buildstream
 
 ## Contributing
 
+> **Note:** Current default target branch is `18.08`. All the Merge Request should target that branch
+> See https://gitlab.com/freedesktop-sdk/freedesktop-sdk/wikis/release for more info about our branching strategy
+
 If you would like to contribute or suggest any improvements to the Freedesktop
 SDK, please submit a merge request.
 
