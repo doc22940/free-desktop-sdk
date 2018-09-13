@@ -27,3 +27,5 @@ depends:
   type: build
 - filename: debug-app-link.bst
   type: build
+- filename: blocked-list-link.bst
+  type: build
