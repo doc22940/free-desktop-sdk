@@ -30,6 +30,10 @@ variables:
   host-triplet: "%{triplet}"
 
 config:
+  configure-commands:
+    (<):
+      - ./autogen.sh
+      - make configure
   install-commands:
     - |
       cd %{builddir}
@@ -44,6 +48,7 @@ config:
       %{delete_libtool_files}
 
 sources:
-  - kind: tar
-    url: https://download.savannah.nongnu.org/releases/attr/attr-2.4.48.tar.gz
-    ref: 5ead72b358ec709ed00bbf7a9eaef1654baad937c001c044fe8b74c57f5324e7
+- kind: git
+  url: https://git.savannah.gnu.org/git/attr.git
+  track: v2.4.48
+  ref: cfd8e6ef491a7a5ff900ba2ba3deff7d0bebb0a6
