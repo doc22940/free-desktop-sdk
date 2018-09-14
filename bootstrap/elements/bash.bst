@@ -53,6 +53,6 @@ config:
 sources:
   - kind: git
     # No track field as this repository doesn't tag patches to release tag
-    # Bash-4.4 patch 18
+    # Bash-4.4 patch 19
     url: https://git.savannah.gnu.org/git/bash.git
-    ref: eb78197af36bb0fb95493ebf8fce104be6832ec9
+    ref: b0776d8c49ab4310fa056ce1033985996c5b9807
