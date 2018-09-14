@@ -12,8 +12,6 @@ depends:
   - filename: base/libffi.bst
   - filename: base/gettext.bst
     type: build
-  - filename: base/tar.bst
-    type: build
 
 variables:
   builddir: ''
@@ -32,6 +30,7 @@ config:
         find "%{install-root}" -type f -name perllocal.pod -delete
 
 sources:
-  - kind: tar
-    url: https://github.com/git/git/archive/v2.19.0.tar.gz
-    ref: c4146d94d1c74de0d099bcd6ba22cc44f799332a46146ede4ad9c9f67971aa28
+  - kind: git
+    url: https://github.com/git/git.git
+    track: v2.19.0
+    ref: 1d4361b0f344188ab5eec6dcea01f61a3a3a1670
