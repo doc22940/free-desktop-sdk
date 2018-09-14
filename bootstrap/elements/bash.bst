@@ -51,6 +51,8 @@ config:
       %{delete_libtool_files}
 
 sources:
-  - kind: tar
-    url: ftp_gnu_org:bash/bash-4.4.18.tar.gz
-    ref: 604d9eec5e4ed5fd2180ee44dd756ddca92e0b6aa4217bbab2b6227380317f23
+  - kind: git
+    # No track field as this repository doesn't tag patches to release tag
+    # Bash-4.4 patch 18
+    url: https://git.savannah.gnu.org/git/bash.git
+    ref: eb78197af36bb0fb95493ebf8fce104be6832ec9
