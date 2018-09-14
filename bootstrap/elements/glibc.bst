@@ -107,8 +107,9 @@ public:
           - "%{sysroot}%{libdir}/libm.so"
 
 sources:
-- kind: tar
-  url: ftp_gnu_org:glibc/glibc-2.27.tar.xz
-  ref: 5172de54318ec0b7f2735e5a91d908afe1c9ca291fec16b5374d9faadfc1fc72
+- kind: git
+  url: http://sourceware.org/git/glibc.git
+  track: glibc-2.27
+  ref: 23158b08a0908f381459f273a984c6fd328363cb
 - kind: patch
   path: patches/glibc-reorder-end.patch
