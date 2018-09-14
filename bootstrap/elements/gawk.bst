@@ -32,6 +32,7 @@ config:
       %{delete_libtool_files}
 
 sources:
-- kind: tar
-  url: ftp_gnu_org:gawk/gawk-4.2.1.tar.xz
-  ref: d1119785e746d46a8209d28b2de404a57f983aa48670f4e225531d3bdc175551
+- kind: git
+  url: https://git.savannah.gnu.org/git/gawk.git
+  track: gawk-4.2.1
+  ref: bd8a8ad0c258d2db31e420eec81932cf15bf9702
