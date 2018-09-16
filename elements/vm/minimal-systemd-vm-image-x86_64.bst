@@ -17,7 +17,7 @@ variables:
   # This is the smallest boot partition I managed to make.
   boot-size: 38912K
 
-  rootfs-size: 200M
+  rootfs-size: 750M
   sector-size: 512
   swap-size: 40K
 
@@ -43,6 +43,6 @@ config:
     - |
       cat > %{install-root}/run-in-qemu.sh << EOF
       #!/bin/sh
-      qemu-system-x86_64 -drive file=sda.img,format=raw -nographic -m 256
+      qemu-system-x86_64 -drive file=sda.img,format=raw -enable-kvm -m 1g
       EOF
       chmod +x %{install-root}/run-in-qemu.sh
