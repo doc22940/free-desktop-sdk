@@ -132,3 +132,14 @@ diff -ur glibc.old/elf/dl-load.c glibc/elf/dl-load.c
  	  fd = open_verify (buf, -1, fbp, loader, whatcode, mode,
  			    found_other_class, false);
  	  if (this_dir->status[cnt] == unknown)
+diff -ur glibc.old/sysdeps/unix/sysv/linux/generic/readlink.c glibc/sysdeps/unix/sysv/linux/generic/readlink.c
+--- glibc.old/sysdeps/unix/sysv/linux/generic/readlink.c	2018-02-01 17:17:18.000000000 +0100
++++ glibc/sysdeps/unix/sysv/linux/generic/readlink.c	2018-09-14 13:50:31.153495639 +0200
+@@ -19,6 +19,7 @@
+ #include <errno.h>
+ #include <unistd.h>
+ #include <fcntl.h>
++#include <sysdep.h>
+ 
+ /* Read the contents of the symbolic link PATH into no more than
+    LEN bytes of BUF.  The contents are not null-terminated.
