@@ -14,6 +14,8 @@ depends:
   - filename: desktop/gobject-introspection.bst
     type: build
   - filename: desktop/gsettings-desktop-schemas.bst
+  - filename: desktop/gtk-doc.bst
+    type: build
   - filename: desktop/hicolor-icon-theme.bst
   - filename: desktop/xorg-lib-xinerama.bst
   - filename: desktop/xorg-lib-xi.bst
@@ -22,9 +24,19 @@ depends:
   - filename: desktop/libxkbcommon.bst
   - filename: desktop/libepoxy.bst
   - filename: desktop/mesa.bst
+  - filename: base/autoconf.bst
+    type: build
+  - filename: base/automake.bst
+    type: build
+  - filename: base/gettext.bst
+    type: build
+  - filename: base/libtool.bst
+    type: build
   - filename: base/pkg-config.bst
     type: build
   - filename: base/perl.bst
+    type: build
+  - filename: base/which.bst
     type: build
 
 variables:
@@ -60,6 +72,7 @@ public:
         gtk-update-icon-cache %{datadir}/icons/hicolor
 
 sources:
-  - kind: tar
-    url: https://download.gnome.org/sources/gtk+/3.22/gtk+-3.22.30.tar.xz
-    ref: a1a4a5c12703d4e1ccda28333b87ff462741dc365131fbc94c218ae81d9a6567
+  - kind: git
+    url: https://gitlab.gnome.org/GNOME/gtk
+    track: 3.24.1
+    ref: f5ad1786e8b2b80408d8df6d2ac2c0748926b20c # 3.24.1
