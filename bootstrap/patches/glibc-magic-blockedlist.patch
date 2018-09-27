@@ -9,7 +9,7 @@ diff -ur glibc.old/elf/dl-load.c glibc/elf/dl-load.c
  
  static size_t max_dirnamelen;
  
-@@ -617,6 +618,91 @@
+@@ -617,6 +618,92 @@
  			  l, what);
  }
  
@@ -81,6 +81,7 @@ diff -ur glibc.old/elf/dl-load.c glibc/elf/dl-load.c
 +	  if (match_path(pattern, current_path) == 0) {
 +	    pos = read_pattern(file_data, pos, file_size, pattern);
 +	    char *new_pattern = (char*)malloc(strlen(pattern));
++	    strcpy(pattern, new_pattern);
 +	    if (blockedlist_patterns == NULL) {
 +	      blockedlist_patterns = (char**)malloc(2*sizeof(char*));
 +	    } else {
