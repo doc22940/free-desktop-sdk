@@ -30,6 +30,7 @@ stages:
 
 before_script:
   - export PATH=~/.local/bin:${PATH}
+  - dnf -y install nosync
   - git clone https://gitlab.com/BuildStream/buildstream.git
   - git -C buildstream checkout "${BST_SHA}"
   - pip3 install --user buildstream/
@@ -117,6 +118,7 @@ app_x86_64:
     - x86_64
   variables:
     ARCH: x86_64
+    LD_PRELOAD: /usr/lib64/nosync/nosync.so
 
 app_i586:
   image: $DOCKER_BST_AMD64
@@ -125,6 +127,7 @@ app_i586:
     - x86_64
   variables:
     ARCH: i586
+    LD_PRELOAD: /usr/lib/nosync/nosync.so
 
 app_aarch64:
   image: $DOCKER_BST_AARCH64
@@ -133,6 +136,7 @@ app_aarch64:
     - aarch64
   variables:
     ARCH: aarch64
+    LD_PRELOAD: /usr/lib64/nosync/nosync.so
 
 app_arm:
   image: $DOCKER_BST_AARCH64
@@ -141,6 +145,7 @@ app_arm:
     - armhf
   variables:
     ARCH: arm
+    LD_PRELOAD: /usr/lib/nosync/nosync.so
 
 
 .vm_image_template: &vm_image
