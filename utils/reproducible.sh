@@ -3,15 +3,19 @@
 # First pull all required targets. e.g.:
 #   bst pull --deps all all.bst
 #
-# Then disable artifacts cache in project.conf. Then call it with .bst file
+# Then disable artifacts cache in both 'project.conf's. Then call it with .bst file
 #
-#   bash ../utils/reproducible.sh all.bst freedesktop-sdk
+#   bash utils/reproducible.sh freedesktop-sdk all.bst
 #
 # Extra parameters are passed to bst. That is useful to pass architecture
 # options.
 #
 # It will not go through external project. So you need to verify
-# sdk and bootstrap separatly.
+# sdk and bootstrap separately.
+#
+# To test the bootstrap you can replace the command above with
+#
+#   bash utils/reproducible.sh freedesktop-sdk-bootstrap bootstrap-extract.bst
 #
 # Standard output will tell whether artifacts are reproducible.  File
 # "reproducible.log" contains extra logs.  File "results" will be a
@@ -27,7 +31,7 @@ project=$1
 element=$2
 shift 2
 bst="bst $@"
-ostree="ostree --repo=${HOME}/.cache/buildstream/artifacts/ostree"
+castool="utils/castool.py"
 global_result=0
 
 tmp=
@@ -66,12 +70,13 @@ while IFS=, read -r name ref state; do
                      ${bst} build "${name}" &>>reproducible.log
                      ;;
              esac
-             ostree_ref="${project}/$(basename "${name/\//-}" .bst)/${ref}"
              tmp=$(mktemp -td reproducible.XXXXXXXXXX)
-             ${ostree} checkout --user-mode ${ostree_ref} "${tmp}/a"
-             ${ostree} refs --delete ${ostree_ref}
+             element_name=$(echo "${name/\//-}" | cut -f 1 -d '.')
+             echo "Checking ${name} for reproducibility"
+             ${castool} checkout ${project} ${element_name} ${ref} "${tmp}/a" &>>reproducible.log
+             ${castool} delete ${project} ${element_name} ${ref} &>>reproducible.log
              ${bst} build "${name}" &>>reproducible.log
-             ${ostree} checkout --user-mode ${ostree_ref} "${tmp}/b"
+             ${castool} checkout ${project} ${element_name} ${ref} "${tmp}/b" &>>reproducible.log
              if diff -r --no-dereference "${tmp}/a/files" "${tmp}/b/files" --exclude="*.pyc" --exclude="*.pyo" &>>reproducible.log; then
                  echo "${name} ${ref} is reproducible"
                  reproducible=true
