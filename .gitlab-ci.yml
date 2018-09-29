@@ -29,7 +29,10 @@ stages:
   - publish_arm
 
 before_script:
+  - echo $PATH
   - export PATH=~/.local/bin:${PATH}
+  - export PATH=~/.local/bin2:${PATH}
+  - echo $PATH
   - dnf -y install nosync
   - git clone https://gitlab.com/BuildStream/buildstream.git
   - git -C buildstream checkout "${BST_SHA}"
