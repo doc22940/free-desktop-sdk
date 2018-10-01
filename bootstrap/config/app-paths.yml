@@ -1,0 +1,4 @@
+prefix: "/app"
+debugdir: "/usr/lib/debug"
+sourcedir: "%{debugdir}/source"
+sysroot: ""

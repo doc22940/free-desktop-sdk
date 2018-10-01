@@ -1,0 +1,15 @@
+conf-deterministic: |
+  --enable-deterministic-archives
+conf-link-args: |
+  --enable-shared \
+  --disable-static
+conf-host: |
+  --host=%{host-triplet}
+conf-build: |
+  --build=%{build-triplet}
+host-triplet: "%{triplet}"
+build-triplet: "%{triplet}"
+guessed-triplet: "$(sh %{sysroot}/usr/share/gnu-config/config.guess)"
+sysconfdir: "%{prefix}/etc"
+localstatedir: "%{prefix}/var"
+tools: "%{prefix}"

@@ -1,0 +1,29 @@
+variables:
+  (@):
+    - paths.yml
+    - bootstrap-paths.yml
+    - triplet.yml
+
+shell:
+  (@):
+    - shell.yml
+
+environment:
+  (@):
+    - environment.yml
+
+(@):
+  - strip-binaries.yml
+
+elements:
+  cmake:
+    (@):
+      - cmake.yml
+
+  autotools:
+    (@):
+      - autotools.yml
+
+split-rules:
+  (@):
+    - split-rules.yml
