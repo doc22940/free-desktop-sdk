@@ -80,7 +80,7 @@ diff -ur glibc.old/elf/dl-load.c glibc/elf/dl-load.c
 +	    break ;
 +	  if (match_path(pattern, current_path) == 0) {
 +	    pos = read_pattern(file_data, pos, file_size, pattern);
-+	    char *new_pattern = (char*)malloc(strlen(pattern));
++	    char *new_pattern = (char*)malloc(strlen(pattern)+1);
 +	    strcpy(pattern, new_pattern);
 +	    if (blockedlist_patterns == NULL) {
 +	      blockedlist_patterns = (char**)malloc(2*sizeof(char*));
