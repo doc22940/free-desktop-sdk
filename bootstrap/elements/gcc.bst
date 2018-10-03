@@ -6,18 +6,15 @@ depends:
   type: build
 - filename: gnu-config.bst
   type: build
-- filename: linux-headers.bst
-  type: build
 - filename: gcc-stage2.bst
-  type: build
-- filename: binutils-stage1.bst
-  type: build
-- filename: glibc.bst
-  type: build
-- filename: cross-installation-links.bst
   type: build
 - filename: debugedit-host.bst
   type: build
+
+sysroots:
+- path: /sysroot
+  depends:
+  - filename: glibc.bst
 
 variables:
   (?):
@@ -41,7 +38,7 @@ variables:
     --disable-multilib \
     --enable-multiarch \
     --disable-bootstrap \
-    --with-build-sysroot=%{sysroot} \
+    --with-build-sysroot=/sysroot \
     --enable-languages=c,c++,fortran \
     --enable-default-pie \
     --enable-default-ssp \
@@ -54,51 +51,45 @@ variables:
 
 config:
   install-commands:
+    (>):
     - |
-      cd %{builddir}
-      %{cross-install}
-
-    - |
-      ln -s gcc %{install-root}%{sysroot}%{bindir}/cc
-
-    - |
-      %{delete_libtool_files}
+      ln -s gcc %{install-root}%{bindir}/cc
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{sysroot}%{bindir}/*"
-          - "%{sysroot}%{libexecdir}"
-          - "%{sysroot}%{libexecdir}/**"
-          - "%{sysroot}%{datadir}/man"
-          - "%{sysroot}%{datadir}/man/**"
-          - "%{sysroot}%{datadir}/info"
-          - "%{sysroot}%{datadir}/info/**"
-          - "%{sysroot}%{datadir}/locale"
-          - "%{sysroot}%{datadir}/locale/**"
-          - "%{sysroot}%{indep-libdir}/gcc"
-          - "%{sysroot}%{indep-libdir}/gcc/**"
-          - "%{sysroot}%{libdir}/gcc"
-          - "%{sysroot}%{libdir}/gcc/**"
-          - "%{sysroot}%{multiarch_libdir}/lib*.a"
-          - "%{sysroot}%{multiarch_libdir}/liblsan.so"
-          - "%{sysroot}%{multiarch_libdir}/libstdc++.so"
-          - "%{sysroot}%{multiarch_libdir}/libgomp.so"
-          - "%{sysroot}%{multiarch_libdir}/libatomic.so"
-          - "%{sysroot}%{multiarch_libdir}/libubsan.so"
-          - "%{sysroot}%{multiarch_libdir}/libquadmath.so"
-          - "%{sysroot}%{multiarch_libdir}/libitm.so"
-          - "%{sysroot}%{multiarch_libdir}/libtsan.so"
-          - "%{sysroot}%{multiarch_libdir}/libmpxwrappers.so"
-          - "%{sysroot}%{multiarch_libdir}/libmpx.so"
-          - "%{sysroot}%{multiarch_libdir}/libcilkrts.so"
-          - "%{sysroot}%{multiarch_libdir}/libssp.so"
-          - "%{sysroot}%{multiarch_libdir}/libasan.so"
-          - "%{sysroot}%{multiarch_libdir}/libgfortran.so"
-          - "%{sysroot}%{multiarch_libdir}/libcc1.so"
-          - "%{sysroot}%{multiarch_libdir}/libgcc_s.so"
+          - "%{bindir}/*"
+          - "%{libexecdir}"
+          - "%{libexecdir}/**"
+          - "%{datadir}/man"
+          - "%{datadir}/man/**"
+          - "%{datadir}/info"
+          - "%{datadir}/info/**"
+          - "%{datadir}/locale"
+          - "%{datadir}/locale/**"
+          - "%{indep-libdir}/gcc"
+          - "%{indep-libdir}/gcc/**"
+          - "%{libdir}/gcc"
+          - "%{libdir}/gcc/**"
+          - "%{multiarch_libdir}/lib*.a"
+          - "%{multiarch_libdir}/liblsan.so"
+          - "%{multiarch_libdir}/libstdc++.so"
+          - "%{multiarch_libdir}/libgomp.so"
+          - "%{multiarch_libdir}/libatomic.so"
+          - "%{multiarch_libdir}/libubsan.so"
+          - "%{multiarch_libdir}/libquadmath.so"
+          - "%{multiarch_libdir}/libitm.so"
+          - "%{multiarch_libdir}/libtsan.so"
+          - "%{multiarch_libdir}/libmpxwrappers.so"
+          - "%{multiarch_libdir}/libmpx.so"
+          - "%{multiarch_libdir}/libcilkrts.so"
+          - "%{multiarch_libdir}/libssp.so"
+          - "%{multiarch_libdir}/libasan.so"
+          - "%{multiarch_libdir}/libgfortran.so"
+          - "%{multiarch_libdir}/libcc1.so"
+          - "%{multiarch_libdir}/libgcc_s.so"
 
 sources:
 - kind: tar

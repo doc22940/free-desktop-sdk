@@ -5,40 +5,29 @@ depends:
     type: build
   - filename: gnu-config.bst
     type: build
-  - filename: linux-headers.bst
-    type: build
   - filename: gcc-stage2.bst
     type: build
-  - filename: binutils-stage1.bst
-    type: build
-  - filename: glibc.bst
-    type: build
-  - filename: cross-installation-links.bst
-    type: build
-  - filename: attr.bst
   - filename: debugedit-host.bst
     type: build
+
+sysroots:
+- path: /sysroot
+  depends:
+  - filename: attr.bst
+  - filename: glibc.bst
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{sysroot}%{libdir}/libattr.so"
-          - "%{sysroot}%{libdir}/libacl.so"
-          - "%{sysroot}%{libexecdir}/libacl.so"
+          - "%{libdir}/libattr.so"
+          - "%{libdir}/libacl.so"
+          - "%{libexecdir}/libacl.so"
 
 variables:
   build-triplet: "%{guessed-triplet}"
   host-triplet: "%{triplet}"
-
-config:
-  install-commands:
-    - |
-      cd %{builddir}
-      %{cross-install}
-    - |
-      %{delete_libtool_files}
 
 sources:
   - kind: tar

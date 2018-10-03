@@ -16,15 +16,9 @@ variables:
 
 config:
   install-commands:
-  - make ARCH="%{kernel_arch}" INSTALL_HDR_PATH="%{install-root}%{sysroot}%{prefix}" headers_install
+  - make ARCH="%{kernel_arch}" INSTALL_HDR_PATH="%{install-root}%{prefix}" headers_install
 
 sources:
 - kind: tar
   url: https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.14.56.tar.xz
   ref: d4f56cfac6d43a349e6172bf84613f788a8481a54a213261cf591ffd133bc42c
-
-public:
-  bst:
-    split-rules:
-      devel:
-        - "/**"

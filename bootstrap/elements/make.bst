@@ -6,18 +6,15 @@ depends:
   type: build
 - filename: gnu-config.bst
   type: build
-- filename: linux-headers.bst
-  type: build
 - filename: gcc-stage2.bst
-  type: build
-- filename: binutils-stage1.bst
-  type: build
-- filename: glibc.bst
-  type: build
-- filename: cross-installation-links.bst
   type: build
 - filename: debugedit-host.bst
   type: build
+
+sysroots:
+- path: /sysroot
+  depends:
+  - filename: glibc.bst
 
 variables:
   build-triplet: "%{guessed-triplet}"
@@ -28,14 +25,6 @@ config:
     (<):
       - |
         autoreconf -fvi
-
-  install-commands:
-    - |
-      cd "%{builddir}"
-      %{cross-install}
-
-    - |
-      %{delete_libtool_files}
 
 sources:
 - kind: tar

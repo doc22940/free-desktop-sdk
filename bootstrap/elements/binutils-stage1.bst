@@ -14,11 +14,11 @@ variables:
   prefix: "%{tools}"
   conf-local: |
     --target=%{triplet} \
-    --with-sysroot=%{sysroot} \
+    --with-sysroot=/sysroot \
     --disable-nls \
     --disable-multilib \
     --disable-werror \
-    --with-lib-path="%{sysroot}/usr/lib/%{gcc_triplet}:%{sysroot}/usr/lib:/usr/lib/%{gcc_triplet}:/usr/lib"
+    --with-lib-path="/sysroot/usr/lib/%{gcc_triplet}:/sysroot/usr/lib:/usr/lib/%{gcc_triplet}:/usr/lib"
 
 sources:
 - kind: tar

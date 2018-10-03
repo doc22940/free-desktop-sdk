@@ -6,14 +6,16 @@ depends:
   type: build
 - filename: gnu-config.bst
   type: build
-- filename: linux-headers.bst
-  type: build
 - filename: gcc-stage1.bst
-  type: build
-- filename: binutils-stage1.bst
   type: build
 - filename: debugedit-host.bst
   type: build
+
+sysroots:
+- path: /sysroot
+  depends:
+  - filename: linux-headers.bst
+  - filename: cross-installation-links.bst
 
 config:
   configure-commands:
@@ -27,20 +29,17 @@ config:
       ../%{configure}
 
   install-commands:
-    - |
-      cd "%{builddir}"
-      %{cross-install}
-
+    (>):
     # Because sysconfdir has to be set as /etc for ldconfig, we need
     # manually move /etc/rpc
     - |
-      mkdir -p "%{install-root}%{sysroot}%{prefix}/etc"
-      mv "%{install-root}%{sysroot}%{sysconfdir}/rpc" "%{install-root}%{sysroot}%{prefix}/etc/rpc"
-      rm -r "%{install-root}%{sysroot}%{sysconfdir}"
+      mkdir -p "%{install-root}%{prefix}/etc"
+      mv "%{install-root}%{sysconfdir}/rpc" "%{install-root}%{prefix}/etc/rpc"
+      rm -r "%{install-root}%{sysconfdir}"
 
     # Move /lib* links into the prefix.
     - |
-      root="%{install-root}%{sysroot}"
+      root="%{install-root}"
       for i in lib lib32 lib64; do
         libdir="${root}/${i}"
         targetdir="${root}%{prefix}/${i}"
@@ -79,32 +78,32 @@ variables:
   host-triplet: "%{triplet}"
   build-triplet: "%{guessed-triplet}"
   conf-local: |
-    --with-headers=%{sysroot}%{includedir}
+    --with-headers=/sysroot%{includedir}
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{sysroot}%{libdir}/*.o"
-          - "%{sysroot}%{libdir}/lib*.a"
-          - "%{sysroot}%{libdir}/libdl.so"
-          - "%{sysroot}%{libdir}/libnsl.so"
-          - "%{sysroot}%{libdir}/libBrokenLocale.so"
-          - "%{sysroot}%{libdir}/libthread_db.so"
-          - "%{sysroot}%{libdir}/librt.so"
-          - "%{sysroot}%{libdir}/libcrypt.so"
-          - "%{sysroot}%{libdir}/libnss_dns.so"
-          - "%{sysroot}%{libdir}/libanl.so"
-          - "%{sysroot}%{libdir}/libnss_files.so"
-          - "%{sysroot}%{libdir}/libresolv.so"
-          - "%{sysroot}%{libdir}/libmvec.so"
-          - "%{sysroot}%{libdir}/libcidn.so"
-          - "%{sysroot}%{libdir}/libnss_hesiod.so"
-          - "%{sysroot}%{libdir}/libnss_db.so"
-          - "%{sysroot}%{libdir}/libutil.so"
-          - "%{sysroot}%{libdir}/libnss_compat.so"
-          - "%{sysroot}%{libdir}/libm.so"
+          - "%{libdir}/*.o"
+          - "%{libdir}/lib*.a"
+          - "%{libdir}/libdl.so"
+          - "%{libdir}/libnsl.so"
+          - "%{libdir}/libBrokenLocale.so"
+          - "%{libdir}/libthread_db.so"
+          - "%{libdir}/librt.so"
+          - "%{libdir}/libcrypt.so"
+          - "%{libdir}/libnss_dns.so"
+          - "%{libdir}/libanl.so"
+          - "%{libdir}/libnss_files.so"
+          - "%{libdir}/libresolv.so"
+          - "%{libdir}/libmvec.so"
+          - "%{libdir}/libcidn.so"
+          - "%{libdir}/libnss_hesiod.so"
+          - "%{libdir}/libnss_db.so"
+          - "%{libdir}/libutil.so"
+          - "%{libdir}/libnss_compat.so"
+          - "%{libdir}/libm.so"
 
 sources:
 - kind: tar

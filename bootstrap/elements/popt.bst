@@ -5,40 +5,28 @@ depends:
     type: build
   - filename: gnu-config.bst
     type: build
-  - filename: file.bst
-    type: build
-  - filename: linux-headers.bst
-    type: build
   - filename: gcc-stage2.bst
-    type: build
-  - filename: binutils-stage1.bst
-    type: build
-  - filename: glibc.bst
-    type: build
-  - filename: cross-installation-links.bst
     type: build
   - filename: debugedit-host.bst
     type: build
 
+sysroots:
+- path: /sysroot
+  depends:
+  - filename: file.bst
+    type: build
+  - filename: glibc.bst
+
 variables:
   host-triplet: "%{triplet}"
   build-triplet: "%{guessed-triplet}"
-
-config:
-  install-commands:
-    - |
-      cd "%{builddir}"
-      %{cross-install}
-
-    - |
-      %{delete_libtool_files}
 
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{sysroot}%{libdir}/libpopt.so"
+          - "%{libdir}/libpopt.so"
 
 sources:
   - kind: tar

@@ -5,18 +5,15 @@ depends:
     type: build
   - filename: gnu-config.bst
     type: build
-  - filename: linux-headers.bst
-    type: build
   - filename: gcc-stage2.bst
-    type: build
-  - filename: binutils-stage1.bst
-    type: build
-  - filename: glibc.bst
-    type: build
-  - filename: cross-installation-links.bst
     type: build
   - filename: debugedit-host.bst
     type: build
+
+sysroots:
+- path: /sysroot
+  depends:
+  - filename: glibc.bst
 
 variables:
   builddir: ''
@@ -45,7 +42,7 @@ config:
 
   install-commands:
     - |
-      make -j1 INSTALL_PREFIX="%{install-root}%{sysroot}" install
+      make -j1 INSTALL_PREFIX="%{install-root}" install
 
 sources:
   - kind: tar

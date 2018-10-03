@@ -5,24 +5,22 @@ depends:
     type: build
   - filename: gnu-config.bst
     type: build
-  - filename: linux-headers.bst
-    type: build
   - filename: gcc-stage2.bst
-    type: build
-  - filename: binutils-stage1.bst
-    type: build
-  - filename: glibc.bst
-    type: build
-  - filename: zlib.bst
-    type: build
-  - filename: bzip2.bst
-    type: build
-  - filename: libstdc++-stage1.bst
-    type: build
-  - filename: cross-installation-links.bst
     type: build
   - filename: debugedit-host.bst
     type: build
+
+  - filename: gcc.bst
+    type: runtime
+
+sysroots:
+- path: /sysroot
+  depends:
+  - filename: glibc.bst
+  - filename: libstdc++-stage1.bst
+    type: build
+  - filename: bzip2.bst
+  - filename: zlib.bst
 
 variables:
   build-triplet: "%{guessed-triplet}"
@@ -36,23 +34,15 @@ config:
       - |
         autoreconf -f -v -i
 
-  install-commands:
-    - |
-      cd "%{builddir}"
-      %{cross-install}
-
-    - |
-      %{delete_libtool_files}
-
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{sysroot}%{bindir}/**"
-          - "%{sysroot}%{libdir}/libasm.so"
-          - "%{sysroot}%{libdir}/libdw.so"
-          - "%{sysroot}%{libdir}/libelf.so"
+          - "%{bindir}/**"
+          - "%{libdir}/libasm.so"
+          - "%{libdir}/libdw.so"
+          - "%{libdir}/libelf.so"
 
 sources:
 - kind: tar

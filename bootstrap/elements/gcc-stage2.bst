@@ -7,15 +7,14 @@ depends:
 - filename: gnu-config.bst
   type: build
 - filename: binutils-stage1.bst
-  type: build
-- filename: glibc.bst
-  type: build
-- filename: linux-headers.bst
-  type: build
-- filename: libstdc++-stage1.bst
-  type: build
-- filename: cross-installation-links.bst
-  type: build
+
+sysroots:
+- path: /sysroot
+  depends:
+  - filename: glibc.bst
+    type: build
+  - filename: libstdc++-stage1.bst
+    type: build
 
 variables:
   conf-link-args: |
@@ -40,7 +39,7 @@ variables:
     --disable-multilib \
     --disable-bootstrap \
     --disable-nls \
-    --with-sysroot=%{sysroot} \
+    --with-sysroot=/sysroot \
     --enable-languages=c,c++,fortran \
     --enable-default-pie \
     --enable-default-ssp \

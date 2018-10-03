@@ -6,20 +6,17 @@ depends:
   type: build
 - filename: gnu-config.bst
   type: build
-- filename: linux-headers.bst
-  type: build
 - filename: gcc-stage2.bst
-  type: build
-- filename: binutils-stage1.bst
-  type: build
-- filename: glibc.bst
-  type: build
-- filename: ncurses.bst
-  type: build
-- filename: cross-installation-links.bst
   type: build
 - filename: debugedit-host.bst
   type: build
+
+sysroots:
+- path: /sysroot
+  depends:
+  - filename: glibc.bst
+  - filename: file.bst
+  - filename: ncurses.bst
 
 variables:
   build-triplet: "%{guessed-triplet}"
@@ -27,7 +24,7 @@ variables:
 
   conf-local: |
     --with-curses \
-    CPPFLAGS="${CPPFLAGS} -I%{sysroot}%{includedir}"
+    CPPFLAGS="${CPPFLAGS} -I/sysroot%{includedir}"
 
 config:
   build-commands:
@@ -35,25 +32,13 @@ config:
       cd "%{builddir}"
       %{make} SHLIB_LIBS=-lncurses
 
-  install-commands:
-    - |
-      cd "%{builddir}"
-      %{cross-install}
-
-    - |
-      cd "%{builddir}"
-      make -j1 install DESTDIR="%{install-root}/readline-separate-install"
-
-    - |
-      %{delete_libtool_files}
-
 public:
   bst:
     split-rules:
       devel:
         (>):
-          - "%{sysroot}%{libdir}/libreadline.so"
-          - "%{sysroot}%{libdir}/libhistory.so"
+          - "%{libdir}/libreadline.so"
+          - "%{libdir}/libhistory.so"
 
 sources:
 - kind: tar

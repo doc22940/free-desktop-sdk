@@ -5,27 +5,20 @@ depends:
     type: build
   - filename: gnu-config.bst
     type: build
-  - filename: file.bst
-    type: build
-  - filename: linux-headers.bst
-    type: build
   - filename: gcc-stage2.bst
     type: build
-  - filename: binutils-stage1.bst
-    type: build
-  - filename: glibc.bst
-    type: build
-  - filename: cross-installation-links.bst
-    type: build
-  - filename: bzip2.bst
-    type: build
-  - filename: elfutils.bst
-    type: build
-  - filename: popt.bst
-    type: build
-  - filename: openssl-static.bst
-    type: build
   - filename: debugedit-host.bst
+    type: build
+
+sysroots:
+- path: /sysroot
+  depends:
+  - filename: file.bst
+  - filename: popt.bst
+  - filename: glibc.bst
+  - filename: bzip2.bst
+  - filename: elfutils.bst
+  - filename: openssl-static.bst
     type: build
 
 variables:
@@ -71,7 +64,7 @@ config:
 
   install-commands:
     - |
-      make -j1 install-rpmlibexecPROGRAMS DESTDIR="%{install-root}%{sysroot}" rpmlibexec_PROGRAMS="debugedit" rpmlibexecdir="%{bindir}"
+      make -j1 install-rpmlibexecPROGRAMS DESTDIR="%{install-root}" rpmlibexec_PROGRAMS="debugedit" rpmlibexecdir="%{bindir}"
 
     - |
       %{delete_libtool_files}

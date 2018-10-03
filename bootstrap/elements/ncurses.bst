@@ -6,20 +6,17 @@ depends:
   type: build
 - filename: gnu-config.bst
   type: build
-- filename: linux-headers.bst
-  type: build
 - filename: gcc-stage2.bst
-  type: build
-- filename: binutils-stage1.bst
-  type: build
-- filename: glibc.bst
   type: build
 - filename: ncurses-stage1.bst
   type: build
-- filename: cross-installation-links.bst
-  type: build
 - filename: debugedit-host.bst
   type: build
+
+sysroots:
+- path: /sysroot
+  depends:
+  - filename: glibc.bst
 
 config:
   configure-commands:
@@ -66,13 +63,10 @@ config:
 
   install-commands:
     - |
-      cd ncurses-build && %{cross-install}
+      cd ncurses-build && %{make-install}
 
     - |
-      cd ncursesw-build && %{cross-install}
-
-    - |
-      cd ncurses-build && make -j1 install DESTDIR="%{install-root}/readline-separate-install"
+      cd ncursesw-build && %{make-install}
 
     - |
       %{delete_libtool_files}
@@ -82,17 +76,17 @@ public:
     split-rules:
       devel:
         (>):
-          - "%{sysroot}%{libdir}/libtinfo.so"
-          - "%{sysroot}%{libdir}/libtinfow.so"
-          - "%{sysroot}%{libdir}/libformw.so"
-          - "%{sysroot}%{libdir}/libform.so"
-          - "%{sysroot}%{libdir}/libpanel.so"
-          - "%{sysroot}%{libdir}/libmenuw.so"
-          - "%{sysroot}%{libdir}/libmenu.so"
-          - "%{sysroot}%{libdir}/libcurses.so"
-          - "%{sysroot}%{libdir}/libncursesw.so"
-          - "%{sysroot}%{libdir}/libncurses.so"
-          - "%{sysroot}%{libdir}/libpanelw.so"
+          - "%{libdir}/libtinfo.so"
+          - "%{libdir}/libtinfow.so"
+          - "%{libdir}/libformw.so"
+          - "%{libdir}/libform.so"
+          - "%{libdir}/libpanel.so"
+          - "%{libdir}/libmenuw.so"
+          - "%{libdir}/libmenu.so"
+          - "%{libdir}/libcurses.so"
+          - "%{libdir}/libncursesw.so"
+          - "%{libdir}/libncurses.so"
+          - "%{libdir}/libpanelw.so"
 
 sources:
 - kind: tar

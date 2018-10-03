@@ -7,7 +7,6 @@ depends:
 - filename: gnu-config.bst
   type: build
 - filename: binutils-stage1.bst
-  type: build
 
 variables:
   prefix: "%{tools}"
@@ -27,7 +26,7 @@ variables:
     --target=%{triplet} \
     --with-newlib \
     --enable-multiarch \
-    --with-sysroot=%{sysroot} \
+    --with-sysroot=/sysroot \
     --without-headers \
     --disable-bootstrap \
     --disable-nls \

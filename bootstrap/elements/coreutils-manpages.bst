@@ -8,7 +8,6 @@ depends:
 variables:
   conf-local: |
     --enable-install-program=hostname \
-    --mandir=/coreutils-manpages
 
 config:
   install-commands:
