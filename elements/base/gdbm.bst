@@ -3,6 +3,13 @@ kind: autotools
 depends:
   - filename: bootstrap-import.bst
 
+environment:
+  # gdbm does not seem to work FORTIFY_SOURCE=2 (default project.conf flags)
+  CPPFLAGS: "-O2"
+  CFLAGS: "-O2 -g"
+  CXXFLAGS: "-O2 -g"
+  LDFLAGS: "-Wl,-z,relro,-z,now"
+
 public:
   bst:
     split-rules:
