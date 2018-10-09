@@ -3,6 +3,8 @@ description: Installation of tools to create Android sparse ext4 images.
 
 depends:
   - filename: bootstrap-import.bst
+  - filename: dpkg/dpkg.bst
+    type: build
 
 sources:
 - kind: git
