@@ -5,6 +5,9 @@ depends:
   - filename: base/perl.bst
     type: build
 
+config:
+  build-commands: []
+
 sources:
   - kind: git
     url: https://salsa.debian.org/debian/debhelper.git
