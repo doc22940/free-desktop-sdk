@@ -1,0 +1,16 @@
+--- android-tools.old/debian/rules	2018-10-09 05:55:50.620756628 -0400
++++ android-tools/debian/rules	2018-10-09 12:09:55.723189661 -0400
+@@ -26,7 +26,7 @@
+ endif
+ 
+ %:
+-	dh $@ --with python2
++	dh $@ 
+ 
+ override_dh_clean:
+ 	dh_clean
+@@ -53,3 +53,4 @@
+ 
+ override_dh_installudev:
+ 	dh_installudev --priority=70
++

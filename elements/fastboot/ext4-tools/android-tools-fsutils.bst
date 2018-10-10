@@ -1,21 +1,49 @@
-kind: manual
+kind: dpkg_build
 description: Installation of tools to create Android sparse ext4 images.
 
 depends:
   - filename: bootstrap-import.bst
-
-variables:
-  bins: "%{install-root}/usr/bin"
+  - filename: dpkg/dpkg-tools.bst
+    type: build
+  - filename: fastboot/ext4-tools/libbsd.bst
+    type: build
 
 config:
+  build-commands:
+    - |
+      dpkg-source --before-build .
+      dh clean
+      dh build
+
   install-commands:
     - |
-      install -d -m 0755 "%{bins}"
-      install ./bin/* "%{bins}"
+      dh install
+      %{install-packages}
+      dh_gencontrol
+
+variables:
+  (?):
+  - target_arch == "aarch64":
+      deb_host_arch: "arm64"
+  - target_arch == "arm":
+      deb_host_arch: "armhf"
+  - target_arch == "i586" or target_arch == "x86_64":
+      deb_host_arch: "amd64"
+  packages: android-tools-fsutils android-tools-adbd android-tools-mkbootimg
+
+environment:
+  DEB_HOST_GNU_TYPE: "%{triplet}"
+  DEB_HOST_ARCH: "%{deb_host_arch}"
 
 sources:
-  - kind: deb
-    url:  http://ftp.uk.debian.org/debian/pool/main/a/android-tools/android-tools-fsutils_4.2.2+git20130529-5.1_arm64.deb
-    ref: f79392056922d09d93bac5a03ab068e1777947c95bcdc73a54ea5db74d940e4d
-    base-dir: 'usr'
+- kind: git
+  track: 5.1.1.r38-1.1
+  ref: 10847c822023624bc45cedea2ebb6bb703edfc75
+  url: https://salsa.debian.org/android-tools-team/android-tools.git
+- kind: patch
+  path: patches/android-tools-fsutils-remove-python-addon.patch
+- kind: patch
+  path: patches/android-tools-fsutils-fix-big-endian-build.patch
+- kind: patch
+  path: patches/android-tools-fsutils-remove-deprecated-packages.patch
 
