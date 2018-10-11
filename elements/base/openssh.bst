@@ -18,14 +18,16 @@ variables:
     --with-mantype=man
 
 config:
-  install-commands:
-    (>):
-      - rm -f %{install-root}%{bindir}/sshd
-      - rm -f %{install-root}%{sysconfdir}/sshd_config
-      - rm -f %{install-root}%{libexecdir}/sftp-server
-      - rm -f %{install-root}%{mandir}/man5/sshd_config
-      - rm -f %{install-root}%{mandir}/man8/sftp-server.8
-      - rm -f %{install-root}%{mandir}/man8/sshd.8
+  (?):
+  - sshd != True:
+      install-commands:
+        (>):
+          - rm %{install-root}%{bindir}/sshd
+          - rm %{install-root}%{sysconfdir}/sshd_config
+          - rm %{install-root}%{libexecdir}/sftp-server
+          - rm %{install-root}%{mandir}/man5/sshd_config.5
+          - rm %{install-root}%{mandir}/man8/sftp-server.8
+          - rm %{install-root}%{mandir}/man8/sshd.8
 
 sources:
   - kind: git
