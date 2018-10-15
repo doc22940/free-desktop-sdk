@@ -7,6 +7,8 @@ description: |
 config:
   exclude:
     - devel
+    - extra
+  include-orphans: False
 
 public:
   bst:

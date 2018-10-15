@@ -6,6 +6,7 @@ config:
     - debug
     - docs
     - locale
+    - extra
 
   metadata:
     Runtime:
