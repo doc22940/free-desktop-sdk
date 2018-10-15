@@ -36,6 +36,9 @@ config:
     - make INSTALL_PATH="%{install-root}"/boot install
     - make INSTALL_MOD_PATH="%{install-root}" modules_install
 
+environment:
+  LDFLAGS: ""
+
 public:
   bst:
     integration-commands:
@@ -48,6 +51,7 @@ public:
       fi
 
 sources:
-  - kind: tar
-    url: https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.16.8.tar.xz
-    ref: e4faad7d987b10e97eaaa272ef135c6edea8f8260e12bc1b8d1c91a7e03c98fc
+  - kind: git
+    url: https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
+    ref: linux-4.14.y
+
