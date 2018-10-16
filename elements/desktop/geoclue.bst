@@ -40,4 +40,4 @@ public:
 sources:
   - kind: git
     url: https://gitlab.freedesktop.org/geoclue/geoclue.git
-    ref: 4138a5e337b02a659152295de7bc00b5cbd99277 #  2.5.0
+    ref: 6d31b9cc88613979b04c0b41e3c0a4dd3591b18c
