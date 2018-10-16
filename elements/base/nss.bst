@@ -43,9 +43,11 @@ config:
       for lib in */lib/lib*.so*; do
         cp -L "${lib}" "%{install-root}/%{libdir}/"
       done
+      cp  */lib/libfreebl.a "%{install-root}%{libdir}"
       mkdir -p "%{install-root}/%{bindir}/"
       cp -L */bin/* "%{install-root}/%{bindir}/"
       install -m 644 -D -t "%{install-root}/%{includedir}/nss" public/nss/*
+      install -m 644 -D -t "%{install-root}/%{includedir}/nss" private/nss/{alghmac,blapi}.h
 
     - |
       sed -f - nss.pc.in <<EOF >nss.pc
