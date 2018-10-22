@@ -7,10 +7,6 @@ depends:
   - filename: base/nasm.bst
     type: build
 
-variables:
-  cmake-local: |
-    -DCMAKE_INSTALL_LIBDIR="%{libdir}"
-
 public:
   bst:
     split-rules:
