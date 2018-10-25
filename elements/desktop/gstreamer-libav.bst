@@ -22,9 +22,7 @@ sources:
   - kind: git
     url: freedesktop-old:gstreamer/gst-libav
     track: master
-    # Latest stable release doesn't support our ffmpeg, this is the closest commit
-    # to 1.14.2 which supports ffmpeg n4.0.2 with minimal patching
-    ref: 3b6597188ad25cca84ae5caa7b08767a5b4cfee7 # 1.14.0-39-g3b65971
+    ref: 9242cad62439eab235a9fa1844bb97f4ae58c9c2 # 1.14.4
     submodules:
       common:
         url: freedesktop-old:gstreamer/common
