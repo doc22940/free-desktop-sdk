@@ -6,12 +6,14 @@ depends:
     type: build
 
 variables:
-  common_options: "--enable-threads --enable-openmp"
+  common_options: "--enable-threads --enable-openmp --enable-float"
   arch_options: ''
   (?):
     - target_arch == "i686" or target_arch == "x86_64":
-        arch_options: "--enable-sse2 --enable-avx"
+        arch_options: "--enable-sse --enable-sse2 --enable-avx"
     - target_arch == "aarch64":
+        arch_options: "--enable-neon"
+    - target_arch == "arm":
         arch_options: "--enable-neon"
 
   conf-local: |
@@ -24,8 +26,11 @@ public:
       devel:
         (>):
         - '%{libdir}/libfftw3.so'
+        - '%{libdir}/libfftw3f.so'
         - '%{libdir}/libfftw3_omp.so'
+        - '%{libdir}/libfftw3f_omp.so'
         - '%{libdir}/libfftw3_threads.so'
+        - '%{libdir}/libfftw3f_threads.so
 
 sources:
   - kind: tar
