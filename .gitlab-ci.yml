@@ -42,7 +42,7 @@ before_script:
   - |
     cat > ~/.config/buildstream.conf << EOF
     cache:
-      quota: 35G
+      quota: 80%
     # Get a lot of output in case of errors
     logging:
       error-lines: 80
