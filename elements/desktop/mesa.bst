@@ -20,12 +20,14 @@ depends:
   type: build
 - filename: base/flex.bst
   type: build
+- filename: base/gettext.bst
+  type: build
 - filename: base/libunwind.bst
 - filename: base/buildsystem-meson.bst
   type: build
-- filename: base/python2.bst
+- filename: base/python3.bst
   type: build
-- filename: base/python2-mako.bst
+- filename: base/python3-mako.bst
   type: build
 
 variables:
@@ -96,4 +98,4 @@ public:
 sources:
 - kind: git_tag
   url: freedesktop:mesa/mesa.git
-  ref: mesa-18.2.4-0-g1cdef5e70ca1745b6cbc133c3bdb94cd6541ad4a
+  ref: mesa-18.3.0-rc3-0-g4b3f884673ac8a0d88593f207be8cd94392338be
