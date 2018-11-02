@@ -38,6 +38,7 @@ config:
     --enable-pc-files \
     --with-termlib \
     --prefix=/usr \
+    LDFLAGS="${LDFLAGS} -Wl,--no-undefined" \
     TIC_PATH="%{tools}/bin/tic"
 
   - |
@@ -55,6 +56,7 @@ config:
     --enable-pc-files \
     --with-termlib \
     --prefix=/usr \
+    LDFLAGS="${LDFLAGS} -Wl,--no-undefined" \
     TIC_PATH="%{tools}/bin/tic"
 
   build-commands:
