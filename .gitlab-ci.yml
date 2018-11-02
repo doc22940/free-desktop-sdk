@@ -30,6 +30,8 @@ stages:
   - publish_arm
 
 before_script:
+  - abidiff --version
+  - exit 1
   - export PATH=~/.local/bin:${PATH}
   - git clone https://gitlab.com/BuildStream/buildstream.git
   - git -C buildstream checkout "${BST_SHA}"
