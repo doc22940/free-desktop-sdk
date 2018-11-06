@@ -32,6 +32,6 @@ config:
     %{delete_libtool_files}
 
 sources:
-- kind: tar
-  url: ftp_gnu_org:findutils/findutils-4.6.0.tar.gz
-  ref: ded4c9f73731cd48fec3b6bdaccce896473b6d8e337e9612e16cf1431bb1169d
+- kind: git_tag
+  url: git_savannah_gnu_org:findutils.git
+  ref: v4.6.0-0-g992a6b62ab8061531dc0ad40325b8e4c222fce66
