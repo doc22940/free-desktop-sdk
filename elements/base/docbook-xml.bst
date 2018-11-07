@@ -17,7 +17,7 @@ config:
     xmlcatalog --noout --create docbook
 
     add() {
-      xmlcatalog --noout --add "$1" "$2" "file://%{data}/$3" docbook
+      xmlcatalog --noout --add "$1" "$2" "file://%{data}-$3" docbook
     }
 
     add system "http://docbook.org/xml/4.5/docbookx.dtd" 4.5/docbookx.dtd
@@ -38,31 +38,31 @@ config:
       sed -ri 's,"ent/iso-?,"%{data}/ent/iso,' ${version}/dbcentx.mod
     done
 
-    add public "ISO 8879:1986//ENTITIES Diacritical Marks//EN//XML" ent/isodia.ent
-    add public "ISO 8879:1986//ENTITIES Numeric and Special Graphic//EN//XML" ent/isonum.ent
-    add public "ISO 8879:1986//ENTITIES Publishing//EN//XML" ent/isopub.ent
-    add public "ISO 8879:1986//ENTITIES General Technical//EN//XML" ent/isotech.ent
-    add public "ISO 8879:1986//ENTITIES Added Latin 1//EN//XML" ent/isolat1.ent
-    add public "ISO 8879:1986//ENTITIES Added Latin 2//EN//XML" ent/isolat2.ent
-    add public "ISO 8879:1986//ENTITIES Greek Letters//EN//XML" ent/isogrk1.ent
-    add public "ISO 8879:1986//ENTITIES Monotoniko Greek//EN//XML" ent/isogrk2.ent
-    add public "ISO 8879:1986//ENTITIES Greek Symbols//EN//XML" ent/isogrk3.ent
-    add public "ISO 8879:1986//ENTITIES Alternative Greek Symbols//EN//XML" ent/isogrk4.ent
-    add public "ISO 8879:1986//ENTITIES Added Math Symbols: Arrow Relations//EN//XML" ent/isoamsa.ent
-    add public "ISO 8879:1986//ENTITIES Added Math Symbols: Binary Operators//EN//XML" ent/isoamsb.ent
-    add public "ISO 8879:1986//ENTITIES Added Math Symbols: Delimiters//EN//XML" ent/isoamsc.ent
-    add public "ISO 8879:1986//ENTITIES Added Math Symbols: Negated Relations//EN//XML" ent/isoamsn.ent
-    add public "ISO 8879:1986//ENTITIES Added Math Symbols: Ordinary//EN//XML" ent/isoamso.ent
-    add public "ISO 8879:1986//ENTITIES Added Math Symbols: Relations//EN//XML" ent/isoamsr.ent
-    add public "ISO 8879:1986//ENTITIES Box and Line Drawing//EN//XML" ent/isobox.ent
-    add public "ISO 8879:1986//ENTITIES Russian Cyrillic//EN//XML" ent/isocyr1.ent
-    add public "ISO 8879:1986//ENTITIES Non-Russian Cyrillic//EN//XML" ent/isocyr2.ent
+    xmlcatalog --noout --add public "ISO 8879:1986//ENTITIES Diacritical Marks//EN//XML" "file://%{data}/ent/isodia.ent" docbook
+    xmlcatalog --noout --add public "ISO 8879:1986//ENTITIES Numeric and Special Graphic//EN//XML" "file://%{data}/ent/isonum.ent" docbook
+    xmlcatalog --noout --add public "ISO 8879:1986//ENTITIES Publishing//EN//XML" "file://%{data}/ent/isopub.ent" docbook
+    xmlcatalog --noout --add public "ISO 8879:1986//ENTITIES General Technical//EN//XML" "file://%{data}/ent/isotech.ent" docbook
+    xmlcatalog --noout --add public "ISO 8879:1986//ENTITIES Added Latin 1//EN//XML" "file://%{data}/ent/isolat1.ent" docbook
+    xmlcatalog --noout --add public "ISO 8879:1986//ENTITIES Added Latin 2//EN//XML" "file://%{data}/ent/isolat2.ent" docbook
+    xmlcatalog --noout --add public "ISO 8879:1986//ENTITIES Greek Letters//EN//XML" "file://%{data}/ent/isogrk1.ent" docbook
+    xmlcatalog --noout --add public "ISO 8879:1986//ENTITIES Monotoniko Greek//EN//XML" "file://%{data}/ent/isogrk2.ent" docbook
+    xmlcatalog --noout --add public "ISO 8879:1986//ENTITIES Greek Symbols//EN//XML" "file://%{data}/ent/isogrk3.ent" docbook
+    xmlcatalog --noout --add public "ISO 8879:1986//ENTITIES Alternative Greek Symbols//EN//XML" "file://%{data}/ent/isogrk4.ent" docbook
+    xmlcatalog --noout --add public "ISO 8879:1986//ENTITIES Added Math Symbols: Arrow Relations//EN//XML" "file://%{data}/ent/isoamsa.ent" docbook
+    xmlcatalog --noout --add public "ISO 8879:1986//ENTITIES Added Math Symbols: Binary Operators//EN//XML" "file://%{data}/ent/isoamsb.ent" docbook
+    xmlcatalog --noout --add public "ISO 8879:1986//ENTITIES Added Math Symbols: Delimiters//EN//XML" "file://%{data}/ent/isoamsc.ent" docbook
+    xmlcatalog --noout --add public "ISO 8879:1986//ENTITIES Added Math Symbols: Negated Relations//EN//XML" "file://%{data}/ent/isoamsn.ent" docbook
+    xmlcatalog --noout --add public "ISO 8879:1986//ENTITIES Added Math Symbols: Ordinary//EN//XML" "file://%{data}/ent/isoamso.ent" docbook
+    xmlcatalog --noout --add public "ISO 8879:1986//ENTITIES Added Math Symbols: Relations//EN//XML" "file://%{data}/ent/isoamsr.ent" docbook
+    xmlcatalog --noout --add public "ISO 8879:1986//ENTITIES Box and Line Drawing//EN//XML" "file://%{data}/ent/isobox.ent" docbook
+    xmlcatalog --noout --add public "ISO 8879:1986//ENTITIES Russian Cyrillic//EN//XML" "file://%{data}/ent/isocyr1.ent" docbook
+    xmlcatalog --noout --add public "ISO 8879:1986//ENTITIES Non-Russian Cyrillic//EN//XML" "file://%{data}/ent/isocyr2.ent" docbook
 
   install-commands:
   - |
     set -e
     for version in 4.0 4.1.2 4.2 4.3 4.4 4.5; do
-      install -D -m 644  -t "%{install-root}%{data}/${version}" ${version}/*.dtd ${version}/*.mod
+      install -D -m 644  -t "%{install-root}%{data}-${version}" ${version}/*.dtd ${version}/*.mod
     done
     install -D -m 644 -t "%{install-root}%{data}/ent" 4.5/ent/*.ent
     install -D -m 644 docbook "%{install-root}%{sysconfdir}/xml/docbook"
