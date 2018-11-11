@@ -104,7 +104,7 @@ check_update_elements:
   image: $DOCKER_BST_AMD64
   stage: update
   tags:
-    - x86_64
+    - osuosl
   script:
     - ${BST} track --deps all all.bst
     - git diff
@@ -138,7 +138,7 @@ app_x86_64:
   image: $DOCKER_BST_AMD64
   <<: *flatpak_definition
   tags:
-    - x86_64
+    - osuosl
   variables:
     ARCH: x86_64
 
