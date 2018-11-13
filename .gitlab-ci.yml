@@ -154,6 +154,7 @@ app_aarch64:
   image: $DOCKER_BST_AARCH64
   <<: *flatpak_definition
   tags:
+    - new
     - aarch64
   variables:
     ARCH: aarch64
