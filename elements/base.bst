@@ -6,6 +6,7 @@ depends:
 - filename: base/autoconf-archive.bst
 - filename: base/autoconf.bst
 - filename: base/automake.bst
+- filename: base/bazel.bst
 - filename: base/bc.bst
 - filename: base/bison.bst
 - filename: base/ccache.bst
