@@ -12,6 +12,7 @@ depends:
 - filename: desktop/libglvnd.bst
 - filename: desktop/librsvg.bst
 - filename: desktop/libvdpau.bst
+- filename: desktop/libwebrtc-audio-processing.bst
 - filename: desktop/mesa.bst
 - filename: desktop/openal.bst
 - filename: desktop/vulkan.bst
