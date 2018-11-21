@@ -25,6 +25,11 @@ stages:
   - flatpak
   - vm
   - publish
+  - bootstrap-manifest
+  - publish_x86_64
+  - publish_i686
+  - publish_aarch64
+  - publish_arm
 
 before_script:
   - export PATH=~/.local/bin:${PATH}
@@ -106,8 +111,20 @@ check_update_elements:
     - ${BST} track --deps all all.bst
     - git diff
   only:
-    - schedules
 
+create_manifest_file:
+  image: $DOCKER_BST_AMD64
+  stage: bootstrap-manifest
+  tags:
+    - x86_64
+  script:
+    - cd bootstrap
+    - ${BST} build bootstrap-manifest-export.bst
+    - ${BST} checkout bootstrap-manifest-export.bst manifest/
+  artifacts:
+    paths:
+    - manifest/usr/manifest.json
+    expire_in: 1 week
 
 .flatpak_template: &flatpak_definition
   stage: flatpak
