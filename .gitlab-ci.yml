@@ -21,6 +21,7 @@ variables:
   BST: bst --colors
 
 stages:
+  - bootstrap-manifest
   - update
   - flatpak
   - vm
@@ -121,9 +122,10 @@ create_manifest_file:
     - cd bootstrap
     - ${BST} build bootstrap-manifest-export.bst
     - ${BST} checkout bootstrap-manifest-export.bst manifest/
+    - ls -l manifest/usr/manifest.json
   artifacts:
     paths:
-    - manifest/usr/manifest.json
+    - bootstrap/manifest/usr/manifest.json
     expire_in: 1 week
 
 .flatpak_template: &flatpak_definition
