@@ -234,12 +234,42 @@ check_update_elements:
     - |
       REFERENCE=$(git merge-base ${RUNTIME_VERSION} ${CI_COMMIT_SHA}) && \
       ./utils/check-abi --old=${REFERENCE} --new=${CI_COMMIT_SHA} abi/desktop-abi-image.bst
+    - abi_chk=$?
+
+    - global_result=false
+    - if [ "$abi_chk" = 0 ] ; then
+    -   global_result=true
+    -   comment="No error detected"
+    - else
+    -   comment="Error detected while running abi-check"
+    -   exit 1
+    - fi
+
+    - change_validation_id=${CI_PROJECT_PATH_SLUG}_test_freedesktop_$(date +%s%N)
+    - mkdir -p "${CHANGE_VALIDATIONS_PATH}"
+    - echo "export FREEDESKTOP_VALIDATION_ID=$change_validation_id" >> "${CHANGE_VALIDATIONS_PATH}test-freedesktop.env"
+
+    # gitect: Generate change validation evidence
+    - 'json_data="$(echo "${GITECT_CHANGE_VALID_EVIDENCE}"
+        | sed "s/!!CHANGE_VALIDATION_ID!!/$change_validation_id/;
+               s%!!VALIDATION_RESULTS!!%[]%;
+               s%!!TESTS_IDS!!%[]%;
+               s/!!CHANGE_VALIDATION_TYPE!!/Freedesktop testing/;
+               s/!!CHANGE_VALIDATOR_ID!!/check-abi_${CI_COMMIT_SHA}/;
+               s/!!ENVRT_ID!!/${FLATPAK_TEMPLATE_ENVRT_CONSTR_ID}/;
+               s/!!GLOBAL_RESULT!!/${global_result}/;
+               s/!!DATE_TIME!!/$(date -Iseconds)/")"'
+    - json_data=${json_data/!!COMMENT!!/$comment}
+    - 'curl -k -H "Content-Type: application/json" -H "X-Gitect-Token: ${GITECT_HOST_TOKEN}" -d
+            "$json_data" ${GITECT_EVIDENCE_ENDPOINT}/change-validation'
+    # gitect: End of Generate change validation evidence
 
 
   artifacts:
     when: always
     paths:
       - ${CI_PROJECT_DIR}/cache/buildstream/logs
+      - "${CHANGE_VALIDATIONS_PATH}"
   except:
     - master
     - '18.08'
