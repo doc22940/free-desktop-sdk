@@ -17,6 +17,53 @@ variables:
   # Generic variable for invoking buildstream
   BST: bst --colors
 
+  # Variables for gitect
+  TARGET_BRANCH: '18.08'
+  GITECT_HOST: https://gitect2.codethink.co.uk
+  CHANGE_VALIDATIONS_PATH: "change_validations/"
+  GITECT_EVIDENCE_ENDPOINT: "${GITECT_HOST}/api/v1/gitlab.com/${CI_PROJECT_PATH}/~/${CI_COMMIT_REF_NAME}/${CI_COMMIT_SHA}/evidence"
+  GITECT_CHANGE_VALID_EVIDENCE: "{\"elements\":
+                                 [{\"schema-version\": \"1\",
+                                 \"feature\": \"${CI_COMMIT_REF_NAME}\",
+                                 \"id\": \"!!CHANGE_VALIDATION_ID!!\",
+                                 \"validation-results-list\": !!VALIDATION_RESULTS!!,
+                                 \"test-id-list\": !!TESTS_IDS!!,
+                                 \"change-validation-type\": \"!!CHANGE_VALIDATION_TYPE!!\",
+                                 \"change-validator-id\": \"!!CHANGE_VALIDATOR_ID!!\",
+                                 \"environment-id\": \"!!ENVRT_ID!!\",
+                                 \"result\": !!GLOBAL_RESULT!!,
+                                 \"date-time\": \"!!DATE_TIME!!\",
+                                 \"comment\": \"!!COMMENT!!\"}]}"
+  GITECT_ENVRT_CONSTR_EVIDENCE: "{\"elements\":
+                                 [{\"schema-version\": \"1\",
+                                 \"feature\": \"${CI_COMMIT_REF_NAME}\",
+                                 \"id\": \"!!ENVRT_ID!!\",
+                                 \"orchestrator-id\": \"!!ORCHESTRATOR_ID!!\",
+                                 \"environment-type\": \"!!ENVRT_TYPE!!\",
+                                 \"date-time\": \"!!DATE_TIME!!\",
+                                 \"comment\": \"!!COMMENT!!\"}]}"
+  GITECT_ARTFTC_CONSTR_EVIDENCE: "{\"elements\":
+                                 [{\"schema-version\":\"1\",
+                                 \"feature\": \"${CI_COMMIT_REF_NAME}\",
+                                 \"id\": \"!!ARTFCT_ID!!\",
+                                 \"artefact-name\": \"!!ARTFCT_NAME!!\",
+                                 \"contributor-id\": \"!!CONTRIBUTOR_ID!!\",
+                                 \"environment-id\": \"!!ENVRT_ID!!\",
+                                 \"build-id\": \"!!BUILD_ID!!\",
+                                 \"date-time\": \"!!DATE_TIME!!\",
+                                 \"comment\": \"!!COMMENT!!\"}]}"
+  GITECT_ARTFCT_DEPLOY_EVIDENCE: "{\"elements\":
+                                 [{\"schema-version\":\"1\",
+                                 \"feature\": \"${CI_COMMIT_REF_NAME}\",
+                                 \"id\": \"!!ARTFCT_DEPLOY_ID!!\",
+                                 \"artefact-id\": \"!!ARTFCT_ID!!\",
+                                 \"orchestrator-id\": \"!!ORCHESTRATOR_ID!!\",
+                                 \"environment-id\": \"!!ENVRT_ID!!\",
+                                 \"date-time\": \"!!DATE_TIME!!\",
+                                 \"comment\": \"!!COMMENT!!\"}]}"
+
+  # End of Variables for gitect
+
 stages:
   - update
   - flatpak
@@ -138,10 +185,24 @@ check_update_elements:
   tags:
     - x86_64
   script:
+
     - ${BST} --on-error continue -o target_arch "x86_64" -o bootstrap_build_arch "x86_64" fetch --deps all flatpak-release.bst || true
     - ${BST} --on-error continue -o target_arch "i686" -o bootstrap_build_arch "x86_64" fetch --deps all flatpak-release.bst || true
     - ${BST} --on-error continue -o target_arch "aarch64" -o bootstrap_build_arch "aarch64" fetch --deps all flatpak-release.bst || true
     - ${BST} --on-error continue -o target_arch "arm" -o bootstrap_build_arch "aarch64" fetch --deps all flatpak-release.bst || true
+
+    # gitect: Generate environment construction evidence
+    - export UPDATE_ELEMENTS_ENVRT_CONSTR_ID="${CI_PIPELINE_ID}_check_update_elements"
+    - 'json_data="$(echo "${GITECT_ENVRT_CONSTR_EVIDENCE}"
+        | sed "s/!!ENVRT_ID!!/${BUILD_ENVRT_CONSTR_ID}/;
+               s/!!ORCHESTRATOR_ID!!/gitlab-ci:${CI_RUNNER_VERSION}/;
+               s/!!ENVRT_TYPE!!/docker:/;
+               s/!!DATE_TIME!!/$(date -Iseconds)/;
+               s/!!COMMENT!!/Environment to get the sources updated/")"'
+    - 'curl -k -H "Content-Type: application/json" -H "X-Gitect-Token: ${GITECT_HOST_TOKEN}" -d
+            "$json_data" ${GITECT_EVIDENCE_ENDPOINT}/environment-construction'
+    # gitect: End of Generate environment construction evidence
+
   <<: *gitlab_cache_pull_push
   only:
     - schedules
@@ -149,6 +210,18 @@ check_update_elements:
 .flatpak_template: &flatpak_definition
   stage: flatpak
   script:
+    # gitect: Generate environment construction evidence
+    - export FLATPAK_TEMPLATE_ENVRT_CONSTR_ID="${CI_PIPELINE_ID}_${CI_JOB_STAGE}_${ARCH}"
+    - 'json_data="$(echo "${GITECT_ENVRT_CONSTR_EVIDENCE}"
+        | sed "s/!!ENVRT_ID!!/${FLATPAK_TEMPLATE_ENVRT_CONSTR_ID}/;
+               s/!!ORCHESTRATOR_ID!!/gitlab-ci:${CI_RUNNER_VERSION}/;
+               s/!!ENVRT_TYPE!!/docker:/;
+               s/!!DATE_TIME!!/$(date -Iseconds)/;
+               s/!!COMMENT!!/Environment fro flatpak definition/")"'
+    - 'curl -k -H "Content-Type: application/json" -H "X-Gitect-Token: ${GITECT_HOST_TOKEN}" -d
+            "$json_data" ${GITECT_EVIDENCE_ENDPOINT}/environment-construction'
+    # gitect: Generate environment construction evidence
+
     - make ARCH=${ARCH} build
     - make ARCH=${ARCH} check-dev-files
     - make ARCH=${ARCH} check-rpath
@@ -209,8 +282,26 @@ app_arm:
 .vm_imageless_template: &vm_imageless
   stage: vm
   script:
+
     - make build-vm
     - utils/test-minimal-system --dialog "${DIALOG}" command 'make run-vm'
+
+    # gitect: Generate environment construction evidence
+    - export VM_ENVRT_CONSTR_ID="${CI_PIPELINE_ID}_vm_image_{ARCH}"
+    - 'json_data="$(echo "${GITECT_ENVRT_CONSTR_EVIDENCE}"
+        | sed "s/!!ENVRT_ID!!/${BUILD_ENVRT_CONSTR_ID}/;
+               s/!!ORCHESTRATOR_ID!!/gitlab-ci:${CI_RUNNER_VERSION}/;
+               s/!!ENVRT_TYPE!!/docker:/;
+               s/!!DATE_TIME!!/$(date -Iseconds)/;
+               s/!!COMMENT!!/Environment for flatpak definition/")"'
+    - 'curl -k -H "Content-Type: application/json" -H "X-Gitect-Token: ${GITECT_HOST_TOKEN}" -d
+            "$json_data" ${GITECT_EVIDENCE_ENDPOINT}/environment-construction'
+    # gitect: Generate environment construction evidence
+
+    - ${BST} -o target_arch "${ARCH}" build vm/"${TYPE}"-vm-image-"${ARCH}".bst
+    - ${BST} -o target_arch "${ARCH}" checkout vm/"${TYPE}"-vm-image-"${ARCH}".bst ./vm
+    - utils/test-minimal-system --dialog "${DIALOG}" vm/sda.img
+
   artifacts:
     when: always
     paths:
@@ -367,6 +458,23 @@ finish_publish_failed:
   stage: publish
   retry: 2
   script:
+    # gitect: Generate environment construction evidence
+    - export FLATPAK_RUNTIMES_PUBLISH_ENVRT_CONSTR_ID="${CI_PIPELINE_ID}_flatpak_runtimes_publish_{ARCH}"
+    - 'json_data="$(echo "${GITECT_ENVRT_CONSTR_EVIDENCE}"
+        | sed "s/!!ENVRT_ID!!/${BUILD_ENVRT_CONSTR_ID}/;
+               s/!!ORCHESTRATOR_ID!!/gitlab-ci:${CI_RUNNER_VERSION}/;
+               s/!!ENVRT_TYPE!!/docker:/;
+               s/!!DATE_TIME!!/$(date -Iseconds)/;
+               s/!!COMMENT!!/Environment for flatpak runtimes publish/")"'
+    - 'curl -k -H "Content-Type: application/json" -H "X-Gitect-Token: ${GITECT_HOST_TOKEN}" -d
+            "$json_data" ${GITECT_EVIDENCE_ENDPOINT}/environment-construction'
+    # gitect: Generate environment construction evidence
+
+    - |
+      [ -n "${FREEDESKTOP_GPG_PRIV}" ]
+    - |
+      echo "${FREEDESKTOP_GPG_PRIV}" | base64 --decode | gpg --import
+
     - make ARCH=${ARCH} build
     - make ARCH=${ARCH} export
 
