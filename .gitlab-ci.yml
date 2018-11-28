@@ -249,7 +249,7 @@ check_update_elements:
     - mkdir -p "${CHANGE_VALIDATIONS_PATH}"
     - echo "export FREEDESKTOP_VALIDATION_ID=$change_validation_id" >> "${CHANGE_VALIDATIONS_PATH}test-freedesktop.env"
 
-    # gitect: Generate change validation evidence
+     # gitect: Generate change validation evidence
     - 'json_data="$(echo "${GITECT_CHANGE_VALID_EVIDENCE}"
         | sed "s/!!CHANGE_VALIDATION_ID!!/$change_validation_id/;
                s%!!VALIDATION_RESULTS!!%[]%;
@@ -262,7 +262,7 @@ check_update_elements:
     - json_data=${json_data/!!COMMENT!!/$comment}
     - 'curl -k -H "Content-Type: application/json" -H "X-Gitect-Token: ${GITECT_HOST_TOKEN}" -d
             "$json_data" ${GITECT_EVIDENCE_ENDPOINT}/change-validation'
-    # gitect: End of Generate change validation evidence
+      # gitect: End of Generate change validation evidence
 
 
   artifacts:
@@ -331,7 +331,47 @@ app_arm:
 
     - ${BST} -o target_arch "${ARCH}" build vm/"${TYPE}"-vm-image-"${ARCH}".bst
     - ${BST} -o target_arch "${ARCH}" checkout vm/"${TYPE}"-vm-image-"${ARCH}".bst ./vm
+
+    - build_element=elements/vm/"${TYPE}"-vm-image-"${ARCH}".bst
+
+    #gitect: Generate artefact construction evidence
+    - 'json_data="$(echo "${GITECT_ARTFTC_CONSTR_EVIDENCE}"
+        | sed "s/!!ARTFCT_ID!!/sda.img_${CI_COMMIT_SHA}/;
+               s/!!ARTFCT_NAME!!/sda.img/;
+               s/!!CONTRIBUTOR_ID!!/buildstream:version_$(bst --version)/;
+               s/!!ENVRT_ID!!/${VM_ENVRT_CONSTR_ID}/; 
+               s/!!BUILD_ID!!/ci_pipeline:${CI_PIPELINE_ID}_${build_element}/;
+               s/!!DATE_TIME!!/$(date -Iseconds)/;
+               s/!!COMMENT!!/Freedesktop image artefact evidence construction/")"'
+    - 'curl -k -H "Content-Type: application/json" -H "X-Gitect-Token: ${GITECT_HOST_TOKEN}" -d
+            "$json_data" ${GITECT_EVIDENCE_ENDPOINT}/artefact-construction'
+    #gitect: End of Generate artefact construction evidence
+
     - utils/test-minimal-system --dialog "${DIALOG}" vm/sda.img
+
+    # gitect: Generate environment construction evidence
+    - qemu_version=$(qemu-system-x86_64 -version | head -n 1 | sed 's/.*version //;s/(.*//')
+    - 'json_data="$(echo "${GITECT_ENVRT_CONSTR_EVIDENCE}"
+        | sed "s/!!ENVRT_ID!!/${FREEDESKTOP_QEMU_ENVRT_CONSTR_ID}/;
+               s/!!ORCHESTRATOR_ID!!/gitlab-ci:${CI_RUNNER_VERSION}/;
+               s/!!ENVRT_TYPE!!/qemu:${qemu_version}/;
+               s/!!DATE_TIME!!/$(date -Iseconds)/;
+               s/!!COMMENT!!/qemu environment for FREEDESKTOP distro testing/")"'
+    - 'curl -k -H "Content-Type: application/json" -H "X-Gitect-Token: ${GITECT_HOST_TOKEN}" -d
+            "$json_data" ${GITECT_EVIDENCE_ENDPOINT}/environment-construction'
+    # gitect: End of Generate environment construction evidence
+
+    # gitect: Generate artefact deployment evidence
+    - 'json_data="$(echo "${GITECT_ARTFCT_DEPLOY_EVIDENCE}"
+              | sed "s/!!ARTFCT_DEPLOY_ID!!/${FREEDESKTOP_QEMU_ENVRT_CONSTR_ID}_sda.img_${CI_COMMIT_SHA}/;
+                     s/!!ARTFCT_ID!!/sda.img_${CI_COMMIT_SHA}/;
+                     s/!!ORCHESTRATOR_ID!!/gitlab-ci:${CI_RUNNER_VERSION}/;
+                     s/!!ENVRT_ID!!/${TEST_MINIMAL_QEMU_ENVRT_CONSTR_ID}/;
+                     s/!!DATE_TIME!!/$(date -Iseconds)/;
+                     s/!!COMMENT!!/deploy of the sda.img image to qemu/")"'
+    - 'curl -k -H "Content-Type: application/json" -H "X-Gitect-Token: ${GITECT_HOST_TOKEN}" -d
+            "$json_data" ${GITECT_EVIDENCE_ENDPOINT}/artefact-deployment'
+    # gitect: End of Generate artefact deployment evidence
 
   artifacts:
     when: always
