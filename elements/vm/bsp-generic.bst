@@ -4,6 +4,7 @@ description: |
 
 depends:
 - vm/bsp-generic/linux.bst
+- filename: test/test.bst
 
 (?):
 - target_arch in ["i686", "x86_64"]:

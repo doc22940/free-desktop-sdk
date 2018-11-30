@@ -23,6 +23,7 @@ depends:
   type: build
 - filename: vm/linux-vm-boot/shadow.bst
   type: build
+- filename: test/test.bst
 
 
 config:

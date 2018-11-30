@@ -23,3 +23,4 @@ depends:
   type: build
 - filename: vm/initramfs/initramfs-gz.bst
   type: build
+  

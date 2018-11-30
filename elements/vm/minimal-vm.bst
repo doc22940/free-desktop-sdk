@@ -20,6 +20,7 @@ depends:
 - filename: vm/initramfs/initramfs-gz.bst
   type: build
 
+
 config:
   include:
   - runtime
