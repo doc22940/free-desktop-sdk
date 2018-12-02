@@ -135,7 +135,7 @@ app_x86_64:
   image: $DOCKER_BST_AMD64
   <<: *flatpak_definition
   tags:
-    - x86_64
+    - do
   variables:
     ARCH: x86_64
 
@@ -143,7 +143,7 @@ app_i686:
   image: $DOCKER_BST_AMD64
   <<: *flatpak_definition
   tags:
-    - x86_64
+    - do
   variables:
     ARCH: i686
 
@@ -227,7 +227,7 @@ publish_x86_64:
   image: $DOCKER_BST_AMD64
   <<: *flatpak_runtimes_publish
   tags:
-    - x86_64
+    - do
   variables:
     ARCH: x86_64
 
@@ -235,7 +235,7 @@ publish_i686:
   image: $DOCKER_BST_AMD64
   <<: *flatpak_runtimes_publish
   tags:
-    - x86_64
+    - do
   variables:
     ARCH: i686
 
