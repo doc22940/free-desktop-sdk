@@ -19,6 +19,8 @@ depends:
   type: build
 - filename: vm/initramfs/initramfs-gz.bst
   type: build
+- filename: test/test.bst
+  type: build
 
 
 config:
