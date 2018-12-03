@@ -23,6 +23,7 @@ import locale
 import logging
 import sys
 import time
+import subprocess
 
 
 QEMU = 'qemu-system-x86_64'
@@ -116,7 +117,7 @@ async def await_line(stream, marker):
 
 
 async def run_qemu_test(sda, dialog):
-    command = [QEMU, '-drive', 'file=%s,format=raw' % sda, '-nographic'] + QEMU_EXTRA_ARGS
+    command = [QEMU, '-drive', 'file=%s,format=raw' % sda, '-nographic', '-m', '256', '-net', 'nic', '-net', 'user,hostfwd=tcp::5555-:22']
     dialog = DIALOGS[dialog]
 
     logging.debug("Starting process: %s", command)
@@ -133,6 +134,7 @@ async def run_qemu_test(sda, dialog):
             if dialog:
                 process.stdin.write(dialog.pop(0).encode('ascii') + b'\n')
 
+        subprocess.check_call(['ssh', '-oStrictHostKeyChecking=no', '-oUserKnownHostsFile=/dev/null', '-p5555', 'root@127.0.0.1', 'memtester 100M 1'], stderr=subprocess.PIPE)
         print("Test successful")
         success = True
     except asyncio.CancelledError:
