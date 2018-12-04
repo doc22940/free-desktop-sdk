@@ -199,6 +199,35 @@ minimal_systemd_vm_image_x86_64:
     TYPE: minimal-systemd
     DIALOG: root-login
 
+check-license-compliance:
+  image: $DOCKER_QEMU_AMD64
+  stage: vm
+  script:
+
+    - apt install -y golang protobuf-compiler
+    - apt-get install apt-transport-https ca-certificates curl software-properties-common
+    - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    - apt-get update
+    - apt-get install docker-ce
+    - go get github.com/docker/docker/client
+    - export GOPATH="/home/go"
+    - export PATH="${PATH}:${GOPATH}/bin"
+    - go get -u github.com/golang/protobuf/{proto,protoc-gen-go}
+    - go get -u github.com/QMSTR/qmstr
+    - cd ${GOPATH}/src/github.com/QMSTR/qmstr
+    - make
+    - make install_qmstr_client
+    - make image
+
+  artifacts:
+    when: always
+    paths:
+      - ${CI_PROJECT_DIR}/cache/buildstream/logs
+  except:
+    - master
+    - '18.08'
+  <<: *gitlab_cache_pull
+
 .flatpak_runtimes_publish_template: &flatpak_runtimes_publish
   stage: publish
   script:
