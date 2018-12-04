@@ -4,4 +4,3 @@ description: |
 
 depends:
 - test/memtester.bst
-- test/dropbear.bst
