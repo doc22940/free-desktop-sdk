@@ -4,7 +4,6 @@ variables:
   # directory.
   XDG_CACHE_HOME: "${CI_PROJECT_DIR}/cache"
   GET_SOURCES_ATTEMPTS: 3
-  BST_CACHE_SERVER_ADDRESS: 'freedesktop-sdk-cache.codethink.co.uk'
   BST_RELEASES_SERVER_ADDRESS: 'cache.sdk.freedesktop.org'
   BST_SHA: '10abe77fe8d77385d86f225b503d9185f4ef7f3a' #  1.2.3
   BST_EXTERNAL_SHA: '0.7.0-0-g573843768f4d297f85dc3067465b3c7519a8dcc3'
@@ -58,27 +57,6 @@ before_script:
 
   # Create CAS directory for SSL keys
   - mkdir -p /etc/ssl/CAS
-
-  # Private SSL keys/certs for pushing to the CAS server
-  - |
-    if [ -n "$GITLAB_CAS_PUSH_CERT" ] && [ -n "$GITLAB_CAS_PUSH_KEY" ]; then
-        echo "$GITLAB_CAS_PUSH_CERT" > /etc/ssl/CAS/server.crt
-        echo "$GITLAB_CAS_PUSH_KEY" > /etc/ssl/CAS/server.key
-
-        echo "projects:" >> ~/.config/buildstream.conf
-        echo "  freedesktop-sdk-bootstrap:" >> ~/.config/buildstream.conf
-        echo "    artifacts:" >> ~/.config/buildstream.conf
-        echo "      url: https://${BST_CACHE_SERVER_ADDRESS}:11002" >> ~/.config/buildstream.conf
-        echo "      client-key: /etc/ssl/CAS/server.key" >> ~/.config/buildstream.conf
-        echo "      client-cert: /etc/ssl/CAS/server.crt" >> ~/.config/buildstream.conf
-        echo "      push: true" >> ~/.config/buildstream.conf
-        echo "  freedesktop-sdk:" >> ~/.config/buildstream.conf
-        echo "    artifacts:" >> ~/.config/buildstream.conf
-        echo "      url: https://${BST_CACHE_SERVER_ADDRESS}:11002" >> ~/.config/buildstream.conf
-        echo "      client-key: /etc/ssl/CAS/server.key" >> ~/.config/buildstream.conf
-        echo "      client-cert: /etc/ssl/CAS/server.crt" >> ~/.config/buildstream.conf
-        echo "      push: true" >> ~/.config/buildstream.conf
-    fi
 
 # Store all the downloaded git and ostree repos in the distributed cache.
 # This saves us fetching them on every build
