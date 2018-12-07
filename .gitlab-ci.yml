@@ -123,6 +123,18 @@ create_manifest_file:
     - ${BST} build bootstrap-manifest-export.bst
     - ${BST} checkout bootstrap-manifest-export.bst manifest/
     - ls -l manifest/usr/manifest.json
+    - python ../utils/jsontomd.py manifest/usr/manifest.json
+    - echo "$WIKI_SSH_PRIV_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+    - echo "$WIKI_SSH_PUB_KEY" | tr -d '\r' > ~/.ssh/id_rsa.pub
+    - chmod 600 ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa.pub
+    - ssh-keyscan -H 'WIKI' >> ~/.ssh/known_hosts
+    - git clone git@gitlab.com:freedesktop-sdk/freedesktop-sdk.wiki.git
+    - cp manifest/usr/manifest.md freedesktop-sdk.wiki/bootstrap-manifest.md
+    - cd freedesktop-sdk.wiki
+    - git add bootstrap-manifest.md
+    - git commit -m "Update bootstrap manifest file"
+    - git push origin master
   artifacts:
     paths:
     - bootstrap/manifest/usr/manifest.json
