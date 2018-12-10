@@ -132,7 +132,7 @@ class CollectManifestElement(Element):
         pass
 
     def stage(self, sandbox):
-    pass
+        pass
 
     def extract_cpe(self, dep):
         cpe = dep.get_public_data('cpe')
