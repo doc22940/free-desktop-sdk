@@ -55,6 +55,8 @@ public:
         - '%{libdir}/libssl.so'
         - '%{libdir}/libcrypto.so'
         - '%{prefix}/ssl/misc/*'
+    overlap-whitelist:
+      - '**'
 
 sources:
 - kind: git_tag

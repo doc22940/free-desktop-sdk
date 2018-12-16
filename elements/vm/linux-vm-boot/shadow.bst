@@ -10,7 +10,7 @@ variables:
 public:
   bst:
     overlap-whitelist:
-    - '**'
+      - '**'
 
 sources:
 - kind: tar
