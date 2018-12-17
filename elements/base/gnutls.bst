@@ -11,6 +11,12 @@ depends:
 - filename: base/libidn2.bst
 - filename: base/nettle.bst
 - filename: base/p11-kit.bst
+- filename: base/git-minimal.bst
+  type: build
+- filename: base/gperf.bst
+  type: build
+- filename: base/patch.bst
+  type: build
 
 variables:
   conf-local: |
@@ -26,6 +32,19 @@ public:
         - '%{libdir}/libgnutlsxx.so'
 
 sources:
-- kind: tar
-  url: https://www.gnupg.org/ftp/gcrypt/gnutls/v3.6/gnutls-3.6.5.tar.xz
-  ref: 073eced3acef49a3883e69ffd5f0f0b5f46e2760ad86eddc6c0866df4e7abb35
+- kind: git
+  url: https://gitlab.com/gnutls/gnutls.git
+  ref: gnutls_3_6_5-0-g4353ea025ae032887f3e8cf5aadace25662c6b35
+  submodules:
+   gnulib:
+     checkout: True
+     url: https://gitlab.com/libidn/gnulib-mirror.git
+   tests/suite/tls-fuzzer/python-ecdsa:
+     checkout: True
+     url: https://github.com/warner/python-ecdsa
+   tests/suite/tls-fuzzer/tlsfuzzer:
+     checkout: True
+     url: github:tomato42/tlsfuzzer.git
+   tests/suite/tls-fuzzer/tlslite-ng:
+     checkout: True
+     url: github:tomato42/tlslite-ng.git
