@@ -13,6 +13,9 @@ depends:
   type: build
 - filename: base/libffi.bst
   type: build
+- filename: base/gc.bst
+  type: build
+
 
 sources:
 - kind: git
