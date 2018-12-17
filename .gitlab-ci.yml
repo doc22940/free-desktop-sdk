@@ -195,9 +195,9 @@ check_update_elements:
     # gitect: Generate environment construction evidence
     - export UPDATE_ELEMENTS_ENVRT_CONSTR_ID="${CI_PIPELINE_ID}_check_update_elements"
     - 'json_data="$(echo "${GITECT_ENVRT_CONSTR_EVIDENCE}"
-        | sed "s/!!ENVRT_ID!!/${BUILD_ENVRT_CONSTR_ID}/;
+        | sed "s/!!ENVRT_ID!!/${UPDATE_ELEMENTS_ENVRT_CONSTR_ID}/;
                s/!!ORCHESTRATOR_ID!!/gitlab-ci:${CI_RUNNER_VERSION}/;
-               s/!!ENVRT_TYPE!!/docker:/;
+               s/!!ENVRT_TYPE!!/docker:${image}/;
                s/!!DATE_TIME!!/$(date -Iseconds)/;
                s/!!COMMENT!!/Environment to get the sources updated/")"'
     - 'curl -k -H "Content-Type: application/json" -H "X-Gitect-Token: ${GITECT_HOST_TOKEN}" -d
@@ -216,9 +216,9 @@ check_update_elements:
     - 'json_data="$(echo "${GITECT_ENVRT_CONSTR_EVIDENCE}"
         | sed "s/!!ENVRT_ID!!/${FLATPAK_TEMPLATE_ENVRT_CONSTR_ID}/;
                s/!!ORCHESTRATOR_ID!!/gitlab-ci:${CI_RUNNER_VERSION}/;
-               s/!!ENVRT_TYPE!!/docker:/;
+               s/!!ENVRT_TYPE!!/docker:${image}/; 
                s/!!DATE_TIME!!/$(date -Iseconds)/;
-               s/!!COMMENT!!/Environment fro flatpak definition/")"'
+               s/!!COMMENT!!/Environment for flatpak definition/")"'
     - 'curl -k -H "Content-Type: application/json" -H "X-Gitect-Token: ${GITECT_HOST_TOKEN}" -d
             "$json_data" ${GITECT_EVIDENCE_ENDPOINT}/environment-construction'
     # gitect: Generate environment construction evidence
@@ -247,7 +247,7 @@ check_update_elements:
 
     - change_validation_id=${CI_PROJECT_PATH_SLUG}_test_freedesktop_$(date +%s%N)
     - mkdir -p "${CHANGE_VALIDATIONS_PATH}"
-    - echo "export FREEDESKTOP_VALIDATION_ID=$change_validation_id" >> "${CHANGE_VALIDATIONS_PATH}test-freedesktop.env"
+    - echo "export FREEDESKTOP_VALIDATION_ID=$change_validation_id" >> "${CHANGE_VALIDATIONS_PATH}_test-freedesktop.env"
 
      # gitect: Generate change validation evidence
     - 'json_data="$(echo "${GITECT_CHANGE_VALID_EVIDENCE}"
@@ -258,10 +258,10 @@ check_update_elements:
                s/!!CHANGE_VALIDATOR_ID!!/check-abi_${CI_COMMIT_SHA}/;
                s/!!ENVRT_ID!!/${FLATPAK_TEMPLATE_ENVRT_CONSTR_ID}/;
                s/!!GLOBAL_RESULT!!/${global_result}/;
-               s/!!DATE_TIME!!/$(date -Iseconds)/")"'
-    - json_data=${json_data/!!COMMENT!!/$comment}
-    - 'curl -k -H "Content-Type: application/json" -H "X-Gitect-Token: ${GITECT_HOST_TOKEN}" -d
-            "$json_data" ${GITECT_EVIDENCE_ENDPOINT}/change-validation'
+               s/!!DATE_TIME!!/$(date -Iseconds)/;
+               s/!!COMMENT!!/$comment/")"'
+    - 'curl -k -H "Content-Type: application/json" -H "X-Gitect-Token: ${GITECT_HOST_TOKEN}" -d 
+      "$json_data" ${GITECT_EVIDENCE_ENDPOINT}/change-validation'
       # gitect: End of Generate change validation evidence
 
 
@@ -318,16 +318,16 @@ app_arm:
     - utils/test-minimal-system --dialog "${DIALOG}" command 'make run-vm'
 
     # gitect: Generate environment construction evidence
-    - export VM_ENVRT_CONSTR_ID="${CI_PIPELINE_ID}_vm_image_{ARCH}"
+    - export VM_ENVRT_CONSTR_ID="${CI_PIPELINE_ID}_Docker_host_environment_${TYPE}"
     - 'json_data="$(echo "${GITECT_ENVRT_CONSTR_EVIDENCE}"
-        | sed "s/!!ENVRT_ID!!/${BUILD_ENVRT_CONSTR_ID}/;
+        | sed "s/!!ENVRT_ID!!/${VM_ENVRT_CONSTR_ID}/;
                s/!!ORCHESTRATOR_ID!!/gitlab-ci:${CI_RUNNER_VERSION}/;
-               s/!!ENVRT_TYPE!!/docker:/;
+               s/!!ENVRT_TYPE!!/docker:${image}/;
                s/!!DATE_TIME!!/$(date -Iseconds)/;
-               s/!!COMMENT!!/Environment for flatpak definition/")"'
+               s/!!COMMENT!!/Docker environment to build "${TYPE}"-vm-image-"${ARCH}" image and host qemu/")"'
     - 'curl -k -H "Content-Type: application/json" -H "X-Gitect-Token: ${GITECT_HOST_TOKEN}" -d
             "$json_data" ${GITECT_EVIDENCE_ENDPOINT}/environment-construction'
-    # gitect: Generate environment construction evidence
+    # gitect: End of Generate environment construction evidence
 
     - ${BST} -o target_arch "${ARCH}" build vm/"${TYPE}"-vm-image-"${ARCH}".bst
     - ${BST} -o target_arch "${ARCH}" checkout vm/"${TYPE}"-vm-image-"${ARCH}".bst ./vm
@@ -336,11 +336,11 @@ app_arm:
 
     #gitect: Generate artefact construction evidence
     - 'json_data="$(echo "${GITECT_ARTFTC_CONSTR_EVIDENCE}"
-        | sed "s/!!ARTFCT_ID!!/sda.img_${CI_COMMIT_SHA}/;
+        | sed "s/!!ARTFCT_ID!!/sda.img_${TYPE}_${ARCH}_${CI_COMMIT_SHA}/;   
                s/!!ARTFCT_NAME!!/sda.img/;
                s/!!CONTRIBUTOR_ID!!/buildstream:version_$(bst --version)/;
                s/!!ENVRT_ID!!/${VM_ENVRT_CONSTR_ID}/; 
-               s/!!BUILD_ID!!/ci_pipeline:${CI_PIPELINE_ID}_${build_element}/;
+               s%!!BUILD_ID!!%ci_pipeline:${CI_PIPELINE_ID}_${build_element}%;
                s/!!DATE_TIME!!/$(date -Iseconds)/;
                s/!!COMMENT!!/Freedesktop image artefact evidence construction/")"'
     - 'curl -k -H "Content-Type: application/json" -H "X-Gitect-Token: ${GITECT_HOST_TOKEN}" -d
@@ -350,6 +350,7 @@ app_arm:
     - utils/test-minimal-system --dialog "${DIALOG}" vm/sda.img
 
     # gitect: Generate environment construction evidence
+    - export FREEDESKTOP_QEMU_ENVRT_CONSTR_ID="${CI_PIPELINE_ID}_qemu_VM_${TYPE}_${ARCH}"
     - qemu_version=$(qemu-system-x86_64 -version | head -n 1 | sed 's/.*version //;s/(.*//')
     - 'json_data="$(echo "${GITECT_ENVRT_CONSTR_EVIDENCE}"
         | sed "s/!!ENVRT_ID!!/${FREEDESKTOP_QEMU_ENVRT_CONSTR_ID}/;
@@ -363,12 +364,12 @@ app_arm:
 
     # gitect: Generate artefact deployment evidence
     - 'json_data="$(echo "${GITECT_ARTFCT_DEPLOY_EVIDENCE}"
-              | sed "s/!!ARTFCT_DEPLOY_ID!!/${FREEDESKTOP_QEMU_ENVRT_CONSTR_ID}_sda.img_${CI_COMMIT_SHA}/;
-                     s/!!ARTFCT_ID!!/sda.img_${CI_COMMIT_SHA}/;
-                     s/!!ORCHESTRATOR_ID!!/gitlab-ci:${CI_RUNNER_VERSION}/;
-                     s/!!ENVRT_ID!!/${TEST_MINIMAL_QEMU_ENVRT_CONSTR_ID}/;
-                     s/!!DATE_TIME!!/$(date -Iseconds)/;
-                     s/!!COMMENT!!/deploy of the sda.img image to qemu/")"'
+        | sed "s/!!ARTFCT_DEPLOY_ID!!/${FREEDESKTOP_QEMU_ENVRT_CONSTR_ID}_sda.img_${CI_COMMIT_SHA}/;
+               s/!!ARTFCT_ID!!/sda.img_${TYPE}_${ARCH}${CI_COMMIT_SHA}/;
+               s/!!ORCHESTRATOR_ID!!/gitlab-ci:${CI_RUNNER_VERSION}/;
+               s/!!ENVRT_ID!!/${FREEDESKTOP_QEMU_ENVRT_CONSTR_ID}/;
+               s/!!DATE_TIME!!/$(date -Iseconds)/;
+               s/!!COMMENT!!/deploy of the sda.img image to qemu/")"'
     - 'curl -k -H "Content-Type: application/json" -H "X-Gitect-Token: ${GITECT_HOST_TOKEN}" -d
             "$json_data" ${GITECT_EVIDENCE_ENDPOINT}/artefact-deployment'
     # gitect: End of Generate artefact deployment evidence
@@ -530,11 +531,11 @@ finish_publish_failed:
   retry: 2
   script:
     # gitect: Generate environment construction evidence
-    - export FLATPAK_RUNTIMES_PUBLISH_ENVRT_CONSTR_ID="${CI_PIPELINE_ID}_flatpak_runtimes_publish_{ARCH}"
+    - export FLATPAK_RUNTIMES_PUBLISH_ENVRT_CONSTR_ID="${CI_PIPELINE_ID}_${CI_JOB_STAGE}_{ARCH}"
     - 'json_data="$(echo "${GITECT_ENVRT_CONSTR_EVIDENCE}"
-        | sed "s/!!ENVRT_ID!!/${BUILD_ENVRT_CONSTR_ID}/;
+        | sed "s/!!ENVRT_ID!!/${FLATPAK_RUNTIMES_PUBLISH_ENVRT_CONSTR_ID}/;
                s/!!ORCHESTRATOR_ID!!/gitlab-ci:${CI_RUNNER_VERSION}/;
-               s/!!ENVRT_TYPE!!/docker:/;
+               s/!!ENVRT_TYPE!!/docker:${image}/;
                s/!!DATE_TIME!!/$(date -Iseconds)/;
                s/!!COMMENT!!/Environment for flatpak runtimes publish/")"'
     - 'curl -k -H "Content-Type: application/json" -H "X-Gitect-Token: ${GITECT_HOST_TOKEN}" -d
