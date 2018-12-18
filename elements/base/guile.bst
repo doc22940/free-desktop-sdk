@@ -15,6 +15,10 @@ depends:
   type: build
 - filename: base/gc.bst
   type: build
+- filename: base/supported-locales.bst
+  type: build
+- filename: base/libunistring.bst
+  type: build
 
 
 sources:
