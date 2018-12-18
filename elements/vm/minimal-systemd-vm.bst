@@ -8,6 +8,11 @@ public:
       locale:
       - '%{datadir}/runtime/locale/**'
 
+(?):
+  - enable_systemd == False:
+      (!): |
+        Systemd must be enabled in options
+
 depends:
 - filename: vm/base-filesystem.bst
   type: build
@@ -22,6 +27,8 @@ depends:
 - filename: vm/linux-vm-boot/systemd.bst
   type: build
 - filename: vm/linux-vm-boot/shadow.bst
+  type: build
+- filename: desktop/dbus.bst
   type: build
 
 

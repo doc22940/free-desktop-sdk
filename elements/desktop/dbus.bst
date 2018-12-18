@@ -7,6 +7,7 @@ depends:
   type: build
 - filename: base/python3.bst
   type: build
+- filename: desktop/optional_systemd.bst
 
 public:
   bst:
