@@ -16,6 +16,24 @@ depends:
 - filename: base/libgpg-error.bst
 - filename: base/util-linux.bst
 - filename: base/xz.bst
+- filename: vm/linux-vm-boot/shadow.bst
+  type: runtime
+
+public:
+  bst:
+    integration-commands:
+    - groupadd --system systemd-journal
+
+    - |
+      for user in systemd-network systemd-coredump systemd-resolve; do
+        useradd --system \
+                --user-group \
+                --no-create-home \
+                --home-dir /run/systemd \
+                --shell /bin/nologin \
+                "${user}"
+        usermod --password "*" "${user}"
+      done
 
 variables:
   meson-local: |

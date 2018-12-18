@@ -36,11 +36,14 @@ config:
     - mkdir -p %{build-root}/dev
     - mkdir -p %{build-root}/proc
     (>):
+    - mv %{build-root}/etc/shadow %{build-root}/etc/shadow.old
     - systemd-firstboot --root %{build-root} --root-password root --locale en_US.UTF-8
       --timezone UTC
-    # systemd-firstboot generates /etc/shadow with no permission,
-    # so generating the image fails
-    - chmod 400 %{build-root}/etc/shadow
+    - chmod 0400 %{build-root}/etc/shadow
+    - cat %{build-root}/etc/shadow %{build-root}/etc/shadow.old >%{build-root}/etc/shadow.new
+    - mv -f %{build-root}/etc/shadow.new %{build-root}/etc/shadow
+    - rm -f %{build-root}/etc/shadow.new
+    - chmod 0600 %{build-root}/etc/shadow
 
   final-commands:
     (>):

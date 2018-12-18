@@ -19,6 +19,10 @@ public:
   bst:
     overlap-whitelist:
     - '**'
+    integration-commands:
+    - touch /etc/shadow
+    - chmod 0600 /etc/shadow
+    - groupadd -g 1000 users
 
 sources:
 - kind: tar
