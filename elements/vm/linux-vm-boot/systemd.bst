@@ -27,7 +27,8 @@ variables:
     -Dseccomp=false \
     -Dsystem-uid-max=999 \
     -Dsystem-gid-max=999 \
-    -Dopenssl=false
+    -Dopenssl=false \
+    -Dmachined=false
 
 public:
   cpe:
