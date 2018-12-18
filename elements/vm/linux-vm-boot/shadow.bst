@@ -7,6 +7,14 @@ variables:
   conf-local: |
     --without-selinux
 
+config:
+  install-commands:
+    (>):
+    - |
+      mv %{install-root}%{prefix}/sbin/* %{install-root}%{bindir}/
+    - |
+      rm -r %{install-root}%{prefix}/sbin
+
 public:
   bst:
     overlap-whitelist:
