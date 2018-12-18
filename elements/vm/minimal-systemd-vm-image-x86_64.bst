@@ -32,6 +32,7 @@ config:
     - find %{build-root} -type d -exec chmod 755 {} ";"
     - find %{build-root} -type f -perm -u=x -exec chmod 755 {} ";"
     - find %{build-root} -type f -not -perm -u=x -exec chmod 644 {} ";"
+    - touch %{build-root}/etc/ld.so.conf
     - mkdir -p %{build-root}/dev
     - mkdir -p %{build-root}/proc
     (>):
