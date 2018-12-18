@@ -9,6 +9,12 @@ depends:
   type: build
 - filename: desktop/optional_systemd.bst
 
+variables:
+  (?):
+  - enable_systemd:
+      conf-local: |
+        --with-system-socket=/run/dbus/system_bus_socket
+
 public:
   bst:
     split-rules:
