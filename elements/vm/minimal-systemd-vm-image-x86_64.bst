@@ -45,6 +45,9 @@ config:
     - rm -f %{build-root}/etc/shadow.new
     - chmod 0600 %{build-root}/etc/shadow
 
+    - rm "%{build-root}/etc/systemd/system/multi-user.target.wants/machines.target"
+    - sed -i "s/enable machines.target/disable machines.target/" "%{build-root}/usr/lib/systemd/system-preset/90-systemd.preset"
+
   final-commands:
     (>):
     - |
