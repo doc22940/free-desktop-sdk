@@ -15,6 +15,7 @@ depends:
   type: build
 - filename: base/gc.bst
   type: build
+- filename: base/libatomic_ops.bst
 
 variables:
   conf-local: 
