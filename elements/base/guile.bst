@@ -15,11 +15,10 @@ depends:
   type: build
 - filename: base/gc.bst
   type: build
-- filename: base/supported-locales.bst
-  type: build
-- filename: base/libunistring.bst
-  type: build
 
+variables:
+  conf-local: 
+    CFLAGS="${CFLAGS} -DHAVE_GC_IS_HEAP_PTR -DHAVE_GC_MOVE_DISAPPEARING_LINK"
 
 sources:
 - kind: git
