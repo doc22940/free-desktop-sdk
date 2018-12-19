@@ -4,17 +4,15 @@ depends:
 - filename: bootstrap-import.bst
 - filename: base/buildsystem-autotools.bst
   type: build
-- filename: base/flex.bst 
+- filename: base/flex.bst
+  type: build
 - filename: base/gettext.bst
   type: build
 - filename: base/gmp.bst
-  type: build
 - filename: base/libunistring.bst
-  type: build
 - filename: base/libffi.bst
   type: build
 - filename: base/gc.bst
-  type: build
 - filename: base/libatomic_ops.bst
 
 variables:
