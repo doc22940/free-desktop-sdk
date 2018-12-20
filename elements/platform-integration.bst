@@ -4,6 +4,8 @@ description: Combines the integration commands of all components of the runtime 
 
 config:
   script-path: '%{libexecdir}/freedesktop-post.sh'
+  ignore:
+  - desktop/dbus.bst
 
 depends:
 - filename: desktop-platform.bst

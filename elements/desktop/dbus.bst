@@ -10,6 +10,9 @@ depends:
 
 public:
   bst:
+    integration-commands:
+    - |
+      dbus-uuidgen --ensure
     split-rules:
       devel:
         (>):

@@ -4,6 +4,8 @@ description: Combines integration commands of all components of the SDK into a s
 
 config:
   script-path: '%{libexecdir}/freedesktop-post.sh'
+  ignore:
+  - desktop/dbus.bst
 
 depends:
 - filename: desktop.bst
