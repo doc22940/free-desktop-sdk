@@ -23,6 +23,9 @@ variables:
     libclangSema.a \
     libclangSerialization.a
 
+  llvm-libs: |
+    libLLVMDemangle.a
+
   (?):
   - target_arch == "i686":
       targets: X86;AMDGPU;NVPTX
@@ -65,7 +68,7 @@ config:
     - |
       cd "%{install-root}%{libdir}"
       mkdir tmp
-      mv %{clang-libs} tmp
+      mv %{clang-libs} %{llvm-libs} tmp
       rm -f lib*.a
       mv tmp/* "%{install-root}%{libdir}"
       rm -rf tmp
