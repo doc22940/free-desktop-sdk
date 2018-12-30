@@ -1,4 +1,4 @@
-kind: autotools
+kind: manual
 
 depends:
 - filename: desktop/mesa.bst
@@ -17,8 +17,6 @@ variables:
     STRIP=""
 
 config:
-  configure-commands: []
-
   build-commands:
   - |
     make %{make-args}

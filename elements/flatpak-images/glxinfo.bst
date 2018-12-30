@@ -14,7 +14,7 @@ config:
       name: org.freedesktop.GlxInfo
       runtime: org.freedesktop.Platform/%{gcc_arch}/%{branch}
       sdk: org.freedesktop.Sdk/%{gcc_arch}/%{branch}
-      command: glxinfo
+      command: glxinfo-short
 
     Context:
       shared: ipc;
@@ -27,5 +27,5 @@ config:
       no-autodownload: 'true'
 
 depends:
-- filename: extensions/glxinfo/mesa-demos.bst
+- filename: extensions/glxinfo/glxinfo.bst
   type: build

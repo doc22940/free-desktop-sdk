@@ -18,7 +18,7 @@ variables:
   lib: lib
   builddir: ''
   conf-local: |
-    --enable-osmesa=no
+     CFLAGS="$(CFLAGS) -I/app/include"
 
 environment:
   PKG_CONFIG_PATH: '/app/lib/pkgconfig:'
