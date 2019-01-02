@@ -31,11 +31,6 @@ if [ $# -ne 1 ];  then
     exit 1
 fi
 
-if [ $EUID -ne 0 ];  then
-    echo "This script must be run as the root user\n" 2>&1
-    exit 2
-fi
-
 target=$1 && shift
 bst="bst $@"
 tmp=
@@ -88,7 +83,7 @@ ${bst} show --deps all "${target}" \
 
     # TODO: use proper way of disabling artifact caches when implemented
     # instead of wrapping the command with unshare.
-    unshare --net ${bst} build "${name}"
+    bwrap --unshare-net --ro-bind / / --proc /proc --dev /dev --bind $HOME $HOME ${bst} build "${name}"
 
     ${bst} checkout "${name}" "${tmp}/b"
 
