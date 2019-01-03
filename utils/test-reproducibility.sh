@@ -78,7 +78,7 @@ ${bst} show --deps all "${target}" \
 
     tmp=$(mktemp -td reproducible.XXXXXXXXXX)
 
-    if ! ${bst} checkout "${name}" "${tmp}/a"; then
+    if ! ${bst} checkout --no-integrate --hardlinks "${name}" "${tmp}/a"; then
         echo "${name}:${ref}:failed" >> results.cache
         continue
     fi
@@ -90,7 +90,7 @@ ${bst} show --deps all "${target}" \
     # instead of wrapping the command with unshare.
     unshare --net ${bst} build "${name}"
 
-    ${bst} checkout "${name}" "${tmp}/b"
+    ${bst} checkout --no-integrate --hardlinks "${name}" "${tmp}/b"
 
     if diff -r --no-dereference "${tmp}/a/" "${tmp}/b/"; then
         echo -e "${name} ${ref} is reproducible\n"
