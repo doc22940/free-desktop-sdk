@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # This script tests if each element is bit-for-bit reproducible.
 #
