@@ -20,4 +20,4 @@ sources:
 - kind: git_tag
   url: gnome:glib-networking
   track: master
-  ref: 2.58.0-0-gbd8ef31a4ca4552a10b8fe7897662a2b235f6e6f
+  ref: 2.59.1-0-g63a8eddbef12ce21119ece9cb36e37b92df75ff7
