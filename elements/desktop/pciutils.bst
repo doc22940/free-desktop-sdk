@@ -6,7 +6,7 @@ depends:
 config:
   build-commands:
     - |
-      make OPT="${CFLAGS} -fPIC -DPIC" ZLIB=no SHARED=no PREFIX="%{prefix}" SHAREDIR=/usr/share/hwdata MANDIR=/usr/share/man SBINDIR=/usr/bin lib/libpci.a
+      make OPT="${CFLAGS}" ZLIB=no SHARED=no PREFIX="%{prefix}" SHAREDIR=/usr/share/hwdata MANDIR=/usr/share/man SBINDIR=/usr/bin lib/libpci.a
       cp lib/libpci.a .
       make clean
       make OPT="${CFLAGS}" ZLIB=no SHARED=yes PREFIX="%{prefix}" SBINDIR=/usr/bin SHAREDIR=/usr/share/hwdata MANDIR=/usr/share/man all
@@ -14,6 +14,13 @@ config:
   install-commands:
     - |
       make SHARED=yes PREFIX="%{prefix}" SBINDIR=/usr/bin SHAREDIR=/usr/share/hwdata MANDIR=/usr/share/man DESTDIR="%{install-root}" install install-lib
+
+public:
+  bst:
+    split-rules:
+      devel:
+        (>):
+        - '%{libdir}/libpci.so'
 
 sources:
 - kind: git_tag
