@@ -6,14 +6,11 @@ depends:
 config:
   build-commands:
     - |
-      make OPT="${CFLAGS}" ZLIB=no SHARED=no PREFIX="%{prefix}" SHAREDIR=/usr/share/hwdata MANDIR=/usr/share/man SBINDIR=/usr/bin lib/libpci.a
-      cp lib/libpci.a .
-      make clean
-      make OPT="${CFLAGS}" ZLIB=no SHARED=yes PREFIX="%{prefix}" SBINDIR=/usr/bin SHAREDIR=/usr/share/hwdata MANDIR=/usr/share/man all
+      make OPT="${CFLAGS}" ZLIB=no SHARED=yes SHAREDIR="%{prefix}/share/hwdata" all
 
   install-commands:
     - |
-      make SHARED=yes PREFIX="%{prefix}" SBINDIR=/usr/bin SHAREDIR=/usr/share/hwdata MANDIR=/usr/share/man LIBDIR=%{libdir} DESTDIR="%{install-root}" install install-lib
+      make SHARED=yes PREFIX="%{prefix}" SBINDIR="%{prefix}/bin" SHAREDIR="%{prefix}/share/hwdata" MANDIR="%{prefix}/share/man" LIBDIR="%{libdir}" DESTDIR="%{install-root}" install install-lib
 
 public:
   bst:
