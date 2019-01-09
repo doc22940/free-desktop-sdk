@@ -16,6 +16,7 @@ public:
         - '%{libdir}/libsamplerate.so'
 
 sources:
-- kind: tar
-  url: http://www.mega-nerd.com/SRC/libsamplerate-0.1.9.tar.gz
-  ref: 0a7eb168e2f21353fb6d84da152e4512126f7dc48ccb0be80578c565413444c1
+- kind: git
+  url: https://github.com/erikd/libsamplerate.git
+  track: master
+  ref: 47bba2349807b3cf47bb9751052111fe73a61218
