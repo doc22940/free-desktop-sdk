@@ -13,7 +13,7 @@ config:
 
   install-commands:
     - |
-      make SHARED=yes PREFIX="%{prefix}" SBINDIR=/usr/bin SHAREDIR=/usr/share/hwdata MANDIR=/usr/share/man DESTDIR="%{install-root}" install install-lib
+      make SHARED=yes PREFIX="%{prefix}" SBINDIR=/usr/bin SHAREDIR=/usr/share/hwdata MANDIR=/usr/share/man LIBDIR=%{libdir} DESTDIR="%{install-root}" install install-lib
 
 public:
   bst:
