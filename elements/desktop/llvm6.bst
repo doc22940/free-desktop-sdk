@@ -61,6 +61,7 @@ config:
   install-commands:
     (>):
     - |
+      echo "build"
       cd "%{install-root}%{libdir}"
       mkdir tmp
       mv %{clang-libs} tmp
