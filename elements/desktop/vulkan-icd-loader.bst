@@ -31,7 +31,7 @@ public:
 
 sources:
 - kind: tar
-  url: github:KhronosGroup/Vulkan-Loader/archive/v1.1.96.tar.gz
-  ref: 3f210eaa8bd1f3c57fc0a413aaa18f671c43d130a0ce60479ede23a9d1314f86
+  url: github:KhronosGroup/Vulkan-Loader/archive/v1.1.97.tar.gz
+  ref: fe76a062b408e0dddc9214a86b68774b744450f76fd6ccaa40eab9df1979db49
 - kind: patch
   path: patches/vulkan-libdir-path.patch

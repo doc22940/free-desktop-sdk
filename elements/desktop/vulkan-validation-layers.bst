@@ -22,5 +22,5 @@ variables:
 
 sources:
 - kind: tar
-  url: github:KhronosGroup/Vulkan-ValidationLayers/archive/v1.1.96.tar.gz
-  ref: 89aefb8f5e3f77f1cff9b23165fb8d4f7a718742b0dea698d93b20e3df112047
+  url: github:KhronosGroup/Vulkan-ValidationLayers/archive/v1.1.97.tar.gz
+  ref: 83a99981dc9d0cd97c40de906425d082cd7bf5a52e97a479b8ffe140d231d0d4

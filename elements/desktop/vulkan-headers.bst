@@ -11,5 +11,5 @@ variables:
 
 sources:
 - kind: tar
-  url: github:KhronosGroup/Vulkan-Headers/archive/v1.1.96.tar.gz
-  ref: c20b0a1961430daa446b8074e44feb621635b4f0dbf337253eb1d3d3ce2e21d7
+  url: github:KhronosGroup/Vulkan-Headers/archive/v1.1.97.tar.gz
+  ref: 662e919e00960adef27e6ee80e7d5bb7d670aa526b2d4596d8ac67b658cd9dc0
