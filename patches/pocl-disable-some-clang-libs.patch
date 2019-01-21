@@ -1,0 +1,15 @@
+diff -ur pocl.old/cmake/LLVM.cmake pocl/cmake/LLVM.cmake
+--- pocl.old/cmake/LLVM.cmake	2019-01-21 14:56:47.062623024 +0100
++++ pocl/cmake/LLVM.cmake	2019-01-21 14:58:27.389643570 +0100
+@@ -239,9 +239,8 @@
+ 
+ # Llvm-config does not include clang libs
+ set(CLANG_LIBNAMES clangCodeGen clangFrontendTool clangFrontend clangDriver clangSerialization
+-    clangParse clangSema clangRewrite clangRewriteFrontend
+-    clangStaticAnalyzerFrontend clangStaticAnalyzerCheckers
+-    clangStaticAnalyzerCore clangAnalysis clangEdit clangAST clangLex clangBasic)
++    clangParse clangSema
++    clangAnalysis clangEdit clangAST clangLex clangBasic)
+ 
+ foreach(LIBNAME ${CLANG_LIBNAMES})
+   find_library(C_LIBFILE_${LIBNAME} NAMES "${LIBNAME}" HINTS "${LLVM_LIBDIR}")
