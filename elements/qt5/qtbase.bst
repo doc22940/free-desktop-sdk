@@ -74,4 +74,4 @@ public:
 sources:
 - kind: git
   url: https://code.qt.io/qt/qtbase.git
-  ref: v5.9.7-0-g81b29a44d248b5037a2f05dd8815e000d9472f0e
+  ref: v5.12.0-0-g13ed06640c6cf32ea8c784c896c6bf017053edb3
