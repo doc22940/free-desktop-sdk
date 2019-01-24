@@ -71,6 +71,16 @@ config:
     Extension org.freedesktop.Platform.ffmpeg-html5:
       directory: '%{lib}/ffmpeg'
       add-ld-path: lib
+      autodelete: 'false'
+      no-autodownload: 'true'
+      extension-priority: 0
+
+    Extension org.freedesktop.Platform.full-codecs:
+      directory: '%{lib}/ffmpeg'
+      add-ld-path: lib
+      autodelete: 'false'
+      no-autodownload: 'false'
+      extension-priority: 1
 
     Extension org.freedesktop.Sdk.Extension:
       subdirectories: 'true'

@@ -68,6 +68,15 @@ config:
       directory: '%{lib}/ffmpeg'
       add-ld-path: lib
       autodelete: 'false'
+      no-autodownload: 'true'
+      extension-priority: 0
+
+    Extension org.freedesktop.Platform.full-codecs:
+      directory: '%{lib}/ffmpeg'
+      add-ld-path: lib
+      autodelete: 'false'
+      no-auto-download: 'false'
+      extension-priority: 1
 
 depends:
 - filename: platform-image.bst
