@@ -18,6 +18,8 @@ depends:
 - filename: desktop/fontconfig.bst
 - filename: desktop/gtk3.bst
 - filename: desktop/harfbuzz.bst
+- filename: desktop/vulkan.bst
+- filename: desktop/xcb-util-image.bst
 
 
 variables:
@@ -47,11 +49,30 @@ variables:
     -no-cups \
     -system-proxies \
     -gtk \
+    -no-use-gold-linker \
     -archdatadir /usr/lib/
+
+  (?):
+    - target_arch == "x86_64":
+        conf-arch: |
+          -reduce-relocations
+    - target_arch == "i686":
+        conf-arch: |
+          -reduce-relocations
+    - target_arch == "arm":
+        conf-arch: |
+          -no-reduce-relocations \
+          -optimize-size \
+          -opengl es2
+    - target_arch == "aarch64":
+        conf-arch: |
+          -no-reduce-relocations \
+          -optimize-size \
+          -opengl es2
 
 config:
   configure-commands:
-    - ./configure %{conf-local}
+    - ./configure %{conf-local} %{conf-arch}
 
   build-commands:
     - make
