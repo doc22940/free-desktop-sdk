@@ -13,19 +13,31 @@ depends:
 - filename: base/glib.bst
 - filename: base/icu.bst
 - filename: base/openssl.bst
+- filename: base/pcre2.bst
 - filename: base/sqlite.bst
+- filename: desktop/cups.bst
 - filename: desktop/dbus.bst
 - filename: desktop/fontconfig.bst
 - filename: desktop/gtk3.bst
 - filename: desktop/harfbuzz.bst
 - filename: desktop/vulkan.bst
 - filename: desktop/xcb-util-image.bst
-
+- filename: desktop/xcb-util-keysyms.bst
+- filename: desktop/xcb-util-renderutil.bst
+- filename: desktop/xcb-util-wm.bst
+- filename: desktop/xorg-lib-xcb.bst
 
 variables:
   conf-local: |
     -prefix %{prefix} \
     -libdir %{libdir} \
+    -sysconfdir %{sysconfdir}/xdg \
+    -archdatadir %{libdir}/qt5 \
+    -datadir %{prefix}/share/qt5 \
+    -docdir %{prefix}/share/doc/qt5 \
+    -headerdir %{prefix}/include/qt5 \
+    -plugindir %{libdir}/qt5/plugins \
+    -plugin-sql-sqlite \
     -nomake examples \
     -nomake tests \
     -confirm-license \
@@ -33,24 +45,23 @@ variables:
     -shared \
     -platform linux-g++ \
     -optimized-qmake \
+    -system-proxies \
     -system-harfbuzz \
     -system-sqlite \
     -accessibility \
+    -cups \
     -dbus-linked \
     -fontconfig \
     -glib \
     -icu \
+    -gtk \
     -openssl-linked \
-    -no-pch \
-    -no-rpath \
     -no-directfb \
     -no-linuxfb \
     -no-kms \
-    -no-cups \
-    -system-proxies \
-    -gtk \
-    -no-use-gold-linker \
-    -archdatadir /usr/lib/
+    -no-pch \
+    -no-rpath \
+    -no-use-gold-linker
 
   (?):
     - target_arch == "x86_64":
@@ -72,18 +83,24 @@ variables:
 
 config:
   configure-commands:
-    - ./configure %{conf-local} %{conf-arch}
+    - |
+      sed -i "s|-O2|${CXXFLAGS}|" mkspecs/common/gcc-base.conf
+
+      # This also sets default {C,CXX,LD}FLAGS for projects built using qmake
+      sed -i -e "s|^\(QMAKE_CFLAGS_RELEASE.*\)|\1 ${CFLAGS}|" \
+        mkspecs/common/gcc-base.conf
+      sed -i -e "s|^\(QMAKE_LFLAGS_RELEASE.*\)|\1 ${LDFLAGS}|" \
+       mkspecs/common/g++-unix.conf
+
+      ./configure %{conf-local} %{conf-arch}
 
   build-commands:
-    - make
+    - make -j%{max-jobs}
 
   install-commands:
     - |
       make -j1 INSTALL_ROOT=%{install-root} install
-
-    - |
       rm -f "%{install-root}%{libdir}"/*.a
-      rm -f "%{install-root}%{libdir}/lib"/*.la
 
 public:
   bst:
