@@ -11,8 +11,6 @@ depends:
   type: build
 - filename: base/libpng.bst
   type: build
-- filename: base/python3.bst
-  type: build
 - filename: desktop/freetype.bst
   type: build
 - filename: desktop/harfbuzz.bst
