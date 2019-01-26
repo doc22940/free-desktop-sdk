@@ -10,22 +10,40 @@ depends:
   type: build
 - filename: base/which.bst
   type: build
+- filename: base/giflib.bst
+  type: build
 - filename: base/glib.bst
+  type: build
 - filename: base/icu.bst
+  type: build
 - filename: base/openssl.bst
+  type: build
 - filename: base/pcre2.bst
+  type: build
 - filename: base/sqlite.bst
+  type: build
 - filename: desktop/cups.bst
+  type: build
 - filename: desktop/dbus.bst
+  type: build
 - filename: desktop/fontconfig.bst
+  type: build
 - filename: desktop/gtk3.bst
+  type: build
 - filename: desktop/harfbuzz.bst
+  type: build
 - filename: desktop/vulkan.bst
+  type: build
 - filename: desktop/xcb-util-image.bst
+  type: build
 - filename: desktop/xcb-util-keysyms.bst
+  type: build
 - filename: desktop/xcb-util-renderutil.bst
+  type: build
 - filename: desktop/xcb-util-wm.bst
+  type: build
 - filename: desktop/xorg-lib-xcb.bst
+  type: build
 
 variables:
   conf-local: |
@@ -45,6 +63,7 @@ variables:
     -shared \
     -platform linux-g++ \
     -optimized-qmake \
+    -syslog \
     -system-proxies \
     -system-harfbuzz \
     -system-sqlite \
@@ -85,7 +104,6 @@ config:
   configure-commands:
     - |
       sed -i "s|-O2|${CXXFLAGS}|" mkspecs/common/gcc-base.conf
-
       # This also sets default {C,CXX,LD}FLAGS for projects built using qmake
       sed -i -e "s|^\(QMAKE_CFLAGS_RELEASE.*\)|\1 ${CFLAGS}|" \
         mkspecs/common/gcc-base.conf
