@@ -4,6 +4,17 @@ depends:
 - filename: bootstrap-import.bst
 - filename: qt5/qtbase.bst
 
+config:
+  install-commands:
+    (>):
+      - rm -f "%{install-root}%{libdir}"/*.a
+        
+public:
+  bst:
+    split-rules:
+      devel:
+        (>):
+          - "%{libdir}/*.so"
 sources:
 - kind: git
   url: https://code.qt.io/qt/qtscript
