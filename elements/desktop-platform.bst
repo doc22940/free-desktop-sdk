@@ -10,6 +10,7 @@ depends:
 - filename: desktop/at-spi2-atk.bst
 - filename: desktop/at-spi2-core.bst
 - filename: desktop/atk.bst
+- filename: desktop/berkeleydb.bst
 - filename: desktop/cairo.bst
 - filename: desktop/cups.bst
 - filename: desktop/dbus.bst
