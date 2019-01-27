@@ -6,6 +6,7 @@ depends:
 config:
   build-commands:
    - |
+     sed -i 's/\(__atomic_compare_exchange\)/\1_db/' src/dbinc/atomic.h
      cd build_unix/
      ../dist/configure --prefix=%{prefix} \
         --libdir=%{libdir} \
@@ -20,8 +21,9 @@ config:
   install-commands:
   - |
     cd build_unix/
-    make install DESTDIR=%{install-root}
-    rm -rf %{install-root}%{prefix}/docs
+    make DESTDIR=%{install-root} \
+      docdir=/%{prefix}/share/doc/db-5.3.28 \
+      install
 
 public:
   bst:
@@ -37,5 +39,5 @@ public:
 
 sources:
 - kind: tar
-  url: http://download.oracle.com/berkeley-db/db-6.2.32.tar.gz
-  ref: a9c5e2b004a5777aa03510cfe5cd766a4a3b777713406b02809c17c8e0e7a8fb
+  url: http://download.oracle.com/berkeley-db/db-5.3.28.tar.gz
+  ref: e0a992d740709892e81f9d93f06daf305cf73fb81b545afe72478043172c3628
