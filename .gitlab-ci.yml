@@ -21,9 +21,9 @@ variables:
   BST: bst --colors
 
 stages:
+  - vm
   - update
   - flatpak
-  - vm
   - publish
 
 before_script:
