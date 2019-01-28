@@ -71,6 +71,7 @@ stages:
   - prepare-publish
   - publish
   - finish-publish
+  - policy
 
 before_script:
   - export PATH=~/.local/bin:${PATH}
@@ -539,6 +540,7 @@ publish_arm:
   variables:
     ARCH: arm
 
+
 cve_report:
   stage: publish
   image: $DOCKER_AMD64
@@ -568,6 +570,7 @@ cve_report:
     - master
     - '18.08'
 
+
 markdown_manifest:
   stage: publish
   image: $DOCKER_AMD64
@@ -585,3 +588,37 @@ markdown_manifest:
     - '18.08'
   except:
     - schedules
+
+policy:
+  stage: policy
+  image: $DOCKER_AMD64
+  variables:
+    GIT_STRATEGY: fetch
+  except:
+    - master
+    - '18.08'
+    - tags
+  <<: *gitlab_cache_pull
+  script:
+    - for f in $(ls -1 "${CHANGE_VALIDATIONS_PATH}"); do
+    -   source "${CHANGE_VALIDATIONS_PATH}/$f"
+    - done
+
+    # gitect: Check policy compliance
+    - 'output=$(curl -k -H "Accept: application/json" -H "X-Gitect-Token: ${GITECT_HOST_TOKEN}" -G
+        --data-urlencode "validation-id=${FREEDESKTOP_VALIDATION_ID}"
+        --data-urlencode "target-branch=${TARGET_BRANCH}"
+        "${GITECT_HOST}/api/v1/gitlab.com/${CI_PROJECT_PATH}/~/${CI_COMMIT_REF_NAME}/${CI_COMMIT_SHA}/policy-compliance")'
+    - echo $output
+
+    - if [[ "$output" != *"true"* ]];then
+    -   echo "Policy compliance check failed."
+    -   exit 1
+    - fi
+    - pip3 install pyyaml
+    - git fetch origin refs/notes/*:refs/notes/*
+    - git notes --ref environment-construction show HEAD >> evidence.txt
+    - git notes --ref artefact-construction show HEAD >> evidence.txt
+    - git notes --ref artefact-deployment show HEAD >> evidence.txt
+    - git notes --ref change-validation show HEAD >> evidence.txt
+    - python3 -c 'import sys, yaml, json; [(yaml.safe_dump(json.loads(l), sys.stdout, default_flow_style=False), print("\n")) for l in sys.stdin.readlines() if l !="\n" ]' < evidence.txt
