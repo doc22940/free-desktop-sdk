@@ -31,8 +31,6 @@ variables:
 config:
   install-commands:
     (>):
-    - mkdir -p "%{install-root}/usr/systemd/network"
-    - cp 10-dhcp.network "%{install-root}/usr/systemd/network/"
     - mkdir -p "%{install-root}/usr/lib/sysusers.d"
     - cp sysusers "%{install-root}/usr/lib/sysusers.d/freedesktop-sdk.conf"
 
@@ -51,7 +49,5 @@ sources:
   # please check the systemd README for any necessary changes
 - kind: patch
   path: patches/0001-meson-rename-Ddebug-to-Ddebug-extra.patch
-- kind: local
-  path: files/systemd/10-dhcp.network
 - kind: local
   path: files/systemd/sysusers
