@@ -52,7 +52,7 @@ variables:
     -Ddri-drivers=%{dri_drivers} \
     -Degl=true \
     -Dgallium-drivers=%{gallium_drivers} \
-    -Dgallium-nine=true \
+    -Dgallium-nine=false \
     -Dgallium-omx=disabled \
     -Dgallium-opencl=icd \
     -Dgallium-va=false \
