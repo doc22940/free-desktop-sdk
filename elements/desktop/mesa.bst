@@ -41,7 +41,7 @@ variables:
       vulkan_drivers: amd,intel
       enable_libunwind: 'true'
   - target_arch == "arm" or target_arch == "aarch64":
-      gallium_drivers: etnaviv,freedreno,imx,nouveau,pl111,swrast,tegra,virgl,vc4
+      gallium_drivers: etnaviv,imx,swrast,virgl
       dri_drivers: ''
       vulkan_drivers: ''
       enable_libunwind: 'false'
