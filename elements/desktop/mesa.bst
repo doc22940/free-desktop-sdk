@@ -56,7 +56,7 @@ variables:
     -Dgallium-omx=disabled \
     -Dgallium-opencl=icd \
     -Dgallium-va=true \
-    -Dgallium-vdpau=true \
+    -Dgallium-vdpau=false \
     -Dgallium-xa=true \
     -Dgallium-xvmc=false \
     -Dgbm=true \
