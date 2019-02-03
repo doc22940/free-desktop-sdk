@@ -1,4 +1,4 @@
-BRANCH=18.08
+BRANCH=18.08-librem5
 ARCH=$(shell uname -m | sed "s/^i.86$$/i686/")
 ifeq ($(ARCH),i686)
 FLATPAK_ARCH=i386
