@@ -137,14 +137,6 @@ check_update_elements:
     - '18.08'
   <<: *gitlab_cache_pull
 
-app_aarch64:
-  image: $DOCKER_AARCH64
-  <<: *flatpak_definition
-  tags:
-    - aarch64
-  variables:
-    ARCH: aarch64
-
 .flatpak_runtimes_publish_template: &flatpak_runtimes_publish
   stage: publish
   script:
