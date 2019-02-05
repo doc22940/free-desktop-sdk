@@ -7,6 +7,14 @@ depends:
   type: build
 - filename: base/python3.bst
   type: build
+- filename: desktop/systemd.bst
+  type: build
+- filename: desktop/libsystemd.bst
+  type: runtime
+
+variables:
+  conf-local: |
+    --enable-systemd
 
 public:
   bst:

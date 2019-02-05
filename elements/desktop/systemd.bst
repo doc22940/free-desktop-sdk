@@ -16,7 +16,6 @@ depends:
 - filename: base/libgpg-error.bst
 - filename: base/util-linux.bst
 - filename: base/xz.bst
-- filename: desktop/dbus.bst
 
 variables:
   meson-local: |
@@ -30,6 +29,14 @@ variables:
     -Dopenssl=false
 
 public:
+  bst:
+    split-rules:
+      devel:
+        (>):
+        - '%{libdir}/libsystemd.so'
+      lib-only:
+      - '%{libdir}/libsystemd.so.*'
+
   cpe:
     vendor: freedesktop
     version: '240'
