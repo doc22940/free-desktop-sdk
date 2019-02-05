@@ -29,6 +29,7 @@ config:
 
   filesystem-tree-setup-commands:
     (<):
+    - touch %{build-root}/etc/ld.so.conf
     - mkdir -p %{build-root}/dev
     - mkdir -p %{build-root}/proc
     (>):
