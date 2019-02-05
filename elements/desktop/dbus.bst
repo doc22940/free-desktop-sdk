@@ -14,7 +14,9 @@ depends:
 
 variables:
   conf-local: |
-    --enable-systemd
+    --enable-systemd \
+    --runstatedir=/run \
+    --with-system-socket=/run/dbus/system_bus_socket
 
 public:
   bst:
