@@ -1,15 +1,16 @@
 kind: manual
-description: ffmpeg shipped in the html5-codec extension, has html5 codecs enabled
+description: ffmpeg shipped in the full-codecs extension, has full codecs enabled
 
 (@):
 - elements/config/ffmpeg.yml
 
 variables:
-  conf-extra: |
-    --enable-encoder=h263,h264 \
-    --enable-decoder=aac,hevc,h264,h263,ac3,eac3,truehd,mlp,dca,mpeg4 \
-    --enable-hwaccel=h264_vaapi,h264_vdpau,hevc_vaapi,hevc_vdpau \
-    --enable-parser=aac,hevc,h264,ac3,dca,mpeg4video \
-    --enable-demuxer=avi,aac,h264,mov,ac3,m4v,m4a
+  extra-aud-dec: dca,eac3,mlp,truehd
+  extra-vid-enc: h263,h264
+  extra-vid-dec: hevc,h263,h264,mpeg4
+  extra-hwaccels: h264_vaapi,h264_vdpau,hevc_vaapi,hevc_vdpau
+  extra-parsers: hevc,h264,dca,mpeg4video
+  extra-demuxers: avi,h264,mov,m4v,m4a
+
   ffmpeg-prefix: '%{libdir}/ffmpeg'
   ffmpeg-libdir: '%{ffmpeg-prefix}/lib'
