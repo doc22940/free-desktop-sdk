@@ -110,7 +110,7 @@ public:
     integration-commands:
     - |
       if type depmod &> /dev/null; then
-        cd /usr/lib/modules
+        cd /lib/modules
         for version in *; do
           depmod -a "$version";
         done

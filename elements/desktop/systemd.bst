@@ -16,6 +16,7 @@ depends:
 - filename: base/libgpg-error.bst
 - filename: base/util-linux.bst
 - filename: base/xz.bst
+- filename: desktop/gnu-efi.bst
 
 variables:
   meson-local: |
@@ -26,6 +27,8 @@ variables:
     -Dseccomp=false \
     -Dsystem-uid-max=999 \
     -Dsystem-gid-max=999 \
+    -Dgnu-efi=true \
+    -Defi=true \
     -Dopenssl=false
 
 public:
