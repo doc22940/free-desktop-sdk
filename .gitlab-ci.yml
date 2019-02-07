@@ -33,6 +33,7 @@ stages:
 
 before_script:
   - export PATH=~/.local/bin:${PATH}
+  - dnf install -y gcc gcc-c++ redhat-rpm-config python3-devel
   - git clone https://gitlab.com/BuildStream/buildstream.git
   - git -C buildstream checkout "${BST_SHA}"
   - pip3 install --user buildstream/
