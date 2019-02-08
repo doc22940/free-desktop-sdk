@@ -44,7 +44,7 @@ export: clean-runtime
 	$(BST) build flatpak-release.bst deploy-tools/flatpak.bst
 
 	mkdir -p $(CHECKOUT_ROOT)
-	$(BST) checkout --hardlinks "flatpak-release.bst" $(CHECKOUT_ROOT)
+	$(BST) artifact checkout --hardlinks --directory $(CHECKOUT_ROOT) "flatpak-release.bst"
 
 	test -e $(REPO) || ostree init --repo=$(REPO) --mode=archive
 
@@ -114,7 +114,7 @@ $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image: elements
 	$(BST) build platform-image.bst
 
 	mkdir -p $(CHECKOUT_ROOT)
-	bst --colors $(ARCH_OPTS) checkout --hardlinks platform-image.bst $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
+	bst --colors $(ARCH_OPTS) artifact checkout --hardlinks --directory $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image platform-image.bst
 
 check-dev-files: $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
 	./utils/scan-for-dev-files.sh $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image | sort -u >found_dev_files.txt
@@ -135,8 +135,8 @@ manifest:
 	$(BST) build platform-manifest.bst
 	$(BST) build sdk-manifest.bst
 
-	$(BST) checkout platform-manifest.bst platform-manifest/
-	$(BST) checkout sdk-manifest.bst sdk-manifest/
+	$(BST) artifact checkout platform-manifest.bst platform-manifest/
+	$(BST) artifact checkout sdk-manifest.bst sdk-manifest/
 
 markdown-manifest: manifest
 	python3 utils/jsontomd.py platform-manifest/usr/manifest.json
