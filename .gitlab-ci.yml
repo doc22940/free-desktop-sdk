@@ -6,7 +6,7 @@ variables:
   GET_SOURCES_ATTEMPTS: 3
   BST_CACHE_SERVER_ADDRESS: 'freedesktop-sdk-cache.codethink.co.uk'
   BST_SHA: '1.2.7-0-g08d1694545d1d62295c7beba1fea65a21b93a723'
-  BST_EXTERNAL_SHA: '0.14.0-0-g003f1f1e7ead60627ef4242a6d785704ede44358'
+  BST_PLUGINS_EXPERIMENTAL_SHA: '0.12.0-31-g604196876f31536a837c95a098af7bea948b4731'
   RUNTIME_VERSION: '19.08'
   STABLE_ABI: 'false'
 
@@ -37,9 +37,9 @@ before_script:
   - git clone https://gitlab.com/BuildStream/buildstream.git
   - git -C buildstream checkout "${BST_SHA}"
   - pip3 install --user buildstream/
-  - git clone https://gitlab.com/BuildStream/bst-external.git
-  - git -C bst-external checkout "${BST_EXTERNAL_SHA}"
-  - pip3 install --user ./bst-external
+  - git clone https://gitlab.com/BuildStream/bst-plugins-experimental.git
+  - git -C bst-plugins-experimental checkout "${BST_PLUGINS_EXPERIMENTAL_SHA}"
+  - pip3 install --user ./bst-plugins-experimental
 
   # Configure Buildstream
   - mkdir -p ~/.config
@@ -161,7 +161,7 @@ check_update_elements:
     - check_update
   script:
     - git checkout -- snap-version.yml
-    - ${BST} track --deps all flatpak-release.bst
+    - ${BST} source track --deps all flatpak-release.bst
     - git -c diff.external=utils/yaml-diff.py diff
   only:
     - schedules
@@ -377,7 +377,7 @@ minimal_systemd_vm_powerpc64le:
   stage: vm
   script:
     - ${BST} -o target_arch "${ARCH}" build vm/"${TYPE}"-vm-image-"${ARCH}".bst
-    - ${BST} -o target_arch "${ARCH}" checkout vm/"${TYPE}"-vm-image-"${ARCH}".bst ./vm
+    - ${BST} -o target_arch "${ARCH}" artifact checkout --directory ./vm vm/"${TYPE}"-vm-image-"${ARCH}".bst
     - utils/test-minimal-system --dialog "${DIALOG}" image vm/sda.img
   artifacts:
     when: always
