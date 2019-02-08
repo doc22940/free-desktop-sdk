@@ -129,7 +129,7 @@ check_update_elements:
     - x86_64
     - cache_x86_64
   script:
-    - ${BST} track --deps all all.bst
+    - ${BST} source track --deps all all.bst
     - git diff
   only:
     - schedules
@@ -199,7 +199,7 @@ app_arm:
   stage: vm
   script:
     - ${BST} -o target_arch "${ARCH}" build vm/"${TYPE}"-vm-image-"${ARCH}".bst
-    - ${BST} -o target_arch "${ARCH}" checkout vm/"${TYPE}"-vm-image-"${ARCH}".bst ./vm
+    - ${BST} -o target_arch "${ARCH}" artifact checkout --directory ./vm vm/"${TYPE}"-vm-image-"${ARCH}".bst
     - utils/test-minimal-system --dialog "${DIALOG}" vm/sda.img
   artifacts:
     when: always

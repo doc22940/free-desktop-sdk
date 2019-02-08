@@ -27,7 +27,7 @@ export: clean-runtime
 	bst --colors $(ARCH_OPTS) build all.bst
 
 	mkdir -p $(CHECKOUT_ROOT)
-	bst --colors $(ARCH_OPTS) checkout --hardlinks "all.bst" $(CHECKOUT_ROOT)
+	bst --colors $(ARCH_OPTS) artifact checkout --hardlinks --directory $(CHECKOUT_ROOT) "all.bst"
 
 	test -e $(REPO) || ostree init --repo=$(REPO) --mode=archive
 
@@ -40,7 +40,7 @@ check-dev-files:
 	bst --colors $(ARCH_OPTS) build desktop-platform-image.bst
 
 	mkdir -p $(CHECKOUT_ROOT)
-	bst --colors $(ARCH_OPTS) checkout --hardlinks desktop-platform-image.bst $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
+	bst --colors $(ARCH_OPTS) artifact checkout --hardlinks --directory $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image desktop-platform-image.bst
 	./utils/scan-for-dev-files.sh $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image | sort -u >found_dev_files.txt
 	rm -rf $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
 
@@ -53,7 +53,7 @@ check-dev-files:
 check-rpath:
 	bst --colors $(ARCH_OPTS) build desktop-platform-image.bst
 	mkdir -p $(CHECKOUT_ROOT)
-	bst --colors $(ARCH_OPTS) checkout --hardlinks desktop-platform-image.bst $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
+	bst --colors $(ARCH_OPTS) artifact checkout --hardlinks desktop-platform-image.bst $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
 	./utils/find-rpath.sh $(FLATPAK_ARCH)-linux-$(ABI) $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
 	rm -rf $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
 
@@ -64,8 +64,8 @@ manifest:
 	bst --colors $(ARCH_OPTS) build platform-manifest.bst
 	bst --colors $(ARCH_OPTS) build sdk-manifest.bst
 
-	bst checkout platform-manifest.bst platform-manifest/
-	bst checkout sdk-manifest.bst sdk-manifest/
+	bst artifact checkout platform-manifest.bst platform-manifest/
+	bst artifact checkout sdk-manifest.bst sdk-manifest/
 
 markdown-manifest: manifest
 	python3 utils/jsontomd.py platform-manifest/usr/manifest.json
