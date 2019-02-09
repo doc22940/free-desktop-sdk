@@ -277,7 +277,7 @@ publish_arm:
     ARCH: arm
 
 cve_report:
-  stage: publish
+  stage: update
   image: $DOCKER_AMD64
   cache:
     key: cve
@@ -302,6 +302,3 @@ cve_report:
   artifacts:
     paths:
       - "${CI_PROJECT_DIR}/cve-reports"
-  only:
-    - master
-    - '18.08'
