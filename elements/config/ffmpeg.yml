@@ -18,6 +18,7 @@ depends:
 - filename: components/speex.bst
 - filename: components/libtheora.bst
 - filename: components/libvorbis.bst
+- filename: components/libvpx.bst
 - filename: components/nasm.bst
   type: build
 
@@ -28,7 +29,7 @@ variables:
   (?):
   - target_arch == "i686":
       ffmpeg-arch: x86
-  
+
   audio-encoders: |
     ac3,flac,libfdk_aac,mp2,libmp3lame,pcm_alaw,pcm_mulaw,\
     pcm_f32le,pcm_s16be,pcm_s24be,pcm_s16le,pcm_s24le,pcm_s32le,\
@@ -40,7 +41,7 @@ variables:
     pcm_u8,vorbis,%{extra-aud-dec}
 
   video-encoders: |
-    libaom_av1,rawvideo,theora,%{extra-vid-enc}
+    libaom_av1,libvpx_vp8,libvpx_vp9,rawvideo,theora,%{extra-vid-enc}
 
   video-decoders: |
     libaom_av1,libdav1d,rawvideo,theora,vp8,vp9,%{extra-vid-dec}
