@@ -50,6 +50,7 @@ environment:
         LDFLAGS_FOR_BUILD:  "%{ldflags_defaults}"
 
 variables:
+  debug_flags: ''
   host-triplet: '%{triplet}'
   build-triplet: '%{guessed-triplet}'
   (?):
