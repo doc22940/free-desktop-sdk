@@ -7,6 +7,16 @@ depends:
   type: build
 - filename: base/python3.bst
   type: build
+- filename: desktop/systemd-base.bst
+  type: build
+- filename: desktop/libsystemd.bst
+  type: runtime
+
+variables:
+  conf-local: |
+    --enable-systemd \
+    --runstatedir=/run \
+    --with-system-socket=/run/dbus/system_bus_socket
 
 public:
   bst:
