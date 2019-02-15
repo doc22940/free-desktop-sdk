@@ -7,6 +7,7 @@ depends:
   type: build
 
 variables:
+  debug_flags: ''
   clang-libs: |
     libclangAnalysis.a \
     libclangAST.a \
@@ -44,6 +45,7 @@ variables:
     -DLLVM_LINK_LLVM_DYLIB:BOOL=ON \
     -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_CXX_FLAGS_RELWITHDEBINFO="-DNDEBUG" \
     -DLLVM_LIBDIR_SUFFIX="/%{gcc_triplet}" \
     -DLLVM_ENABLE_LIBCXX:BOOL=OFF \
     -DLLVM_ENABLE_ZLIB:BOOL=ON \
