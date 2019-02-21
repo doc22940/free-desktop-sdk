@@ -4,8 +4,13 @@ depends:
 - filename: extensions/html5/ffmpeg.bst
   type: build
 
+(@):
+- release-version.yml
+
 config:
   directory: '%{libdir}/ffmpeg'
+  branch: '%{release-version}'
+
   metadata:
     Runtime:
       name: org.freedesktop.Platform.html5-codecs

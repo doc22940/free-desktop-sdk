@@ -4,8 +4,12 @@ depends:
 - filename: extensions/platform-vaapi-intel/intel-vaapi-driver.bst
   type: build
 
+(@):
+- release-version.yml
+
 config:
   directory: '%{libdir}/dri/intel-vaapi-driver'
+  branch: '%{release-version}'
 
   metadata:
     Runtime:

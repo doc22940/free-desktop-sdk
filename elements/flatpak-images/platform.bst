@@ -1,5 +1,8 @@
 kind: flatpak_image
 
+(@):
+- release-version.yml
+
 config:
   directory: '%{prefix}'
   exclude:
@@ -58,14 +61,16 @@ config:
 
     Extension org.freedesktop.Platform.VAAPI.Intel:
       directory: '%{lib}/dri/intel-vaapi-driver'
-      autodelete: 'false'
+      autodelete: 'true'
       no-autodownload: 'true'
       download-if: have-intel-gpu
+      version: '%{release-version}'
 
     Extension org.freedesktop.Platform.html5-codecs:
       directory: '%{lib}/ffmpeg'
       add-ld-path: lib
-      autodelete: 'false'
+      autodelete: 'true'
+      version: '%{release-version}'
 
 depends:
 - filename: desktop-platform-image.bst
