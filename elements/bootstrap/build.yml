@@ -1,4 +1,5 @@
 variables:
+  debug_flags: ''
   build-triplet: '%{guessed-triplet}'
   host-triplet: '%{guessed-triplet}'
 
