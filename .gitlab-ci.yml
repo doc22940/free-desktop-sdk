@@ -287,7 +287,7 @@ prepare_publish:
     - x86_64
   script:
     - git clone https://github.com/flatpak/flat-manager.git
-    - flat-manager/flat-manager-client create https://repo-test.flathub.org/ stable >publish_build.txt
+    - flat-manager/flat-manager-client create https://hub.flathub.org/ stable > publish_build.txt
   artifacts:
     paths:
       - publish_build.txt
