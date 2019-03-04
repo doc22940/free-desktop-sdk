@@ -79,6 +79,11 @@ config:
 public:
   bst:
     split-rules:
+      debug: []
+
+      extra-debug:
+        - "%{debugdir}/**"
+
       devel:
         (>):
         - '%{bindir}/**'

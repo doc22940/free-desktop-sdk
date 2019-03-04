@@ -9,6 +9,7 @@ config:
   exclude:
   - devel
   - extra
+  - extra-debug
 
 public:
   bst:

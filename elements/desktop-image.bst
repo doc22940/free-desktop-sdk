@@ -15,6 +15,7 @@ public:
 config:
   exclude:
     - extra
+    - extra-debug
 
 depends:
 - filename: desktop.bst

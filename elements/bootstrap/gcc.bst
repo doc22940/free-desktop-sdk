@@ -92,6 +92,11 @@ config:
 public:
   bst:
     split-rules:
+      extra-debug:
+        - "%{debugdir}%{bindir}/**"
+        - "%{debugdir}%{libexecdir}/**"
+        - "%{sourcedir}/**"
+
       runtime:
         - '%{multiarch_libdir}/lib*.so.*'
 
