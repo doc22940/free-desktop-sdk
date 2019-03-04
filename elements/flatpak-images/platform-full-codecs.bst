@@ -8,9 +8,9 @@ config:
   directory: '%{libdir}/ffmpeg'
   metadata:
     Runtime:
-      name: org.freedesktop.Platform.full-codecs
-      runtime: org.freedesktop.Platform/%{gcc_arch}/%{branch}
-      sdk: org.freedesktop.Sdk/%{gcc_arch}/%{branch}
+      name: 'org.freedesktop.Platform.ffmpeg-full-codecs'
+      runtime: 'org.freedesktop.Platform/%{gcc_arch}/%{branch}'
+      sdk: 'org.freedesktop.Sdk/%{gcc_arch}/%{branch}'
 
     ExtensionOf:
-      ref: runtime/org.freedesktop.Platform/%{gcc_arch}/%{branch}
+      ref: 'runtime/org.freedesktop.Platform/%{gcc_arch}/%{branch}'

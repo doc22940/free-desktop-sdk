@@ -71,7 +71,7 @@ config:
       no-autodownload: 'true'
       extension-priority: 0
 
-    Extension org.freedesktop.Platform.full-codecs:
+    Extension org.freedesktop.Platform.ffmpeg-full-codecs:
       directory: '%{lib}/ffmpeg'
       add-ld-path: lib
       autodelete: 'false'
