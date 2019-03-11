@@ -183,7 +183,23 @@ export-snap:
 	bst --colors $(ARCH_OPTS) build "snap-images/images.bst"
 	bst --colors $(ARCH_OPTS) checkout "snap-images/images.bst" snap/
 
+export-docker:
+	$(BST) build docker/platform.bst \
+                     docker/clinfo.bst \
+                     docker/glxinfo.bst \
+                     docker/vulkaninfo.bst
+	mkdir -p $(CHECKOUT_ROOT)
+	$(BST) checkout docker/platform.bst $(CHECKOUT_ROOT)/$(ARCH)-docker-platform
+	./$(CHECKOUT_ROOT)/$(ARCH)-docker-platform/build.sh
+	rm -rf ./$(CHECKOUT_ROOT)/$(ARCH)-docker-platform
+	for app in glxinfo clinfo vulkaninfo; do \
+	  $(BST) checkout docker/$${app}.bst "$(CHECKOUT_ROOT)/$(ARCH)-docker-$${app}"; \
+	  docker build "$(CHECKOUT_ROOT)/$(ARCH)-docker-$${app}" -t freedesktop-sdk/$${app}:$(BRANCH); \
+	  rm -rf "$(CHECKOUT_ROOT)/$(ARCH)-docker-$${app}"; \
+	done
+
 .PHONY: \
 	build check-dev-files clean clean-test clean-repo clean-runtime \
 	export test-apps manifest markdown-manifest check-rpath \
-	build-tar export-tar clean-vm build-vm run-vm export-snap
+	build-tar export-tar clean-vm build-vm run-vm export-snap \
+	export-docker
