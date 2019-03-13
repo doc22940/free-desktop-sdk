@@ -116,7 +116,7 @@ async def await_line(stream, marker):
 
 
 async def run_qemu_test(sda, dialog):
-    command = [QEMU, '-drive', 'file=%s,format=raw' % sda, '-nographic'] + QEMU_EXTRA_ARGS
+    command = [QEMU, '-enable-kvm', '-drive', 'file=%s,format=raw' % sda, '-nographic'] + QEMU_EXTRA_ARGS
     dialog = DIALOGS[dialog]
 
     logging.debug("Starting process: %s", command)

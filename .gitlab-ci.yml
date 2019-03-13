@@ -199,7 +199,7 @@ app_arm:
   script:
     - ${BST} -o target_arch "${ARCH}" build vm/"${TYPE}"-vm-image-"${ARCH}".bst
     - ${BST} -o target_arch "${ARCH}" checkout vm/"${TYPE}"-vm-image-"${ARCH}".bst ./vm
-    - utils/test-minimal-system --dialog "${DIALOG}" vm/sda.img
+    - time utils/test-minimal-system --dialog "${DIALOG}" vm/sda.img
   artifacts:
     when: always
     paths:
