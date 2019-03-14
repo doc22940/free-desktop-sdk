@@ -1,3 +1,4 @@
+MODE=--strict
 SHELL=/bin/bash
 BRANCH=18.08
 ARCH=$(shell uname -m | sed "s/^i.86$$/i686/")
@@ -17,7 +18,7 @@ else
 ABI=gnu
 endif
 
-BST=bst --colors $(ARCH_OPTS)
+BST=bst --colors $(ARCH_OPTS) $(MODE)
 
 all: build
 
