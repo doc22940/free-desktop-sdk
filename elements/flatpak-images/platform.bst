@@ -68,14 +68,14 @@ config:
       directory: '%{lib}/ffmpeg'
       add-ld-path: lib
       autodelete: 'false'
-      no-autodownload: 'true'
+      no-autodownload: 'false'
       extension-priority: 0
 
     Extension org.freedesktop.Platform.ffmpeg-full-codecs:
       directory: '%{lib}/ffmpeg'
       add-ld-path: lib
       autodelete: 'false'
-      no-auto-download: 'false'
+      no-autodownload: 'true'
       extension-priority: 1
 
 depends:

@@ -190,6 +190,23 @@ test-apps: $(REPO)
 
 	flatpak-builder --arch=$(FLATPAK_ARCH) --force-clean app tests/org.flatpak.ExampleRuntime.json
 
+test-codecs: export XDG_DATA_HOME=$(CURDIR)/runtime
+test-codecs: $(REPO)
+	flatpak remote-add --if-not-exists --user --no-gpg-verify fdo-sdk-test-repo $(REPO)
+	flatpak install -y --arch=$(FLATPAK_ARCH) --user fdo-sdk-test-repo org.freedesktop.{Platform,Sdk}//$(BRANCH)
+
+	flatpak-builder --arch=$(FLATPAK_ARCH) --force-clean --repo=$(REPO) app tests/test.codecs.html5.json
+
+	flatpak-builder --arch=$(FLATPAK_ARCH) --force-clean --repo=$(REPO) app tests/test.codecs.full.json
+
+	flatpak uninstall -y --all
+	flatpak install -y --arch=$(FLATPAK_ARCH) --user fdo-sdk-test-repo test.codecs.html5
+	flatpak run test.codecs.html5
+
+	flatpak uninstall -y --all
+	flatpak install -y --arch=$(FLATPAK_ARCH) --user fdo-sdk-test-repo test.codecs.full
+	flatpak run test.codecs.full
+
 clean-repo:
 	rm -rf $(REPO)
 
@@ -235,5 +252,5 @@ track-mesa-aco:
 	build check-dev-files clean clean-test clean-repo clean-runtime \
 	export test-apps manifest markdown-manifest check-rpath \
 	build-tar export-tar clean-vm build-vm run-vm export-snap \
-	export-oci export-docker bootstrap \
+	export-oci export-docker bootstrap test-codecs \
 	track-mesa-aco
