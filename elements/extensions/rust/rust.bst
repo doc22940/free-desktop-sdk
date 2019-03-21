@@ -66,6 +66,7 @@ config:
     mandir = "%{mandir}"
     docdir = "%{datadir}/doc/rust"
     [rust]
+    channel = "stable"
     debuginfo = true
     debuginfo-only-std = %{debuginfo-only-std}
     rpath = false
@@ -115,9 +116,9 @@ public:
 
 sources:
 - kind: tar
-  url: https://static.rust-lang.org/dist/rustc-1.32.0-src.tar.gz
-  ref: 4c594c7712a0e7e8eae6526c464bf6ea1d82f77b4f61717c3fc28fb27ba2224a
+  url: https://static.rust-lang.org/dist/rustc-1.33.0-src.tar.gz
+  ref: 5a01a8d7e65126f6079042831385e77485fa5c014bf217e9f3e4aff36a485d94
 - kind: patch
-  path: patches/rust-codegen-libdir.patch
+  path: patches/rust/rust-codegen-libdir.patch
 - kind: patch
-  path: patches/rust-cannonicalize-install.patch
+  path: patches/rust/rust-cannonicalize-install.patch

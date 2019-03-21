@@ -7,6 +7,8 @@ depends:
   type: build
 
 variables:
+  debug_flags: "-g1"
+
   clang-libs: |
     libclangAnalysis.a \
     libclangAST.a \
@@ -18,6 +20,11 @@ variables:
     libclangFrontendTool.a \
     libclangLex.a \
     libclangParse.a \
+    libclangRewrite.a \
+    libclangRewriteFrontend.a \
+    libclangStaticAnalyzerCheckers.a \
+    libclangStaticAnalyzerCore.a \
+    libclangStaticAnalyzerFrontend.a \
     libclangSema.a \
     libclangSerialization.a
 
@@ -55,7 +62,9 @@ variables:
     -DFFI_INCLUDE_DIR=%{libdir}/libffi-3.2.1/include \
     -DLLVM_INSTALL_TOOLCHAIN_ONLY:BOOL=OFF \
     -DLLVM_DEFAULT_TARGET_TRIPLE=%{build-triplet} \
-    -DLLVM_TARGETS_TO_BUILD="%{targets}"
+    -DLLVM_TARGETS_TO_BUILD="%{targets}" \
+    -DCMAKE_C_FLAGS_RELWITHDEBINFO="-DNDEBUG" \
+    -DCMAKE_CXX_FLAGS_RELWITHDEBINFO="-DNDEBUG"
 
 config:
   install-commands:
@@ -67,6 +76,9 @@ config:
       rm -f lib*.a
       mv tmp/* "%{install-root}%{libdir}"
       rm -rf tmp
+    - |
+      cd "%{install-root}%{libdir}"
+      sed -i '/APPEND _IMPORT_CHECK_TARGETS LLVM.*/ d' cmake/llvm/LLVMExports*.cmake
 
 public:
   bst:
@@ -78,7 +90,7 @@ public:
         - '%{libdir}/libLLVM-6.0.1.so'
         - '%{libdir}/libLLVM.so'
         - '%{libdir}/LLVMgold.so'
-        - '%{libdir}/libLTO.so'
+        - '%{libdir}/libLTO.so*'
         - '%{libdir}/libclang.so'
         - '%{libdir}/BugpointPasses.so'
         - '%{libdir}/clang'
@@ -105,6 +117,8 @@ sources:
   ref: f4cd1e15e7d5cb708f9931d4844524e4904867240c306b06a4287b22ac1c99b9
   directory: tools/compiler-rt
 - kind: patch
-  path: patches/llvm-clang-ignore-fstack-clash-protection.patch
+  path: patches/llvm/llvm-clang-ignore-fstack-clash-protection.patch
 - kind: patch
-  path: patches/llvm6-clang-ignore-fcf-protection.patch
+  path: patches/llvm/llvm6-clang-ignore-fcf-protection.patch
+- kind: patch
+  path: patches/llvm/llvm6-no-rpath.patch

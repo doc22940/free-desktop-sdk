@@ -28,10 +28,17 @@ variables:
    -Denable_docs=false \
    -Dgir=true
 
+config:
+  install-commands:
+    (>):
+    - |
+      rm -rf "%{install-root}%{libexecdir}/installed-tests"
+      rm -rf "%{install-root}%{datadir}/installed-tests"
+
 sources:
 - kind: git_tag
   url: gnome:pango
   track: master
   ref: 1.43.0-0-g26f1135f374f3ad5eb963dcdf016542fbbda361b
 - kind: patch
-  path: patches/pango-Make-gobject-2.0-a-non-private-requirement.patch
+  path: patches/pango/pango-Make-gobject-2.0-a-non-private-requirement.patch

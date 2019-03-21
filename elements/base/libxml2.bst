@@ -24,8 +24,6 @@ public:
       devel:
         (>):
         - '%{libdir}/libxml2.so'
-  cpe:
-    version: '2.9.8'
 
 sources:
 - kind: git_tag
@@ -33,6 +31,6 @@ sources:
   track: master
   ref: v2.9.9-0-gf8a8c1f59db355b46962577e7b74f1a1e8149dc6
 - kind: patch
-  path: patches/libxml2-python-in-nodeWrap-deal-with-name-is-None-case.patch
+  path: patches/libxml2/libxml2-python-in-nodeWrap-deal-with-name-is-None-case.patch
 - kind: patch
-  path: patches/libxml2-python3-unicode-errors.patch
+  path: patches/libxml2/libxml2-python3-unicode-errors.patch

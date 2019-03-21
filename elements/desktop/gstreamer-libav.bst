@@ -25,19 +25,18 @@ sources:
 - kind: git_tag
   url: freedesktop:gstreamer/gst-libav
   track: master
-  # Snapshot used by debian so we can use their patches
-  ref: 1.14.0-54-gdb8235024523a0375443f36eb5fec627386452d5
+  ref: 1.15.2-0-gc693e62a4464a74bace095344e355c4409d850d9
   submodules:
     common:
       checkout: True
       url: freedesktop:gstreamer/common
 - kind: patch
-  path: patches/gst-libav-stop-caching-codecs.patch
+  path: patches/gstreamer-libav/gst-libav-stop-caching-codecs.patch
 - kind: patch
-  path: patches/gst-libav-disable-1.15-api.patch
+  path: patches/gstreamer-libav/gst-libav-disable-1.15-api.patch
 - kind: patch
-  path: patches/gst-libav-drop-1.15-dependency.patch
+  path: patches/gstreamer-libav/gst-libav-drop-1.15-dependency.patch
 - kind: patch
-  path: patches/gst-libav-avmux-Place-pva-case-after-generic-case.patch
+  path: patches/gstreamer-libav/gst-libav-Revert-incompatible-commit.patch
 - kind: patch
-  path: patches/gst-libav-decoders-fix-draining.patch
+  path: patches/gstreamer-libav/gst-libav-plugin-dependencies.patch

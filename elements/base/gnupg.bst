@@ -6,8 +6,21 @@ depends:
 - filename: base/libassuan.bst
 - filename: base/libksba.bst
 - filename: base/npth.bst
+- filename: base/buildsystem-autotools.bst
+  type: build
+- filename: base/gettext.bst
+  type: build
+
+variables:
+  conf-local: |
+    --enable-maintainer-mode \
+    --disable-doc \
+    --disable-all-tests
 
 sources:
-- kind: tar
-  url: https://www.gnupg.org/ftp/gcrypt/gnupg/gnupg-2.2.12.tar.bz2
-  ref: db030f8b4c98640e91300d36d516f1f4f8fe09514a94ea9fc7411ee1a34082cb
+- kind: git_tag
+  url: gnupg:gnupg.git
+  track: STABLE-BRANCH-2-2
+  ref: gnupg-2.2.13-0-g7922e2dd1c7eee48a8a2cf4799827942489ddd0f
+- kind: patch
+  path: patches/gnupg/gnupg-don-t-include-tests-with-tarred-data.patch

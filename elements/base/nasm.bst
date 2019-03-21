@@ -4,21 +4,31 @@ depends:
 - filename: bootstrap-import.bst
 - filename: base/buildsystem-autotools.bst
   type: build
+- filename: base/asciidoc.bst
+  type: build
+- filename: base/groff.bst
+  type: build
+- filename: base/xmlto.bst
+  type: build
+- filename: base/docbook-xml.bst
+  type: build
+- filename: base/docbook-xsl.bst
+  type: build
+- filename: base/libxslt.bst
+  type: build
+
+variables:
+  builddir: ''
 
 config:
-  configure-commands:
-    (<):
-    - |
-      autoreconf -ivf
-
-  install-commands:
-  - |
-    cd "%{builddir}"
-    make -j1 INSTALLROOT="%{install-root}" install
+  build-commands:
+    (>):
+    - make manpages
 
 sources:
-- kind: tar
-  url: https://www.nasm.us/pub/nasm/releasebuilds/2.13.03/nasm-2.13.03.tar.xz
-  ref: 812ecfb0dcbc5bd409aaa8f61c7de94c5b8752a7b00c632883d15b2ed6452573
+- kind: git_tag
+  url: https://repo.or.cz/nasm.git
+  track: master
+  ref:  nasm-2.14.02-0-ga73b8be6f0f9e307e3c6131011a30f2fd5b00877
 - kind: patch
-  path: patches/nasm-disable-werror-attributes.patch
+  path: patches/nasm/nasm-disable-werror-attributes.patch

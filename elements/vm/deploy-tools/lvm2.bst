@@ -2,9 +2,10 @@ kind: autotools
 
 depends:
 - bootstrap-import.bst
+- vm/bsp-generic/libaio.bst
 
 sources:
 - kind: git_tag
   url: sourceware:lvm2.git
   track: master
-  ref: v2_02_98-0-gea6a8078b41df75344aecff4c54aab9c78b67193
+  ref: v2_02_183-0-gf5ea02ffee3269a77e295d2b186ca81481f592d7

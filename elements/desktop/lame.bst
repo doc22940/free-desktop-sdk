@@ -7,6 +7,10 @@ depends:
 - filename: base/gettext.bst
   type: build
 
+variables:
+  conf-local: |
+    --enable-dynamic-frontends
+
 config:
   configure-commands:
     (<):
@@ -25,4 +29,4 @@ sources:
   url: https://sourceforge.net/projects/lame/files/lame/3.100/lame-3.100.tar.gz
   ref: ddfe36cab873794038ae2c1210557ad34857a4b6bdc515785d1da9e175b1da1e
 - kind: patch
-  path: patches/lame-3.100.5-pkgconfig-to-get-correct-libs.patch
+  path: patches/lame/lame-3.100.5-pkgconfig-to-get-correct-libs.patch

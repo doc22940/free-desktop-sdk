@@ -15,6 +15,7 @@ depends:
 - filename: desktop/xorg-lib-xrandr.bst
 - filename: desktop/xorg-lib-xshmfence.bst
 - filename: desktop/xorg-lib-xxf86vm.bst
+- filename: desktop/wayland.bst
 - filename: desktop/wayland-protocols.bst
   type: build
 - filename: desktop/libglvnd.bst
@@ -71,7 +72,6 @@ variables:
     -Dplatforms=x11,drm,surfaceless,wayland \
     -Dselinux=false \
     -Dshared-glapi=true \
-    -Dtexture-float=true \
     -Dvalgrind=false \
     -Dvulkan-drivers=%{vulkan_drivers} \
     -Dvulkan-icd-dir="%{libdir}/vulkan/icd.d" \
@@ -90,6 +90,22 @@ config:
       rm -f "%{install-root}%{libdir}/libEGL_mesa.so"
       rm -f "%{install-root}%{libdir}/libglapi.so"
 
+    - |
+      for dir in vdpau dri; do
+        for file in "%{install-root}%{libdir}/${dir}/"*.so*; do
+          soname="$(objdump -p "${file}" | sed "/ *SONAME */{;s///;q;};d")"
+          if [ -L "${file}" ]; then
+            continue
+          fi
+          if ! [ -f "%{install-root}%{libdir}/${dir}/${soname}" ]; then
+            mv "${file}" "%{install-root}%{libdir}/${dir}/${soname}"
+          else
+            rm "${file}"
+          fi
+          ln -s "${soname}" "${file}"
+        done
+      done
+
 public:
   bst:
     split-rules:
@@ -100,10 +116,12 @@ public:
         - '%{libdir}/libOSMesa.so'
         - '%{libdir}/libwayland-egl.so'
         - '%{libdir}/libxatracker.so'
-        - '%{libdir}/vdpau/libvdpau_*.so'
         - '%{libdir}/libMesaOpenCL.so'
 
 sources:
 - kind: git_tag
   url: freedesktop:mesa/mesa.git
-  ref: mesa-18.3.2-0-g95a3b709c0d4618d900f8b8bed429ee4f786fab2
+  track: 18.3
+  ref: mesa-18.3.5-0-g022708cb40a997e796f95d011a0e6c64a7333fe0
+- kind: patch
+  path: patches/mesa/fix-driver-rpath.patch

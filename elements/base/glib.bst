@@ -50,6 +50,6 @@ sources:
 - kind: git_tag
   url: gnome:glib
   track: glib-2-58
-  ref: 2.58.2-0-g97bcbcb8c2aa0aeee5afd9939efbadbae0c8a8fa
+  ref: 2.58.3-0-gf2d1128ffae0de87680e411fb62ccfccafed6b1c
 - kind: patch
-  path: patches/glib-gunixmounts-Fix-segfaults-caused-by-new-filter-of-mounts.patch
+  path: patches/glib/glib-trash.patch

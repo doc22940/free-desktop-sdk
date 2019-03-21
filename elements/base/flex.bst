@@ -7,6 +7,7 @@ depends:
 - filename: base/help2man.bst
   type: build
 - filename: base/m4.bst
+  type: build
 - filename: base/buildsystem-autotools.bst
   type: build
 - filename: base/gettext.bst
@@ -32,6 +33,7 @@ public:
     split-rules:
       devel:
         (>):
+        - '%{bindir}/*'
         - '%{libdir}/libfl.so'
 
 sources:
@@ -39,4 +41,4 @@ sources:
   url: github:westes/flex/files/981163/flex-2.6.4.tar.gz
   ref: e87aae032bf07c26f85ac0ed3250998c37621d95f8bd748b31f15b33c45ee995
 - kind: patch
-  path: patches/flex-pie.patch
+  path: patches/flex/flex-pie.patch

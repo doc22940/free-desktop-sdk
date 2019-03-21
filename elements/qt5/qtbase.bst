@@ -10,22 +10,52 @@ depends:
   type: build
 - filename: base/which.bst
   type: build
+- filename: base/giflib.bst
+  type: build
 - filename: base/glib.bst
+  type: build
 - filename: base/icu.bst
+  type: build
 - filename: base/openssl.bst
+  type: build
+- filename: base/pcre2.bst
+  type: build
 - filename: base/sqlite.bst
+  type: build
+- filename: desktop/cups.bst
+  type: build
 - filename: desktop/dbus.bst
+  type: build
 - filename: desktop/fontconfig.bst
+  type: build
 - filename: desktop/gtk3.bst
+  type: build
 - filename: desktop/harfbuzz.bst
+  type: build
 - filename: desktop/vulkan.bst
+  type: build
 - filename: desktop/xcb-util-image.bst
-
+  type: build
+- filename: desktop/xcb-util-keysyms.bst
+  type: build
+- filename: desktop/xcb-util-renderutil.bst
+  type: build
+- filename: desktop/xcb-util-wm.bst
+  type: build
+- filename: desktop/xorg-lib-xcb.bst
+  type: build
 
 variables:
   conf-local: |
     -prefix %{prefix} \
     -libdir %{libdir} \
+    -sysconfdir %{sysconfdir}/xdg \
+    -archdatadir %{libdir}/qt5 \
+    -datadir %{prefix}/share/qt5 \
+    -docdir %{prefix}/share/doc/qt5 \
+    -headerdir %{prefix}/include/qt5 \
+    -plugindir %{libdir}/qt5/plugins \
+    -plugin-sql-sqlite \
     -nomake examples \
     -nomake tests \
     -confirm-license \
@@ -33,24 +63,24 @@ variables:
     -shared \
     -platform linux-g++ \
     -optimized-qmake \
+    -syslog \
+    -system-proxies \
     -system-harfbuzz \
     -system-sqlite \
     -accessibility \
+    -cups \
     -dbus-linked \
     -fontconfig \
     -glib \
     -icu \
+    -gtk \
     -openssl-linked \
-    -no-pch \
-    -no-rpath \
     -no-directfb \
     -no-linuxfb \
     -no-kms \
-    -no-cups \
-    -system-proxies \
-    -gtk \
-    -no-use-gold-linker \
-    -archdatadir /usr/lib/
+    -no-pch \
+    -no-rpath \
+    -no-use-gold-linker
 
   (?):
     - target_arch == "x86_64":
@@ -72,18 +102,23 @@ variables:
 
 config:
   configure-commands:
-    - ./configure %{conf-local} %{conf-arch}
+    - |
+      sed -i "s|-O2|${CXXFLAGS}|" mkspecs/common/gcc-base.conf
+      # This also sets default {C,CXX,LD}FLAGS for projects built using qmake
+      sed -i -e "s|^\(QMAKE_CFLAGS_RELEASE.*\)|\1 ${CFLAGS}|" \
+        mkspecs/common/gcc-base.conf
+      sed -i -e "s|^\(QMAKE_LFLAGS_RELEASE.*\)|\1 ${LDFLAGS}|" \
+       mkspecs/common/g++-unix.conf
+
+      ./configure %{conf-local} %{conf-arch}
 
   build-commands:
-    - make
+    - make -j%{max-jobs}
 
   install-commands:
     - |
       make -j1 INSTALL_ROOT=%{install-root} install
-
-    - |
       rm -f "%{install-root}%{libdir}"/*.a
-      rm -f "%{install-root}%{libdir}/lib"/*.la
 
 public:
   bst:

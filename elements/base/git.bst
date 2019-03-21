@@ -36,9 +36,22 @@ config:
     - |
       find "%{install-root}" -type f -name perllocal.pod -delete
 
-sources:
-- kind: git_tag
-  url: github:git/git.git
-  track: master
-  ref: v2.20.1-0-g0d0ac3826a3bbb9247e39e12623bbcfdd722f24c
-    # git-minimal.bst and git.bst must be kept in sync
+    - |
+      inum="$(stat -c %i "%{install-root}%{bindir}/git")"
+      find "%{install-root}" -inum "${inum}" -not -path "%{install-root}%{bindir}/git" -print0 | while read -d '' -r file; do
+        rm "${file}"
+        ln -s "$(realpath "%{install-root}%{bindir}/git" --relative-to="$(dirname "${file}")")" "${file}"
+      done
+
+    - |
+      for proto in http ftp ftps; do
+        rm "%{install-root}%{libexecdir}/git-core/git-remote-${proto}"
+        ln -s git-remote-https "%{install-root}%{libexecdir}/git-core/git-remote-${proto}"
+      done
+
+    - |
+      rm "%{install-root}%{bindir}/git-shell"
+      ln -s "$(realpath "%{install-root}%{libexecdir}/git-core/git" --relative-to="%{install-root}%{bindir}")" "%{install-root}%{bindir}/git-shell"
+
+(@):
+- elements/config/git.yml

@@ -3,6 +3,7 @@ kind: autotools
 depends:
 - filename: bootstrap-import.bst
 - filename: base/perl.bst
+  type: build
 - filename: base/buildsystem-autotools.bst
   type: build
 
@@ -60,8 +61,12 @@ public:
         - '%{libdir}/libcrypto.so'
         - '%{prefix}/ssl/misc/*'
 
+  cpe:
+    vendor: 'openssl'
+    version: '1.1.1b'
+
 sources:
 - kind: git_tag
   url: github:openssl/openssl
-  track: master
-  ref: OpenSSL_1_1_1-0-g1708e3e85b4a86bae26860aa5d2913fc8eff6086
+  track: OpenSSL_1_1_1-stable
+  ref: OpenSSL_1_1_1b-0-g50eaac9f3337667259de725451f201e784599687

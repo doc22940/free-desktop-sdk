@@ -94,6 +94,10 @@ This ref clearly states the project version in a human readable format, whilst
 also making it easier to regex/automate the parsing of the version by other
 tools.
 
+We also have CI to automatically track the latest tags of git repos, but this
+requires use of the `git_tag` plugin rather than `git`. If adding a new git
+source please use `git_tag` rather than `git`.
+
 
 ## Request developer access to the freedesktop-sdk repo
 Go to our gitlab [project page](https://gitlab.com/freedesktop-sdk/freedesktop-sdk) and click the "Request Developer Access" button near the top of the page. One of the maintainers will review your request. Developer access allows you to push directly to our repo, enabling a simpler "push and merge request" workflow instead of using the github "fork and pull request" workflow.
@@ -120,7 +124,7 @@ Once your MR is open it will be reviewed before merging. Once it passes our CI a
 Congratulations, you are now a freedesktop-sdk contributor!
 
 ## Testing locally
-If you want to test your changes locally then you will need to first install [BuildStream](https://buildstream.build). The installation instructions can be found [here](https://buildstream.build/install.html). Note that we use buildstream version 1.2.0, so ensure you use this version too.
+If you want to test your changes locally then you will need to first install [BuildStream](https://buildstream.build). The installation instructions can be found [here](https://buildstream.build/install.html). Note that we use buildstream version 1.2.4, so ensure you use this version too.
 
 We also use some plugins from the [bst-external](https://gitlab.com/BuildStream/bst-external) repository. To install these run the following commands:
 ```
@@ -150,8 +154,6 @@ There are additionally several variables a user can define to customise the buil
 
 | Variable        | Effect                                                                          | Default Value |
 | --------------- | ------------------------------------------------------------------------------- | ------------- |
-| BRANCH          | Export as flatpak runtime with branch BRANCH (i.e. org.freedesktop.Sdk//BRANCH) | "18.08"       |
 | ARCH            | Export as flatpak with architecture ARCH                                        | system arch   |
 | REPO            | The local flatpak repo to export to                                             | "repo/"       |
-| RUNTIMES        | The runtimes/extensions to be exported                                          | all runtimes  |
 | CHECKOUT_ROOT   | The location to checkout runtimes from bst checkout                             | "runtimes/"   |

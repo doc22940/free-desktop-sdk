@@ -27,17 +27,16 @@ config:
   - |
     make -j1 DESTDIR="%{install-root}" install
 
-public:
-  bst:
-    split-rules:
-      devel:
-        (>):
-        - '**'
+  - |
+    rm -r "%{install-root}%{bindir}/perl"
+    ln -s perl5.28.1 "%{install-root}%{bindir}/perl"
 
 sources:
 - kind: git_tag
   url: 'perl5:'   # alias syntax requires ":" https://gitlab.com/BuildStream/buildstream/issues/720
-  track: blead
+  track: maint-5.28
   ref: v5.28.1-0-g63afdf6c0f65af480aa5bb9ccba9f46dae52f6fc
 - kind: local
   path: files/perl/config.over
+- kind: patch
+  path: patches/perl/no-rpath-libpath.patch

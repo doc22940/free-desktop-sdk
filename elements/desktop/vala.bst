@@ -9,9 +9,11 @@ depends:
   type: build
 - filename: base/buildsystem-autotools.bst
   type: build
-- filename: desktop/libgvc.bst
+
+variables:
+  conf-local: --disable-valadoc
 
 sources:
 - kind: tar
-  url: https://download.gnome.org/sources/vala/0.42/vala-0.42.4.tar.xz
-  ref: b528906d080ac5b6043285a82c194c988e495c70da71ae19c1fc7811509f4f1e
+  url: https://download.gnome.org/sources/vala/0.44/vala-0.44.1.tar.xz
+  ref: 96a8c1415c6484d7d6b837ae263af7c50465c7423bfc8eea5046f3eadfa42fe2
