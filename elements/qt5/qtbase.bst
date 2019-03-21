@@ -35,15 +35,10 @@ depends:
 - filename: desktop/vulkan.bst
   type: build
 - filename: desktop/xcb-util-image.bst
-  type: build
 - filename: desktop/xcb-util-keysyms.bst
-  type: build
 - filename: desktop/xcb-util-renderutil.bst
-  type: build
 - filename: desktop/xcb-util-wm.bst
-  type: build
 - filename: desktop/xorg-lib-xcb.bst
-  type: build
 
 variables:
   conf-local: |
