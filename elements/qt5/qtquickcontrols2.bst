@@ -24,6 +24,7 @@ public:
         (>):
           - "%{libdir}/*.so"
 sources:
-- kind: git
+- kind: git_tag
   url: https://code.qt.io/qt/qtquickcontrols2
-  ref: v5.12.0-0-gd3545dbdfdb30e310c6c962ba92f4fdf57354666
+  track: 5.12
+  ref: v5.12.2-0-gca799283a2266b023923286b4928fdf6e7211569

@@ -18,6 +18,7 @@ depends:
   type: build
 
 sources:
-- kind: git
+- kind: git_tag
   url: https://code.qt.io/qt/qtquickcontrols
-  ref: v5.12.0-0-g7250a5c2f9dbb61e2c8289f1bf28db2300ce43ad
+  track: 5.12
+  ref: v5.12.2-0-gc231395eec3494619f4977b4c5cd845b9d7341ae

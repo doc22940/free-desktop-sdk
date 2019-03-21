@@ -26,6 +26,7 @@ public:
           - "%{libdir}/*.so"
 
 sources:
-- kind: git
+- kind: git_tag
   url: https://code.qt.io/qt/qtscript
-  ref: v5.12.0-0-g78be34c5125142a16c117f7508fee603c52cbb36
+  track: 5.12
+  ref: v5.12.2-0-g6c0edaf30c5bdfc2739ca646da73dcb697ab1361

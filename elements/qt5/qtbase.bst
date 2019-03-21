@@ -123,6 +123,7 @@ public:
           - "%{libdir}/*.so"
 
 sources:
-- kind: git
+- kind: git_tag
   url: https://code.qt.io/qt/qtbase.git
-  ref: v5.12.0-0-g13ed06640c6cf32ea8c784c896c6bf017053edb3
+  track: 5.12
+  ref: v5.12.2-0-g856fb1ab44722f5165fb6b5dec0bd748006acd10

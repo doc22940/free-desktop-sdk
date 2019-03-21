@@ -25,6 +25,7 @@ public:
           - "%{libdir}/*.so"
 
 sources:
-- kind: git
+- kind: git_tag
   url: https://code.qt.io/qt/qtmultimedia
-  ref: v5.12.0-0-g471d8fd0826c09bbff3b19e477fadad4f5b55ed0
+  track: 5.12
+  ref: v5.12.2-0-g9caf4812e073829fc961eb466f1325106f041841

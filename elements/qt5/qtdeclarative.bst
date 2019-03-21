@@ -40,9 +40,10 @@ public:
           - "%{libdir}/*.so"
 
 sources:
-- kind: git
+- kind: git_tag
   url: https://code.qt.io/qt/qtdeclarative
-  ref: v5.12.0-0-g64ee4968b46019b8e4cb7523a6e41833fc4cf665
+  track: 5.12
+  ref: v5.12.2-0-gcd7ce85ff0b8f9a5163c7dc276dc7751c3f51f0f
   checkout-submodules: False
   submodules:
     tests/auto/qml/ecmascripttests/test262:
