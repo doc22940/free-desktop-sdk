@@ -78,9 +78,12 @@ public:
         - '%{datadir}/scan-build/**'
         - '%{datadir}/scan-view'
         - '%{datadir}/scan-view/**'
-      
+
       static:
         - '%{libdir}/*.a'
+        - '%{libdir}/clang/*/lib/linux/*.a'
+        - '%{libdir}/clang/*/lib/linux/*.a.syms'
+
 
 sources:
 - kind: tar

@@ -53,6 +53,9 @@ config:
     (>):
     - |
       rm -f "%{install-root}%{libdir}/"*.a
+      rm -f "%{install-root}%{libdir}/clang/"*/lib/linux/*.a
+      rm -f "%{install-root}%{libdir}/clang/"*/lib/linux/*.a.syms
+
     - |
       cd "%{install-root}%{libdir}"
       sed -i '/APPEND _IMPORT_CHECK_TARGETS LLVM.*/ d' cmake/llvm/LLVMExports*.cmake
