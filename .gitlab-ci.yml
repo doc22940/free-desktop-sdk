@@ -129,10 +129,8 @@ check_update_elements:
   script:
     - ${BST} track --deps all flatpak-release.bst
     - git diff
-  only:
-    - schedules
 
-check_update_elements:
+check_update_gits:
   image: $DOCKER_AMD64
   stage: update
   tags:
