@@ -2,6 +2,12 @@ kind: autotools
 
 depends:
 - filename: bootstrap-import.bst
+- filename: base/buildsystem-autotools.bst
+  type: build
+- filename: base/help2man.bst
+  type: build
+- filename: base/texinfo.bst
+  type: build
 
 public:
   bst:
@@ -10,8 +16,14 @@ public:
         (>):
         - '%{libdir}/libtasn1.so'
 
+config:
+  configure-commands:
+    (<):
+    - make autoreconf
+
 sources:
-- kind: tar
-  url: ftp_gnu_org:libtasn1/libtasn1-4.13.tar.gz
-  ref: 7e528e8c317ddd156230c4e31d082cd13e7ddeb7a54824be82632209550c8cca
+- kind: git_tag
+  url: https://gitlab.com/gnutls/libtasn1.git
+  track: master
+  ref: libtasn1_4_13-0-g946565d8eb05fbf7970ea366e817581bb5a90910
 
