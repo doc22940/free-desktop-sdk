@@ -129,8 +129,6 @@ check_update_elements:
   script:
     - ${BST} track --deps all flatpak-release.bst
     - git diff
-  only:
-    - schedules
 
 populate_source_cache:
   image: $DOCKER_AARCH64
@@ -143,8 +141,6 @@ populate_source_cache:
     - ${BST} --on-error continue -o target_arch "aarch64" -o bootstrap_build_arch "aarch64" fetch --deps all flatpak-release.bst || true
     - ${BST} --on-error continue -o target_arch "arm" -o bootstrap_build_arch "aarch64" fetch --deps all flatpak-release.bst || true
   <<: *gitlab_cache_pull_push
-  only:
-    - schedules
 
 .flatpak_template: &flatpak_definition
   stage: flatpak
