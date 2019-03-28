@@ -31,6 +31,8 @@ depends:
   type: build
 - filename: desktop/xorg-xserver.bst
   type: build
+- filename: desktop/xorg-app-xeyes.bst
+  type: build
 - filename: vm/linux-vm-boot/shadow.bst
   type: build
 - filename: vm/linux-vm-boot/weston.bst
