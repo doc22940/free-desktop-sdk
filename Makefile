@@ -194,6 +194,7 @@ test-codecs: export XDG_DATA_HOME=$(CURDIR)/runtime
 test-codecs: $(REPO)
 	flatpak remote-add --if-not-exists --user --no-gpg-verify fdo-sdk-test-repo $(REPO)
 	flatpak install -y --arch=$(FLATPAK_ARCH) --user fdo-sdk-test-repo org.freedesktop.{Platform,Sdk}//$(BRANCH)
+	flatpak install -y --arch=$(FLATPAK_ARCH) --user fdo-sdk-test-repo org.freedesktop.Platform.{ffmpeg-html5,ffmpeg-full-codecs}//$(BRANCH)
 
 	flatpak-builder --arch=$(FLATPAK_ARCH) --force-clean --repo=$(REPO) app tests/test.codecs.html5.json
 

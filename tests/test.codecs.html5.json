@@ -1,17 +1,18 @@
 {
   "app-id": "test.codecs.html5",
   "runtime": "org.freedesktop.Platform",
-  "runtime-version": "18.08",
+  "runtime-version": "19.08beta",
   "sdk": "org.freedesktop.Sdk",
-  "add-extensions": {
-    "org.freedesktop.Platform.html5-codecs": {
-      "directory": "../dev/null",
-      "version": "18.08",
-      "no-autodownload": false
-    }
-  },
+  "sdk-extensions": [
+    "org.freedesktop.Platform.ffmpeg-html5"
+  ],
   "command": "codec-list.sh",
   "modules": [
+    {
+      "name": "ffmpeg-html5",
+      "buildsystem": "simple",
+      "build-commands": ["/usr/lib/ffmpeg/enable.sh"]
+    },
     {
       "name": "codec-list",
       "buildsystem": "simple",

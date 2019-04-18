@@ -68,20 +68,6 @@ config:
       version: '3.22'
       download-if: active-gtk-theme
 
-    Extension org.freedesktop.Platform.ffmpeg-html5:
-      directory: '%{lib}/ffmpeg'
-      add-ld-path: lib
-      autodelete: 'false'
-      no-autodownload: 'false'
-      extension-priority: 0
-
-    Extension org.freedesktop.Platform.ffmpeg-full-codecs:
-      directory: '%{lib}/ffmpeg'
-      add-ld-path: lib
-      autodelete: 'false'
-      no-autodownload: 'true'
-      extension-priority: 1
-
     Extension org.freedesktop.Sdk.Extension:
       subdirectories: 'true'
       directory: lib/sdk
@@ -93,6 +79,17 @@ config:
       autodelete: 'false'
       no-autodownload: 'true'
       download-if: have-intel-gpu
+
+    Extension org.freedesktop.Platform.ffmpeg-html5:
+      directory: 'lib/ffmpeg'
+      autodelete: 'true'
+      no-autodownload: 'true'
+
+    Extension org.freedesktop.Platform.ffmpeg-full-codecs:
+      directory: 'lib/ffmpeg'
+      autodelete: 'true'
+      no-autodownload: 'true'
+
 
     (?):
     - target_arch in ["x86_64", "aarch64"]:

@@ -10,5 +10,17 @@ variables:
   extra-parsers: h264
   extra-demuxers: h264,mov
 
-  ffmpeg-prefix: '%{libdir}/ffmpeg'
-  ffmpeg-libdir: '%{ffmpeg-prefix}/lib'
+  ffmpeg-prefix: '/usr'
+  ffmpeg-libdir: '%{ffmpeg-prefix}/lib/ffmpeg'
+
+config:
+  install-commands:
+    (>):
+    - |
+      chmod +x ffmpeg-codec-enable.sh
+      mv ffmpeg-codec-enable.sh "%{install-root}%{ffmpeg-libdir}/enable.sh"
+
+sources:
+  (>):
+  - kind: local
+    path: files/ffmpeg-codec-enable.sh

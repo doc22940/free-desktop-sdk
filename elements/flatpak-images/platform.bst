@@ -64,20 +64,6 @@ config:
       no-autodownload: 'true'
       download-if: have-intel-gpu
 
-    Extension org.freedesktop.Platform.ffmpeg-html5:
-      directory: '%{lib}/ffmpeg'
-      add-ld-path: lib
-      autodelete: 'false'
-      no-autodownload: 'false'
-      extension-priority: 0
-
-    Extension org.freedesktop.Platform.ffmpeg-full-codecs:
-      directory: '%{lib}/ffmpeg'
-      add-ld-path: lib
-      autodelete: 'false'
-      no-autodownload: 'true'
-      extension-priority: 1
-
 depends:
 - filename: platform-image.bst
   type: build

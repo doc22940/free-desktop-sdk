@@ -5,12 +5,10 @@ depends:
   type: build
 
 config:
-  directory: '%{libdir}/ffmpeg'
+  directory: '%{indep-libdir}/ffmpeg'
   metadata:
     Runtime:
       name: 'org.freedesktop.Platform.ffmpeg-full-codecs'
-      runtime: 'org.freedesktop.Platform/%{gcc_arch}/%{branch}'
-      sdk: 'org.freedesktop.Sdk/%{gcc_arch}/%{branch}'
 
     ExtensionOf:
       ref: 'runtime/org.freedesktop.Platform/%{gcc_arch}/%{branch}'
