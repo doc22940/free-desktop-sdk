@@ -7,7 +7,6 @@ depends:
   type: build
 - filename: components/gstreamer.bst
 - filename: components/gstreamer-plugins-base.bst
-- filename: components/libdrm.bst
 - filename: components/libfdk-aac.bst
 - filename: components/libglvnd.bst
 - filename: components/librsvg.bst
@@ -34,7 +33,9 @@ variables:
     --enable-experimental \
     --enable-introspection \
     --enable-orc \
-    --enable-wayland
+    --enable-wayland \
+    --disable-kms \
+    --disable-fbdev
 
 public:
   bst:
