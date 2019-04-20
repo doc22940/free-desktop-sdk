@@ -34,10 +34,10 @@ public:
 sources:
 - kind: git_tag
   url: github:KhronosGroup/SPIRV-Tools
-  ref: v2019.1-0-g2297d4a3dfcbfd2a8b4312fab055ae26e3289fd3
+  ref: v2019.2-0-g61dfd8492b6e324f684863ecbd79c299a06e6517
   # SPIRV-Headers should be in the same reference like spirv-headers.bst.
   # Only full git from headers make spirv-tools happy.
 - kind: git_tag
   url: github:KhronosGroup/SPIRV-Headers
-  ref: 8bea0a266ac9b718aa0818d9e3a47c0b77c2cb23
+  ref: 1.3.7-0-g2d08d12d8caf0a6bf9ea1f79c039b51b75b8aac4
   directory: external/SPIRV-Headers

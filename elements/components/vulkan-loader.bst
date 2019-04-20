@@ -32,6 +32,6 @@ public:
 sources:
 - kind: git_tag
   url: github:KhronosGroup/Vulkan-Loader
-  ref: v1.1.97-0-g5aa64df4a913388e896abf6567548ec6712084bb
+  ref: sdk-1.1.106.0-0-g763adc5f17a3b9030c6613797d5c9b07c4c2ca61
 - kind: patch
   path: patches/vulkan/vulkan-libdir-path.patch

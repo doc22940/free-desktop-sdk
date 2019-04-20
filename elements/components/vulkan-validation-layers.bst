@@ -19,6 +19,7 @@ variables:
   optimize-debug: "false"
 
   cmake-local: |
+    -DCMAKE_INSTALL_INCLUDEDIR="/usr/include/vulkan/" \
     -DCMAKE_SKIP_RPATH:BOOL=yes \
     -DGLSLANG_INSTALL_DIR=%{prefix}
 
@@ -31,4 +32,4 @@ config:
 sources:
 - kind: git_tag
   url: github:KhronosGroup/Vulkan-ValidationLayers
-  ref: v1.1.97-0-g9a4ae980ab4c69d2ae99f13a2c8ea2a5d102af93
+  ref: sdk-1.1.106.0-0-ge866aff34913e6e530c96bcb9cb23b81afc87320
