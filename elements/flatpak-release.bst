@@ -2,7 +2,7 @@ kind: flatpak_repo
 description: Generates a flatpak repository with all flatpak image elements
 
 depends:
-- filename: deploy-tools/flatpak.bst
+- filename: components/flatpak.bst
   type: build
 - filename: flatpak-release-deps.bst
   type: build
@@ -10,7 +10,7 @@ depends:
 config:
   arch: '%{gcc_arch}'
   environment:
-  - deploy-tools/flatpak.bst
+  - components/flatpak.bst
   (?):
   - target_arch == 'i686':
       copy-refs:

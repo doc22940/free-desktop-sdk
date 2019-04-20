@@ -5,4 +5,4 @@ description: |
   them in bst-shell
 
 depends:
-- filename: dev-tools/vim.bst
+- filename: components/vim.bst
