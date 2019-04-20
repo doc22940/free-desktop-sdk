@@ -37,6 +37,7 @@ depends:
 - filename: components/strace.bst
 - filename: components/texinfo.bst
 - filename: components/valgrind.bst
+- filename: components/vim.bst
 - filename: components/desktop-file-utils.bst
 - filename: components/gtk-doc.bst
 - filename: components/itstools.bst
