@@ -17,10 +17,6 @@ variables:
   conf-local: |
     --disable-werror
 
-public:
-  patches:
-  - CVE-2018-19591
-
 config:
   install-commands:
     (>):
@@ -33,5 +29,5 @@ config:
 sources:
 - kind: git_tag
   url: sourceware:glibc.git
-  track: release/2.28/master
-  ref: glibc-2.28-60-g4d7af7815af5217db6e8fde6032ddf4f6b2a4420
+  track: release/2.29/master
+  ref: glibc-2.29-0-g56c86f5dd516284558e106d04b92875d5b623b7a
