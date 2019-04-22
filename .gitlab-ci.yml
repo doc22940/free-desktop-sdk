@@ -5,8 +5,8 @@ variables:
   XDG_CACHE_HOME: "${CI_PROJECT_DIR}/cache"
   GET_SOURCES_ATTEMPTS: 3
   BST_CACHE_SERVER_ADDRESS: 'freedesktop-sdk-cache.codethink.co.uk'
-  BST_SHA: '1.2.6-0-gac360dfc481c5435a52e31988cc46106cc26d01c'
-  BST_EXTERNAL_SHA: '0.12.0-0-g88e6516c21361b434d378569b69b015038cd56ee'
+  BST_SHA: '1.3.0-2212-gc3f9528c5953c32cfc8be172710a0a30b6bfb2fb'
+  BST_EXPERIMENTAL_SHA: '0.12.0-31-g604196876f31536a837c95a098af7bea948b4731'
   RUNTIME_VERSION: '18.08'
 
   # Docker Images
@@ -31,9 +31,9 @@ before_script:
   - git clone https://gitlab.com/BuildStream/buildstream.git
   - git -C buildstream checkout "${BST_SHA}"
   - pip3 install --user buildstream/
-  - git clone https://gitlab.com/BuildStream/bst-external.git
-  - git -C bst-external checkout "${BST_EXTERNAL_SHA}"
-  - pip3 install --user ./bst-external
+  - git clone https://gitlab.com/BuildStream/bst-plugins-experimental.git
+  - git -C bst-plugins-experimental checkout "${BST_EXPERIMENTAL_SHA}"
+  - pip3 install --user ./bst-plugins-experimental
 
   # Configure Buildstream
   - mkdir -p ~/.config
