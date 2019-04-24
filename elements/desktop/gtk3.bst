@@ -60,7 +60,7 @@ public:
 
     integration-commands:
     - |
-      gtk-query-immodules-3.0 --update-cache
+      gtk-query-immodules-3.0 --update-cache || true
 
     - |
       gtk-update-icon-cache %{datadir}/icons/hicolor
