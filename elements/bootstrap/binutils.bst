@@ -30,6 +30,8 @@ variables:
     --enable-lto \
     host_configargs='lt_cv_sys_lib_dlsearch_path_spec="/usr/lib/%{gcc_triplet}"'
 
+  strip-binaries: "true"
+
 config:
   install-commands:
     (>):
