@@ -16,6 +16,10 @@ config:
     %{make-install} ubindir="%{bindir}" usbindir="%{sbindir}"
   - |
     %{delete_libtool_files}
+  - |
+    sed -i /pam_selinux/d %{install-root}%{sysconfdir}/pam.d/*
+    sed -i /pam_console/d %{install-root}%{sysconfdir}/pam.d/*
+
 
 public:
   bst:
