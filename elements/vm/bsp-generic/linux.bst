@@ -115,7 +115,10 @@ config:
     scripts/config -d RT_GROUP_SCHED
 
     # Required for 3D acceleration in qemu
-    scripts/config -e CONFIG_DRM_VIRTIO_GPU
+    scripts/config -e DRM_VIRTIO_GPU
+
+    # Required for 3D acceleration
+    scripts/config -m DRM_NOUVEAU
 
     # Required for systemd-nspawn
     scripts/config -e DEVPTS_MULTIPLE_INSTANCES
