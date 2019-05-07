@@ -11,6 +11,8 @@ depends:
   type: build
 - filename: components/bison.bst
   type: build
+- filename: components/python3.bst
+  type: build
 
 variables:
   conf-link-args: |
@@ -29,6 +31,7 @@ variables:
     --with-system-readline \
     --disable-install-libbfd \
     --disable-install-libiberty \
+    --with-python \
     --with-separate-debug-dir="%{debugdir}"
 
 public:
