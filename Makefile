@@ -35,6 +35,7 @@ all: build
 build:
 	$(BST) build check-platform.bst \
 	             flatpak-release.bst \
+	             vm/mesa-default.bst \
 	             public-stacks/buildsystems.bst
 
 build-tar:
