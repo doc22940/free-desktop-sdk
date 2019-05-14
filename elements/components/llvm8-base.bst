@@ -56,6 +56,12 @@ variables:
     -DCMAKE_C_FLAGS_RELWITHDEBINFO="-DNDEBUG"
     -DCMAKE_CXX_FLAGS_RELWITHDEBINFO="-DNDEBUG"
 
+config:
+  install-commands:
+    (>):
+    - |
+      find "%{install-root}%{libdir}" -name "*.a" -exec rm {} ";"
+
 public:
   bst:
     split-rules:
@@ -85,9 +91,6 @@ public:
         - '%{datadir}/scan-build/**'
         - '%{datadir}/scan-view'
         - '%{datadir}/scan-view/**'
-      static:
-      - '%{libdir}/*.a'
-      - '%{libdir}/**/*.a'
 
 sources:
 - kind: git_tag
