@@ -1,0 +1,27 @@
+diff -ur llvm8.old/llvm/cmake/modules/CMakeLists.txt llvm8/llvm/cmake/modules/CMakeLists.txt
+--- llvm8.old/llvm/cmake/modules/CMakeLists.txt	2019-05-14 12:29:35.887438701 +0200
++++ llvm8/llvm/cmake/modules/CMakeLists.txt	2019-05-14 12:28:38.831961725 +0200
+@@ -62,7 +62,10 @@
+ set(LLVM_CONFIG_EXPORTS_FILE "${LLVM_EXPORTS_FILE}")
+ set(LLVM_CONFIG_EXPORTS "${LLVM_EXPORTS};${LLVM_EXPORTS_BUILDTREE_ONLY}")
+ set(llvm_config_include_buildtree_only_exports
+-"include(\"${LLVM_BUILDTREEONLY_EXPORTS_FILE}\")")
++  "include(\"${LLVM_BUILDTREEONLY_EXPORTS_FILE}\")")
++set(LLVM_AVAILABLE_LIBS_SHARED ${LLVM_AVAILABLE_LIBS})
++list(REMOVE_ITEM LLVM_AVAILABLE_LIBS_SHARED "LLVMTableGen")
++
+ configure_file(
+   LLVMConfig.cmake.in
+   ${llvm_cmake_builddir}/LLVMConfig.cmake
+diff -ur llvm8.old/llvm/cmake/modules/LLVMConfig.cmake.in llvm8/llvm/cmake/modules/LLVMConfig.cmake.in
+--- llvm8.old/llvm/cmake/modules/LLVMConfig.cmake.in	2019-05-14 12:29:35.887438701 +0200
++++ llvm8/llvm/cmake/modules/LLVMConfig.cmake.in	2019-05-14 12:27:18.232694453 +0200
+@@ -12,7 +12,7 @@
+ 
+ set(LLVM_COMMON_DEPENDS @LLVM_COMMON_DEPENDS@)
+ 
+-set(LLVM_AVAILABLE_LIBS @LLVM_AVAILABLE_LIBS@)
++set(LLVM_AVAILABLE_LIBS @LLVM_AVAILABLE_LIBS_SHARED@)
+ 
+ @LLVM_CONFIG_LINK_LLVM_DYLIB@
+ 

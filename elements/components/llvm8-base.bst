@@ -100,3 +100,5 @@ sources:
   path: patches/llvm/llvm-no-rpath.patch
 - kind: patch
   path: patches/llvm/llvm-fix-tsan-build.patch
+- kind: patch
+  path: patches/llvm/llvm-config-filter-table-gen.patch
