@@ -126,6 +126,7 @@ config:
       ln -sr '%{install-root}%{datadir}/glvnd' '%{install-root}%{prefix}/glvnd'
       ln -sr '%{install-root}%{libdir}/vulkan' '%{install-root}%{prefix}/vulkan'
       ln -sr '%{install-root}%{libdir}/OpenCL' '%{install-root}%{prefix}/OpenCL'
+      ln -sr '%{install-root}%{libdir}/dri' '%{install-root}%{prefix}/dri'
 
 public:
   bst:

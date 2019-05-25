@@ -12,7 +12,7 @@ depends:
 config:
   install-commands:
   - |
-    for i in vulkan/icd.d glvnd/egl_vendor.d OpenCL/vendors lib/dri; do
+    for i in vulkan/icd.d glvnd/egl_vendor.d OpenCL/vendors dri; do
       mkdir -p "%{install-root}%{libdir}/GL/$(dirname "${i}")"
       ln -rs "%{install-root}%{libdir}/GL/default/${i}" "%{install-root}%{libdir}/GL/${i}"
     done
