@@ -25,8 +25,8 @@ config:
         dest: runtime/org.freedesktop.Sdk.Compat.%{gcc_arch}/x86_64/%{branch}
       - src: runtime/org.freedesktop.Sdk.Compat.%{gcc_arch}.Debug/%{gcc_arch}/%{branch}
         dest: runtime/org.freedesktop.Sdk.Compat.%{gcc_arch}.Debug/x86_64/%{branch}
-      - src: runtime/org.freedesktop.Platform.VAAPI.Intel/%{gcc_arch}/%{branch}
-        dest: runtime/org.freedesktop.Platform.VAAPI.Intel.%{gcc_arch}/x86_64/%{branch}
+      - src: runtime/org.freedesktop.Platform.VAAPI.intel/%{gcc_arch}/%{branch}
+        dest: runtime/org.freedesktop.Platform.VAAPI.intel.%{gcc_arch}/x86_64/%{branch}
 
   - target_arch == 'arm':
       copy-refs:

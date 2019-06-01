@@ -9,7 +9,7 @@ config:
 
   metadata:
     Runtime:
-      name: org.freedesktop.Platform.VAAPI.Intel
+      name: org.freedesktop.Platform.VAAPI.intel
       runtime: org.freedesktop.Platform/%{gcc_arch}/%{branch}
       sdk: org.freedesktop.Sdk/%{gcc_arch}/%{branch}
 

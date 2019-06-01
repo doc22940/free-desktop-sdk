@@ -57,7 +57,7 @@ config:
       version: '3.22'
       download-if: active-gtk-theme
 
-    Extension org.freedesktop.Platform.VAAPI.Intel:
+    Extension org.freedesktop.Platform.VAAPI.intel:
       directory: '%{lib}/dri/intel-vaapi-driver'
       autodelete: 'false'
       no-autodownload: 'true'
