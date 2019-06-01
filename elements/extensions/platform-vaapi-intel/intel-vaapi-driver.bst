@@ -13,7 +13,7 @@ environment:
 
 variables:
   meson-local: |
-    -Ddriverdir="%{libdir}/dri/intel-vaapi-driver"
+    -Ddriverdir="%{libdir}/VAAPI/lib/dri"
 
 sources:
 - kind: git_tag

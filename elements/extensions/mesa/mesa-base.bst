@@ -101,14 +101,14 @@ config:
       rm -f "%{install-root}%{libdir}/libglapi.so"
 
     - |
-      for dir in vdpau dri; do
-        for file in "%{install-root}%{libdir}/${dir}/"*.so*; do
+      for dir in %{libdir}/vdpau %{libdir}/dri /usr/lib/%{gcc_triplet}/VAAPI/lib/dri/; do
+        for file in "%{install-root}${dir}/"*.so*; do
           soname="$(objdump -p "${file}" | sed "/ *SONAME */{;s///;q;};d")"
           if [ -L "${file}" ]; then
             continue
           fi
-          if ! [ -f "%{install-root}%{libdir}/${dir}/${soname}" ]; then
-            mv "${file}" "%{install-root}%{libdir}/${dir}/${soname}"
+          if ! [ -f "%{install-root}${dir}/${soname}" ]; then
+            mv "${file}" "%{install-root}${dir}/${soname}"
           else
             rm "${file}"
           fi

@@ -5,7 +5,7 @@ depends:
   type: build
 
 config:
-  directory: '%{libdir}/dri/intel-vaapi-driver'
+  directory: '%{libdir}/VAAPI'
 
   metadata:
     Runtime:

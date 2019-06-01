@@ -1,0 +1,22 @@
+diff --git a/meson.build b/meson.build
+index 5286b91c615..00c370fc670 100644
+--- a/meson.build
++++ b/meson.build
+@@ -581,12 +581,12 @@ if _va != 'false'
+       compile_args : run_command(prog_pkgconfig, ['libva', '--cflags']).stdout().split()
+     )
+     with_gallium_va = true
+-  endif
+-endif
+ 
+-va_drivers_path = get_option('va-libs-path')
+-if va_drivers_path == ''
+-  va_drivers_path = join_paths(get_option('libdir'), 'dri')
++    va_drivers_path = get_option('va-libs-path')
++    if va_drivers_path == ''
++      va_drivers_path = dep_va.get_pkgconfig_variable('driverdir')
++    endif
++  endif
+ endif
+ 
+ _xa = get_option('gallium-xa')
