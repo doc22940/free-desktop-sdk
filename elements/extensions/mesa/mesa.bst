@@ -10,8 +10,6 @@ depends:
   type: runtime
 - filename: extensions/mesa/libdrm.bst
   type: runtime
-- filename: components/libva.bst
-  type: runtime
 - filename: components/libclc.bst
   type: runtime
 - filename: components/opencl.bst
@@ -42,6 +40,7 @@ depends:
 config:
   exclude:
   - gbm
+  - gallium-va
   include-orphans: True
 
 variables:

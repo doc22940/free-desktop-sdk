@@ -57,11 +57,21 @@ config:
       version: '3.22'
       download-if: active-gtk-theme
 
-    Extension org.freedesktop.Platform.VAAPI.intel:
-      directory: '%{lib}/dri/intel-vaapi-driver'
-      autodelete: 'false'
+    Extension org.freedesktop.Platform.VAAPI:
+      directory: '%{lib}/VAAPI'
+      subdirectories: 'true'
       no-autodownload: 'true'
+      autodelete: 'true'
+      merge-dirs: "lib/dri"
+
+    Extension org.freedesktop.Platform.VAAPI.default:
+      directory: 'dummy'
+      enable-if: 'false'
+
+    Extension org.freedesktop.Platform.VAAPI.intel:
+      directory: 'dummy'
       download-if: have-intel-gpu
+      enable-if: 'false'
 
     Extension org.freedesktop.Platform.ffmpeg-html5:
       directory: '%{lib}/ffmpeg'

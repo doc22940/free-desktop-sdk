@@ -13,6 +13,8 @@
         "org.freedesktop.Platform.Timezones",
         "org.freedesktop.Platform.GStreamer",
         "org.freedesktop.Platform.Icontheme",
+        "org.freedesktop.Platform.VAAPI",
+        "org.freedesktop.Platform.VAAPI.default",
         "org.freedesktop.Platform.VAAPI.intel",
         "org.freedesktop.Platform.ffmpeg-html5",
         "org.gtk.Gtk3theme"

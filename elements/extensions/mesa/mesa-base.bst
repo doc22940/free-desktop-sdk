@@ -141,6 +141,8 @@ public:
         - '%{includedir}/gbm.h'
         - '%{libdir}/libgbm.so*'
         - '%{libdir}/pkgconfig/gbm.pc'
+      gallium-va:
+        - "/usr/lib/%{gcc_triplet}/VAAPI/lib/dri/*_drv_video.so"
 
 (@):
 - elements/extensions/mesa/mesa-source.yml

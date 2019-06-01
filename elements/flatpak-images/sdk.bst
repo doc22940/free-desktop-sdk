@@ -77,11 +77,21 @@ config:
       no-autodownload: 'true'
       add-ld-path: lib
 
-    Extension org.freedesktop.Platform.VAAPI.intel:
-      directory: '%{lib}/dri/intel-vaapi-driver'
-      autodelete: 'false'
+    Extension org.freedesktop.Platform.VAAPI:
+      directory: '%{lib}/VAAPI'
+      subdirectories: 'true'
       no-autodownload: 'true'
+      autodelete: 'true'
+      merge-dirs: "lib/dri"
+
+    Extension org.freedesktop.Platform.VAAPI.default:
+      directory: 'dummy'
+      enable-if: 'false'
+
+    Extension org.freedesktop.Platform.VAAPI.intel:
+      directory: 'dummy'
       download-if: have-intel-gpu
+      enable-if: 'false'
 
     (?):
     - target_arch in ["x86_64", "aarch64"]:
