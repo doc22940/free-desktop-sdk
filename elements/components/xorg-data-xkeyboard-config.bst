@@ -7,8 +7,6 @@ depends:
 - filename: components/xorg-app-xkbcomp.bst
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
-- filename: components/intltool.bst
-  type: build
 
 variables:
   conf-local: |
@@ -18,6 +16,5 @@ variables:
 
 sources:
 - kind: tar
-  url: https://www.x.org/archive/individual/data/xkeyboard-config-2.5.1.tar.bz2
-  ref: eb80e8dc38c389728bfca1f041af7658e7dd67faca8c763de02d5014ffd2cc92
-
+  url: https://xorg.freedesktop.org/archive/individual/data/xkeyboard-config/xkeyboard-config-2.27.tar.bz2
+  ref: 690daec8fea63526c07620c90e6f3f10aae34e94b6db6e30906173480721901f
