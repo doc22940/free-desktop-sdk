@@ -1,6 +1,21 @@
 Freedesktop-SDK
 
 freedesktop-sdk-19.08beta.0:
+    * gawk: Update to 5.0.0
+    * gnupg: Update to 2.2.16
+    * libgpg-error: Update to 1.36
+    * Fix setuids (VM)
+    * Add pwquality (VM)
+    * mesa: Update to mesa-19.0.6
+    * Remove intltool
+    * ostree: Enable GObject introspection (VM)
+    * freedesktop-sdk/freedesktop-sdk!1391: Update to 2.27
+    * sqlite: Update to 3.28
+    * Mesa: disable xa state tracker
+    * Add /etc/shells (VM)
+    * glib: Update to 2.60.3
+    * glib-networking: Update to 2.60.2
+    * openssl: Update to 1.1.1c
     * libfdk-aac: update to fedora snapshot
     * ffmpeg: Update to n4.1.3
     * gstreamer*: Bump to 1.16.0
@@ -41,7 +56,6 @@ freedesktop-sdk-19.08beta.0:
     * Change runtime description to make information more conscise (#352,#750)
     * libthai: Update to 0.1.28
     * graphite2: update to 1.3.13
-    * gstreamer-plugins-bad: Add LADSPA plugin support (#370, #636)
     * cmake: update to 3.14.2
     * perl: update to 5.28.2
     * gst-plugins-bad: Remove VDPAU plugin (#450)
@@ -64,7 +78,6 @@ freedesktop-sdk-19.08beta.0:
     * Remove mercurial: It depends on python2
     * bash: Update to 5.0
     * readline: update to 8.0
-    * mesa: Update to mesa-19.0.4
     * gsettings-desktop-schemas: Update to 3.32
     * icu: Update to 64.1
     * Remove openssl 1.0 (#381)
