@@ -1,0 +1,63 @@
+From 87f7c80ba5a52ebae7f1eb7990c4f2c0504a4538 Mon Sep 17 00:00:00 2001
+From: Robert Ancell <robert.ancell@canonical.com>
+Date: Tue, 16 Oct 2018 14:38:26 +1300
+Subject: [PATCH] Install an ITS file to make gettext extract translations from
+ MIME configuration
+
+---
+ Makefile.am          | 4 ++++
+ shared-mime-info.its | 6 ++++++
+ shared-mime-info.loc | 6 ++++++
+ 3 files changed, 16 insertions(+)
+ create mode 100644 shared-mime-info.its
+ create mode 100644 shared-mime-info.loc
+
+diff --git a/Makefile.am b/Makefile.am
+index b147d41..e9b5858 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -24,6 +24,9 @@ endif
+ 
+ man_MANS = update-mime-database.1
+ 
++itsdir = $(datadir)/gettext/its
++its_DATA = shared-mime-info.loc shared-mime-info.its
++
+ EXTRA_DIST = \
+ 	shared-mime-info-spec.xml	\
+ 	freedesktop.org.xml.in		\
+@@ -32,6 +35,7 @@ EXTRA_DIST = \
+ 	README				\
+ 	HACKING				\
+ 	$(man_MANS)			\
++	$(its_DATA)			\
+ 	shared-mime-info.pc.in		\
+ 	po/shared-mime-info.pot
+ 
+diff --git a/shared-mime-info.its b/shared-mime-info.its
+new file mode 100644
+index 0000000..73635ba
+--- /dev/null
++++ b/shared-mime-info.its
+@@ -0,0 +1,6 @@
++<?xml version="1.0"?>
++<its:rules xmlns:its="http://www.w3.org/2005/11/its"
++           xmlns:gt="https://www.gnu.org/s/gettext/ns/its/extensions/1.0"
++           version="2.0">
++  <its:translateRule selector="/comment" translate="yes"/>
++</its:rules>
+diff --git a/shared-mime-info.loc b/shared-mime-info.loc
+new file mode 100644
+index 0000000..4f5a216
+--- /dev/null
++++ b/shared-mime-info.loc
+@@ -0,0 +1,6 @@
++<?xml version="1.0"?>
++<locatingRules>
++  <locatingRule name="Shared Mime Info" pattern="*.xml">
++    <documentRule localName="mime-info" target="shared-mime-info.its"/>
++  </locatingRule>
++</locatingRules>
+-- 
+2.21.0
+
