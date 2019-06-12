@@ -15,9 +15,6 @@ depends:
 
 environment:
   PATH: "%{tools}/bin:/bin"
-  CFLAGS: ''
-  CXXFLAGS: ''
-  LDFLAGS: ''
   CC_FOR_TARGET: '%{tools}/bin/%{triplet}-gcc'
   CXX_FOR_TARGET: '%{tools}/bin/%{triplet}-g++'
   AR_FOR_TARGET: '%{tools}/%{triplet}/bin/ar'
