@@ -37,6 +37,7 @@ depends:
 - filename: components/texinfo.bst
 - filename: components/valgrind.bst
 - filename: components/desktop-file-utils.bst
+- filename: components/getdebugfiles.bst
 - filename: components/gtk-doc.bst
 - filename: components/itstools.bst
 - filename: components/jq.bst
