@@ -27,13 +27,9 @@ variables:
 
 sources:
 - kind: git_tag
-  url: github:flatpak/flatpak
-  track: master
-  track-extra:
-  - flatpak-1.4.x
-  match:
-  - 1.[02468]*
-  ref: 1.4.1-0-g663b5cd37036e59ec8b0447df644d385984f1d06
+  url: github:valentindavid/flatpak.git
+  track: valentindavid/on-demand-debug
+  track-tags: false
   submodules:
     libglnx:
       checkout: true
@@ -44,3 +40,4 @@ sources:
     dbus-proxy:
       checkout: true
       url: github:flatpak/xdg-dbus-proxy.git
+  ref: 0.9.98.2-1997-g1d220de6edcdffd968caf7f0a275a064f6d50929
