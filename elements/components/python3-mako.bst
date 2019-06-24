@@ -5,10 +5,6 @@ depends:
 - filename: components/python3.bst
 - filename: components/python3-pip.bst
 
-variables:
-  pip: pip3
-  fix-pyc-timestamps: "true"
-
 sources:
 - kind: tar
   url: https://files.pythonhosted.org/packages/eb/f3/67579bb486517c0d49547f9697e36582cd19dafb5df9e687ed8e22de57fa/Mako-1.0.7.tar.gz
