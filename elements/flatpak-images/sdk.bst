@@ -34,7 +34,8 @@ config:
     Extension org.freedesktop.Sdk.Debug:
       directory: lib/debug
       autodelete: 'true'
-      no-autodownload: 'true'
+      on-demand: 'true'
+      subpaths: 'app;usr/lib/%{gcc_triplet}/libc-2.29.so.debug;dwz/bootstrap/glibc.bst/debug'
 
     Extension org.freedesktop.Sdk.Docs:
       directory: share/runtime/docs
