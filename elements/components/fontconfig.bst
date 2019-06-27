@@ -36,8 +36,9 @@ public:
 
 sources:
 - kind: git_tag
-  url: freedesktop:fontconfig/fontconfig
-  track: master
-  ref: 2.13.1-0-g844d8709a1f3ecab45015b24b72dd775c13b2421
+  url: freedesktop:tagoh/fontconfig
+  track: 2.13.1-flatpak-lts
+  track-tags: false
+  ref: 2.13.0-68-g704c5bdaca4be3b61b4df38087ec9bc17f9aa2d6
 - kind: local
   path: files/fontconfig-flatpak.conf
