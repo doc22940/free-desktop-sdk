@@ -57,6 +57,7 @@ variables:
     -DLLVM_TARGETS_TO_BUILD="%{targets}"
     -DCMAKE_C_FLAGS_RELWITHDEBINFO="-DNDEBUG"
     -DCMAKE_CXX_FLAGS_RELWITHDEBINFO="-DNDEBUG"
+    -DCMAKE_EXE_LINKER_FLAGS=-fuse-ld=gold
 
 config:
   install-commands:
