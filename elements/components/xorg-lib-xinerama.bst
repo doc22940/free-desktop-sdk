@@ -20,4 +20,3 @@ public:
 sources:
 - kind: tar
   url: https://www.x.org/archive/individual/lib/libXinerama-1.1.4.tar.bz2
-  ref: 0008dbd7ecf717e1e507eed1856ab0d9cf946d03201b85d5dcf61489bb02d720

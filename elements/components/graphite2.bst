@@ -41,4 +41,3 @@ sources:
 - kind: git_tag
   url: github:silnrsi/graphite
   track: master
-  ref: 1.3.13-0-gb45f9b271214b95f3b42e5c9863eae4b0bfb7fd7

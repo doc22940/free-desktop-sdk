@@ -37,6 +37,5 @@ sources:
 - kind: git_tag
   url: gnome:pango
   track: master
-  ref: 1.43.0-0-g26f1135f374f3ad5eb963dcdf016542fbbda361b
 - kind: patch
   path: patches/pango/pango-Make-gobject-2.0-a-non-private-requirement.patch

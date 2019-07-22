@@ -99,4 +99,3 @@ sources:
 - kind: git_tag
   url: ffmpeg:ffmpeg.git
   track: release/4.1
-  ref: n4.1.4-0-g9d06c1f95ebe4f9c2cc05d041dbfd3de52d2518a

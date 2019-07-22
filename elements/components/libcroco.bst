@@ -19,4 +19,3 @@ sources:
 - kind: git_tag
   url: gnome:libcroco
   track: master
-  ref: 0.6.13-0-g7e15ca6c2c29a4b78367e6efa6195b331a92b2a7

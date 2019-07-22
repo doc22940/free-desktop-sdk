@@ -29,6 +29,5 @@ sources:
   - dconf-0.32
   match:
   - 0.[0-9][02468].*
-  ref: 0.32.0-0-g7419a726a2dbaca7781cec4eeb65bd1334a523d7
 - kind: patch
   path: patches/dconf/dconf-override.patch

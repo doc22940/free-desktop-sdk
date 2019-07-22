@@ -38,4 +38,3 @@ environment:
 sources:
 - kind: tar
   url: https://www.x.org/archive/individual/xserver/xorg-server-1.20.4.tar.gz
-  ref: a6447de89eca3e22eeead682b325d902779569534ad83388c9e16611d72baaf3

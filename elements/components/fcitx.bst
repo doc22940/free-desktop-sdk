@@ -40,4 +40,3 @@ sources:
 - kind: git_tag
   url: gitlab:fcitx/fcitx.git
   track: master
-  ref: 4.2.9.6-0-g6fdfaa072cf634d81d4cbb5ecb288c3a63411151

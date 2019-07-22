@@ -30,4 +30,3 @@ sources:
 - kind: git_tag
   url: github:kcat/openal-soft.git
   track: master
-  ref: openal-soft-1.19.1-0-g6761218e51699f46bf25c377e65b3e9ea5e434b9

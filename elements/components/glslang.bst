@@ -12,7 +12,6 @@ variables:
 sources:
 - kind: git_tag
   url: github:KhronosGroup/glslang
-  ref: 7.11.3214-0-gc11e3156af2297f89a23c8db3f5e2323733ee556
   track: master
   exclude:
   - untagged-*

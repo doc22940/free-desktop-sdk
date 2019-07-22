@@ -13,4 +13,3 @@ sources:
 - kind: git_tag
   url: github:linuxwacom/libwacom.git
   track: master
-  ref: libwacom-0.33-0-g87cc710e21a6220e267dd08936bbec2932aa3658

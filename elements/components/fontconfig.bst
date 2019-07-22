@@ -38,6 +38,5 @@ sources:
 - kind: git_tag
   url: freedesktop:fontconfig/fontconfig
   track: master
-  ref: 2.13.1-0-g844d8709a1f3ecab45015b24b72dd775c13b2421
 - kind: local
   path: files/fontconfig-flatpak.conf

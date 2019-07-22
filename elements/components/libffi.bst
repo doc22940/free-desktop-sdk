@@ -27,4 +27,3 @@ sources:
   track: master
   exclude:
   - v*-rc*
-  ref: v3.2.1-0-g20562ac0427c3578250d04c6e34fb0127d4551cf

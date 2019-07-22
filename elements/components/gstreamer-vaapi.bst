@@ -29,7 +29,6 @@ sources:
 - kind: git_tag
   url: freedesktop:gstreamer/gstreamer-vaapi
   track: '1.16'
-  ref: 1.16.0-0-g2c3480796a6673c638f5b12c7bdf5c0f191120fd
   submodules:
     common:
       checkout: true

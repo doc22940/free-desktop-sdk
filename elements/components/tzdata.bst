@@ -37,4 +37,3 @@ sources:
 - kind: git_tag
   url: github:eggert/tz.git
   track: master
-  ref: 2019b-0-g23a01523a5d6a6ae2217df77b2a3f60e10a373d2

@@ -79,4 +79,3 @@ sources:
   track: master
   exclude:
   - v*-rc*
-  ref: v2.34-0-gd4319b91c9d7d69e7b954fc66819214f81501312

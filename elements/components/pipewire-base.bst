@@ -43,4 +43,3 @@ sources:
 - kind: git_tag
   url: github:PipeWire/pipewire.git
   track: master
-  ref: 0.2.6-0-g4aff470a8fa1e06448b2316781b4e7a91fbda341

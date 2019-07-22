@@ -45,4 +45,3 @@ sources:
 - kind: git_tag
   url: https://chromium.googlesource.com/webm/libvpx
   track: master
-  ref: v1.8.1-0-g8ae686757b708cd8df1d10c71586aff5355cfe1e

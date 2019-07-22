@@ -13,4 +13,3 @@ sources:
 - kind: git_tag
   url: github:KhronosGroup/OpenCL-Headers.git
   track: master
-  ref: c5a4bbeabb10d8ed3d1c651b93aa31737bc473dd

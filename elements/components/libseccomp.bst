@@ -22,6 +22,5 @@ sources:
 - kind: git_tag
   url: github:seccomp/libseccomp/
   track: release-2.4
-  ref: v2.4.1-0-gfb43972ea1aab24f2a70193fb7445c2674f594e3
 - kind: patch
   path: patches/libseccomp/no-static.patch

@@ -27,4 +27,3 @@ public:
 sources:
 - kind: tar
   url: https://sqlite.org/2019/sqlite-autoconf-3280000.tar.gz
-  ref: d61b5286f062adfce5125eaf544d495300656908e61fca143517afcc0a89b7c3

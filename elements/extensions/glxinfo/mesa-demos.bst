@@ -27,4 +27,3 @@ sources:
 - kind: git_tag
   url: freedesktop:mesa/demos.git
   track: master
-  ref: mesa-demos-8.4.0-0-g317f67fe5e75c685330d536f158acf6260b473d1

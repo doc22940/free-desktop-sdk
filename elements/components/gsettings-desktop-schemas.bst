@@ -13,4 +13,3 @@ sources:
   track: master
   exclude:
   - '*.*[13579].*'
-  ref: 3.32.0-0-gabcca599dcd57ebc1fb487122dc931d4af2e9d41

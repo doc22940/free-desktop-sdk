@@ -38,4 +38,3 @@ sources:
 - kind: git_tag
   url: github:curl/curl.git
   track: master
-  ref: curl-7_65_2-0-g72c2cac8f0ac3a89c21d00b6c6e36fe6c6a8e62b

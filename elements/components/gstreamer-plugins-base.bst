@@ -54,7 +54,6 @@ sources:
 - kind: git_tag
   url: freedesktop:gstreamer/gst-plugins-base
   track: '1.16'
-  ref: 1.16.0-0-ge0f8f635a96a3639be4d519fcf234b619bb74ca6
   submodules:
     common:
       checkout: true
@@ -63,4 +62,3 @@ sources:
   url: freedesktop:gstreamer/meson-ports/gl-headers.git
   directory: subprojects/gl-headers
   track: master
-  ref: 5c8c7c0d3ca1f0b783272dac0b95e09414e49bc8

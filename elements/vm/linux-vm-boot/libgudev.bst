@@ -20,4 +20,3 @@ variables:
 sources:
   - kind: git_tag
     url: gnome:libgudev.git
-    ref: 232-6-g1a0d84217294bb356d6b4df9366ef921a590d421

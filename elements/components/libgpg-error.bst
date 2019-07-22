@@ -25,6 +25,5 @@ sources:
 - kind: git_tag
   url: gnupg:libgpg-error.git
   track: master
-  ref: gpgrt-1.36-0-g85f427fd28ae5947277ba02dffc83c53d9da2591
 - kind: patch
   path: patches/libgpg-error/awk-5.0-fix.patch

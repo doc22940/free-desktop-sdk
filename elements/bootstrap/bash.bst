@@ -56,4 +56,3 @@ sources:
 - kind: git_tag
   url: savannah:bash.git
   track: master
-  ref: bash-5.0-0-gd233b485e83c3a784b803fb894280773f16f2deb

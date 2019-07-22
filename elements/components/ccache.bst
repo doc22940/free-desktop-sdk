@@ -21,4 +21,3 @@ sources:
   track: master
   track-extra:
   - 3.7-maint
-  ref: v3.7.2-0-g41ce399ce1a33fd7211754e77fb4a5ddcb1d9eea

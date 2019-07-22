@@ -19,7 +19,6 @@ sources:
 - kind: git_tag
   url: github:intel/intel-vaapi-driver
   track: master
-  ref: 2.3.0-0-gce593cf433d62f46a87bec73485ae1c968010ae6
 - kind: patch
   path: patches/intel-vaapi-driver/intel-vaapi-driver-check-the-interface-from-libva-first.patch
 - kind: patch

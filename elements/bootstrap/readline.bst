@@ -36,6 +36,5 @@ public:
 sources:
 - kind: tar
   url: ftp_gnu_org:readline/readline-8.0.tar.gz
-  ref: e339f51971478d369f8a053a330a190781acb9864cf4c541060f12078948e461
 - kind: patch
   path: patches/readline/readline-disable-rpath.patch

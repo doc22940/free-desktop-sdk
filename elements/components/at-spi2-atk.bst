@@ -24,4 +24,3 @@ sources:
 - kind: git_tag
   url: gnome:at-spi2-atk
   track: master
-  ref: AT_SPI2_ATK_2_33_2-0-gf38fed479a6b9ae3df5bef71a609b6e8accfd84e

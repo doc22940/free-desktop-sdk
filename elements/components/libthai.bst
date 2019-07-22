@@ -19,4 +19,3 @@ sources:
 - kind: git_tag
   url: github:tlwg/libthai.git
   track: master
-  ref: v0.1.28-0-g3db9d05dc9316e38feb531bee52787dee0aa198d

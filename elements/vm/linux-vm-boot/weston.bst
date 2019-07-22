@@ -33,4 +33,3 @@ sources:
   track-extra:
   - 6.0
   url: freedesktop:wayland/weston.git
-  ref: 5.0.0-0-g030e7d40fe18869880fc72ce9ae3cbeca6f49600

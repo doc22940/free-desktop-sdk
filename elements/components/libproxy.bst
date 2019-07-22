@@ -30,4 +30,3 @@ sources:
 - kind: git_tag
   url: github:libproxy/libproxy/
   track: master
-  ref: 0.4.15-0-g5924d4223e2b7238607749d977c0a878fe33cdbc

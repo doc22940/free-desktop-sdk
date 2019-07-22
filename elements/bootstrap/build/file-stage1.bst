@@ -23,4 +23,3 @@ sources:
 - kind: git_tag
   url: github:file/file
   track: master
-  ref: FILE5_37-0-ga0d5b0e4e9f97d74a9911e95cedd579852e25398

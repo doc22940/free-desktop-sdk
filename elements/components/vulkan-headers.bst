@@ -15,4 +15,3 @@ sources:
   track: master
   match:
   - sdk-*
-  ref: v1.1.108-0-g097a1045098213919fd56442f52c716fc78eeb27

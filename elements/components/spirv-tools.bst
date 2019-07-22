@@ -36,13 +36,11 @@ public:
 sources:
 - kind: git_tag
   url: github:KhronosGroup/SPIRV-Tools
-  ref: v2019.3-0-gce19e217bc82e1dbd631b6a555b1874432f3a05f
   track: master
   exclude:
   - master-tot
   - untagged-*
 - kind: git_tag
   url: github:KhronosGroup/SPIRV-Headers
-  ref: 1.4.1-0-gc4f8f65792d4bf2657ca751904c511bbcf2ac77b
   track: master
   directory: external/SPIRV-Headers

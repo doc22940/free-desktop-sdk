@@ -16,4 +16,3 @@ sources:
 - kind: git_tag
   url: github:intel/libva-utils.git
   track: v2.5-branch
-  ref: 2.5.0-0-ga04ba9224fc80a8f60757fbe99b190d62123608c

@@ -1,0 +1,906 @@
+projects:
+  freedesktop-sdk:
+    bootstrap/acl.bst:
+    - ref: v2.2.53-0-g65ff056ac4c25141cc06e484bce040635e4abd3d
+    bootstrap/attr.bst:
+    - ref: v2.4.48-0-gcfd8e6ef491a7a5ff900ba2ba3deff7d0bebb0a6
+    bootstrap/bash.bst:
+    - ref: bash-5.0-0-gd233b485e83c3a784b803fb894280773f16f2deb
+    bootstrap/binutils-source.yml:
+    - ref: binutils-2_32-0-ga9d9a104dde6a749f40ce5c4576a0042a7d52d1f
+    bootstrap/build/coreutils-manpages.bst:
+    - ref: ff7a9c918edce6b4f4b2725e3f9b37b0c4d193531cac49a48b56c4d0d3a9e9fd
+    bootstrap/build/dwz-build.bst:
+    - ref: dwz-0.12-0-gbe35c03955bcf6e4e4a1cab1af46bb4e729284b3
+    bootstrap/build/elfutils-build.bst:
+    - ref: eb5747c371b0af0f71e86215a5ebb88728533c3a104a43d4231963f308cd1023
+    bootstrap/build/file-stage1.bst:
+    - ref: FILE5_37-0-ga0d5b0e4e9f97d74a9911e95cedd579852e25398
+    bootstrap/build/ncurses-stage1.bst:
+    - ref: aa057eeeb4a14d470101eff4597d5833dcef5965331be3528c08d99cebaa0d17
+    - {}
+    bootstrap/bzip2.bst:
+    - ref: bzip2-1.0.8-0-g6a8690fc8d26c815e798c588f796eabe9d684cf0
+    - {}
+    bootstrap/coreutils.bst:
+    - ref: ff7a9c918edce6b4f4b2725e3f9b37b0c4d193531cac49a48b56c4d0d3a9e9fd
+    - {}
+    bootstrap/debugedit-source.yml:
+    - ref: 1139c24b7372f89c0a697096bf9809be70ba55e006c23ff47305c1849d98acda
+    - {}
+    - {}
+    bootstrap/diffutils.bst:
+    - ref: b3a7a6221c3dc916085f0d205abf6b8e1ba443d4dd965118da364a1dc1cb3a26
+    bootstrap/dwz.bst:
+    - ref: dwz-0.12-0-gbe35c03955bcf6e4e4a1cab1af46bb4e729284b3
+    bootstrap/elfutils.bst:
+    - ref: eb5747c371b0af0f71e86215a5ebb88728533c3a104a43d4231963f308cd1023
+    - {}
+    bootstrap/file.bst:
+    - ref: FILE5_37-0-ga0d5b0e4e9f97d74a9911e95cedd579852e25398
+    bootstrap/findutils.bst:
+    - ref: ded4c9f73731cd48fec3b6bdaccce896473b6d8e337e9612e16cf1431bb1169d
+    - {}
+    - {}
+    bootstrap/gawk.bst:
+    - ref: gawk-5.0.1-0-gef83f3a14e5d3d2c446bdbdb801ba14345fc27ed
+    bootstrap/gcc-source.yml:
+    - ref: 79a66834e96a6050d8fe78db2c3b32fb285b230b855d0a66288235bc04b327a0
+    - ref: 87b565e89a9a684fe4ebeeddb8399dce2599f9c9049854ca8c0dfbdea0e21912
+    - ref: 1d3be708604eae0e42d578ba93b390c2a145f17743a744d8f3f8c2ad5855a38a
+    - ref: 6985c538143c1208dcb1ac42cedad6ff52e267b47e5f970183a3e75125b43c2e
+    - {}
+    - {}
+    - {}
+    - {}
+    bootstrap/glibc-source.yml:
+    - ref: glibc-2.29-30-g2d3fefd7ce64ac1015701c96916fffacc073a877
+    - {}
+    bootstrap/gnu-config.bst:
+    - ref: d3bfe62ac88536dcf53203efb0d96d6590eb16e4
+    bootstrap/grep.bst:
+    - ref: b960541c499619efd6afe1fa795402e4733c8e11ebf9fafccc0bb4bccdc5b514
+    bootstrap/linux-headers.bst:
+    - ref: 3581e84e9d63298a14c147f925cd496ebb25c5a08cf065ba63c54cdee6d86506
+    bootstrap/make.bst:
+    - ref: d6e262bf3601b42d2b1e4ef8310029e1dcf20083c5446b4b7aa67081fdffc589
+    - {}
+    - {}
+    bootstrap/ncurses.bst:
+    - ref: aa057eeeb4a14d470101eff4597d5833dcef5965331be3528c08d99cebaa0d17
+    - {}
+    bootstrap/openssl.bst:
+    - ref: OpenSSL_1_1_1c-0-g97ace46e11dba4c4c2b7cb67140b6ec152cfaaf4
+    bootstrap/popt.bst:
+    - ref: e728ed296fe9f069a0e005003c3d6b2dde3d9cad453422a10d6558616d304cc8
+    - {}
+    bootstrap/procps.bst:
+    - ref: v3.3.15-0-g7bb949bcba13c107fa0f45d2d0298b1ad6b6d6cc
+    bootstrap/readline.bst:
+    - ref: e339f51971478d369f8a053a330a190781acb9864cf4c541060f12078948e461
+    - {}
+    bootstrap/sed.bst:
+    - ref: 2885768cd0a29ff8d58a6280a270ff161f6a3deb5690b2be6c49f46d4c67bd6a
+    bootstrap/zlib.bst:
+    - ref: v1.2.11-0-gcacf7f1d4e3d44d871b605da3b647f07d718623f
+    components/alsa-lib.bst:
+    - ref: v1.1.9-0-g9122992a91334cd188203deba54cc077a91cd475
+    components/alsa-plugins.bst:
+    - ref: v1.1.9-0-g5a91cf1157b4f346f8fd9084d74b1e327d144a18
+    components/aom.bst:
+    - ref: v1.0.0-errata1-0-gadd4b15580e410c00c927ee366fa65545045a5d9
+    - {}
+    components/appstream-glib.bst:
+    - ref: appstream_glib_0_7_15-0-g0ab28ff96b74eb72ffe3c3a53026aee82cf31782
+    components/asciidoc.bst:
+    - ref: 8.6.9-173-g5b8771e2497ebfc70c93756d2afe9cd6f6c73641
+    components/aspell.bst:
+    - ref: f52583a83a63633701c5f71db3dc40aab87b7f76b29723aeb27941eff42df6e1
+    - {}
+    components/at-spi2-atk.bst:
+    - ref: AT_SPI2_ATK_2_33_2-0-gf38fed479a6b9ae3df5bef71a609b6e8accfd84e
+    components/at-spi2-core.bst:
+    - ref: AT_SPI2_CORE_2_33_2-0-g5604b79d72179708b218ddaaf226fc38614ca4a9
+    components/atk.bst:
+    - ref: ATK_2_33_3-0-g57af1951823d6e855e2e37bb345070913449653d
+    components/autoconf-archive.bst:
+    - ref: 6175f90d9fa64c4d939bdbb3e8511ae0ee2134863a2c7bf8d9733819efa6e159
+    components/autoconf.bst:
+    - ref: 64ebcec9f8ac5b2487125a86a7760d2591ac9e1d3dbd59489633f9de62a57684
+    components/automake.bst:
+    - ref: 5d05bb38a23fd3312b10aea93840feec685bdf4a41146e78882848165d3ae921
+    components/bc.bst:
+    - ref: 62adfca89b0a1c0164c2cdca59ca210c1d44c3ffc46daf9931cf4942664cb02a
+    components/bison.bst:
+    - ref: 0fda1d034185397430eb7b0c9e140fb37e02fbfc53b90252fa5575e382b6dbd1
+    components/ca-certificates.bst:
+    - ref: debian/20190110-0-gc28799b138b044c963d24c4a69659b6e5486e3be
+    - {}
+    components/cairo.bst:
+    - ref: 1.16.0-0-g3ad43122b21a3299dd729dc8462d6b8f7f01142d
+    - {}
+    components/ccache.bst:
+    - ref: v3.7.2-0-g41ce399ce1a33fd7211754e77fb4a5ddcb1d9eea
+    components/cmake.bst:
+    - ref: v3.15.0-0-g79bcf4e1655ffa38e8f4740b19ec3a14ac567eec
+    - {}
+    components/cpio.bst:
+    - ref: 70998c5816ace8407c8b101c9ba1ffd3ebbecba1f5031046893307580ec1296e
+    components/cracklib.bst:
+    - ref: v2.9.7-0-gf83934cf3cced0c9600c7d81332f4169f122a2cf
+    components/cups.bst:
+    - ref: v2.2.11-0-ge4a0aa86c96b5ddda3770c46709f4dee9a59071f
+    - {}
+    components/curl.bst:
+    - ref: curl-7_65_2-0-g72c2cac8f0ac3a89c21d00b6c6e36fe6c6a8e62b
+    components/cyrus-sasl.bst:
+    - ref: cyrus-sasl-2.1.27-0-g0189425cc210555c36383293c468df5da73acc48
+    components/dbus.bst:
+    - ref: dbus-1.12.16-0-g23cc709db8fab94f11fa48772bff396b20aea8b0
+    components/dconf.bst:
+    - ref: 0.32.0-0-g7419a726a2dbaca7781cec4eeb65bd1334a523d7
+    - {}
+    components/dejavu-fonts.bst:
+    - ref: fa9ca4d13871dd122f61258a80d01751d603b4d3ee14095d65453b4e846e17d7
+    components/desktop-file-utils.bst:
+    - ref: 0.23-0-g56f879e9564b28886565115ea7528ec13db97759
+    components/dictionaries.bst:
+    - ref: libreoffice-6.2.5.2-0-g78a4eb197bca11e88a2319fce860658bd757715a
+    - {}
+    - {}
+    components/docbook-xml.bst:
+    - ref: 4e4e037a2b83c98c6c94818390d4bdd3f6e10f6ec62dd79188594e26190dc7b4
+    - ref: 02f159eb88c4254d95e831c51c144b1863b216d909b5ff45743a1ce6f5273090
+    - ref: 23068a94ea6fd484b004c5a73ec36a66aa47ea8f0d6b62cc1695931f5c143464
+    - ref: acc4601e4f97a196076b7e64b368d9248b07c7abf26b34a02cca40eeebe60fa2
+    - ref: 30f0644064e0ea71751438251940b1431f46acada814a062870f486c772e7772
+    - ref: 8edb0630fcb659f2547534ef3856a7e30de7cd0afe2405fa7abdebb83affca90
+    components/docbook-xsl.bst:
+    - ref: 725f452e12b296956e8bfb876ccece71eeecdd14b94f667f3ed9091761a4a968
+    - {}
+    components/e2fsprogs.bst:
+    - ref: v1.45.3-0-g1f56fb81236fe3e25e2c60c1e89ea0aa7cb36260
+    components/ed.bst:
+    - ref: f57962ba930d70d02fc71d6be5c5f2346b16992a455ab9c43be7061dec9810db
+    components/emoji-one-font.bst:
+    - ref: 6b43a1425844274c6fab96a6e3dad3a903d6f541c43bcbb665a8e09c775aa66d
+    components/expat.bst:
+    - ref: R_2_2_7-0-gd3b78b42a2dcdea98e22625cfff67a49d47e6025
+    components/extra-cmake-modules.bst:
+    - ref: 91b7a9359f1bfe6f667a5a9c23f6b2178555df26ca2e4dd1bb5c38dc36c77144
+    components/fcitx.bst:
+    - ref: 4.2.9.6-0-g6fdfaa072cf634d81d4cbb5ecb288c3a63411151
+    components/fftw.bst:
+    - ref: 6113262f6e92c5bd474f2875fa1b01054c4ad5040f6b0da7c03c98821d9ae303
+    components/flatpak-xdg-utils.bst:
+    - ref: 1.0.0-0-g5dd17189459ee2b5d32eef2e71d0cfd681db0486
+    components/flex.bst:
+    - ref: e87aae032bf07c26f85ac0ed3250998c37621d95f8bd748b31f15b33c45ee995
+    - {}
+    components/fontconfig.bst:
+    - ref: 2.13.1-0-g844d8709a1f3ecab45015b24b72dd775c13b2421
+    - {}
+    components/freetype-stage1.bst:
+    - ref: VER-2-10-1-0-g8cf046c38d4c6ada76ba070562beff0d5041f795
+    components/freetype.bst:
+    - ref: VER-2-10-1-0-g8cf046c38d4c6ada76ba070562beff0d5041f795
+    components/frei0r.bst:
+    - ref: v1.6.1-0-ge107f0549c59e02c664088471edb2318cebb19b7
+    - {}
+    components/fribidi.bst:
+    - ref: 94bdfe553e004d8bd095b109e182682311dd511740d5083326d1582f1df237be
+    components/gcab.bst:
+    - ref: v1.2-0-g8484568d2e5b55a87cb6d6925ccb2f655159cf99
+    components/gdb.bst:
+    - ref: gdb-8.3-release-0-g9b407598397ef8429cbf866a02745768082e49a6
+    components/gdbm.bst:
+    - ref: c8a18bc6259da0c3eefefb018f8aa298fddc6f86c6fc0f0dec73270896ab512f
+    components/gdk-pixbuf.bst:
+    - ref: 2.38.0-0-g0b1eab312e77701c20b07fb8e38119009f8b34c3
+    components/geoclue.bst:
+    - ref: 2.5.3-0-gabc2c2dc734e93448e1b5fdd68e8e9b1808cc65b
+    components/gettext.bst:
+    - ref: 105556dbc5c3fbbc2aa0edb46d22d055748b6f5c7cd7a8d99f8e7eb84e938be4
+    - {}
+    - {}
+    - {}
+    components/giflib.bst:
+    - ref: df27ec3ff24671f80b29e6ab1c4971059c14ac3db95406884fc26574631ba8d5
+    components/glib-networking.bst:
+    - ref: 2.60.3-0-g164ea6742288022e20cb9314e4ada28323e922d1
+    components/glib.bst:
+    - ref: 2.60.5-0-gcffe8efd0a367cb08c651533ee07e049f3765edc
+    components/glslang.bst:
+    - ref: 7.11.3214-0-gc11e3156af2297f89a23c8db3f5e2323733ee556
+    components/gmp.bst:
+    - ref: 87b565e89a9a684fe4ebeeddb8399dce2599f9c9049854ca8c0dfbdea0e21912
+    components/gnu-free-fonts.bst:
+    - ref: 7c85baf1bf82a1a1845d1322112bc6ca982221b484e3b3925022e25b5cae89af
+    - {}
+    components/gnupg.bst:
+    - ref: gnupg-2.2.17-0-g591523ec94b6279b8b39a01501d78cf980de8722
+    - {}
+    components/gnutls.bst:
+    - ref: aa81944e5635de981171772857e72be231a7e0f559ae0292d2737de475383e83
+    components/gobject-introspection.bst:
+    - ref: 1.60.2-0-g41edb870614e12947db8e35af9846b19f1b8d71a
+    components/google-crosextra-caladea.bst:
+    - ref: c48d1c2fd613c9c06c959c34da7b8388059e2408d2bb19845dc3ed35f76e4d09
+    - {}
+    components/google-crosextra-carlito.bst:
+    - ref: 4bd12b6cbc321c1cf16da76e2c585c925ce956a08067ae6f6c64eff6ccfdaf5a
+    - {}
+    components/gperf.bst:
+    - ref: v3.1-0-g165bba235b2e3289967e505411500e08151f63e9
+    - ref: v0.1-2785-gc01635497d830f181a2607279135b3fff041b936
+    components/gpgme.bst:
+    - ref: gpgme-1.13.1-0-gea11c2a13cd44caf0bab395bd5132bf232318ad8
+    components/graphite2.bst:
+    - ref: 1.3.13-0-gb45f9b271214b95f3b42e5c9863eae4b0bfb7fd7
+    components/groff.bst:
+    - ref: 3a48a9d6c97750bfbd535feeb5be0111db6406ddb7bb79fc680809cda6d828a5
+    - {}
+    - {}
+    components/gsettings-desktop-schemas.bst:
+    - ref: 3.32.0-0-gabcca599dcd57ebc1fb487122dc931d4af2e9d41
+    components/gstreamer-libav.bst:
+    - ref: 1.16.0-0-gd6c61e69b36eaa144a5ef8fdac73a8162f072509
+    - {}
+    components/gstreamer-plugins-bad.bst:
+    - ref: 1.16.0-0-g5fde70bb63a1cbf6f734fb2429e74ffb53126217
+    - {}
+    components/gstreamer-plugins-base.bst:
+    - ref: 1.16.0-0-ge0f8f635a96a3639be4d519fcf234b619bb74ca6
+    - ref: 5c8c7c0d3ca1f0b783272dac0b95e09414e49bc8
+    components/gstreamer-plugins-good.bst:
+    - ref: 1.16.0-0-g646dc1ef9b92841e235d10a8262882b6e7d97422
+    components/gstreamer-plugins-ugly.bst:
+    - ref: 1.16.0-0-g6cbac8d09f7866827381a9d0554b7a61d45b41b5
+    components/gstreamer-vaapi.bst:
+    - ref: 1.16.0-0-g2c3480796a6673c638f5b12c7bdf5c0f191120fd
+    - {}
+    components/gstreamer.bst:
+    - ref: 1.16.0-0-g89c221a6972513f629c969f5485f37e77ccfa6e1
+    components/gtk-doc.bst:
+    - ref: GTK_DOC_1_29-0-g7db567e83fe5d2d0659560c6dfb25ee27b338140
+    components/gtk3.bst:
+    - ref: 3.24.10-0-g3642629767ec54c4079f7d90a9ea780a225bfe5e
+    components/gzip.bst:
+    - ref: 8425ccac99872d544d4310305f915f5ea81e04d0f437ef1a230dc9d1c819d7c0
+    components/harfbuzz.bst:
+    - ref: 2.5.3-0-gb14e413fae8f14b75c5956e9b38e413c878ded0c
+    components/help2man.bst:
+    - ref: d91b0295b72a638e4a564f643e4e6d1928779131f628c00f356c13bf336de46f
+    components/hicolor-icon-theme.bst:
+    - ref: 317484352271d18cbbcfac3868eab798d67fff1b8402e740baa6ff41d588a9d8
+    components/hunspell.bst:
+    - ref: v1.7.0-0-g4ddd8ed5ca6484b930b111aec50c2750a6119a0f
+    components/hyphen.bst:
+    - ref: 304636d4eccd81a14b6914d07b84c79ebb815288c76fe027b9ebff6ff24d5705
+    components/iana-config.bst:
+    - ref: 2019-07-16-0-g64c890c79086d9797c5fb76f9edf5a5bfe906bbb
+    - {}
+    components/ibus.bst:
+    - ref: 4cf1e5ca4b067a3bed3cdfa658d49ac597d817b2de627a1095214565f862d034
+    components/icu.bst:
+    - ref: release-64-2-0-ge2d85306162d3a0691b070b4f0a73e4012433444
+    - {}
+    components/intltool.bst:
+    - ref: 67c74d94196b153b774ab9f89b2fa6c6ba79352407037c8c14d5aeb334e959cd
+    - {}
+    components/iso-codes.bst:
+    - ref: iso-codes-4.3-0-g43398a317371e309361ce43072603863cb2f57e1
+    components/itstools.bst:
+    - ref: 2.0.6-0-g60f3a955ca047b1d62a1d952beec74afaff7cbbf
+    components/jpeg.bst:
+    - ref: 2.0.2-0-ga4aa30d9a080bbc50421285049e4379dcaf8a669
+    components/jq.bst:
+    - ref: 5de8c8e29aaa3fb9cc6b47bb27299f271354ebb72514e3accadc7d38b5bbaa72
+    components/json-glib.bst:
+    - ref: 1.4.4-0-g700a8bc414991d35ff3f79607547d4beedac8629
+    components/ladspa-sdk.bst:
+    - ref: 4229959b09d20c88c8c86f4aa76427843011705df22d9c28b38359fd1829fded
+    components/lame.bst:
+    - ref: ddfe36cab873794038ae2c1210557ad34857a4b6bdc515785d1da9e175b1da1e
+    - {}
+    components/lcms.bst:
+    - ref: lcms2.9-0-g29b019fd8726da70f162c7ce193440fe1ec4236f
+    components/less.bst:
+    - ref: f3dc8455cb0b2b66e0c6b816c00197a71bf6d1787078adeee0bcf2aea4b12706
+    components/libarchive.bst:
+    - ref: v3.4.0-0-g614110e76d9dbb9ed3e159a71cbd75fa3b23efe3
+    components/libassuan.bst:
+    - ref: libassuan-2.5.3-0-g4de3154ea6e6e89e34760b7b9e0eed5123bb81f9
+    components/libcap.bst:
+    - ref: b630b7c484271b3ba867680d6a14b10a86cfa67247a14631b14c06731d5a458b
+    components/libclc.bst:
+    - ref: llvmorg-8.0.0-0-gd2298e74235598f15594fe2c99bbac870a507c59
+    - {}
+    components/libcroco.bst:
+    - ref: 0.6.13-0-g7e15ca6c2c29a4b78367e6efa6195b331a92b2a7
+    components/libdatrie.bst:
+    - ref: v0.2.12-0-gd5d104e22fd49a27aed8a1e9c5ccc836600c05e1
+    components/libdrm.bst:
+    - ref: libdrm-2.4.99-0-gb2103fa3257daa6acfdc6f4d4d8565abebaec4a8
+    components/libepoxy.bst:
+    - ref: 1.5.3-0-g16b1481e00084682d5ae5d38178e3e418976dfae
+    components/liberation-fonts.bst:
+    - ref: 7890278a6cd17873c57d9cd785c2d230d9abdea837e96516019c5885dd271504
+    - {}
+    components/libexif.bst:
+    - ref: libexif-0_6_21-release-0-g9ab318d93b274df204c195c9a729f778401a8d8f
+    components/libfdk-aac.bst:
+    - ref: 0fc0e0e0b89de3becd5f099eae725f13eeecc0d1
+    components/libffi.bst:
+    - ref: v3.2.1-0-g20562ac0427c3578250d04c6e34fb0127d4551cf
+    components/libflac.bst:
+    - ref: 1.3.2-0-gac39d3719f16dfb6e08d2fbde8ccaf34a266c81d
+    components/libgcrypt.bst:
+    - ref: libgcrypt-1.8.4-0-g93775172713c00c363187b5d6a88895b04ac7c8e
+    components/libglvnd.bst:
+    - ref: v1.1.1-0-gbc9990b7bede44899627354d0c356f48950f4ad1
+    components/libgpg-error.bst:
+    - ref: gpgrt-1.36-0-g85f427fd28ae5947277ba02dffc83c53d9da2591
+    - {}
+    components/libidn2.bst:
+    - ref: 53f69170886f1fa6fa5b332439c7a77a7d22626a82ef17e2c1224858bb4ca2b8
+    components/libksba.bst:
+    - ref: libksba-1.3.5-0-g25cc42cf61a56e01f1bd72883e452f691dda8309
+    components/libnice.bst:
+    - ref: 0.1.16-0-g5969b34e3acd9150506ed8d9d109c73665858f3e
+    components/libogg.bst:
+    - ref: v1.3.3-0-g4380566a44b8d5e85ad511c9c17eb04197863ec5
+    components/libpipeline.bst:
+    - ref: 1.5.1-0-ga399d471273820b1a8eb3ecf2d91254011445c2a
+    - ref: v0.1-2785-gc01635497d830f181a2607279135b3fff041b936
+    components/libpng.bst:
+    - ref: v1.6.37-0-ga40189cf881e9f0db80511c382292a5604c3c3d1
+    - {}
+    components/libproxy.bst:
+    - ref: 0.4.15-0-g5924d4223e2b7238607749d977c0a878fe33cdbc
+    components/libpsl.bst:
+    - ref: libpsl-0.21.0-0-g1eaf1803591d6327987029621e121cade7193720
+    - {}
+    components/libpulse.bst:
+    - ref: v12.2-0-gee910cf6daa5120ab534eb2e6c573d94b9b182e7
+    - {}
+    components/librsvg.bst:
+    - ref: 66830b093a24262cc9bd2d1c921f6f59133a99893399d79768f7509021b678c0
+    components/libsamplerate.bst:
+    - ref: 0a7eb168e2f21353fb6d84da152e4512126f7dc48ccb0be80578c565413444c1
+    components/libseccomp.bst:
+    - ref: v2.4.1-0-gfb43972ea1aab24f2a70193fb7445c2674f594e3
+    - {}
+    components/libselinux.bst:
+    - ref: libselinux-2.9-0-g891cfee44f7af80ea87c10991058f9d5b66ae96e
+    components/libsepol.bst:
+    - ref: libsepol-2.9-0-g891cfee44f7af80ea87c10991058f9d5b66ae96e
+    components/libsoup.bst:
+    - ref: 2.66.2-0-gdcb4ef51405109766b7f49b1408f98295bd9351f
+    components/libtasn1.bst:
+    - ref: 7e528e8c317ddd156230c4e31d082cd13e7ddeb7a54824be82632209550c8cca
+    components/libthai.bst:
+    - ref: v0.1.28-0-g3db9d05dc9316e38feb531bee52787dee0aa198d
+    components/libtheora.bst:
+    - ref: f36da409947aa2b3dcc6af0a8c2e3144bc19db2ed547d64e9171c59c66561c61
+    components/libtiff.bst:
+    - ref: v4.0.10-0-gb8eac98dd0849c3f888518ce5cecc020f8b2991c
+    - {}
+    components/libtirpc.bst:
+    - ref: 2ca529f02292e10c158562295a1ffd95d2ce8af97820e3534fe1b0e3aec7561d
+    components/libtool.bst:
+    - ref: 7c87a8c2c8c0fc9cd5019e402bed4292462d00a718a7cd5f11218153bf28b26f
+    components/libunistring.bst:
+    - ref: eb8fb2c3e4b6e2d336608377050892b54c3c983b646c561836550863003c05d7
+    components/libunwind.bst:
+    - ref: v1.3.1-0-g94aa304960927c130ecb5f664a642b32d9850688
+    - {}
+    components/libva-utils.bst:
+    - ref: 2.5.0-0-ga04ba9224fc80a8f60757fbe99b190d62123608c
+    components/libva-vdpau-driver.bst:
+    - ref: 155c1982f0ac3f5435ba20b221bcaa11be212c37db548cd1f2a030ffa17e9bb9
+    - {}
+    - {}
+    - {}
+    - {}
+    - {}
+    components/libva.bst:
+    - ref: 2.5.0-0-ga7dc5b7f0501dcc5e88df1638b6f80d3b03f4c67
+    - {}
+    components/libvdpau.bst:
+    - ref: libvdpau-1.2-0-geac1393480bc7c2209d4984819951cb9dc1e03d0
+    components/libvorbis.bst:
+    - ref: v1.3.6-0-gd22c3ab5f633460abc2532feee60ca0892134cbf
+    - {}
+    components/libvpx.bst:
+    - ref: v1.8.1-0-g8ae686757b708cd8df1d10c71586aff5355cfe1e
+    components/libwebp.bst:
+    - ref: v1.0.3-0-g0fe1a89dbf1930fc2554dbe76adad5d962054ead
+    components/libxkbcommon.bst:
+    - ref: xkbcommon-0.8.4-0-gd40b368b2f4c4cd130f63ac41e4a9d53b684c712
+    components/libxml2.bst:
+    - ref: v2.9.9-0-gf8a8c1f59db355b46962577e7b74f1a1e8149dc6
+    - {}
+    - {}
+    components/libxslt.bst:
+    - ref: v1.1.33-0-gf1eb717f04d9cc297cc5e58e94b81ac96f47e741
+    - {}
+    components/linux-pam.bst:
+    - ref: eff47a4ecd833fbf18de9686632a70ee8d0794b79aecb217ebd0ce11db4cd0db
+    - {}
+    components/llvm8-base.bst:
+    - ref: llvmorg-8.0.0-0-gd2298e74235598f15594fe2c99bbac870a507c59
+    - {}
+    - {}
+    - {}
+    - {}
+    components/lzip.bst:
+    - ref: c93b81a5a7788ef5812423d311345ba5d3bd4f5ebf1f693911e3a13553c1290c
+    components/m4.bst:
+    - ref: f2c1e86ca0a404ff281631bdc8377638992744b175afb806e25871a24a934e07
+    - {}
+    components/man-db.bst:
+    - ref: 5932a1ca366e1ec61a3ece1a3afa0e92f2fdc125b61d236f20cc6ff9d80cc4ac
+    components/man-pages-posix.bst:
+    - ref: 19633a5c75ff7deab35b1d2c3d5b7748e7bd4ef4ab598b647bb7e7f60b90a808
+    components/man-pages.bst:
+    - ref: man-pages-5.01-0-g80e710925c75fe5955268ad6a9473615e140f47f
+    components/mesa.yml:
+    - ref: mesa-19.1.2-0-gfe1f7b538b7e8e4bd221c5d52ae72a3721c6aa08
+    - {}
+    components/meson.bst:
+    - ref: 0.51.1-0-g3ea194b8d9cdd0197403efdca8fa2e8147fc1eb8
+    - {}
+    components/mpg123.bst:
+    - ref: 6c1337aee2e4bf993299851c70b7db11faec785303cfca3a5c3eb5f329ba7023
+    components/mythes.bst:
+    - ref: 1e81f395d8c851c3e4e75b568e20fa2fa549354e75ab397f9de4b0e0790a305f
+    components/nano.bst:
+    - ref: v4.3-0-gb8987a1e4081a11c8b945743bfdafbd9ffc1a4ad
+    - ref: v0.1-2785-gc01635497d830f181a2607279135b3fff041b936
+    components/nasm.bst:
+    - ref: nasm-2.14.02-0-g74246c499ea4313fb8837977dc0c135fc50567c0
+    - {}
+    components/nettle.bst:
+    - ref: nettle_3.5.1_release_20190627-0-gee5d62898cf070f08beedc410a8d7c418588bd95
+    components/ninja.bst:
+    - ref: v1.9.0-0-gb25c08bda4949192c69cea4cee057887341a2ffc
+    components/npth.bst:
+    - ref: npth-1.6-0-g771287929ed226add3ef27de882c5359dcd3f66e
+    components/nspr.bst:
+    - ref: 15ea32c7b100217b6e3193bc03e77f485d9bf7504051443ba9ce86d1c17c6b5a
+    components/nss.bst:
+    - ref: NSS_3_45_RTM-0-g09a46e63dfb8f974e15c77733e4edf602e837497
+    - {}
+    - {}
+    components/openal.bst:
+    - ref: openal-soft-1.19.1-0-g6761218e51699f46bf25c377e65b3e9ea5e434b9
+    components/opencl.bst:
+    - ref: v2.2.12-0-gaf79aebe4649f30dbd711c1bf6fc661eac6e5f01
+    components/openssh.bst:
+    - ref: V_8_0_P1-0-gfd0fa130ecf06d7d092932adcd5d77f1549bfc8d
+    components/opus.bst:
+    - ref: v1.3.1-0-ge85ed7726db5d677c9c0677298ea0cb9c65bdd23
+    components/orc.bst:
+    - ref: 0.4.29-0-g3d3889025bdbd9ca54565edfb3936c5a29316cff
+    components/p11-kit.bst:
+    - ref: 0.23.16.1-0-gc689917b393379d288b868f70b2f7b7f6aafe430
+    components/pango.bst:
+    - ref: 1.43.0-0-g26f1135f374f3ad5eb963dcdf016542fbbda361b
+    - {}
+    components/patch.bst:
+    - ref: v2.7.6-0-g40b387de08653a1e46872b8ac1a6a14b9b94feb3
+    - {}
+    - {}
+    - {}
+    components/pciutils.bst:
+    - ref: v3.6.2-0-ge3832c8fc3efe41aff853d16cab488d38c3ac13f
+    components/pcre.bst:
+    - ref: 2cd04b7c887808be030254e8d77de11d3fe9d4505c39d4b15d2664ffe8bf9301
+    components/pcre2.bst:
+    - ref: e07d538704aa65e477b6a392b32ff9fc5edf75ab9a40ddfc876186c4ff4d68ac
+    components/perl-xml-parser.bst:
+    - ref: 1ae9d07ee9c35326b3d9aad56eae71a6730a73a116b9fe9e8a4758b7cc033216
+    components/perl.bst:
+    - ref: v5.30.0-0-g44523d1ffde5f23de2e13216cdbac46357631904
+    - {}
+    - {}
+    components/pipewire-base.bst:
+    - ref: 0.2.6-0-g4aff470a8fa1e06448b2316781b4e7a91fbda341
+    components/pixman.bst:
+    - ref: pixman-0.38.4-0-ge8df10eea9609609568bf4cbc05796594c1b978d
+    components/pkg-config.bst:
+    - ref: pkgconf-1.6.3-0-gc862e030cf83447f679e4f49876f5298f0fc9691
+    components/pwquality.bst:
+    - ref: libpwquality-1.4.0-0-gec03e45823965bbcfcbaec7497a1b47033c3b632
+    components/python3-mako.bst:
+    - ref: rel_1_0_13-0-g5b3a4a4aa981790935e60b99ef6f1ca07fdb302f
+    components/python3-pip.bst:
+    - ref: 19.1.1-0-g58c93acd4fa7073fbf145a6a7debfff960da0448
+    components/python3-setuptools.bst:
+    - ref: v41.0.1-0-g97d7563915b6e2ad8a638e988361357709a83bda
+    components/python3-six.bst:
+    - ref: 1.12.0-0-gd927b9e27617abca8dbf4d66cc9265ebbde261d6
+    components/python3.bst:
+    - ref: v3.7.4-0-ge09359112e250268eca209355abeb17abf822486
+    - {}
+    components/qmake.bst:
+    - ref: 533078ce02678988576e224cb3844979907950cf83e0fda3364bc1d5701c9049
+    components/ruby.bst:
+    - ref: 577fd3795f22b8d91c1d4e6733637b0394d4082db659fccf224c774a2b1c82fb
+    components/sdl2-image.bst:
+    - ref: e74ec49c2402eb242fbfa16f2f43a19582a74c2eabfbfb873f00d4250038ceac
+    components/sdl2-mixer.bst:
+    - ref: b4cf5a382c061cd75081cf246c2aa2f9df8db04bdda8dcdc6b6cca55bede2419
+    components/sdl2-net.bst:
+    - ref: 15ce8a7e5a23dafe8177c8df6e6c79b6749a03fff1e8196742d3571657609d21
+    components/sdl2-ttf.bst:
+    - ref: 34db5e20bcf64e7071fe9ae25acaa7d72bdc4f11ab3ce59acc768ab62fe39276
+    components/sdl2.bst:
+    - ref: 255186dc676ecd0c1dbf10ec8a2cc5d6869b5079d8a38194c2aecdff54b324b1
+    components/shared-mime-info.bst:
+    - ref: Release-1-12-0-g41a9a684249cd47aef4d65f81180ee69aa358d71
+    components/sndfile.bst:
+    - ref: 1ff33929f042fa333aed1e8923aa628c3ee9e1eb85512686c55092d1e5a9dfa9
+    - {}
+    - {}
+    - {}
+    - {}
+    - {}
+    - {}
+    - {}
+    - {}
+    - {}
+    components/speex.bst:
+    - ref: Speex-1.2.0-0-g7fc5f8b88519a2aafdf4b6a5c31ef3d54b560d68
+    components/speexdsp.bst:
+    - ref: SpeexDSP-1.2.0-0-g64cbfa9bca7479a758351aa02bb4abdd76baa9e7
+    components/spirv-tools.bst:
+    - ref: v2019.3-0-gce19e217bc82e1dbd631b6a555b1874432f3a05f
+    - ref: 1.4.1-0-gc4f8f65792d4bf2657ca751904c511bbcf2ac77b
+    components/sqlite.bst:
+    - ref: d61b5286f062adfce5125eaf544d495300656908e61fca143517afcc0a89b7c3
+    components/strace.bst:
+    - ref: v5.2-0-gdc03195eb63d676f8b6e591674798f878e8f92fe
+    components/sudo.bst:
+    - ref: 7beb68b94471ef56d8a1036dbcdc09a7b58a949a68ffce48b83f837dd33e2ec0
+    components/systemd-base.bst:
+    - ref: v242-32-g572385e13566f9ca442ee3b46742159b905b4712
+    components/tar.bst:
+    - ref: d0d3ae07f103323be809bc3eac0dcc386d52c5262499fe05511ac4788af1fdd8
+    components/texinfo.bst:
+    - ref: 9bb9ca00da53f26a7e5725eee49689cd4a1e18d25d5b061ac8b2053018d93d66
+    components/tzdata.bst:
+    - ref: 2019b-0-g23a01523a5d6a6ae2217df77b2a3f60e10a373d2
+    components/unzip.bst:
+    - ref: 036d96991646d0449ed0aa952e4fbe21b476ce994abc276e49d30e686708bd37
+    - {}
+    - {}
+    - {}
+    - {}
+    - {}
+    - {}
+    - {}
+    - {}
+    components/util-linux.bst:
+    - ref: v2.34-0-gd4319b91c9d7d69e7b954fc66819214f81501312
+    components/vala.bst:
+    - ref: 96a8c1415c6484d7d6b837ae263af7c50465c7423bfc8eea5046f3eadfa42fe2
+    components/valgrind.bst:
+    - ref: VALGRIND_3_14_0-0-g3a3000290b4af0e8ef9880293c54659a6819ba78
+    - {}
+    components/vulkan-headers.bst:
+    - ref: v1.1.108-0-g097a1045098213919fd56442f52c716fc78eeb27
+    components/vulkan-icd-loader.bst:
+    - ref: sdk-1.1.108.0-0-gecb0b1e69fb2f4d3cae262e6da24c170ce62ae13
+    - {}
+    components/vulkan-validation-layers.bst:
+    - ref: sdk-1.1.108.0-0-g6ba13e86b4ca89c3b7baea4b9a8fe95bf38bb093
+    components/wavpack.bst:
+    - ref: 5.1.0-0-g9ccc3fe4a37d069137ceabe513a4dd9b0a09c1c2
+    - {}
+    - {}
+    - {}
+    - {}
+    - {}
+    - {}
+    - {}
+    components/wayland-protocols.bst:
+    - ref: 1.17-0-g9132fc867dfdfc6def59e348f083982a6bbde953
+    components/wayland.bst:
+    - ref: 1.17.0-0-ge091839dd08354289e501a47219e0c7a6472dff3
+    - {}
+    components/webrtc-audio-processing.bst:
+    - ref: v0.3.1-0-ge882a5442ac22c93648e12837248d651d18b9247
+    - {}
+    components/which.bst:
+    - ref: f4a245b94124b377d8b49646bf421f9155d36aa7614b6ebf83705d3ffc76eaad
+    components/xcb-util-cursor.bst:
+    - ref: 05a10a0706a1a789a078be297b5fb663f66a71fb7f7f1b99658264c35926394f
+    components/xcb-util-image.bst:
+    - ref: 2db96a37d78831d643538dd1b595d7d712e04bdccf8896a5e18ce0f398ea2ffc
+    components/xcb-util-keysyms.bst:
+    - ref: 0ef8490ff1dede52b7de533158547f8b454b241aa3e4dcca369507f66f216dd9
+    components/xcb-util-renderutil.bst:
+    - ref: c6e97e48fb1286d6394dddb1c1732f00227c70bd1bedb7d1acabefdd340bea5b
+    components/xcb-util-wm.bst:
+    - ref: 28bf8179640eaa89276d2b0f1ce4285103d136be6c98262b6151aaee1d3c2a3f
+    components/xcb-util.bst:
+    - ref: 46e49469cb3b594af1d33176cd7565def2be3fa8be4371d62271fabb5eae50e9
+    components/xdg-user-dirs.bst:
+    - ref: 0.17-0-gec015cdd345dec8025948533e7a6f18680e7f70c
+    components/xmlto.bst:
+    - ref: 1130df3a7957eb9f6f0d29e4aa1c75732a7dfb6d639be013859b5c7ec5421276
+    components/xorg-app-xkbcomp.bst:
+    - ref: 6dd8bcb9be7e85bd7294abe261b8c7b0539d2fc93e41b80fb8bd013767ce8424
+    components/xorg-data-xkeyboard-config.bst:
+    - ref: xkeyboard-config-2.27-0-gacdcd04133c3220f15d6c0e0be47c9be8f8296bb
+    components/xorg-font-util.bst:
+    - ref: 34ebb0c9c14e0a392cdd5ea055c92489ad88d55ae148b2f1cfded0f3f63f2b5b
+    components/xorg-lib-fontenc.bst:
+    - ref: 895ee0986b32fbfcda7f4f25ef6cbacfa760e1690bf59f02085ce0e7d1eebb41
+    components/xorg-lib-ice.bst:
+    - ref: 8f7032f2c1c64352b5423f6b48a8ebdc339cc63064af34d66a6c9aa79759e202
+    components/xorg-lib-pciaccess.bst:
+    - ref: 3df543e12afd41fea8eac817e48cbfde5aed8817b81670a4e9e493bb2f5bf2a4
+    components/xorg-lib-sm.bst:
+    - ref: 0baca8c9f5d934450a70896c4ad38d06475521255ca63b717a6510fdb6e287bd
+    components/xorg-lib-x11.bst:
+    - ref: 910e9e30efba4ad3672ca277741c2728aebffa7bc526f04dcfa74df2e52a1348
+    components/xorg-lib-xau.bst:
+    - ref: fdd477320aeb5cdd67272838722d6b7d544887dfe7de46e1e7cc0c27c2bea4f2
+    components/xorg-lib-xcb.bst:
+    - ref: a89fb7af7a11f43d2ce84a844a4b38df688c092bf4b67683aef179cdf2a647c4
+    - {}
+    components/xorg-lib-xcomposite.bst:
+    - ref: ede250cd207d8bee4a338265c3007d7a68d5aca791b6ac41af18e9a2aeb34178
+    components/xorg-lib-xcursor.bst:
+    - ref: 294e670dd37cd23995e69aae626629d4a2dfe5708851bbc13d032401b7a3df6b
+    components/xorg-lib-xdamage.bst:
+    - ref: 7c3fe7c657e83547f4822bfde30a90d84524efb56365448768409b77f05355ad
+    components/xorg-lib-xdmcp.bst:
+    - ref: 81fe09867918fff258296e1e1e159f0dc639cb30d201c53519f25ab73af4e4e2
+    components/xorg-lib-xext.bst:
+    - ref: b518d4d332231f313371fdefac59e3776f4f0823bcb23cf7c7305bfb57b16e35
+    components/xorg-lib-xfixes.bst:
+    - ref: de1cd33aff226e08cefd0e6759341c2c8e8c9faf8ce9ac6ec38d43e287b22ad6
+    components/xorg-lib-xfont2.bst:
+    - ref: a4b761a37528353a2b83dba364d7c1fd6aef2d554a1a019815f24f7f8866890e
+    components/xorg-lib-xft.bst:
+    - ref: f5a3c824761df351ca91827ac221090943ef28b248573486050de89f4bfcdc4c
+    components/xorg-lib-xi.bst:
+    - ref: c2e6b8ff84f9448386c1b5510a5cf5a16d788f76db018194dacdc200180faf45
+    components/xorg-lib-xinerama.bst:
+    - ref: 0008dbd7ecf717e1e507eed1856ab0d9cf946d03201b85d5dcf61489bb02d720
+    components/xorg-lib-xkbfile.bst:
+    - ref: libxkbfile-1.1.0-0-g261992d42905f209cd5bf6afcf8a7ae3aa30b3ff
+    components/xorg-lib-xpm.bst:
+    - ref: fd6a6de3da48de8d1bb738ab6be4ad67f7cb0986c39bd3f7d51dd24f7854bdec
+    components/xorg-lib-xrandr.bst:
+    - ref: 1ff9e7fa0e4adea912b16a5f0cfa7c1d35b0dcda0e216831f7715c8a3abcf51a
+    components/xorg-lib-xrender.bst:
+    - ref: c06d5979f86e64cabbde57c223938db0b939dff49fdb5a793a1d3d0396650949
+    components/xorg-lib-xscrnsaver.bst:
+    - ref: f917075a1b7b5a38d67a8b0238eaab14acd2557679835b154cf2bca576e89bf8
+    components/xorg-lib-xshmfence.bst:
+    - ref: b884300d26a14961a076fbebc762a39831cb75f92bed5ccf9836345b459220c7
+    components/xorg-lib-xt.bst:
+    - ref: 46eeb6be780211fdd98c5109286618f6707712235fdd19df4ce1e6954f349f1a
+    components/xorg-lib-xtrans.bst:
+    - ref: adbd3b36932ce4c062cd10f57d78a156ba98d618bdb6f50664da327502bc8301
+    components/xorg-lib-xtst.bst:
+    - ref: 4655498a1b8e844e3d6f21f3b2c4e2b571effb5fd83199d428a6ba7ea4bf5204
+    components/xorg-lib-xv.bst:
+    - ref: d26c13eac99ac4504c532e8e76a1c8e4bd526471eb8a0a4ff2a88db60cb0b088
+    components/xorg-lib-xxf86vm.bst:
+    - ref: afee27f93c5f31c0ad582852c0fb36d50e4de7cd585fcf655e278a633d85cd57
+    components/xorg-proto-xcb.bst:
+    - ref: 7b98721e669be80284e9bbfeab02d2d0d54cd11172b72271e47a2fe875e2bde1
+    components/xorg-proto-xorgproto.bst:
+    - ref: xorgproto-2019.1-0-ge0bba743ae7c549c58f92677b239ec7878548228
+    components/xorg-server.bst:
+    - ref: a6447de89eca3e22eeead682b325d902779569534ad83388c9e16611d72baaf3
+    components/xorg-util-macros.bst:
+    - ref: d7e43376ad220411499a79735020f9d145fdc159284867e99467e0d771f3e712
+    components/xz.bst:
+    - ref: v5.2.4-0-gb5be61cc06088bb07f488f9baf7d447ff47b37c1
+    components/zenity.bst:
+    - ref: 995ef696616492c40be6da99919851d41faed6643a97c9d24743b46bc8b537f2
+    components/zip.bst:
+    - ref: f0e8bb1f9b7eb0b01285495a2699df3a4b766784c1765a8f1aeedf63c0806369
+    config/ffmpeg.yml:
+    - ref: n4.1.4-0-g9d06c1f95ebe4f9c2cc05d041dbfd3de52d2518a
+    config/git.yml:
+    - ref: v2.22.0-0-gb697d92f56511e804b8ba20ccbe7bdc85dc66810
+    deploy-tools/flatpak.bst:
+    - ref: 1.4.2-0-gf70978b4ad892cca6837153a3a1f7bc33ac347e8
+    deploy-tools/fuse.bst:
+    - ref: fuse-2.9.9-0-gd04687923194d906fe5ad82dcd546c9807bf15b6
+    - {}
+    deploy-tools/ostree.bst:
+    - ref: v2019.2-0-g80435e12a7ec055195d2355b60a0882b65d42a94
+    extensions/clinfo/clinfo.bst:
+    - ref: 2.2.18.04.06-0-g59d0daf898e48d76ccbb788acbba258fa0a8ba7c
+    extensions/clinfo/khronos-headers.bst:
+    - ref: c5a4bbeabb10d8ed3d1c651b93aa31737bc473dd
+    extensions/glxinfo/freeglut.bst:
+    - ref: 2a43be8515b01ea82bcfa17d29ae0d40bd128342f0930cd1f375f1ff999f76a2
+    extensions/glxinfo/glew.bst:
+    - ref: 04de91e7e6763039bc11940095cd9c7f880baba82196a7765f727ac05a993c95
+    extensions/glxinfo/glu.bst:
+    - ref: glu-9.0.0-0-g030651b64854b84a01ebebad9af188e7644c541a
+    extensions/glxinfo/mesa-demos.bst:
+    - ref: mesa-demos-8.4.0-0-g317f67fe5e75c685330d536f158acf6260b473d1
+    extensions/mesa-aco/libdrm.bst:
+    - ref: libdrm-2.4.99-0-gb2103fa3257daa6acfdc6f4d4d8565abebaec4a8
+    - {}
+    extensions/mesa-aco/mesa.bst:
+    - ref: 17.3-branchpoint-16578-geebe7f88564043f62c8228bb700a6fb2b08c8f93
+    - {}
+    extensions/mesa/libdrm.bst:
+    - ref: libdrm-2.4.99-0-gb2103fa3257daa6acfdc6f4d4d8565abebaec4a8
+    - {}
+    extensions/mesa/mesa.bst:
+    - ref: mesa-19.1.2-0-gfe1f7b538b7e8e4bd221c5d52ae72a3721c6aa08
+    - {}
+    extensions/platform-vaapi-intel/intel-vaapi-driver.bst:
+    - ref: 2.3.0-0-gce593cf433d62f46a87bec73485ae1c968010ae6
+    - {}
+    - {}
+    extensions/rust/rust.bst:
+    - ref: f51645b9f787af4a5d94db17f6af39db0c55980ed24fe366cad55b57900f8f2d
+    - {}
+    - {}
+    extensions/vulkaninfo/vulkan-tools.bst:
+    - ref: sdk-1.1.108.0-0-g3ccd7f6ebae3e1919adf837718c04feb6c2acc61
+    snap-images/dash.bst:
+    - ref: v0.5.10.2-0-g0e6a3d20816365821fa9ff8f8c6d7bdf915ee3c8
+    snap-images/squashfs-tools.bst:
+    - ref: 6e242dc95485ada8d1d0b3dd9346c5243d4a517f
+    - {}
+    vm/bsp-generic/libaio.bst:
+    - ref: 62cf871ad8fd09eb3418f00aca7a7d449299b8e1de31c65f28bf6a2ef1fa502a
+    vm/bsp-generic/linux.bst:
+    - ref: 3581e84e9d63298a14c147f925cd496ebb25c5a08cf065ba63c54cdee6d86506
+    vm/bsp-generic/syslinux.bst:
+    - ref: 3f6d50a57f3ed47d8234fd0ab4492634eb7c9aaf7dd902f33d3ac33564fd631d
+    - {}
+    vm/deploy-tools/dosfstools.bst:
+    - ref: v4.1-0-g820c2f90726db0468e0a684a5dc500fbde66466f
+    vm/deploy-tools/lvm2.bst:
+    - ref: v2_02_183-0-gf5ea02ffee3269a77e295d2b186ca81481f592d7
+    vm/deploy-tools/mtools.bst:
+    - ref: 59e9cf80885399c4f229e5d87e49c0c2bfeec044e1386d59fcd0b0aead6b2f85
+    vm/deploy-tools/parted.bst:
+    - ref: 858b589c22297cacdf437f3baff6f04b333087521ab274f7ab677cb8c6bb78e4
+    - {}
+    vm/linux-vm-boot/kmod.bst:
+    - ref: v26-0-g58133a96c894c043e48c74ddf0bfe8db90bac62f
+    vm/linux-vm-boot/libevdev.bst:
+    - ref: libevdev-1.7.0-0-g1300c237924e85fb6cb5f078849e2da28f393978
+    vm/linux-vm-boot/libgudev.bst:
+    - ref: 232-6-g1a0d84217294bb356d6b4df9366ef921a590d421
+    vm/linux-vm-boot/libinput.bst:
+    - ref: 1.12.6-0-g9da9118edc3092e32e247a227394c257b2c30404
+    vm/linux-vm-boot/libwacom.bst:
+    - ref: libwacom-0.33-0-g87cc710e21a6220e267dd08936bbec2932aa3658
+    vm/linux-vm-boot/mtdev.bst:
+    - ref: a662924dd09cf538c8df66514da345e40c3cbfa880cc7262bc3b55ee46d0c1f4
+    vm/linux-vm-boot/shadow.bst:
+    - ref: 0998c8d84242a231ab0acb7f8613927ff5bcff095f8aa6b79478893a03f05583
+    vm/linux-vm-boot/weston.bst:
+    - ref: 5.0.0-0-g030e7d40fe18869880fc72ce9ae3cbeca6f49600
+    extensions/rust/rust-stage1-x86_64.bst:
+    - ref: 764c56a1855ebcd45b47ee0d47c8b36ae05074bbd425ad35f415b34180f57968
+    extensions/rust/rust-stage1-i686.bst:
+    - ref: 176dbd1acb00d85fead42cd46a201fa095b0fe52c54dd81e2e320471ef677a66
+    extensions/rust/rust-stage1-aarch64.bst:
+    - ref: 2e3b7988f631f382092e67e33b1a4e5bf34d67a2a33835d760d07c76e405dcde
+    extensions/rust/rust-stage1-arm.bst:
+    - ref: 7da797b60b79e4df8d01ad08bcefdd3df3138023535848c374f0e64507955b67
+    extensions/rust/rust-stage1-powerpc64le.bst:
+    - ref: 4cd0f4556e28aa43ccbb29f501200f2fd3877220340b840a69c806af5ff3ac33
+    bootstrap/build/base-sdk/image-x86_64.bst:
+    - ref: d4aa8805ee9d8d00c0c419f262178f92e7e7d52370a61d32a6a2770c2958e9a1
+    bootstrap/build/base-sdk/image-aarch64.bst:
+    - ref: fe384a513a8e7a8e699a1f040c87fc689ec9226d13c73bcfc0dad84c48b5d1a3
+    bootstrap/build/base-sdk/image-powerpc64le.bst:
+    - ref: 0d203a3c86d480c899b29b851e616a27b23d2ca467821ca45393b6e0ddd19095
+    bootstrap/build/debugedit-build.bst:
+    - ref: 1139c24b7372f89c0a697096bf9809be70ba55e006c23ff47305c1849d98acda
+    - {}
+    - {}
+    bootstrap/build/gcc-stage1.bst:
+    - ref: 79a66834e96a6050d8fe78db2c3b32fb285b230b855d0a66288235bc04b327a0
+    - ref: 87b565e89a9a684fe4ebeeddb8399dce2599f9c9049854ca8c0dfbdea0e21912
+    - ref: 1d3be708604eae0e42d578ba93b390c2a145f17743a744d8f3f8c2ad5855a38a
+    - ref: 6985c538143c1208dcb1ac42cedad6ff52e267b47e5f970183a3e75125b43c2e
+    - {}
+    - {}
+    - {}
+    - {}
+    bootstrap/build/binutils-stage1.bst:
+    - ref: binutils-2_32-0-ga9d9a104dde6a749f40ce5c4576a0042a7d52d1f
+    extensions/ffmpeg-html5/ffmpeg.bst:
+    - ref: n4.1.4-0-g9d06c1f95ebe4f9c2cc05d041dbfd3de52d2518a
+    cross-compilers/binutils-i686.bst:
+    - ref: binutils-2_32-0-ga9d9a104dde6a749f40ce5c4576a0042a7d52d1f
+    cross-compilers/binutils-arm.bst:
+    - ref: binutils-2_32-0-ga9d9a104dde6a749f40ce5c4576a0042a7d52d1f
+    cross-compilers/binutils-aarch64.bst:
+    - ref: binutils-2_32-0-ga9d9a104dde6a749f40ce5c4576a0042a7d52d1f
+    cross-compilers/gcc-i686.bst:
+    - ref: 79a66834e96a6050d8fe78db2c3b32fb285b230b855d0a66288235bc04b327a0
+    - ref: 87b565e89a9a684fe4ebeeddb8399dce2599f9c9049854ca8c0dfbdea0e21912
+    - ref: 1d3be708604eae0e42d578ba93b390c2a145f17743a744d8f3f8c2ad5855a38a
+    - ref: 6985c538143c1208dcb1ac42cedad6ff52e267b47e5f970183a3e75125b43c2e
+    - {}
+    - {}
+    - {}
+    - {}
+    cross-compilers/gcc-aarch64.bst:
+    - ref: 79a66834e96a6050d8fe78db2c3b32fb285b230b855d0a66288235bc04b327a0
+    - ref: 87b565e89a9a684fe4ebeeddb8399dce2599f9c9049854ca8c0dfbdea0e21912
+    - ref: 1d3be708604eae0e42d578ba93b390c2a145f17743a744d8f3f8c2ad5855a38a
+    - ref: 6985c538143c1208dcb1ac42cedad6ff52e267b47e5f970183a3e75125b43c2e
+    - {}
+    - {}
+    - {}
+    - {}
+    cross-compilers/gcc-arm.bst:
+    - ref: 79a66834e96a6050d8fe78db2c3b32fb285b230b855d0a66288235bc04b327a0
+    - ref: 87b565e89a9a684fe4ebeeddb8399dce2599f9c9049854ca8c0dfbdea0e21912
+    - ref: 1d3be708604eae0e42d578ba93b390c2a145f17743a744d8f3f8c2ad5855a38a
+    - ref: 6985c538143c1208dcb1ac42cedad6ff52e267b47e5f970183a3e75125b43c2e
+    components/ffmpeg.bst:
+    - ref: n4.1.4-0-g9d06c1f95ebe4f9c2cc05d041dbfd3de52d2518a
+    components/git.bst:
+    - ref: v2.22.0-0-gb697d92f56511e804b8ba20ccbe7bdc85dc66810
+    components/git-minimal.bst:
+    - ref: v2.22.0-0-gb697d92f56511e804b8ba20ccbe7bdc85dc66810
+    bootstrap/debugedit.bst:
+    - ref: 1139c24b7372f89c0a697096bf9809be70ba55e006c23ff47305c1849d98acda
+    - {}
+    - {}
+    components/mesa-headers.bst:
+    - ref: mesa-19.1.2-0-gfe1f7b538b7e8e4bd221c5d52ae72a3721c6aa08
+    - {}
+    bootstrap/build/glibc-stage1.bst:
+    - ref: glibc-2.29-30-g2d3fefd7ce64ac1015701c96916fffacc073a877
+    - {}
+    bootstrap/binutils.bst:
+    - ref: binutils-2_32-0-ga9d9a104dde6a749f40ce5c4576a0042a7d52d1f
+    bootstrap/gcc.bst:
+    - ref: 79a66834e96a6050d8fe78db2c3b32fb285b230b855d0a66288235bc04b327a0
+    - ref: 87b565e89a9a684fe4ebeeddb8399dce2599f9c9049854ca8c0dfbdea0e21912
+    - ref: 1d3be708604eae0e42d578ba93b390c2a145f17743a744d8f3f8c2ad5855a38a
+    - ref: 6985c538143c1208dcb1ac42cedad6ff52e267b47e5f970183a3e75125b43c2e
+    bootstrap/glibc.bst:
+    - ref: glibc-2.29-30-g2d3fefd7ce64ac1015701c96916fffacc073a877
+    - {}
+    components/osmesa.bst:
+    - ref: mesa-19.1.2-0-gfe1f7b538b7e8e4bd221c5d52ae72a3721c6aa08
+    - {}
+    components/dummy-gbm.bst:
+    - ref: mesa-19.1.2-0-gfe1f7b538b7e8e4bd221c5d52ae72a3721c6aa08
+    - {}
+    - {}
+    - {}
+    components/supported-locales.bst:
+    - ref: glibc-2.29-30-g2d3fefd7ce64ac1015701c96916fffacc073a877
+    - {}
+    - {}
+    bootstrap/libstdc++-stage1.bst:
+    - ref: 79a66834e96a6050d8fe78db2c3b32fb285b230b855d0a66288235bc04b327a0
+    - ref: 87b565e89a9a684fe4ebeeddb8399dce2599f9c9049854ca8c0dfbdea0e21912
+    - ref: 1d3be708604eae0e42d578ba93b390c2a145f17743a744d8f3f8c2ad5855a38a
+    - ref: 6985c538143c1208dcb1ac42cedad6ff52e267b47e5f970183a3e75125b43c2e
+    - {}
+    - {}
+    - {}
+    - {}
+    bootstrap/build/gcc-stage2.bst:
+    - ref: 79a66834e96a6050d8fe78db2c3b32fb285b230b855d0a66288235bc04b327a0
+    - ref: 87b565e89a9a684fe4ebeeddb8399dce2599f9c9049854ca8c0dfbdea0e21912
+    - ref: 1d3be708604eae0e42d578ba93b390c2a145f17743a744d8f3f8c2ad5855a38a
+    - ref: 6985c538143c1208dcb1ac42cedad6ff52e267b47e5f970183a3e75125b43c2e

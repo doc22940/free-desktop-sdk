@@ -23,4 +23,3 @@ sources:
   track: master
   exclude:
   - 8.*
-  ref: 8.6.9-173-g5b8771e2497ebfc70c93756d2afe9cd6f6c73641

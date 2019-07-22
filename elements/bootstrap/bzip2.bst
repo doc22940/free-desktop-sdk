@@ -47,6 +47,5 @@ sources:
 - kind: git_tag
   url: sourceware:bzip2.git
   track: master
-  ref: bzip2-1.0.8-0-g6a8690fc8d26c815e798c588f796eabe9d684cf0
 - kind: patch
   path: patches/bzip2/soname.patch
