@@ -7,6 +7,8 @@ It was originally started as a [Flatpak subproject](https://github.com/flatpak/f
 to create a basic-neutral runtime. It is now a separate project, similar to
 what happened with the GNOME and KDE runtimes.
 
+The Freedesktop SDK project is not an endorsement of a particular platform or selection of technologies by the Freedesktop organization. The SDK aims to support a common interoperable platform for projects such as GNOME, KDE and Flatpak by providing integration and validation of a shared set of dependencies.
+
 As explained in [Alex's blog post](https://blogs.gnome.org/alexl/2018/05/16/introducing-1-8-freedesktop-runtime/)
 there has long been a desire to upgrade and modernize the SDK, which is where
 this specific project comes into the story.
