@@ -32,7 +32,23 @@ public:
 environment:
   PATH: /usr/bin:/usr/lib/sdk/rust/bin
 
+config:
+  configure-commands:
+    (<):
+    - |
+      mkdir .cargo
+      cp cargo-vendor-config .cargo/config
+
+(@):
+- elements/components/librsvg.crates.yml
+
 sources:
-- kind: tar
-  url: https://download.gnome.org/sources/librsvg/2.44/librsvg-2.44.12.tar.xz
-  ref: 66830b093a24262cc9bd2d1c921f6f59133a99893399d79768f7509021b678c0
+  (<):
+  - kind: git_tag
+    url: gnome:librsvg
+    track: master
+    track-extra:
+    - librsvg-2.44
+    exclude:
+    - '*.*[13579].*'
+    ref: 2.44.14-0-gd1a5e5caf52b37031b70b297a9a9cfa24bd9a359

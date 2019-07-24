@@ -41,7 +41,7 @@ QEMU=fakeroot qemu-system-$(QEMU_ARCH)
 
 all: build
 
-build:
+build: elements/components/librsvg.crates.yml
 	$(BST) build check-platform.bst \
 	             flatpak-release.bst \
 	             public-stacks/buildsystems.bst \
@@ -230,6 +230,46 @@ export-docker:
 
 track-mesa-aco:
 	$(BST) track extensions/mesa-aco/mesa-base.bst
+
+elements/components/librsvg.crates.yml: VENDORDIR=vendor
+VENDORDIR=crates
+
+.bst.crates.yml:
+	cp $@ $@.bak || true
+	mkdir -p "$(CHECKOUT_ROOT)/$$(dirname "$@-source")"
+	set -eu;							\
+	element="$$(echo "$<" | sed 's,elements/,,')";			\
+	success=0;							\
+	onexit() {							\
+	  cd "$(CURDIR)";						\
+	  if [ -f $@.bak ]; then					\
+            if [ "$${success}" = 1 ]; then				\
+              rm $@.bak;						\
+	    else							\
+              mv $@.bak $@;						\
+	    fi;								\
+	  else								\
+            if [ "$${success}" = 0 ]; then				\
+              rm $@;							\
+	    fi;								\
+	  fi;								\
+	  bst workspace close "$${element}" || true;			\
+	  rm -rf "$(CHECKOUT_ROOT)/$@-source";				\
+	};								\
+	trap onexit EXIT;						\
+	echo 'sources: []' >$@;						\
+	bst workspace close "$${element}" || true;			\
+	rm -rf "$(CHECKOUT_ROOT)/$@-source";				\
+	bst workspace open "$${element}"				\
+	    "$(CHECKOUT_ROOT)/$@-source";				\
+	cd "$(CHECKOUT_ROOT)/$@-source";				\
+        python3 "$(CURDIR)/utils/generate_cargo_dependencies.py"	\
+          --output "$(CURDIR)/$@"					\
+          --subdir $(VENDORDIR);					\
+	success=1
+
+
+.SUFFIXES: .bst .crates.yml
 
 .PHONY: \
 	build check-dev-files clean clean-test clean-repo clean-runtime \
