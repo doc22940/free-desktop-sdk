@@ -15,9 +15,9 @@ class CrateSource(DownloadableFileSource):
     def configure(self, node):
         super().configure(node)
 
-        self.subdir = self.node_get_member(node, str, 'subdir', 'crates') or None
+        self.subdir = node.get_str('subdir', 'crates')
 
-        self.node_validate(node, DownloadableFileSource.COMMON_CONFIG_KEYS + ['subdir'])
+        node.validate_keys(DownloadableFileSource.COMMON_CONFIG_KEYS + ['subdir'])
 
     def stage(self, directory):
         crates = os.path.join(directory, self.subdir)
