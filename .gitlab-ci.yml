@@ -171,8 +171,8 @@ check_update_elements:
       ${BST} track --arch $arch --deps all flatpak-release.bst
       done
     - git -c diff.external=utils/yaml-diff.py diff
-  only:
-    - schedules
+#  only:
+#    - schedules
 
 populate_source_cache:
   image: $DOCKER_AARCH64
