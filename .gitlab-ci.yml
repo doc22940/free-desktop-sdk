@@ -165,10 +165,10 @@ check_update_elements:
   script:
     - git checkout -- snap-version.yml
     - |
-      arches="x86_64 i686 powerpc64le aarch64 arm"
-      for arch in $arches
+      configs=('x86_64:x86_64' 'x86_64:i686' 'aarch64:aarch64' 'aarch64:arm' 'powerpc64le:powerpc64le')
+      for c in "${configs[@]}"
       do
-      ${BST} track --target_arch $arch --deps all flatpak-release.bst
+      ${BST} -o target_arch "${c/*:/}" -o bootstrap_build_arch "${c/:*/}" track --deps all flatpak-release.bst
       done
     - git -c diff.external=utils/yaml-diff.py diff
 #  only:
