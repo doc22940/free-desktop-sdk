@@ -164,7 +164,12 @@ check_update_elements:
     - check_update
   script:
     - git checkout -- snap-version.yml
-    - ${BST} track --deps all flatpak-release.bst
+    - |
+      arches="x86_64 i686 powerpc64le aarch64 arm"
+      for arch in $arches
+      do
+      ${BST} track --arch $arch --deps all flatpak-release.bst
+      done
     - git -c diff.external=utils/yaml-diff.py diff
   only:
     - schedules
