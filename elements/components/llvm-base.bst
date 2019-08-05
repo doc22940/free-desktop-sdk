@@ -85,7 +85,9 @@ public:
         - '%{libdir}/LLVMHello.so'
         - '%{libdir}/libLTO.so*'
         - '%{libdir}/libclang.so'
+        - '%{libdir}/libclang-cpp.so'
         - '%{libdir}/BugpointPasses.so'
+        - '%{libdir}/libRemarks.so'
         - '%{libdir}/libOptRemarks.so'
         - '%{libdir}/clang'
         - '%{libdir}/clang/**'
@@ -104,11 +106,11 @@ public:
 
 sources:
 - kind: git_tag
-  track: release/8.x
-  exclude:
-  - llvmorg-*-rc*
+  track: release/9.x
+  #exclude:
+  #- llvmorg-*-rc*
   url: github:llvm/llvm-project.git
-  ref: llvmorg-8.0.1-0-g19a71f6bdf2dddb10764939e7f0ec2b98dba76c9
+  ref: llvmorg-9.0.0-rc2-gf44fc8869c1609ab5235a00ec748175dd0f1cf18
 - kind: patch
   path: patches/llvm/llvm-clang-ignore-fstack-clash-protection.patch
 - kind: patch
