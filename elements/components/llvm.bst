@@ -24,7 +24,6 @@ public:
         - '%{libexecdir}/**'
         - '%{libdir}/libLLVM-*.*.*.so'
         - '%{libdir}/libLLVM.so'
-        - '%{libdir}/libLLVMTableGen.so'
         - '%{libdir}/LLVMgold.so'
         - '%{libdir}/LLVMHello.so'
         - '%{libdir}/libLTO.so'

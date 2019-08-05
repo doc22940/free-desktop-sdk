@@ -80,7 +80,6 @@ public:
         - '%{libexecdir}/**'
         - '%{libdir}/libLLVM-*.*.*.so'
         - '%{libdir}/libLLVM.so'
-        - '%{libdir}/libLLVMTableGen.so'
         - '%{libdir}/LLVMgold.so'
         - '%{libdir}/LLVMHello.so'
         - '%{libdir}/libLTO.so*'
@@ -117,5 +116,3 @@ sources:
   path: patches/llvm/llvm-no-rpath.patch
 - kind: patch
   path: patches/llvm/llvm-fix-tsan-build.patch
-- kind: patch
-  path: patches/llvm/llvm-shared-tablegen.patch
