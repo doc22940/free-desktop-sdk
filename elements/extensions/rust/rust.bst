@@ -37,6 +37,7 @@ environment-nocache:
 
 environment:
   MAXJOBS: '%{max-jobs}'
+  RUST_BACKTRACE: 1
 
 config:
   configure-commands:
