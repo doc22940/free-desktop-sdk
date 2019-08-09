@@ -1,15 +1,15 @@
 {
-  "app-id": "test.codecs.full",
+  "app-id": "test.ffmpeg-html5.codecs",
   "runtime": "org.freedesktop.Platform",
   "runtime-version": "19.08beta",
   "sdk": "org.freedesktop.Sdk",
   "sdk-extensions": [
-    "org.freedesktop.Platform.ffmpeg-full-codecs"
+    "org.freedesktop.Sdk.ffmpeg-html5"
   ],
   "command": "codec-list.sh",
   "modules": [
     {
-      "name": "ffmpeg-full",
+      "name": "ffmpeg-html5",
       "buildsystem": "simple",
       "build-commands": ["/usr/lib/ffmpeg/enable.sh"]
     },

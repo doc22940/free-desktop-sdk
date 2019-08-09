@@ -194,19 +194,19 @@ test-codecs: export XDG_DATA_HOME=$(CURDIR)/runtime
 test-codecs: $(REPO)
 	flatpak remote-add --if-not-exists --user --no-gpg-verify fdo-sdk-test-repo $(REPO)
 	flatpak install -y --arch=$(FLATPAK_ARCH) --user fdo-sdk-test-repo org.freedesktop.{Platform,Sdk}//$(BRANCH)
-	flatpak install -y --arch=$(FLATPAK_ARCH) --user fdo-sdk-test-repo org.freedesktop.Platform.{ffmpeg-html5,ffmpeg-full-codecs}//$(BRANCH)
+	flatpak install -y --arch=$(FLATPAK_ARCH) --user fdo-sdk-test-repo org.freedesktop.Sdk.{ffmpeg-html5,ffmpeg-full}//$(BRANCH)
 
-	flatpak-builder --arch=$(FLATPAK_ARCH) --force-clean --repo=$(REPO) app tests/test.codecs.html5.json
+	flatpak-builder --arch=$(FLATPAK_ARCH) --force-clean --repo=$(REPO) app tests/test.ffmpeg-html5.codecs.json
 
-	flatpak-builder --arch=$(FLATPAK_ARCH) --force-clean --repo=$(REPO) app tests/test.codecs.full.json
-
-	flatpak uninstall -y --all
-	flatpak install -y --arch=$(FLATPAK_ARCH) --user fdo-sdk-test-repo test.codecs.html5
-	flatpak run test.codecs.html5
+	flatpak-builder --arch=$(FLATPAK_ARCH) --force-clean --repo=$(REPO) app tests/test.ffmpeg-full.codecs.json
 
 	flatpak uninstall -y --all
-	flatpak install -y --arch=$(FLATPAK_ARCH) --user fdo-sdk-test-repo test.codecs.full
-	flatpak run test.codecs.full
+	flatpak install -y --arch=$(FLATPAK_ARCH) --user fdo-sdk-test-repo test.ffmpeg-html5.codecs
+	flatpak run test.ffmpeg-html5.codecs
+
+	flatpak uninstall -y --all
+	flatpak install -y --arch=$(FLATPAK_ARCH) --user fdo-sdk-test-repo test.ffmpeg-full.codecs
+	flatpak run test.ffmpeg-full.codecs
 
 clean-repo:
 	rm -rf $(REPO)

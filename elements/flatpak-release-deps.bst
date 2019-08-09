@@ -5,6 +5,8 @@ depends:
 - filename: flatpak-images/sdk.bst
 - filename: flatpak-images/sdk-debug.bst
 - filename: flatpak-images/sdk-docs.bst
+- filename: flatpak-images/sdk-ffmpeg-full.bst
+- filename: flatpak-images/sdk-ffmpeg-html5.bst
 - filename: flatpak-images/sdk-locale.bst
 - filename: flatpak-images/sdk-arch-libs.bst
 - filename: flatpak-images/sdk-arch-libs-debug.bst
@@ -13,8 +15,6 @@ depends:
 - filename: flatpak-images/platform-arch-libs.bst
 - filename: flatpak-images/platform-arch-libs-debug.bst
 - filename: flatpak-images/platform-vaapi.bst
-- filename: flatpak-images/platform-ffmpeg-html5.bst
-- filename: flatpak-images/platform-full-codecs.bst
 - filename: flatpak-images/clinfo.bst
 - filename: flatpak-images/glxinfo.bst
 - filename: flatpak-images/glxinfo-debug.bst

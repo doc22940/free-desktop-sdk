@@ -11,7 +11,7 @@ config:
 
   metadata:
     Runtime:
-      name: org.freedesktop.Platform.ffmpeg-html5
+      name: org.freedesktop.Sdk.ffmpeg-html5
 
     ExtensionOf:
       ref: runtime/org.freedesktop.Platform/%{flatpak_arch}/%{branch}
