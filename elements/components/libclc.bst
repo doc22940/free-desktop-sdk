@@ -4,8 +4,6 @@ depends:
 - filename: bootstrap-import.bst
 - filename: components/llvm8.bst
   type: build
-- filename: components/llvm8-static.bst
-  type: build
 - filename: components/python3.bst
   type: build
 

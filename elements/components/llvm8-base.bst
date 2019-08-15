@@ -97,9 +97,6 @@ public:
         - '%{datadir}/scan-build/**'
         - '%{datadir}/scan-view'
         - '%{datadir}/scan-view/**'
-      static:
-      - '%{libdir}/*.a'
-      - '%{libdir}/**/*.a'
 
 sources:
 - kind: git_tag
