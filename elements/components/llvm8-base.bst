@@ -78,6 +78,7 @@ public:
         - '%{debugdir}%{libdir}/BugpointPasses.so.debug'
         - '%{bindir}/**'
         - '%{libexecdir}/**'
+        - '%{libdir}/libLLVM-8.so'
         - '%{libdir}/libLLVM-8.0.1.so'
         - '%{libdir}/libLLVM.so'
         - '%{libdir}/libLLVMTableGen.so'
