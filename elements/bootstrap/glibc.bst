@@ -63,9 +63,6 @@ config:
       touch '%{install-root}%{sysconfdir}/ld.so.conf'
 
     - |
-      find "%{install-root}" -name "lib*.a" -not -name "lib*_nonshared.a" -exec rm {} ";"
-
-    - |
       rm "%{install-root}%{infodir}/dir"
 
 (@):
@@ -118,3 +115,12 @@ public:
         - '%{libdir}/libutil.so'
         - '%{libdir}/libnss_compat.so'
         - '%{libdir}/libm.so'
+
+    static-whitelist:
+    - '%{indep-libdir}/lib*_nonshared.a'
+
+  cpe:
+    patches:
+    - CVE-2018-20796 # Same fix as CVE-2019-9169
+    - CVE-2019-7309
+    - CVE-2019-9169

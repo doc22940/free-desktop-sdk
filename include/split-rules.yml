@@ -18,3 +18,9 @@ devel:
 
 debug:
   - "%{debugdir}/**"
+
+static:
+  - "%{libdir}/*.a"
+  - "%{libdir}/**/*.a"
+  - "%{indep-libdir}/*.a"
+  - "%{indep-libdir}/**/*.a"

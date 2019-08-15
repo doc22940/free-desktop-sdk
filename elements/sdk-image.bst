@@ -13,13 +13,18 @@ public:
       - '%{datadir}/runtime/locale/**'
 
 config:
+  include:
+    - runtime
+    - devel
+    - static-whitelist
   exclude:
     - extra
-    - static
     - vm-only
 
 depends:
-- filename: sdk.bst
+- filename: sdk-filtered.bst
+  type: build
+- filename: static-whitelist.bst
   type: build
 - filename: multiarch-sdk.bst
   type: build
