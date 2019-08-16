@@ -1,3 +1,6 @@
 [submodule "utils/buildstream-abi-checker"]
 	path = utils/buildstream-abi-checker
 	url = https://gitlab.com/freedesktop-sdk/buildstream-abi-checker.git
+[submodule "plugins/bst-external"]
+	path = plugins/bst_external
+	url = https://gitlab.com/BuildStream/bst-external.git

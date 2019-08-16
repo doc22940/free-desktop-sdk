@@ -35,6 +35,9 @@ stages:
   - reproducible
 
 before_script:
+  # Make sure we've got our submodules
+  - git submodule update --init
+
   - export PATH=~/.local/bin:${PATH}
 
   - |
