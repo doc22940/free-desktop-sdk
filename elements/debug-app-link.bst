@@ -4,6 +4,7 @@ description: Creates a debug directory, links the debug data of /app to a subdir
 
 depends:
 - filename: bootstrap-import.bst
+  type: build
 
 config:
   install-commands:

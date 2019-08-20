@@ -117,7 +117,7 @@ public:
         - '%{libdir}/libm.so'
 
     static-whitelist:
-    - '%{indep-libdir}/lib*_nonshared.a'
+    - '%{libdir}/lib*_nonshared.a'
 
   cpe:
     patches:
