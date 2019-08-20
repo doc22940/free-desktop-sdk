@@ -5,5 +5,6 @@ depends:
   type: build
 
 config:
+  include-orphans: True
   exclude:
   - static

@@ -27,3 +27,7 @@ config:
   # a given element.
   #
   include-orphans: False
+
+  # Whether to pass the integration commands through
+  #
+  pass-integration: True

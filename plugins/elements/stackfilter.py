@@ -60,12 +60,13 @@ class StackFilterElement(Element):
 
     def configure(self, node):
         self.node_validate(node, [
-            'include', 'exclude', 'include-orphans'
+            'include', 'exclude', 'include-orphans', 'pass-integration'
         ])
 
         self.include = self.node_get_member(node, list, 'include')
         self.exclude = self.node_get_member(node, list, 'exclude')
         self.include_orphans = self.node_get_member(node, bool, 'include-orphans')
+        self.pass_integration = self.node_get_member(node, bool, 'pass-integration')
 
     def preflight(self):
         # Exactly one build-depend is permitted
@@ -93,7 +94,7 @@ class StackFilterElement(Element):
             'include': sorted(self.include),
             'exclude': sorted(self.exclude),
             'orphans': self.include_orphans,
-            'churn': 2
+            'pass-integration': self.pass_integration
         }
         return key
 
@@ -104,15 +105,30 @@ class StackFilterElement(Element):
         pass
 
     def assemble(self, sandbox):
+        integration = []
+
         with self.timed_activity("Staging artifact", silent_nested=True):
             for dep in self.dependencies(Scope.BUILD, recurse=False):
-                self._stage_single_dep(sandbox, dep)
+                self._stage_single_dep(sandbox, dep, integration=integration)
+
+        if self.pass_integration:
+            self.set_public_data('bst', {'integration-commands': integration,
+                'split-rules': {'placeholder': ['/']}})
         return ""
 
-    def _stage_single_dep(self, sandbox, dep):
+    def _stage_single_dep(self, sandbox, dep, integration=None):
         if dep.get_kind() == "stack":
             for subdep in dep.dependencies(Scope.RUN, recurse=False):
-                self._stage_single_dep(sandbox, subdep)
+                self._stage_single_dep(sandbox, subdep, integration=integration)
+
+        if integration is not None:
+            bstdata = dep.get_public_data('bst')
+            if bstdata is not None:
+                commands = dep.node_get_member(bstdata, list, 'integration-commands', [])
+                for i in range(len(commands)):
+                    cmd = dep.node_subst_list_element(bstdata, 'integration-commands', [i])
+                    integration.append(cmd)
+
         dep.stage_artifact(sandbox, include=self.include,
                            exclude=self.exclude, orphans=self.include_orphans)
 

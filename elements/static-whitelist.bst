@@ -8,3 +8,4 @@ config:
   include-orphans: False
   include:
   - static-whitelist
+  pass-integration: False
