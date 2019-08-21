@@ -7,3 +7,4 @@ depends:
 - vm/deploy-tools/mtools.bst
 - vm/deploy-tools/parted.bst
 - vm/bsp-generic/syslinux.bst
+- deploy-tools/ostree.bst
