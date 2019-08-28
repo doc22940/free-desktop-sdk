@@ -21,6 +21,12 @@ public:
       devel:
         (>):
         - "%{libdir}/libostree.so"
+      vm-only:
+        - "%{libdir}/ostree/ostree-prepare-root"
+
+variables:
+  configure: |
+    %{conf-cmd} %{conf-args} --with-static-compiler=gcc
 
 sources:
 - kind: git_tag
