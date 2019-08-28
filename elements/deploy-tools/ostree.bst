@@ -9,6 +9,7 @@ depends:
 - filename: components/gpgme.bst
 - filename: components/glib.bst
 - filename: components/bison.bst
+  type: build
 - filename: components/e2fsprogs.bst
 - filename: components/libsoup.bst
 - filename: components/gobject-introspection.bst
@@ -21,6 +22,12 @@ public:
       devel:
         (>):
         - "%{libdir}/libostree.so"
+      vm-only:
+        - "%{libdir}/ostree/ostree-prepare-root"
+
+variables:
+  configure: |
+    %{conf-cmd} %{conf-args} --with-static-compiler=gcc
 
 sources:
 - kind: git_tag
