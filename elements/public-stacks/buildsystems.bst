@@ -17,3 +17,4 @@ config:
   # Excluded because debug is huge and we don't typically want to
   # debug our compilers
   - debug
+  - devel
