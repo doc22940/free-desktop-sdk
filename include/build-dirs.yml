@@ -1,11 +1,14 @@
 # Definition of directories and paths for the build
-
-builddir: bst_build_dir
-sbindir: "%{bindir}"
-sysconfdir: "/etc"
-localstatedir: "/var"
-lib: "lib/%{gcc_triplet}"
-indep-libdir: "%{prefix}/lib"
-debugdir: "%{indep-libdir}/debug"
-sourcedir: "%{debugdir}/source"
-ca_path: "%{sysconfdir}/ssl/certs/ca-certificates.crt"
+#
+# Depends on `arch.yml` for %{gcc_triplet}. Alternatively you may define this
+# in your own project.conf
+variables:
+  builddir: bst_build_dir
+  sbindir: "%{bindir}"
+  sysconfdir: "/etc"
+  localstatedir: "/var"
+  lib: "lib/%{gcc_triplet}"
+  indep-libdir: "%{prefix}/lib"
+  debugdir: "%{indep-libdir}/debug"
+  sourcedir: "%{debugdir}/source"
+  ca_path: "%{sysconfdir}/ssl/certs/ca-certificates.crt"

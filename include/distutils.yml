@@ -1,3 +1,5 @@
-variables:
-  python: python3
-  fix-pyc-timestamps: "true"
+elements:
+  distutils:
+    variables:
+      python: python3
+      fix-pyc-timestamps: "true"

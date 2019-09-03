@@ -1,6 +1,6 @@
 # Split rules for systemd
-
-vm-only:
+split-rules:
+  vm-only:
   - "%{prefix}/lib/systemd"
   - "%{prefix}/lib/systemd/**"
   - "%{prefix}/lib/sysusers.d"
