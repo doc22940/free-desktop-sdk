@@ -36,7 +36,7 @@ sources:
 - kind: git_tag
   url: gnome:librsvg.git
   track: librsvg-2.44
-  ref: 2.44.14-0-gd1a5e5caf52b37031b70b297a9a9cfa24bd9a359
+  ref: 2.44.15-0-gbc786f6fbbe7b63a24e7eb499efb2f23c47ab5c2
 - kind: cargo
   ref:
   - name: aho-corasick
