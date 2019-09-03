@@ -1,6 +1,7 @@
 # Split rule domains
 
-devel:
+split-rules:
+  devel:
   - "%{includedir}"
   - "%{includedir}/**"
   - "%{libdir}/pkgconfig"
@@ -16,10 +17,10 @@ devel:
   - "%{prefix}/lib/*.a"
   - "%{libdir}/*.a"
 
-debug:
+  debug:
   - "%{debugdir}/**"
 
-static-blocklist:
+  static-blocklist:
   - "%{libdir}/*.a"
   - "%{libdir}/**/*.a"
   - "%{indep-libdir}/**/*.a"
