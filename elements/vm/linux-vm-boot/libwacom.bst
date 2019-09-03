@@ -6,8 +6,8 @@ depends:
   - filename: public-stacks/buildsystem-autotools.bst
     type: build
   - filename: components/glib.bst
+  - filename: components/libgudev.bst
   - filename: components/systemd.bst
-  - filename: vm/linux-vm-boot/libgudev.bst
 
 sources:
 - kind: git_tag

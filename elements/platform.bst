@@ -35,6 +35,7 @@ depends:
 - filename: components/libflac.bst
 - filename: components/libgcrypt.bst
 - filename: components/libgpg-error.bst
+- filename: components/libgudev.bst
 - filename: components/libksba.bst
 - filename: components/libidn2.bst
 - filename: components/libogg.bst
