@@ -32,8 +32,11 @@ variables:
       fi
       if [ -x "$(command -v identify-elf)" ]; then
         target_triplet="$(identify-elf "${file}")"
+      elif [ -f "/usr/share/gnu-config/config.guess" ]; then
+        target_triplet="$(sh /usr/share/gnu-config/config.guess)"
       else
-        target_triplet="%{host-triplet}"
+        echo "identify-elf or /usr/share/gnu-config/config.guess are needed to detect build tools" 1>&2
+        exit 1
       fi
       if [ -z "${first_found_target}" ]; then
         first_found_target="${target_triplet}"
