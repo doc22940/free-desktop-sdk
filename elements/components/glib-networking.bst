@@ -16,8 +16,7 @@ variables:
 
 public:
   bst:
-    split-rules:
-      (@): include/exclude-systemd.yml
+    (@): include/exclude-systemd.yml
 
 sources:
 - kind: git_tag

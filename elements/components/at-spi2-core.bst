@@ -19,7 +19,7 @@ public:
       devel:
         (>):
         - '%{libdir}/libatspi.so'
-      (@): include/exclude-systemd.yml
+    (@): include/exclude-systemd.yml
 
   cpe:
     version: '2.32.1'
