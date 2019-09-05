@@ -34,20 +34,14 @@ public:
         fc-cache -rs
       fi
   cpe:
-    version: '2.13.1'
+    version: '2.13.92'
 
 sources:
 - kind: git_tag
   url: freedesktop:fontconfig/fontconfig
   track: master
-  ref: 2.13.1-0-g844d8709a1f3ecab45015b24b72dd775c13b2421
+  ref: 2.13.91-22-gfcada522913e5e07efa6367eff87ace9f06d24c8
 - kind: local
   path: files/fontconfig-flatpak.conf
 - kind: patch
-  path: patches/fontconfig/01-rework-flatpak-support.patch
-- kind: patch
-  path: patches/fontconfig/02-fix-endianness.patch
-- kind: patch
   path: patches/fontconfig/03-drop-new-symbol.patch
-- kind: patch
-  path: patches/fontconfig/04-fix-doc.patch
