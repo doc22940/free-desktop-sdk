@@ -1,0 +1,130 @@
+diff -ur alsa-lib.old/src/conf/alsa.conf alsa-lib/src/conf/alsa.conf
+--- alsa-lib.old/src/conf/alsa.conf	2019-09-10 12:05:30.537535736 +0200
++++ alsa-lib/src/conf/alsa.conf	2019-09-10 15:47:41.309922650 +0200
+@@ -10,7 +10,21 @@
+ 		files [
+ 			"/etc/alsa/conf.d"
+ 			"/etc/asound.conf"
+-			"~/.asoundrc"
++                        {
++                                @func if_flatpak
++                                then {
++                                        @func concat
++                                        strings [
++                                                {
++                                                        @func getenv
++                                                        vars [ XDG_CONFIG_HOME ]
++                                                        default "~/.config"
++                                                }
++                                                "/asound.conf"
++                                        ]
++                                }
++                                else "~/.asoundrc"
++                        }
+ 		]
+ 		errors false
+ 	}
+diff -ur alsa-lib.old/src/conf.c alsa-lib/src/conf.c
+--- alsa-lib.old/src/conf.c	2019-09-10 11:47:53.075327402 +0200
++++ alsa-lib/src/conf.c	2019-09-10 15:02:01.663345441 +0200
+@@ -571,7 +571,11 @@
+ 	static char *topdir;
+ 
+ 	if (!topdir) {
+-		topdir = getenv("ALSA_CONFIG_DIR");
++		if (access("/.flatpak-info", R_OK) == 0) {
++			topdir = getenv("FLATPAK_ALSA_CONFIG_DIR");
++		} else {
++			topdir = getenv("ALSA_CONFIG_DIR");
++		}
+ 		if (!topdir || *topdir != '/' || strlen(topdir) >= PATH_MAX)
+ 			topdir = ALSA_CONFIG_DIR;
+ 	}
+@@ -3903,7 +3907,12 @@
+ 	update = *_update;
+ 	configs = cfgs;
+ 	if (!configs) {
+-		configs = getenv(ALSA_CONFIG_PATH_VAR);
++		if (access("/.flatpak-info", R_OK) == 0) {
++			configs = getenv("FLATPAK_" ALSA_CONFIG_PATH_VAR);
++		} else {
++			configs = getenv(ALSA_CONFIG_PATH_VAR);
++		}
++
+ 		if (!configs || !*configs) {
+ 			const char *topdir = snd_config_topdir();
+ 			char *s = alloca(strlen(topdir) +
+diff -ur alsa-lib.old/src/confmisc.c alsa-lib/src/confmisc.c
+--- alsa-lib.old/src/confmisc.c	2019-09-10 11:47:53.075327402 +0200
++++ alsa-lib/src/confmisc.c	2019-09-10 12:54:17.854324404 +0200
+@@ -1310,3 +1310,70 @@
+ 	return 0;
+ }
+ #endif
++
++/**
++ * \brief Returns a string depending on whether we are running on flatpak
++ * \param dst The function puts the handle to the result configuration node
++ *            (with type string) at the address specified by \p dst.
++ * \param root Handle to the root source node.
++ * \param src Handle to the source node, with definitions for \c then and
++ *            \c else.
++ * \param private_data Handle to the \c private_data node.
++ * \return Zero if successful, otherwise a negative error code.
++ *
++ * Example:
++\code
++	{
++		@func if_flatpak
++		then "~/.flatpak-asoundrc"
++		else "~/.asoundrc"
++	}
++\endcode
++ */
++int snd_func_if_flatpak(snd_config_t **dst, snd_config_t *root, snd_config_t *src,
++                        snd_config_t *private_data)
++{
++        snd_config_t *then, *else_, *selected;
++	const char *id;
++        char *value = NULL;
++        int err;
++
++        err = snd_config_search(src, "then", &then);
++	if (err < 0) {
++		SNDERR("field then not found");
++		goto __error;
++	}
++        err = snd_config_search(src, "else", &else_);
++	if (err < 0) {
++		SNDERR("field else not found");
++		goto __error;
++	}
++
++        if (access("/.flatpak-info", R_OK) == 0) {
++                selected = then;
++        } else {
++                selected = else_;
++        }
++
++        err = snd_config_evaluate(selected, root, private_data, NULL);
++        if (err < 0) {
++                SNDERR("error evaluating field");
++                goto __error;
++        }
++	err = snd_config_get_ascii(selected, &value);
++	if (err < 0) {
++		SNDERR("error getting field's value");
++		goto __error;
++	}
++
++        err = snd_config_get_id(src, &id);
++	if (err >= 0)
++		err = snd_config_imake_string(dst, id, value);
++
++ __error:
++        free(value);
++        return err;
++}
++#ifndef DOC_HIDDEN
++SND_DLSYM_BUILD_VERSION(snd_func_if_flatpak, SND_CONFIG_DLSYM_VERSION_EVALUATE);
++#endif
