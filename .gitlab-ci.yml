@@ -46,6 +46,9 @@ before_script:
   - mkdir -p ~/.config
   - |
     cat > ~/.config/buildstream.conf << EOF
+    # Set some sensible upper cap for quota
+    cache:
+      quota: 35G
     # Get a lot of output in case of errors
     logging:
       error-lines: 80
