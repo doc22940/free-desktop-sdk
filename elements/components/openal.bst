@@ -2,7 +2,7 @@ kind: cmake
 
 depends:
 - filename: bootstrap-import.bst
-- filename: components/libpulse.bst
+- filename: components/pipewire.bst
 - filename: public-stacks/buildsystem-cmake.bst
   type: build
 

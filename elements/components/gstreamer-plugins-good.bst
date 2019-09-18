@@ -7,7 +7,6 @@ depends:
 - filename: components/orc.bst
 - filename: components/lame.bst
 - filename: components/libpng.bst
-- filename: components/libpulse.bst
 - filename: components/libsoup.bst
 - filename: components/libvpx.bst
 - filename: components/mpg123.bst

@@ -10,7 +10,6 @@ depends:
   type: build
 - filename: components/ibus.bst
   type: build
-- filename: components/libpulse.bst
 - filename: components/libxkbcommon.bst
 - filename: components/mesa-headers.bst
 - filename: components/wayland.bst

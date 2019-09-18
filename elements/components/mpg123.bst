@@ -2,7 +2,7 @@ kind: autotools
 
 depends:
 - filename: bootstrap-import.bst
-- filename: components/libpulse.bst
+- filename: components/pipewire.bst
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
 

@@ -2,11 +2,9 @@ kind: meson
 
 depends:
 - filename: bootstrap-import.bst
-- filename: components/gstreamer-plugins-base.bst
 - filename: components/alsa-lib.bst
 - filename: components/dbus.bst
 - filename: components/sdl2.bst
-- filename: components/ffmpeg.bst
 - filename: components/systemd.bst
   type: build
 - filename: components/systemd-libs.bst

@@ -3,14 +3,12 @@ kind: autotools
 depends:
 - filename: bootstrap-import.bst
 - filename: components/alsa-lib.bst
-- filename: components/libpulse.bst
+- filename: components/pipewire.bst
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
 
 variables:
   conf-local: |
-    --disable-jack \
-    --enable-pulseaudio \
     --disable-samplerate \
     --disable-libav \
     --with-speex=no
