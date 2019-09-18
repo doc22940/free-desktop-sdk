@@ -12,5 +12,5 @@ public:
 
 sources:
 - kind: tar
-  url: sourceforge_download:giflib/giflib-5.1.4.tar.bz2
-  ref: df27ec3ff24671f80b29e6ab1c4971059c14ac3db95406884fc26574631ba8d5
+  url: sourceforge_download:giflib-5.2.1.tar.bz2
+  ref: 70827810a60ec5a1347dad12380c416fa456ebac3ec9d0bd308ca20c031fef2d
