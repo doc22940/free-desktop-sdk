@@ -28,7 +28,8 @@ config:
     mkdir -p "%{install-root}%{datadir}/appdata"
     install org.freedesktop.Platform.appdata.xml "%{install-root}%{datadir}/appdata"
     install org.freedesktop.Sdk.appdata.xml "%{install-root}%{datadir}/appdata"
-    appstream-compose --basename=org.freedesktop.Platform --prefix=%{install-root}%{prefix} --origin=flatpak org.freedesktop.Platform
+    install org.freedesktop.Platform.openh264.appdata.xml "%{install-root}%{datadir}/appdata"
+    appstream-compose --basename=org.freedesktop.Platform --prefix=%{install-root}%{prefix} --origin=flatpak org.freedesktop.Platform org.freedesktop.Platform.openh264
     appstream-compose --basename=org.freedesktop.Sdk --prefix=%{install-root}%{prefix} --origin=flatpak org.freedesktop.Sdk
 
 sources:

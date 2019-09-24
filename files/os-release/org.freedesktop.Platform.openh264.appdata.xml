@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="runtime">
+  <id>org.freedesktop.Platform.openh264</id>
+  <extends>org.freedesktop.Platform</extends>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>LicenseRef-proprietary=https://www.openh264.org/BINARY_LICENSE.txt</project_license>
+  <name>openh264</name>
+  <summary>OpenH264 Video Codec provided by Cisco Systems, Inc.</summary>
+  <description>
+    <p>Please see https://www.openh264.org/BINARY_LICENSE.txt for full terms of binary usage</p>
+  </description>
+</component>
+
