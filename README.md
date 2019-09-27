@@ -1,4 +1,4 @@
-# Freedesktop SDK
+# Freedesktop SDK test
 
 The [Freedesktop SDK](https://freedesktop-sdk.io/ ) project provides Platform
 and SDK runtimes for
