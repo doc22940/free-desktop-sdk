@@ -8,17 +8,17 @@ This will produce a manifest.md in the same directory as the manifest.json
 import argparse
 import json
 
-parser = argparse.ArgumentParser(description='Process input file')
+PARSER = argparse.ArgumentParser(description='Process input file')
 
-parser.add_argument('json', type=argparse.FileType('r'),
-                   help='A json file to convert to Markdown')
+PARSER.add_argument('json', type=argparse.FileType('r'),
+                    help='A json file to convert to Markdown')
 
-args = parser.parse_args()
+ARGS = PARSER.parse_args()
 
-json_data = json.loads(args.json.read())
+JSON_DATA = json.loads(ARGS.json.read())
 
-with open(args.json.name.replace('json', 'md'), 'w+') as md_file:
-    for obj in json_data['modules']:
+with open(ARGS.json.name.replace('json', 'md'), 'w+') as md_file:
+    for obj in JSON_DATA['modules']:
         if 'name' in obj:
             md_file.write('## {} \n'.format(obj['name']))
         if 'sources' in obj:

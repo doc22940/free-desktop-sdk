@@ -1,9 +1,20 @@
-from ruamel import yaml
-import os
-from buildstream import Element, ElementError, Scope
 import collections
+import os
+from ruamel import yaml
+from buildstream import Element, ElementError, Scope
 
 class SnapImageElement(Element):
+
+    def __init__(self):
+        super().__init__()
+        #FIXME setup correctly
+        #self.node_validate = None
+
+        self.directory = None
+        self.include = None
+        self.exclude = None
+        self.include_orphans = None
+        self.metadata = None
 
     def configure(self, node):
         self.node_validate(node, [
@@ -72,8 +83,8 @@ class SnapImageElement(Element):
 
             os.makedirs(metadir, exist_ok=True)
 
-            with open(metadata, 'w') as f:
-                yaml.dump(self.metadata, f)
+            with open(metadata, 'w') as file:
+                yaml.dump(self.metadata, file)
 
 
         return os.path.join(os.sep, reldirectory)

@@ -1,29 +1,29 @@
 #!/usr/bin/env python3
 
 import sys
-from ruamel import yaml
 import contextlib
 import tempfile
 import subprocess
+from ruamel import yaml
 
-path, old_file, old_hex, old_mode, new_file, new_hex, new_mode = \
+PATH, OLD_FILE, OLD_HEX, OLD_MODE, NEW_FILE, NEW_HEX, NEW_MODE = \
     tuple(sys.argv[1:])
 
 def diff(path, old, new):
     subprocess.run(["diff", '-u',
                     '--label=a/{}'.format(path),
                     '--label=b/{}'.format(path),
-                    old, new])
+                    old, new], check=False)
 
 with contextlib.ExitStack() as stack:
     try:
-        old_data = yaml.load(stack.enter_context(open(old_file, 'r')), Loader=yaml.Loader)
-        new_data = yaml.load(stack.enter_context(open(new_file, 'r')), Loader=yaml.Loader)
-    except:
-        diff(path, old_file, new_file)
+        OLD_DATA = yaml.load(stack.enter_context(open(OLD_FILE, 'r')), Loader=yaml.Loader)
+        NEW_DATA = yaml.load(stack.enter_context(open(NEW_FILE, 'r')), Loader=yaml.Loader)
+    except AttributeError:
+        diff(PATH, OLD_FILE, NEW_FILE)
     else:
-        old_formatted = stack.enter_context(tempfile.NamedTemporaryFile(mode='w'))
-        new_formatted = stack.enter_context(tempfile.NamedTemporaryFile(mode='w'))
-        yaml.dump(old_data, old_formatted, default_flow_style=False)
-        yaml.dump(new_data, new_formatted, default_flow_style=False)
-        diff(path, old_formatted.name, new_formatted.name)
+        OLD_FORMATTED = stack.enter_context(tempfile.NamedTemporaryFile(mode='w'))
+        NEW_FORMATTED = stack.enter_context(tempfile.NamedTemporaryFile(mode='w'))
+        yaml.dump(OLD_DATA, OLD_FORMATTED, default_flow_style=False)
+        yaml.dump(NEW_DATA, NEW_FORMATTED, default_flow_style=False)
+        diff(PATH, OLD_FORMATTED.name, NEW_FORMATTED.name)

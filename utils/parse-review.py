@@ -9,40 +9,39 @@ import json
 import sys
 import subprocess
 
-has_error = False
+HAS_ERROR = False
 
-p = subprocess.Popen(["snap-review", "--json", sys.argv[1]],
-                     universal_newlines=True,
-                     stdout=subprocess.PIPE)
-output, _ = p.communicate()
+# FIXME or PROGRAM_OPEN??
+PROCESS_OPEN = subprocess.Popen(["snap-review", "--json", sys.argv[1]],
+                                universal_newlines=True,
+                                stdout=subprocess.PIPE)
+OUTPUT, _ = PROCESS_OPEN.communicate()
 
-if p.returncode == 1:
-    sys.stderr.write('review-tools.snap-review crashed\n'.format(p.returncode))
+if PROCESS_OPEN.returncode == 1:
+    sys.stderr.write('review-tools.snap-review crashed\n'.format(PROCESS_OPEN.returncode))
     sys.exit(1)
-elif p.returncode == 0:
-    sys.stderr.write('No error found\n'.format(p.returncode))
-    pass
-elif p.returncode in [2, 3]:
-    sys.stderr.write('Some issues found. Processing...\n'.format(p.returncode))
-    pass
+elif PROCESS_OPEN.returncode == 0:
+    sys.stderr.write('No error found\n'.format(PROCESS_OPEN.returncode))
+elif PROCESS_OPEN.returncode in [2, 3]:
+    sys.stderr.write('Some issues found. Processing...\n'.format(PROCESS_OPEN.returncode))
 else:
-    sys.stderr.write('Unknown return code {}\n'.format(p.returncode))
+    sys.stderr.write('Unknown return code {}\n'.format(PROCESS_OPEN.returncode))
     sys.exit(1)
 
-data = json.loads(output)
-for section, section_value in data.items():
+DATA = json.loads(OUTPUT)
+for section, section_value in DATA.items():
     for error, error_value in section_value["error"].items():
         if error_value["manual_review"]:
             sys.stderr.write('{}:{}: (MANUAL REVIEW) {}\n'.format(section, error, error_value["text"]))
         else:
             sys.stderr.write('{}:{}: (ERROR) {}\n'.format(section, error, error_value["text"]))
-            has_error = True
+            HAS_ERROR = True
     for warning, warning_value in section_value["warn"].items():
         sys.stderr.write('{}:{}: (WARNING) {}\n'.format(section, warning, warning_value["text"]))
     for info, info_value in section_value["info"].items():
         sys.stderr.write('{}:{}: (INFO) {}\n'.format(section, info, info_value["text"]))
 
-if has_error:
+if HAS_ERROR:
     sys.exit(1)
 else:
     sys.exit(0)

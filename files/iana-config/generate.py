@@ -8,21 +8,21 @@ def add_delim(value):
     return value+delims
 
 with open('service-names-port-numbers.csv', 'r') as f:
-    reader = csv.reader(f)
-    next(reader)
-    ports = {}
-    for row in reader:
+    READER = csv.reader(f)
+    next(READER)
+    PORTS = {}
+    for row in READER:
         name, port, protocol, description = tuple(row[:4])
         if not name or not port or not protocol:
             continue
         prot = '{}/{}'.format(port, protocol)
-        if prot not in ports:
-            ports[prot] = (name, [], description)
+        if prot not in PORTS:
+            PORTS[prot] = (name, [], description)
         else:
-            ports[prot][1].append(name)
+            PORTS[prot][1].append(name)
 
 with open('services', 'w') as out:
-    for prot, values in ports.items():
+    for prot, values in PORTS.items():
         name, aliases, description = values
 
         description = description.splitlines()
@@ -40,10 +40,10 @@ with open('services', 'w') as out:
 
 with open('protocols', 'w') as out:
     with open('protocol-numbers-1.csv', 'r') as f:
-        reader = csv.reader(f)
-        next(reader)
-        ports = {}
-        for row in reader:
+        READER = csv.reader(f)
+        next(READER)
+        PORTS = {}
+        for row in READER:
             number, keyword, description = tuple(row[:3])
             if not keyword:
                 name = '#'
