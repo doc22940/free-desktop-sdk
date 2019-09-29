@@ -261,8 +261,7 @@ app_x86_64:
   image: $DOCKER_AMD64
   <<: *flatpak_definition
   tags:
-    - x86_64
-    - cache_x86_64
+    - podman
   variables:
     ARCH: x86_64
   dependencies: []
