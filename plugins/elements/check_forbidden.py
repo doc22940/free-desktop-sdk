@@ -4,8 +4,8 @@ from buildstream import Element, ElementError, Scope
 class CheckForbiddenElement(Element):
 
     def __init__(self, node):
-        # FIXME look at
-        super.__init(set(self.node_get_member(node, list, 'forbidden')))
+        # FIXME do __init__ correctly
+        super.__init__(self.node_get_member(node, list, 'forbidden'))
 
         self.forbidden = set(self.node_get_member(node, list, 'forbidden'))
 
@@ -26,7 +26,6 @@ class CheckForbiddenElement(Element):
         pass
 
     def _find_bad_dependencies(self, elt, traversed):
-        # FIXME optimise
         if elt in traversed:
             return False
         traversed.add(elt)

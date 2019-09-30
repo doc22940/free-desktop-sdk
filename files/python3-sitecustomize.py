@@ -3,7 +3,7 @@ import site
 import os
 
 try:
-    # FIXME move brackets
+    # FIXME move brackets to line below at the end
     GET_USER_SITE_PACKAGES = site.getusersitepackages
 except AttributeError:
     # Probably virtualenv. Don't do anything

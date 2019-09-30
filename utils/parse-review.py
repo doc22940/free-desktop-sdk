@@ -18,14 +18,14 @@ PROCESS_OPEN = subprocess.Popen(["snap-review", "--json", sys.argv[1]],
 OUTPUT, _ = PROCESS_OPEN.communicate()
 
 if PROCESS_OPEN.returncode == 1:
-    sys.stderr.write('review-tools.snap-review crashed\n'.format(PROCESS_OPEN.returncode))
+    sys.stderr.write('review-tools.snap-review crashed\n{}'.format(PROCESS_OPEN.returncode))
     sys.exit(1)
 elif PROCESS_OPEN.returncode == 0:
-    sys.stderr.write('No error found\n'.format(PROCESS_OPEN.returncode))
+    sys.stderr.write('No error found\n{}'.format(PROCESS_OPEN.returncode))
 elif PROCESS_OPEN.returncode in [2, 3]:
-    sys.stderr.write('Some issues found. Processing...\n'.format(PROCESS_OPEN.returncode))
+    sys.stderr.write('Some issues found. Processing...\n{}'.format(PROCESS_OPEN.returncode))
 else:
-    sys.stderr.write('Unknown return code {}\n'.format(PROCESS_OPEN.returncode))
+    sys.stderr.write('Unknown return code n{}'.format(PROCESS_OPEN.returncode))
     sys.exit(1)
 
 DATA = json.loads(OUTPUT)

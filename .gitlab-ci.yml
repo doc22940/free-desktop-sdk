@@ -7,7 +7,7 @@ variables:
   BST_CACHE_SERVER_ADDRESS: 'freedesktop-sdk-cache.codethink.co.uk'
   RUNTIME_VERSION: '20.08'
   STABLE_ABI: 'false'
-  IMAGE_ID: '1f2c3158693b2dd28a77983c203f802fe5121de8'
+  IMAGE_ID: '886d6cde1bec57b9c32df7b54d64f2e268c67b16'
 
   # Docker Images
   DOCKER_REGISTRY: "registry.gitlab.com/freedesktop-sdk/infrastructure/freedesktop-sdk-docker-images"
@@ -21,6 +21,7 @@ variables:
   GIT_SUBMODULE_STRATEGY: "recursive"
 
 stages:
+  - linter
   - bootstrap
   - update
   - flatpak
@@ -33,12 +34,6 @@ stages:
   - publish-docker
   - publish-docker-finish
   - reproducible
-  - linter
-
-pylint:
-  stage: linter
-  script:
-    - find . -iname "*.py" | xargs pylint
 
 before_script:
   - export PATH=~/.local/bin:${PATH}
@@ -164,7 +159,12 @@ before_script:
     paths:
       - "${XDG_CACHE_HOME}/buildstream/sources/"
 
-
+pylint:
+  stage: linter
+  tags:
+    - x86_64
+  script:
+    - pylint *.py
 
 check_update_elements:
   image: $DOCKER_AARCH64
@@ -995,4 +995,3 @@ publish_docker_finish:
   - publish_docker_aarch64
   - publish_docker_x86_64
   - publish_docker_i686
-
