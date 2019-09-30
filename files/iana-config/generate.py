@@ -1,6 +1,13 @@
 import csv
 
 def add_delim(value):
+    """
+    :param value:   
+    :type value:    str
+
+    :returns:   
+    :rtype:     str
+    """
     numdelims = int((24 - len(value) - 1) / 8)
     if numdelims < 1:
         numdelims = 1

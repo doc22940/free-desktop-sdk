@@ -4,7 +4,7 @@ from buildstream import Element, Scope
 from buildstream.utils import glob
 
 class ExportElement(Element):
-
+    
     def configure(self, node):
         pass
 
@@ -52,4 +52,8 @@ class ExportElement(Element):
         return os.sep
 
 def setup():
+    """
+    
+    :returns:   
+    :rtpye:     ExportElement"""
     return ExportElement

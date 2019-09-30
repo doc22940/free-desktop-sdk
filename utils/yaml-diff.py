@@ -6,8 +6,11 @@ import tempfile
 import subprocess
 from ruamel import yaml
 
-PATH, OLD_FILE, OLD_HEX, OLD_MODE, NEW_FILE, NEW_HEX, NEW_MODE = \
-    tuple(sys.argv[1:])
+try:
+    PATH, OLD_FILE, OLD_HEX, OLD_MODE, NEW_FILE, NEW_HEX, NEW_MODE = \
+        sys.argv[1:]
+except ValueError:
+    print("Not enough args, unbalanced-tuple-unpacking")
 
 def diff(path, old, new):
     subprocess.run(["diff", '-u',

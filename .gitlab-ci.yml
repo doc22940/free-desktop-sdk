@@ -7,7 +7,7 @@ variables:
   BST_CACHE_SERVER_ADDRESS: 'freedesktop-sdk-cache.codethink.co.uk'
   RUNTIME_VERSION: '20.08'
   STABLE_ABI: 'false'
-  IMAGE_ID: '886d6cde1bec57b9c32df7b54d64f2e268c67b16'
+  IMAGE_ID: '15a3dc7ceb306e605542496848a30f6f36e56083'
 
   # Docker Images
   DOCKER_REGISTRY: "registry.gitlab.com/freedesktop-sdk/infrastructure/freedesktop-sdk-docker-images"
@@ -160,11 +160,14 @@ before_script:
       - "${XDG_CACHE_HOME}/buildstream/sources/"
 
 pylint:
+  image: $DOCKER_AMD64
   stage: linter
   tags:
     - x86_64
+  variables:
+    ARCH: x86_64
   script:
-    - pylint *.py
+    - find . -iname "*.py" | xargs pylint
 
 check_update_elements:
   image: $DOCKER_AARCH64

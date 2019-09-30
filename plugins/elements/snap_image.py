@@ -40,6 +40,9 @@ class SnapImageElement(Element):
         return ret
 
     def preflight(self):
+        """ FIXME do
+        :raises ElementError:   If the type dependencies are not supported by flatpak_image elements, or the flatpak_image elements do not have sources
+        """
         runtime_deps = list(self.dependencies(Scope.RUN, recurse=False))
         if runtime_deps:
             raise ElementError("{}: Only build type dependencies supported by flatpak_image elements"
@@ -50,6 +53,11 @@ class SnapImageElement(Element):
             raise ElementError("{}: flatpak_image elements may not have sources".format(self))
 
     def get_unique_key(self):
+        """
+        
+        :returns:   a unique dictionary FIXME finish
+        :rtype:     dict
+        """
         key = {}
         key['directory'] = self.directory
         key['include'] = sorted(self.include)
@@ -66,6 +74,13 @@ class SnapImageElement(Element):
         pass
 
     def assemble(self, sandbox):
+        """
+        :param sandbox: 
+        :type sandbox:   
+
+        :returns:   
+        :rtype:     
+        """
         basedir = sandbox.get_directory()
 
         reldirectory = os.path.relpath(self.directory, os.sep)

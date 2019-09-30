@@ -6,9 +6,23 @@ import shutil
 import subprocess
 
 def get_name(elem):
+    """
+    :param elem:    the Element you want to get the name for TODO check
+    :type elem:     Element TODO check
+
+    :returns:   the name of the Element TODO check
+    :rtype:     str TODO check
+    """
     return elem.attrib['{http://openoffice.org/2001/registry}name']
 
 def get_type(elem):
+    """
+    :param elem:    the Element you want to get the type for TODO check
+    :type elem:     Element TODO check
+
+    :returns:   the type of the Element TODO check
+    :rtype:     int TODO check
+    """
     return elem.attrib['{http://openoffice.org/2001/registry}type']
 
 SPELL_DEST = "hunspell"
@@ -16,6 +30,16 @@ HYPH_DEST = "hyphen"
 THES_DEST = "mythes"
 
 def parse_props(elem, origin):
+    """
+    :param elem:    the Element you want to get the children from TODO check
+    :type elem:     Element TODO check
+
+    :param origin:  
+    :type origin:   
+
+    :returns:   a dictionary of the childrens origin TODO check!!!!
+    :rtype:     dict
+    """
     props = {}
     for prop in elem.getchildren():
         prop_name = get_name(prop)
@@ -37,6 +61,10 @@ def parse_props(elem, origin):
     return props
 
 def handle_file(filename):
+    """
+    :param filename:    the file you want te handle TODO check
+    :type filename:     str
+    """
     tree = ET.parse(filename)
     lang = os.path.basename(os.path.dirname(filename)).split("_")[0]
     root = tree.getroot()

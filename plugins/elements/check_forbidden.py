@@ -14,7 +14,7 @@ class CheckForbiddenElement(Element):
             'forbidden'
         ])
 
-        self.forbidden = set(self.node_get_member(node, list, 'forbidden'))
+        self.forbidden = set(self.node_get_member(node, list, 'forbidden'))#lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll
 
     def preflight(self):
         pass
@@ -42,6 +42,15 @@ class CheckForbiddenElement(Element):
         pass
 
     def assemble(self, sandbox):
+        """
+        :param sandbox: 
+        :type sandbox:  
+        
+        :raises ElementError:   When elements were forbidden
+
+        :returns:   
+        :rtype:     str
+        """
         traversed = set()
         for dep in self.dependencies(Scope.BUILD, recurse=False):
             if self._find_bad_dependencies(dep, traversed):
