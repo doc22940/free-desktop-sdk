@@ -143,6 +143,12 @@ pip3 install --user -e ./bst-external
 Again, we use the latest stable version of bst-external, which is usually the
 latest release.
 
+We rely on the `ostree` plugin from bst-external, which has a dependency on PyGobject. At the moment installing bst-external does not also install PyGobject. You must also run
+```
+pip3 install --user PyGobject
+```
+in order to build the project.
+
 After making your changes you can use the Makefile to test. Ensure you are in the root `freedesktop-sdk/` directory, where the Makefile is located. You can use the Makefile to:
 
 The Makefile provides several targets that can be used to test or distribute
