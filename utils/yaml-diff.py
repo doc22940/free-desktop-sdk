@@ -9,17 +9,19 @@ import subprocess
 path, old_file, old_hex, old_mode, new_file, new_hex, new_mode = \
     tuple(sys.argv[1:])
 
+
 def diff(path, old, new):
     subprocess.run(["diff", '-u',
                     '--label=a/{}'.format(path),
                     '--label=b/{}'.format(path),
                     old, new])
 
+
 with contextlib.ExitStack() as stack:
     try:
         old_data = yaml.load(stack.enter_context(open(old_file, 'r')), Loader=yaml.Loader)
         new_data = yaml.load(stack.enter_context(open(new_file, 'r')), Loader=yaml.Loader)
-    except:
+    except ValueError:
         diff(path, old_file, new_file)
     else:
         old_formatted = stack.enter_context(tempfile.NamedTemporaryFile(mode='w'))

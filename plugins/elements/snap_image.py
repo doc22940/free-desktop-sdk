@@ -3,6 +3,7 @@ import os
 from buildstream import Element, ElementError, Scope
 import collections
 
+
 class SnapImageElement(Element):
 
     def configure(self, node):
@@ -75,8 +76,8 @@ class SnapImageElement(Element):
             with open(metadata, 'w') as f:
                 yaml.dump(self.metadata, f)
 
-
         return os.path.join(os.sep, reldirectory)
+
 
 def setup():
     return SnapImageElement

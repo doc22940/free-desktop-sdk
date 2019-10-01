@@ -1,11 +1,13 @@
 import csv
 
+
 def add_delim(value):
     numdelims = int((24 - len(value) - 1) / 8)
     if numdelims < 1:
         numdelims = 1
     delims = '\t' * numdelims
-    return value+delims
+    return value + delims
+
 
 with open('service-names-port-numbers.csv', 'r') as f:
     reader = csv.reader(f)

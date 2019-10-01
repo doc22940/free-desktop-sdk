@@ -7,7 +7,7 @@ import os
 registry = sys.argv[1]
 tag = sys.argv[2]
 
-data={
+data = {
     'service': 'registry.docker.io',
     'scope': f'repository:{registry}:pull',
     'grant_type': 'password',
@@ -15,7 +15,7 @@ data={
     'username': os.environ['DOCKER_HUB_USER'],
     'password': os.environ['DOCKER_HUB_PASSWORD']
 }
-encoded_data=urllib.parse.urlencode(data).encode('ascii')
+encoded_data = urllib.parse.urlencode(data).encode('ascii')
 req = urllib.request.Request('https://auth.docker.io/token?{}'.format(urllib.parse.urlencode(data)))
 with urllib.request.urlopen(req) as resp:
     jresp = json.load(resp)

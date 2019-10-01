@@ -1,6 +1,7 @@
 import os
 import json
-from buildstream import Element, ElementError, Scope
+from buildstream import Element
+
 
 class ReImportElement(Element):
 
@@ -25,6 +26,7 @@ class ReImportElement(Element):
 
         self.set_public_data('bst', metadata)
         return os.path.join(os.sep, 'files')
+
 
 def setup():
     return ReImportElement

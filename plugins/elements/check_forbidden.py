@@ -1,8 +1,8 @@
 import os
 from buildstream import Element, ElementError, Scope
 
-class CheckForbiddenElement(Element):
 
+class CheckForbiddenElement(Element):
     def configure(self, node):
         self.node_validate(node, [
             'forbidden'
@@ -41,6 +41,7 @@ class CheckForbiddenElement(Element):
             if self._find_bad_dependencies(dep, traversed):
                 raise ElementError("Some elements were forbidden")
         return os.sep
+
 
 def setup():
     return CheckForbiddenElement
