@@ -7,12 +7,8 @@ depends:
 - filename: components/python3-pip.bst
   type: build
 
-public:
-  cpe:
-    version-match: '(\d+)_(\d*)_(\d*)'
-
 sources:
 - kind: git_tag
-  url: github:sqlalchemy/mako.git
+  url: github:pypa/wheel.git
   track: master
-  ref: rel_1_1_0-0-gb6f3ae9ee9bfe3bebdb330b1c5adf9cfcd1be128
+  ref: 0.33.6-0-gb227ddd5beaba49294017d061d501f6d433393b0
