@@ -6,13 +6,11 @@ depends:
 - filename: components/python3-setuptools.bst
 - filename: components/python3-pip.bst
   type: build
-
-public:
-  cpe:
-    version-match: '(\d+)_(\d*)_(\d*)'
+- filename: components/python3-wheel.bst
+  type: build
 
 sources:
 - kind: git_tag
-  url: github:sqlalchemy/mako.git
+  url: github:Python-Markdown/markdown.git
   track: master
-  ref: rel_1_1_0-0-gb6f3ae9ee9bfe3bebdb330b1c5adf9cfcd1be128
+  ref: 3.1.1-0-g58b4d64db00ef50c090a9da4bc303c5e840c5c9f
