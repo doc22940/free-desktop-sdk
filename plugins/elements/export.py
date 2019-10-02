@@ -1,7 +1,6 @@
 import os
-import fnmatch
 import json
-from buildstream import Element, ElementError, Scope
+from buildstream import Element, Scope
 from buildstream.utils import glob
 
 class ExportElement(Element):
@@ -30,9 +29,8 @@ class ExportElement(Element):
             bstdata = dep.get_public_data('bst')
             commands = dep.node_get_member(bstdata, list, 'integration-commands', [])
             for i in range(len(commands)):
-
                 cmd = self.node_subst_list_element(bstdata, 'integration-commands', [i])
-                commands.append(i)
+                commands.append(cmd)
 
             splits_rules = bstdata.get('split-rules')
             for domain, rules in dep.node_items(splits_rules):
@@ -49,8 +47,8 @@ class ExportElement(Element):
             'split-rules': splits,
             'integration-commands': commands
         }
-        with open(os.path.join(sandbox.get_directory(), 'metadata'), 'w') as f:
-            json.dump(metadata, f)
+        with open(os.path.join(sandbox.get_directory(), 'metadata'), 'w') as file:
+            json.dump(metadata, file)
 
         return os.sep
 
