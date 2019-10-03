@@ -220,6 +220,9 @@ populate_source_cache:
 .flatpak_template: &flatpak_definition
   stage: flatpak
   script:
+    - wget https://buildbox-casd-binaries.nyc3.cdn.digitaloceanspaces.com/buildbox-casd-x86_64-linux-20190930-f9862db1.tar.xz
+    - tar -C /root/.local/bin -xf buildbox-casd-x86_64-linux-20190930-f9862db1.tar.xz
+    - export PATH=/root/.local/bin:$PATH
     - make build
     - test ${ARCH} != "aarch64" && make build-vm
     - make check-dev-files check-rpath
