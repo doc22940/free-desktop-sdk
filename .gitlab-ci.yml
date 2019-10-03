@@ -166,6 +166,9 @@ check_update_elements:
   tags:
     - check_update
   script:
+    - wget https://buildbox-casd-binaries.nyc3.cdn.digitaloceanspaces.com/buildbox-casd-x86_64-linux-20190930-f9862db1.tar.xz
+    - tar -C /root/.local/bin -xf buildbox-casd-x86_64-linux-20190930-f9862db1.tar.xz
+    - export PATH=/root/.local/bin:$PATH
     - git checkout -- snap-version.yml
     - ${BST} track --deps all flatpak-release.bst
     - git -c diff.external=utils/yaml-diff.py diff
@@ -304,6 +307,9 @@ app_powerpc64le:
 .bootstrap_template: &bootstrap_definition
   stage: bootstrap
   script:
+    - wget https://buildbox-casd-binaries.nyc3.cdn.digitaloceanspaces.com/buildbox-casd-x86_64-linux-20190930-f9862db1.tar.xz
+    - tar -C /root/.local/bin -xf buildbox-casd-x86_64-linux-20190930-f9862db1.tar.xz
+    - export PATH=/root/.local/bin:$PATH
     - make bootstrap
   artifacts:
     when: always
