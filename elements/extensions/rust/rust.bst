@@ -20,17 +20,20 @@ variables:
   lib: lib
   debugdir: /usr/lib/debug
 
-  debuginfo-only-std: 'false'
+  debuginfo-level: 2
+  debuginfo-level-std: 0
   rust-target: '%{host-triplet}'
   (?):
   - target_arch == "i686":
-        # i686 also exhausts memory on stage0
-      debuginfo-only-std: 'true'
+      # i686 also exhausts memory on stage0
+      debuginfo-level: 0
+      debuginfo-level-std: 2
   - target_arch == "arm":
       rust-target: armv7-unknown-linux-gnueabihf
-        # armv7 exhausts memory on stage0 librustc w/ debuginfo
-        # github:rust-lang/rust/issues/45854
-      debuginfo-only-std: 'true'
+      # armv7 exhausts memory on stage0 librustc w/ debuginfo
+      # github:rust-lang/rust/issues/45854
+      debuginfo-level: 0
+      debuginfo-level-std: 2
 
 environment-nocache:
 - MAXJOBS
@@ -71,9 +74,9 @@ config:
     [rust]
     optimize = true
     channel = "stable"
-    debuginfo = true
-    debuginfo-only-std = %{debuginfo-only-std}
-    debuginfo-tools = true
+    debuginfo-level = %{debuginfo-level}
+    debuginfo-level-std = %{debuginfo-level-std}
+    debuginfo-level-tools = 2
     backtrace = true
     rpath = false
     default-linker = "/usr/bin/gcc"
@@ -122,8 +125,8 @@ public:
 
 sources:
 - kind: tar
-  url: https://static.rust-lang.org/dist/rustc-1.34.2-src.tar.gz
-  ref: c69a4a85a1c464368597df8878cb9e1121aae93e215616d45ad7d23af3052f56
+  url: https://static.rust-lang.org/dist/rustc-1.38.0-src.tar.gz
+  ref: 644263ca7c7106f8ee8fcde6bb16910d246b30668a74be20b8c7e0e9f4a52d80
 - kind: patch
   path: patches/rust/rust-codegen-libdir.patch
 - kind: patch
