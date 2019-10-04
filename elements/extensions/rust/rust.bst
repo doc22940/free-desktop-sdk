@@ -17,6 +17,7 @@ variables:
   prefix: /usr/lib/sdk/rust
   lib: lib
   debugdir: /usr/lib/debug
+  optimize-debug: "false"
 
   debuginfo-level: 2
   debuginfo-level-std: 0
@@ -123,9 +124,7 @@ public:
 
 sources:
 - kind: tar
-  url: https://static.rust-lang.org/dist/rustc-1.37.0-src.tar.xz
-  ref: 10abffac50a729cf74cef6dd03193a2f4647541bd19ee9281be9e5b12ca8cdfd
-- kind: patch
-  path: patches/rust/rust-codegen-libdir.patch
+  url: https://static.rust-lang.org/dist/rustc-1.39.0-src.tar.xz
+  ref: 4b0dbb356070687a606034f71dc032b783bbf8b5d3f9fff39f2c1fbc4f171c29
 - kind: patch
   path: patches/rust/rust-cannonicalize-install.patch
