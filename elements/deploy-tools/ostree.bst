@@ -14,6 +14,7 @@ depends:
 - filename: components/gobject-introspection.bst
   type: build
 - filename: deploy-tools/fuse.bst
+- filename: components/systemd-libs.bst
 
 public:
   bst:
@@ -21,6 +22,24 @@ public:
       devel:
         (>):
         - "%{libdir}/libostree.so"
+      vm-only:
+        - "%{libdir}/ostree/ostree-prepare-root"
+        - "%{libdir}/systemd/**"
+        - "%{libdir}/tmpfiles.d/**"
+
+variables:
+  configure: |
+    %{conf-cmd} %{conf-args} --with-static-compiler=gcc
+
+config:
+  install-commands:
+    (>):
+    - mkdir -p "%{install-root}%{libdir}"/systemd/system/
+    - cp src/boot/*service "%{install-root}%{libdir}"/systemd/system/
+    - cp src/boot/*path "%{install-root}%{libdir}"/systemd/system/
+
+    - mkdir -p "%{install-root}%{libdir}"/tmpfiles.d
+    - cp src/boot/ostree-tmpfiles.conf "%{install-root}%{libdir}"/tmpfiles.d/
 
 sources:
 - kind: git_tag
