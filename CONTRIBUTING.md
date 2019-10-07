@@ -166,9 +166,11 @@ freedesktop-sdk. The table below outlines them and their uses.
 | Check for components using rpath                  | `make check-rpath`       |
 | Test some basic apps                              | `make test-apps`         |
 | Test the codec extensions behave as intended      | `make test-codecs`       |
-| Track the mesa-aco extension                      | `make track-mesa-aco`    |
+| Track the mesa-aco extension                      | `make track-mesa-git`    |
 
 **NOTE:** You must run `make export` *before* running `make test-apps`
+
+**NOTE:** You can call `make help` to also view this list when developing.
 
 There are additionally several variables a user can define to customise the
 build, below is a selection of the more useful ones, as most are just building
