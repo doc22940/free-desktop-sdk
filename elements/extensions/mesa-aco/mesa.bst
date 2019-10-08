@@ -147,10 +147,9 @@ public:
         - '%{libdir}/d3d/d3dadapter9.so'
 
 sources:
-- kind: git_tag
+- kind: git
   url: github:daniel-schuermann/mesa.git
-  track: master
-  track-tags: false
-  ref: 17.3-branchpoint-18611-gb738bf069172ba08a087735061570ade4415041a
+  track: mesa-17.3.3
+  ref: 6c3bad5214b230ccfc99a459ee46f2130b19eede
 - kind: patch
   path: patches/mesa/mesa_libdrm_deps.patch
