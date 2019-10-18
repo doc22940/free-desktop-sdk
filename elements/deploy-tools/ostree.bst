@@ -14,6 +14,15 @@ depends:
 - filename: components/gobject-introspection.bst
   type: build
 - filename: deploy-tools/fuse.bst
+- filename: components/systemd.bst
+- filename: components/libarchive.bst
+
+variables:
+  conf-local: >-
+    --with-dracut
+    --with-libsystemd
+    --with-systemd
+    --with-libarchive
 
 public:
   bst:
@@ -34,3 +43,5 @@ sources:
     bsdiff:
       checkout: true
       url: github:mendsley/bsdiff
+- kind: patch
+  path: patches/ostree/no-boot-symlink.patch
