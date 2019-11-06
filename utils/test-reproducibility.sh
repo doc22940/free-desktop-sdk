@@ -93,7 +93,7 @@ ${bst} show --deps all "${target}" \
 
     # TODO: use proper way of disabling artifact caches when implemented
     # instead of wrapping the command with unshare.
-    unshare --net ${bst} build "${name}"
+    unshare --net "${bst}" build "${name}"
 
     ${bst} checkout --no-integrate "${name}" "${tmp}/b"
 

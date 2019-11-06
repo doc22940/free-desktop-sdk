@@ -17,7 +17,7 @@ while [ $# -gt 0 ]; do
 	    gpg_opts+=("$1")
 	    ;;
 	--gpg-*)
-	    gpg_opts+=("$1", "$2")
+	    gpg_opts+=("$1" "$2")
 	    shift
 	    ;;
 	--collection-id=*)
@@ -70,7 +70,7 @@ export OSTREE_REPO
 element="${main_opts[1]}"
 ref="${main_opts[2]}"
 
-checkout="$(mktemp --suffix="-update-repo" -d -p "$(dirname ${OSTREE_REPO})")"
+checkout="$(mktemp --suffix="-update-repo" -d -p "$(dirname "${OSTREE_REPO}")")"
 
 on_exit() {
     rm -rf "${checkout}"
