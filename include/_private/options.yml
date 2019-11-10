@@ -11,6 +11,7 @@ bootstrap_build_arch:
     - aarch64
     - i686
     - x86_64
+    - powerpc64le
 
 target_arch:
   type: arch
@@ -21,6 +22,7 @@ target_arch:
     - aarch64
     - i686
     - x86_64
+    - powerpc64le
 
 snap_grade:
   type: enum
