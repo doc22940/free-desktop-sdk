@@ -184,7 +184,7 @@ populate_source_cache:
       echo "Initial size:"
       du -sh "${XDG_CACHE_HOME}/buildstream/sources"
 
-      configs=('x86_64:x86_64' 'x86_64:i686' 'aarch64:aarch64' 'aarch64:arm' 'powerpc64le:powerpc64le')
+      configs=('x86_64:x86_64' 'x86_64:i686' 'aarch64:aarch64' 'aarch64:arm' 'ppc64le:ppc64le')
 
       fetch() {
         for c in "${configs[@]}"; do
@@ -233,7 +233,7 @@ populate_source_cache:
 
     - |
       set -e
-      if [ "${ARCH}" != powerpc64le ]; then
+      if [ "${ARCH}" != ppc64le ]; then
         make export-snap
         python3 utils/parse-review.py snap/platform.snap
         python3 utils/parse-review.py snap/glxinfo.snap
@@ -297,7 +297,7 @@ app_powerpc64le:
   tags:
     - ppc64le
   variables:
-    ARCH: powerpc64le
+    ARCH: ppc64le
   allow_failure: true
   dependencies: []
 
@@ -386,7 +386,7 @@ minimal_systemd_vm_powerpc64le:
     - ppc64le
   <<: *vm_imageless
   variables:
-    ARCH: powerpc64le
+    ARCH: ppc64le
     VM_ARTIFACT: vm/minimal-systemd-vm.bst
     DIALOG: root-login
   dependencies: []
@@ -511,7 +511,7 @@ finish_publish_failed:
     - |
       case "$RELEASES_SERVER_ADDRESS" in
         https://hub.flathub.org/)
-          if [ "${ARCH}" = powerpc64le ]; then
+          if [ "${ARCH}" = ppc64le ]; then
             echo "ppc64le not published to Flathub yet"
             exit 1
           fi
@@ -618,7 +618,7 @@ publish_powerpc64le:
   tags:
     - ppc64le
   variables:
-    ARCH: powerpc64le
+    ARCH: ppc64le
   allow_failure: true
   dependencies:
     - prepare_publish
@@ -669,7 +669,7 @@ publish_powerpc64le_tar:
   tags:
     - ppc64le
   variables:
-    ARCH: powerpc64le
+    ARCH: ppc64le
   dependencies: []
   when: manual
 
@@ -937,7 +937,7 @@ publish_docker_ppc64le:
   tags:
   - ppc64le
   variables:
-    ARCH: powerpc64le
+    ARCH: ppc64le
     DISABLE_CACHE_PUSH: 1
   allow_failure: true
 

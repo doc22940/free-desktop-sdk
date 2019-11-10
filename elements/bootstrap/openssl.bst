@@ -19,9 +19,9 @@ variables:
       openssl-target: linux-generic32
   - target_arch == "arm":
       openssl-target: linux-generic32
-  - target_arch == "powerpc64le":
+  - target_arch == "ppc64le":
       openssl-target: linux-ppc64le
-  - target_arch in ["x86_64", "aarch64", "powerpc64le"]:
+  - target_arch in ["x86_64", "aarch64", "ppc64le"]:
       arch-conf: enable-ec_nistp_64_gcc_128
 
 config:

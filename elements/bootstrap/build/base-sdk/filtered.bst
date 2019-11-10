@@ -9,7 +9,7 @@ kind: filter
     depends:
     - filename: bootstrap/build/base-sdk/image-aarch64.bst
       type: build
-- bootstrap_build_arch == "powerpc64le":
+- bootstrap_build_arch == "ppc64le":
     depends:
     - filename: bootstrap/build/base-sdk/image-powerpc64le.bst
       type: build
