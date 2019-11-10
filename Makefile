@@ -53,7 +53,7 @@ build-tar:
 bootstrap:
 	$(BST) build bootstrap/export-bootstrap.bst
 	[ -d bootstrap/ ] || mkdir -p bootstrap/
-	$(BST) checkout bootstrap/export-bootstrap.bst bootstrap/$(ARCH)
+	$(BST) artifact checkout bootstrap/export-bootstrap.bst bootstrap/$(ARCH)
 
 check-abi:
 	REFERENCE=$$(git merge-base origin/$(RUNTIME_VERSION) HEAD) && \
@@ -63,7 +63,7 @@ export: clean-runtime
 	$(BST) build flatpak-release.bst public-stacks/flatpak-publish-tools.bst
 
 	mkdir -p $(CHECKOUT_ROOT)
-	$(BST) checkout --hardlinks "flatpak-release.bst" $(CHECKOUT_ROOT)
+	$(BST) artifact checkout --hardlinks "flatpak-release.bst" $(CHECKOUT_ROOT)
 
 	test -e $(REPO) || ostree init --repo=$(REPO) --mode=archive
 
@@ -79,7 +79,7 @@ export-tar:
 	mkdir -p $(TAR_CHECKOUT_ROOT)
 	set -e; for tarball in $(TARBALLS); do \
 		dir="$(ARCH)-$${tarball}"; \
-		bst --colors $(ARCH_OPTS) checkout --hardlinks "tarballs/$${tarball}.bst" "$(TAR_CHECKOUT_ROOT)/$${dir}"; \
+		bst --colors $(ARCH_OPTS) artifact checkout --hardlinks "tarballs/$${tarball}.bst" "$(TAR_CHECKOUT_ROOT)/$${dir}"; \
 	done
 
 clean-vm:
@@ -87,7 +87,7 @@ clean-vm:
 
 $(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT):
 	$(BST) build $(VM_ARTIFACT)
-	$(BST) checkout --hardlinks $(VM_ARTIFACT) $(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT)
+	$(BST) artifact checkout --hardlinks $(VM_ARTIFACT) $(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT)
 
 build-vm: clean-vm $(VM_CHECKOUT_ROOT)/$(VM_ARTIFACT)
 
@@ -140,7 +140,7 @@ $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image: elements
 	$(BST) build platform-image.bst
 
 	mkdir -p $(CHECKOUT_ROOT)
-	bst --colors $(ARCH_OPTS) checkout --hardlinks platform-image.bst $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
+	bst --colors $(ARCH_OPTS) artifact checkout --hardlinks platform-image.bst $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
 
 check-dev-files: $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image
 	./utils/scan-for-dev-files.sh $(CHECKOUT_ROOT)/$(ARCH)-desktop-platform-image | sort -u >found_dev_files.txt
@@ -161,8 +161,8 @@ manifest:
 	$(BST) build manifests/platform-manifest.bst
 	$(BST) build manifests/sdk-manifest.bst
 
-	$(BST) checkout manifests/platform-manifest.bst platform-manifest/
-	$(BST) checkout manifests/sdk-manifest.bst sdk-manifest/
+	$(BST) artifact checkout manifests/platform-manifest.bst platform-manifest/
+	$(BST) artifact checkout manifests/sdk-manifest.bst sdk-manifest/
 
 markdown-manifest: manifest
 	python3 utils/jsontomd.py platform-manifest/usr/manifest.json
@@ -226,7 +226,7 @@ clean: clean-repo clean-runtime clean-test clean-vm clean-platform
 
 export-snap:
 	bst --colors $(ARCH_OPTS) build "snap-images/images.bst"
-	bst --colors $(ARCH_OPTS) checkout "snap-images/images.bst" snap/
+	bst --colors $(ARCH_OPTS) artifact checkout "snap-images/images.bst" snap/
 
 export-oci:
 	$(BST) build oci/platform-oci.bst \
@@ -234,7 +234,7 @@ export-oci:
 	             oci/debug-oci.bst
 	set -e; \
 	for name in platform sdk debug; do \
-	  $(BST) checkout "oci/$${name}-oci.bst" --tar "$${name}-oci.tar"; \
+	  $(BST) artifact checkout "oci/$${name}-oci.bst" --tar "$${name}-oci.tar"; \
 	done
 
 export-docker:
@@ -243,11 +243,11 @@ export-docker:
 	             oci/debug-docker.bst
 	set -e; \
 	for name in platform sdk debug; do \
-	  $(BST) checkout "oci/$${name}-docker.bst" --tar "$${name}-docker.tar"; \
+	  $(BST) artifact checkout "oci/$${name}-docker.bst" --tar "$${name}-docker.tar"; \
 	done
 
 track-mesa-aco:
-	$(BST) track extensions/mesa-aco/mesa-base.bst
+	$(BST) source track extensions/mesa-aco/mesa-base.bst
 
 .PHONY: \
 	build check-dev-files clean clean-test clean-repo clean-runtime \
