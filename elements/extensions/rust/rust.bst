@@ -125,6 +125,4 @@ sources:
   url: https://static.rust-lang.org/dist/rustc-1.39.0-src.tar.xz
   ref: 4b0dbb356070687a606034f71dc032b783bbf8b5d3f9fff39f2c1fbc4f171c29
 - kind: patch
-  path: patches/rust/rust-codegen-libdir.patch
-- kind: patch
   path: patches/rust/rust-cannonicalize-install.patch
