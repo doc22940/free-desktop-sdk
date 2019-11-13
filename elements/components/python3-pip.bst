@@ -2,7 +2,7 @@ kind: distutils
 
 depends:
 - filename: bootstrap-import.bst
-- filename: components/python3.bst
+- filename: components/python3-minimal.bst
 - filename: components/python3-setuptools.bst
 
 config:

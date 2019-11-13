@@ -2,7 +2,7 @@ kind: manual
 
 depends:
 - filename: bootstrap-import.bst
-- filename: components/python3.bst
+- filename: components/python3-minimal.bst
 
 config:
   build-commands:

@@ -3,7 +3,7 @@ description: X.org proto xcb
 
 depends:
 - filename: bootstrap-import.bst
-- filename: components/python3.bst
+- filename: components/python3-minimal.bst
   type: build
 - filename: public-stacks/buildsystem-autotools.bst
   type: build

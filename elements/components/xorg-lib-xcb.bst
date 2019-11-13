@@ -9,7 +9,7 @@ depends:
 - filename: components/xorg-lib-xau.bst
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
-- filename: components/python3.bst
+- filename: components/python3-minimal.bst
   type: build
 
 variables:
