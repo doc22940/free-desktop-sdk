@@ -1,27 +1,17 @@
 kind: autotools
-description: Python 3
+description: Python 3 (minimal version)
 
 depends:
 - filename: bootstrap-import.bst
 - filename: public-stacks/buildsystem-autotools.bst
   type: build
-- filename: components/expat.bst
 - filename: components/libffi.bst
-- filename: components/gdbm.bst
-- filename: components/sqlite.bst
-- filename: components/xz.bst
-- filename: components/bluez-headers.bst
-  type: build
 
 variables:
   conf-local: |
     --enable-shared \
     --without-ensurepip \
-    --with-system-expat \
     --with-system-ffi \
-    --enable-loadable-sqlite-extensions \
-    --with-dbmliborder=gdbm \
-    --with-lto \
     --with-conf-includedir="%{includedir}/%{gcc_triplet}"
 
 config:
