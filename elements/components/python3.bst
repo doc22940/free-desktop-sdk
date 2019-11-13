@@ -9,6 +9,7 @@ depends:
 - filename: components/libffi.bst
 - filename: components/gdbm.bst
 - filename: components/sqlite.bst
+- filename: components/tk.bst
 - filename: components/xz.bst
 - filename: components/bluez-headers.bst
   type: build
@@ -36,8 +37,6 @@ config:
     rm -rf %{install-root}%{bindir}/idle*
   - |
     rm -rf %{install-root}%{indep-libdir}/python3.7/idlelib
-  - |
-    rm -rf %{install-root}%{indep-libdir}/python3.7/tkinter
   - |
     rm -rf %{install-root}%{indep-libdir}/python3.7/turtle*
   - |
@@ -87,6 +86,7 @@ public:
         - '%{indep-libdir}/python3.7/config-3.7m-%{gcc_triplet}/**'
         - '%{indep-libdir}/python3.7/lib2to3'
         - '%{indep-libdir}/python3.7/lib2to3/**'
+        - '%{indep-libdir}/python3.7/tkinter/**'
     integration-commands:
     - command -v python || ln -s python3 %{bindir}/python
   cpe:
