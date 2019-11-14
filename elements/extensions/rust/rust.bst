@@ -71,9 +71,9 @@ config:
     [rust]
     optimize = true
     channel = "stable"
-    debuginfo-level = %{debuginfo-level}
-    debuginfo-level-std = %{debuginfo-level-std}
-    debuginfo-level-tools = 2
+    debuginfo-level = 0
+    debuginfo-level-std = 0
+    debuginfo-level-tools = 0
     backtrace = true
     rpath = false
     default-linker = "/usr/bin/gcc"
