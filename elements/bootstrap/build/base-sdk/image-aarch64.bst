@@ -7,7 +7,7 @@ sources:
   # Do not verify repo: Workaround for https://gitlab.com/BuildStream/buildstream/issues/524
   #gpg-key: keys/freedesktop-sdk.gpg
   track: runtime/org.freedesktop.Sdk.PreBootstrap/aarch64/19.08
-  ref: bd2bd15b17bd5bd1a7890f5d5a89ae37ea35440b7c5e7cf00ecac83ba7535fe6
+  ref: e09ff6b822815493632291ef0f7caff632420e4760cf23fa3c7ed7ee01e6b4cb
 
 config:
   source: files
