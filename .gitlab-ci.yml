@@ -187,8 +187,6 @@ check_update_elements:
       --create_mr
       --gitlab_project="freedesktop-sdk/freedesktop-sdk"
       flatpak-release.bst
-  only:
-    - schedules
 
 populate_source_cache:
   image: $DOCKER_AARCH64
