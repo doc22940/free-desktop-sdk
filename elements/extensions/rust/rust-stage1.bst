@@ -32,8 +32,8 @@ sources:
       url: https://static.rust-lang.org/dist/rust-1.38.0-aarch64-unknown-linux-gnu.tar.xz
       ref: 6ab06ff04cc41e612dd55f3358a1239be8cceb0ad8018996d39ae3e3b23156d2
   - target_arch == "arm":
-      url: https://static.rust-lang.org/dist/rust-1.38.0-armv7-unknown-linux-gnueabihf.tar.xz
-      ref: c8b9ced4a6b6efe32ac41e2ec032f847223b48ead04dedd2172e08d98616a774
+      url: https://static.rust-lang.org/dist/rust-1.39.0-armv7-unknown-linux-gnueabihf.tar.xz
+      ref: d98a3cfaa427e7bba95a36cbe98cc2ded3ff5ee87242add1e0c393467c069756
   - target_arch == "powerpc64le":
       url: https://static.rust-lang.org/dist/rust-1.38.0-powerpc64le-unknown-linux-gnu.tar.xz
       ref: 6c253cc0f9441ab6ef4c2457e0ef8748c076d7d1897ab8a8a7bbb00308603a2b
