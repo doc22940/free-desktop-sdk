@@ -167,6 +167,8 @@ before_script:
 check_update_elements:
   image: $DOCKER_AMD64
   stage: update
+  tags:
+    - x86_64
   script:
     - git clone --depth 1 --branch $AUTO_UPDATER_BRANCH $AUTO_UPDATER_URL auto_updater
     - cd auto_updater && python3 setup.py install && cd -
