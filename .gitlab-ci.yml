@@ -169,11 +169,9 @@ check_update_elements:
   stage: update
   tags:
     - check_update
-  before_script:
-    - git clone --depth 1 --branch $AUTO_UPDATER_BRANCH $AUTO_UPDATER_URL auto_updater
-    - cd auto_updater
-    - python3 setup.py install
   script:
+    - git clone --depth 1 --branch $AUTO_UPDATER_BRANCH $AUTO_UPDATER_URL auto_updater
+    - cd auto_updater && python3 setup.py install && cd -
     - url_host=`git remote get-url origin | sed -e "s#https://gitlab-ci-token:.*@##g"`
     - git remote set-url origin "https://gitlab-ci-token:${FREEDESKTOP_API_KEY}@${url_host}"
     - git checkout -- snap-version.yml
