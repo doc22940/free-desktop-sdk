@@ -172,8 +172,7 @@ check_update_elements:
   script:
     - git clone --depth 1 --branch $AUTO_UPDATER_BRANCH $AUTO_UPDATER_URL auto_updater
     - cd auto_updater && python3 setup.py install && cd -
-    - url_host=`git remote get-url origin | sed -e "s#https://gitlab-ci-token:.*@##g"`
-    - git remote set-url origin "https://gitlab-ci-token:${FREEDESKTOP_API_KEY}@${url_host}"
+    - git remote set-url origin "https://gitlab-ci-token:${FREEDESKTOP_API_KEY}@$gitlab.com/freedesktop-sdk/freedesktop-sdk.git"
     - git checkout -- snap-version.yml
     - git config user.name "freedesktop_sdk_updater"
     - git config user.email "freedesktop_sdk_updater@libreml.com"
